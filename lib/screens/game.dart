@@ -54,8 +54,8 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Spacer(flex: 2),
           Center(
             child: Container(
               // height: (30 * (6 + 2)).w,
@@ -158,6 +158,9 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
           ),
+          const Spacer(),
+          Center(child: I,)
+          const Spacer(),
         ],
       ),
     );
