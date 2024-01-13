@@ -109,7 +109,7 @@ class _GameScreenState extends State<GameScreen> {
                                               )
                                             : null,
                                     border: Border.all(
-                                      color: Colors.green,
+                                      color: Colors.white,
                                       width: 3.sp,
                                     ),
                                   ),
