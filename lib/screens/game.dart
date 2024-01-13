@@ -3,6 +3,7 @@ import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/data.dart';
 import 'package:connect4/classes/player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameScreen extends StatefulWidget {
@@ -78,24 +79,30 @@ class _GameScreenState extends State<GameScreen> {
                                   height: 35.w,
                                   margin: EdgeInsets.all(5.w),
                                   decoration: BoxDecoration(
-                                      color: color,
-                                      shape: BoxShape.circle,
-                                      gradient:
-                                          gameBoard[rowIndex][columnIndex] == 0
-                                              ? LinearGradient(
-                                                  colors: [
-                                                    Colors.deepPurple[400]!,
-                                                    backgroundColor!,
-                                                  ],
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                )
-                                              : null,
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3.sp,
-                                      )),
-                                )
+                                    color: color,
+                                    shape: BoxShape.circle,
+                                    gradient:
+                                        gameBoard[rowIndex][columnIndex] == 0
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.deepPurple[400]!,
+                                                  backgroundColor!,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : null,
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3.sp,
+                                    ),
+                                  ),
+                                ).animate().scaleXY(
+                                    begin: 1,
+                                    end: 1.2,
+                                    duration: 500.milliseconds,
+                                    delay: 300.milliseconds,
+                                  )
                               : Container(
                                   width: 35.w,
                                   height: 35.w,
