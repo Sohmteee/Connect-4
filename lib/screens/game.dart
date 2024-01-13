@@ -104,6 +104,7 @@ class _GameScreenState extends State<GameScreen> {
                                     end: 1.2,
                                     duration: 500.milliseconds,
                                     delay: 300.milliseconds,
+                                    curve: Curves.easeInCubic,
                                   )
                                   .then()
                                   .scaleXY(
