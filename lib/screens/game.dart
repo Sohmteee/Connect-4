@@ -97,11 +97,20 @@ class _GameScreenState extends State<GameScreen> {
                                       width: 3.sp,
                                     ),
                                   ),
-                                ).animate().scaleXY(
+                                )
+                                  .animate()
+                                  .scaleXY(
                                     begin: 1,
                                     end: 1.2,
                                     duration: 500.milliseconds,
                                     delay: 300.milliseconds,
+                                  )
+                                  .then()
+                                  .scaleXY(
+                                    begin: 1,
+                                    end: .833333333333333333,
+                                    duration: 300.milliseconds,
+                                    curve: Curves.bounceOut,
                                   )
                               : Container(
                                   width: 35.w,
