@@ -33,6 +33,22 @@ class _GameScreenState extends State<GameScreen> {
     checkWin();
   }
 
+  reset() {
+    setState(() {
+      gameBoard = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+      ];
+      player = Player(PlayerColor.red);
+      canPlay = true;
+      winningPositions.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,6 +127,7 @@ class _GameScreenState extends State<GameScreen> {
                                     begin: 1,
                                     end: .833333333333333333,
                                     duration: 300.milliseconds,
+                                    delay: 300.milliseconds,
                                     curve: Curves.bounceOut,
                                   )
                               : Container(
