@@ -90,8 +90,7 @@ class _GameScreenState extends State<GameScreen> {
                           },
                           child: (winningPositions
                                   .contains(Position(rowIndex, columnIndex)))
-                              ? AnimatedContainer(
-                                  duration: 300.milliseconds,
+                              ? Container(
                                   width: 35.w,
                                   height: 35.w,
                                   margin: EdgeInsets.all(5.w),
@@ -109,13 +108,10 @@ class _GameScreenState extends State<GameScreen> {
                                                 end: Alignment.bottomCenter,
                                               )
                                             : null,
-                                    border: (winningPositions.contains(
-                                            Position(rowIndex, columnIndex)))
-                                        ? Border.all(
-                                            color: Colors.white,
-                                            width: 3.sp,
-                                          )
-                                        : null,
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3.sp,
+                                    ),
                                   ),
                                 )
                                   .animate()
@@ -124,7 +120,7 @@ class _GameScreenState extends State<GameScreen> {
                                     end: 1.2,
                                     duration: 500.milliseconds,
                                     delay: 100.milliseconds,
-                                    curve: Curves.easeInCubic,
+                                    curve: Curves.easeInOutQuart,
                                   )
                                   .then()
                                   .scaleXY(
