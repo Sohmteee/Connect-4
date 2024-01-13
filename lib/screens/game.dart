@@ -120,21 +120,21 @@ class _GameScreenState extends State<GameScreen> {
   checkWin() {
     setState(() {
       if (checkHorizontal().isNotEmpty) {
-        print('Player ${checkHorizontal()['winner']} wins!');
+        debugPrint('Player ${checkHorizontal()['winner']} wins!');
         highlightWinningPositions(
           checkHorizontal()['winner'],
           checkHorizontal()['positions'],
         );
         canPlay = false;
       } else if (checkVertical().isNotEmpty) {
-        print('Player ${checkVertical()['winner']} wins!');
+        debugPrint('Player ${checkVertical()['winner']} wins!');
         highlightWinningPositions(
           checkVertical()['winner'],
           checkVertical()['positions'],
         );
         canPlay = false;
       } else if (checkDiagonal().isNotEmpty) {
-        print('Player ${checkDiagonal()['winner']} wins!');
+        debugPrint('Player ${checkDiagonal()['winner']} wins!');
         highlightWinningPositions(
           checkDiagonal()['winner'],
           checkDiagonal()['positions'],
