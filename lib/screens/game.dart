@@ -90,7 +90,8 @@ class _GameScreenState extends State<GameScreen> {
                           },
                           child: (winningPositions
                                   .contains(Position(rowIndex, columnIndex)))
-                              ? Container(
+                              ? AnimatedContainer(
+                                  duration: 300.milliseconds,
                                   width: 35.w,
                                   height: 35.w,
                                   margin: EdgeInsets.all(5.w),
@@ -108,10 +109,13 @@ class _GameScreenState extends State<GameScreen> {
                                                 end: Alignment.bottomCenter,
                                               )
                                             : null,
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 3.sp,
-                                    ),
+                                    border: (winningPositions.contains(
+                                            Position(rowIndex, columnIndex)))
+                                        ? Border.all(
+                                            color: Colors.white,
+                                            width: 3.sp,
+                                          )
+                                        : null,
                                   ),
                                 )
                                   .animate()
@@ -119,7 +123,7 @@ class _GameScreenState extends State<GameScreen> {
                                     begin: 1,
                                     end: 1.2,
                                     duration: 500.milliseconds,
-                                    delay: 300.milliseconds,
+                                    delay: 100.milliseconds,
                                     curve: Curves.easeInCubic,
                                   )
                                   .then()
