@@ -159,7 +159,16 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           const Spacer(),
-          Center(child: IconButton(onPressed: (){}, icon: Icons.restart,),)
+          Center(
+            child: IconButton(
+              onPressed: () {
+                reset();
+              },
+              icon: Icon(Icons.restart_alt_rounded),
+              color: Colors.white,
+              iconSize: 40.sp,
+            ),
+          ),
           const Spacer(),
         ],
       ),
