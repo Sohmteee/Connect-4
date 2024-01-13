@@ -159,7 +159,7 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           const Spacer(),
-          Center(child: I,)
+          Center(child: IconButton(onPressed: (){}, icon: Icons.restart,),)
           const Spacer(),
         ],
       ),
