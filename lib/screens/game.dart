@@ -88,11 +88,11 @@ class _GameScreenState extends State<GameScreen> {
                                       end: Alignment.bottomCenter,
                                     )
                                   : null,
-                              border: (winningPositions
-                                      .contains(Position(rowIndex, columnIndex)))
+                              border: (winningPositions.contains(
+                                      Position(rowIndex, columnIndex)))
                                   ? Border.all(
                                       color: Colors.white,
-                                      width: 1.sp,
+                                      width: 3.sp,
                                     )
                                   : null,
                             ),
