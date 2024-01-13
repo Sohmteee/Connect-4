@@ -71,32 +71,51 @@ class _GameScreenState extends State<GameScreen> {
                               makeMove(columnIndex);
                             }
                           },
-                          child: Container(
-                            width: 35.w,
-                            height: 35.w,
-                            margin: EdgeInsets.all(5.w),
-                            decoration: BoxDecoration(
-                              color: color,
-                              shape: BoxShape.circle,
-                              gradient: gameBoard[rowIndex][columnIndex] == 0
-                                  ? LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple[400]!,
-                                        backgroundColor!,
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    )
-                                  : null,
-                              border: (winningPositions.contains(
-                                      Position(rowIndex, columnIndex)))
-                                  ? Border.all(
-                                      color: Colors.white,
-                                      width: 3.sp,
-                                    )
-                                  : null,
-                            ),
-                          ),
+                          child: (winningPositions
+                                  .contains(Position(rowIndex, columnIndex)))
+                              ? Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  margin: EdgeInsets.all(5.w),
+                                  decoration: BoxDecoration(
+                                      color: color,
+                                      shape: BoxShape.circle,
+                                      gradient:
+                                          gameBoard[rowIndex][columnIndex] == 0
+                                              ? LinearGradient(
+                                                  colors: [
+                                                    Colors.deepPurple[400]!,
+                                                    backgroundColor!,
+                                                  ],
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                )
+                                              : null,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 3.sp,
+                                      )),
+                                )
+                              : Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  margin: EdgeInsets.all(5.w),
+                                  decoration: BoxDecoration(
+                                    color: color,
+                                    shape: BoxShape.circle,
+                                    gradient:
+                                        gameBoard[rowIndex][columnIndex] == 0
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.deepPurple[400]!,
+                                                  backgroundColor!,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : null,
+                                  ),
+                                ),
                         );
                       },
                     ),
