@@ -378,6 +378,10 @@ class _GameScreenState extends State<GameScreen> {
 
     }
 
+    fillEmptySpace() {
+      
+    }
+
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
@@ -388,7 +392,7 @@ class _GameScreenState extends State<GameScreen> {
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
 
         if (row[columnIndex] == targetNumber) {
-          
+
         }
 
         // find the closest empty spaces
