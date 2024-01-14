@@ -381,6 +381,7 @@ class _GameScreenState extends State<GameScreen> {
     int? fillEmptySpace(List row) {
       for (int i = 0; i < row.length - 3; i++) {
         if (row[i] == 0) {
+          if ()
           if (row[i + 1] == targetNumber && row[i + 2] == targetNumber) {
             return i;
           }
