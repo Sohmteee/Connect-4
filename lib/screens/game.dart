@@ -38,7 +38,7 @@ class _GameScreenState extends State<GameScreen> {
 
   makeComputerMove() {
     //win move
-    
+    horizontalMove()
 
     //block move
   }
