@@ -374,7 +374,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   /// Method to check if the cell has support from the bottom
-  bool checkHasSupport(int rowIndex, int columnIndex) {
+  bool hasSupport(int rowIndex, int columnIndex) {
     return (rowIndex == 5) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
   }
 
@@ -390,12 +390,12 @@ class _GameScreenState extends State<GameScreen> {
           }
           if (columnIndex == 0) {
             if (row[columnIndex + 1] == targetNumber &&
-                checkHasSupport(rowIndex, columnIndex)) {
+                hasSupport(rowIndex, columnIndex)) {
               return columnIndex;
             }
           }
           if (columnIndex == row.length - 3 &&
-              checkHasSupport(rowIndex, columnIndex)) {
+              hasSupport(rowIndex, columnIndex)) {
             if (row[columnIndex - 1] == targetNumber) {
               return columnIndex;
             }
