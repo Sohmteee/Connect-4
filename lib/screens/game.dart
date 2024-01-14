@@ -380,7 +380,7 @@ class _GameScreenState extends State<GameScreen> {
   void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row, int index) {}
 
-    int? fillEmptySpace(List row, int ) {
+    int? fillEmptySpace(List row, int rowIndex) {
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
         if (row[columnIndex] == 0) {
           if (row[columnIndex + 1] == targetNumber &&
@@ -388,11 +388,13 @@ class _GameScreenState extends State<GameScreen> {
             return columnIndex;
           }
           if (columnIndex == 0) {
-            if (row[columnIndex + 1] == targetNumber) {
+            if (row[columnIndex + 1] == targetNumber &&
+                checkHasSupport(rowIndex, columnIndex)) {
               return columnIndex;
             }
           }
-          if (columnIndex == row.length - 3) {
+          if (columnIndex == row.length - 3 &&
+              checkHasSupport(rowIndex, columnIndex)) {
             if (row[columnIndex - 1] == targetNumber) {
               return columnIndex;
             }
