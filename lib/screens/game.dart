@@ -379,8 +379,10 @@ class _GameScreenState extends State<GameScreen> {
       int? emptyLeft, emptyRight;
       bool hasFoundNearestEmptyLeft = false;
 
-      // 
+      
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
+
+        // find the closest 
         if (row[columnIndex] == 0) {
           if (emptyLeft == null) {
             emptyLeft = columnIndex;
