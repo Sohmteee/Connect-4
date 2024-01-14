@@ -374,17 +374,17 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   bool checkHasSupport(int rowIndex, int columnIndex) {
-     (rowIndex == 5) ? true :
-     gameBoard[rowIndex - 1][columnIndex] != 0;
+    return (rowIndex == 5) ? true : gameBoard[rowIndex - 1][columnIndex] != 0;
   }
 
   void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row, int index) {}
 
-    int? fillEmptySpace(List row) {
+    int? fillEmptySpace(List row, int ) {
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
         if (row[columnIndex] == 0) {
-          if (row[columnIndex + 1] == targetNumber && row[columnIndex + 2] == targetNumber) {
+          if (row[columnIndex + 1] == targetNumber &&
+              row[columnIndex + 2] == targetNumber) {
             return columnIndex;
           }
           if (columnIndex == 0) {
