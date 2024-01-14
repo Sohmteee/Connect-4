@@ -14,7 +14,9 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  final player = Player(1);
+  final player1 = Player(1);
+  final player2 = Player(2);
+  Player currentPlayer = player1;
   bool canPlay = true;
   PositionsList winningPositions = PositionsList([]);
 
@@ -22,7 +24,7 @@ class _GameScreenState extends State<GameScreen> {
     for (int i = 5; i >= 0; i--) {
       if (gameBoard[i][columnIndex] == 0) {
         setState(() {
-          gameBoard[i][columnIndex] = player.number == 1 ? 1 : 2;
+          gameBoard[i][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
           player.alternatePlayer();
         });
         break;
@@ -111,7 +113,6 @@ class _GameScreenState extends State<GameScreen> {
                                       color: Colors.white,
                                       width: 3.sp,
                                     ),
-
                                   ),
                                 )
                                   .animate()
@@ -181,9 +182,9 @@ class _GameScreenState extends State<GameScreen> {
       debugPrint('Winning Positions: $winningPositions');
     });
   }
-  
+
   checkTie() {
-    if (gameBoard.every((row) => row.every((cell) => cell!= 0))) {
+    if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
       canPlay = false;
     }
