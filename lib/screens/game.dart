@@ -14,7 +14,7 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  Player player = Player(1);
+  final player = Player(1);
   bool canPlay = true;
   PositionsList winningPositions = PositionsList([]);
 
@@ -40,7 +40,7 @@ class _GameScreenState extends State<GameScreen> {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
       ];
-      player = Player(PlayerColor.red);
+      player = Player(1);
       canPlay = true;
       winningPositions.clear();
     });
