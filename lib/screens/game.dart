@@ -388,9 +388,8 @@ class _GameScreenState extends State<GameScreen> {
               row[columnIndex + 2] == targetNumber) {
             return columnIndex;
           }
-          if (columnIndex == 0) {
-            if (row[columnIndex + 1] == targetNumber &&
-                hasSupport(rowIndex, columnIndex)) {
+          if (columnIndex == 0 && hasSupport(rowIndex, columnIndex)) {
+            if (row[columnIndex + 1] == targetNumber ) {
               return columnIndex;
             }
           }
