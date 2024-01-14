@@ -185,7 +185,10 @@ class _GameScreenState extends State<GameScreen> {
   }
   
   checkTie() {
-    if (game)
+    if (gameBoard.every((row) => row.every((cell) => cell!= 0))) {
+      debugPrint('Tie!');
+      canPlay = false;
+    }
   }
 
   checkWin() {
