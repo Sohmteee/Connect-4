@@ -373,8 +373,9 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
+  /// Method to check if the cell has support from the bottom
   bool checkHasSupport(int rowIndex, int columnIndex) {
-    return (rowIndex == 5) ? true : gameBoard[rowIndex - 1][columnIndex] != 0;
+    return (rowIndex == 5) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
   }
 
   void horizontalMove(int playerNumber, int targetNumber) {
