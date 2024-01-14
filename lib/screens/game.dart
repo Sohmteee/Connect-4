@@ -376,6 +376,7 @@ class _GameScreenState extends State<GameScreen> {
   void horizontalMove(int playerNumber) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
+      int? emptyLeft, emptyRight;
 
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
         if (row[columnIndex] == 0) {
