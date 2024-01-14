@@ -1,11 +1,9 @@
-import 'package:connect4/data.dart';
-
 class Player {
-  int player;
+  int number;
 
   void alternatePlayer() {
-    player = player == PlayerColor.red ? PlayerColor.yellow : PlayerColor.red;
+    number = number == 1 ? 2 : 1;
   }
 
-  Player(this.player);
+  Player(this.number);
 }
