@@ -390,6 +390,10 @@ class _GameScreenState extends State<GameScreen> {
             }
             emptyRight = columnIndex;
           }
+        } else {
+          if (emptyLeft != null) {
+            hasFoundNearestEmptyLeft = true;
+          }
         }
 
         if (row[columnIndex] == playerNumber) {
