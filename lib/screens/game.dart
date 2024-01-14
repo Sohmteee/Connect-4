@@ -404,6 +404,7 @@ class _GameScreenState extends State<GameScreen> {
           }
         }
       }
+      return null;
     }
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
