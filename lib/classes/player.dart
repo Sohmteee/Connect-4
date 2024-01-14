@@ -1,11 +1,11 @@
 import 'package:connect4/data.dart';
 
 class Player {
-  PlayerColor color;
+  int player;
 
   void alternatePlayer() {
-    color = color == PlayerColor.red ? PlayerColor.yellow : PlayerColor.red;
+    player = player == PlayerColor.red ? PlayerColor.yellow : PlayerColor.red;
   }
 
-  Player(this.color);
+  Player(this.player);
 }

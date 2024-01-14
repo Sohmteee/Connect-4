@@ -23,6 +23,7 @@ class _GameScreenState extends State<GameScreen> {
       if (gameBoard[i][columnIndex] == 0) {
         setState(() {
           gameBoard[i][columnIndex] = player.color == PlayerColor.red ? 1 : 2;
+          player.alternatePlayer();
         });
         break;
       }
@@ -84,7 +85,6 @@ class _GameScreenState extends State<GameScreen> {
                               makeMove(columnIndex);
                               checkWin();
                               checkTie();
-                              player.alternatePlayer();
                             }
                           },
                           child: (winningPositions
@@ -111,6 +111,7 @@ class _GameScreenState extends State<GameScreen> {
                                       color: Colors.white,
                                       width: 3.sp,
                                     ),
+
                                   ),
                                 )
                                   .animate()
@@ -180,9 +181,9 @@ class _GameScreenState extends State<GameScreen> {
       debugPrint('Winning Positions: $winningPositions');
     });
   }
-
+  
   checkTie() {
-    if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
+    if (gameBoard.every((row) => row.every((cell) => cell!= 0))) {
       debugPrint('Tie!');
       canPlay = false;
     }
