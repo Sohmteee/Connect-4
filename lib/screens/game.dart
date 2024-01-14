@@ -373,7 +373,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  void horizontalMove(int player) {
+  void horizontalMove(int playerNumber) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
 
@@ -382,7 +382,7 @@ class _GameScreenState extends State<GameScreen> {
           continue;
         }
 
-        if (row[columnIndex] == player) {
+        if (row[columnIndex] == playerNumber) {
           if (positions.size() == 4) {
             return;
           }
