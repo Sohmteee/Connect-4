@@ -112,6 +112,7 @@ class _GameScreenState extends State<GameScreen> {
                                       color: Colors.white,
                                       width: 3.sp,
                                     ),
+                                    
                                   ),
                                 )
                                   .animate()
