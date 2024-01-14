@@ -85,7 +85,6 @@ class _GameScreenState extends State<GameScreen> {
                           onTap: () {
                             if (canPlay) {
                               makeMove(columnIndex);
-                              
                               checkWin();
                               checkTie();
                             }
