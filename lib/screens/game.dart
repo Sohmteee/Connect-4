@@ -30,8 +30,6 @@ class _GameScreenState extends State<GameScreen> {
         break;
       }
     }
-    checkWin();
-    checkTie();
   }
 
   reset() {
@@ -87,6 +85,9 @@ class _GameScreenState extends State<GameScreen> {
                           onTap: () {
                             if (canPlay) {
                               makeMove(columnIndex);
+                              
+                              checkWin();
+                              checkTie();
                             }
                           },
                           child: (winningPositions
@@ -166,7 +167,7 @@ class _GameScreenState extends State<GameScreen> {
               onPressed: () {
                 reset();
               },
-              icon: Icon(Icons.restart_alt_rounded),
+              icon: const Icon(Icons.restart_alt_rounded),
               color: Colors.white,
               iconSize: 40.sp,
             ),
