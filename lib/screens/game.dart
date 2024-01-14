@@ -399,9 +399,7 @@ class _GameScreenState extends State<GameScreen> {
         }
 
         if (row[columnIndex] == playerNumber) {
-          if (positions.size() == 4) {
-            return;
-          }
+          
         } else {
           currentPlayerInt = row[columnIndex];
         }
