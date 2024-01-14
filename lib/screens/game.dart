@@ -373,9 +373,9 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  void horizontalMove(int playerNumber) {
+  void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row,  int index) {
-      
+
     }
 
 
