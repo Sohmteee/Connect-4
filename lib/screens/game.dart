@@ -373,6 +373,10 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
+  bool checkHasSupport(int rowIndex, int columnIndex) {
+    if gameBoard
+  }
+
   void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row, int index) {}
 
@@ -388,8 +392,8 @@ class _GameScreenState extends State<GameScreen> {
             }
           }
           if (columnIndex == row.length - 3) {
-            if (row[columnIndex + 2] == targetNumber) {
-              return columnIndex + 3;
+            if (row[columnIndex - 1] == targetNumber) {
+              return columnIndex;
             }
           }
         }
