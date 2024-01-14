@@ -374,6 +374,23 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void horizontalMove(int player) {
-    
+    for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+      List row = gameBoard[rowIndex];
+
+      for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
+        if (row[columnIndex] == 0) {
+          continue;
+        }
+
+        if (row[columnIndex] == currentPlayerInt) {
+          positions.add(Position(rowIndex, columnIndex));
+          if (positions.size() == 4) {
+            return;
+          }
+        } else {
+          currentPlayerInt = row[columnIndex];
+        }
+      }
+    }
   }
 }
