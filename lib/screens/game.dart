@@ -46,10 +46,16 @@ class _GameScreenState extends State<GameScreen> {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
       ];
-      player = Player(1);
+      currentPlayer = Player(1);
       canPlay = true;
       winningPositions.clear();
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    currentPlayer = player1;
   }
 
   @override
