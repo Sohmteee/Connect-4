@@ -380,7 +380,9 @@ class _GameScreenState extends State<GameScreen> {
 
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
         if (row[columnIndex] == 0) {
-          continue;
+          if (emptyLeft != null) {
+            
+          }
         }
 
         if (row[columnIndex] == playerNumber) {
