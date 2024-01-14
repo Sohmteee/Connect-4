@@ -374,9 +374,11 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void horizontalMove(int playerNumber) {
-    getBoundaries() {}
+    getBoundaries(List row,  int index) {
+      
+    }
 
-    
+
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
       int? emptyLeft, emptyRight;
