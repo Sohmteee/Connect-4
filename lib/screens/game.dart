@@ -31,6 +31,7 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
     checkWin();
+    checkTie();
   }
 
   reset() {
@@ -112,7 +113,7 @@ class _GameScreenState extends State<GameScreen> {
                                       color: Colors.white,
                                       width: 3.sp,
                                     ),
-                                    
+
                                   ),
                                 )
                                   .animate()
@@ -181,6 +182,10 @@ class _GameScreenState extends State<GameScreen> {
       winningPositions = positions;
       debugPrint('Winning Positions: $winningPositions');
     });
+  }
+  
+  checkTie() {
+    
   }
 
   checkWin() {
