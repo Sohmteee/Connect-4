@@ -373,5 +373,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  void 
+  void horizontalMove(int player) {
+    
+  }
 }
