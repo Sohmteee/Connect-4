@@ -374,7 +374,8 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   bool checkHasSupport(int rowIndex, int columnIndex) {
-    if gameBoard
+     (rowIndex == 5) ? true :
+     gameBoard[rowIndex - 1][columnIndex] != 0;
   }
 
   void horizontalMove(int playerNumber, int targetNumber) {
