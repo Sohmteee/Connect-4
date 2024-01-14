@@ -377,14 +377,19 @@ class _GameScreenState extends State<GameScreen> {
     getBoundaries(List row, int index) {}
 
     int? fillEmptySpace(List row) {
-      for (int i = 0; i < row.length - 3; i++) {
-        if (row[i] == 0) {
-          if (row[i + 1] == targetNumber && row[i + 2] == targetNumber) {
-            return i;
+      for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
+        if (row[columnIndex] == 0) {
+          if (row[columnIndex + 1] == targetNumber && row[columnIndex + 2] == targetNumber) {
+            return columnIndex;
           }
-          if (i == 0) {
-            if (row[i + 1] == targetNumber) {
-              return i;
+          if (columnIndex == 0) {
+            if (row[columnIndex + 1] == targetNumber) {
+              return columnIndex;
+            }
+          }
+          if (columnIndex == row.length - 3) {
+            if (row[columnIndex + 2] == targetNumber) {
+              return columnIndex + 3;
             }
           }
         }
