@@ -384,12 +384,12 @@ class _GameScreenState extends State<GameScreen> {
     int? fillEmptySpace(List row, int rowIndex) {
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
         if (row[columnIndex] == 0) {
-          if (row[columnIndex + 1] == targetNumber &&
+         if (columnIndex > 0 ||) {if (row[columnIndex + 1] == targetNumber &&
               row[columnIndex + 2] == targetNumber) {
             return columnIndex;
-          }
+          }}
           if (columnIndex == 0 && hasSupport(rowIndex, columnIndex)) {
-            if (row[columnIndex + 1] == targetNumber ) {
+            if (row[columnIndex + 1] == targetNumber) {
               return columnIndex;
             }
           }
