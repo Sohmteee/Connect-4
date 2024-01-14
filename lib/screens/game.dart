@@ -37,15 +37,9 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeComputerMove() {
-    for (int i = 5; i >= 0; i--) {
-      if (gameBoard[i][columnIndex] == 0) {
-        setState(() {
-          gameBoard[i][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
-          alternatePlayer();
-        });
-        break;
-      }
-    }
+    //win move
+
+    //block move
   }
 
   reset() {
