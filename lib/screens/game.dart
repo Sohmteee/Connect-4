@@ -374,33 +374,30 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void horizontalMove(int playerNumber, int targetNumber) {
-    getBoundaries(List row,  int index) {
-
-    }
+    getBoundaries(List row, int index) {}
 
     int? fillEmptySpace(List row) {
       for (int i = 0; i < row.length - 3; i++) {
         if (row[i] == 0) {
-          if ()
           if (row[i + 1] == targetNumber && row[i + 2] == targetNumber) {
             return i;
+          }
+          if (i == 0) {
+            if (row[i + 1] == targetNumber) {
+              return i;
+            }
           }
         }
       }
     }
-
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
       int? emptyLeft, emptyRight;
       bool hasFoundNearestEmptyLeft = false;
 
-      
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
-
-        if (row[columnIndex] == targetNumber) {
-
-        }
+        if (row[columnIndex] == targetNumber) {}
 
         // find the closest empty spaces
         if (row[columnIndex] == 0) {
@@ -419,9 +416,7 @@ class _GameScreenState extends State<GameScreen> {
         }
 
         if (row[columnIndex] == playerNumber) {
-          
-        } else {
-        }
+        } else {}
       }
     }
   }
