@@ -16,16 +16,20 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1);
   final player2 = Player(2);
-  Player currentPlayer = player1;
+  late Player currentPlayer;
   bool canPlay = true;
   PositionsList winningPositions = PositionsList([]);
+
+  alternatePlayer() {
+    currentPlayer = currentPlayer.number == 1 ? player2 : player1;
+  }
 
   makeMove(int columnIndex) {
     for (int i = 5; i >= 0; i--) {
       if (gameBoard[i][columnIndex] == 0) {
         setState(() {
           gameBoard[i][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
-          player.alternatePlayer();
+          alternatePlayer();
         });
         break;
       }
