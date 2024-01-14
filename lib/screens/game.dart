@@ -388,7 +388,6 @@ class _GameScreenState extends State<GameScreen> {
               emptyRight = columnIndex;
               break;
             }
-            emptyRight = columnIndex;
           }
         } else {
           if (emptyLeft != null) {
