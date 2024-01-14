@@ -382,8 +382,7 @@ class _GameScreenState extends State<GameScreen> {
           continue;
         }
 
-        if (row[columnIndex] == currentPlayerInt) {
-          positions.add(Position(rowIndex, columnIndex));
+        if (row[columnIndex] == player) {
           if (positions.size() == 4) {
             return;
           }
