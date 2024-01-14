@@ -387,6 +387,8 @@ class _GameScreenState extends State<GameScreen> {
       
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
 
+        if (row[columnIndex == targetNum])
+
         // find the closest empty spaces
         if (row[columnIndex] == 0) {
           if (emptyLeft == null) {
