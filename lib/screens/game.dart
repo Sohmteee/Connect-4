@@ -378,8 +378,10 @@ class _GameScreenState extends State<GameScreen> {
 
     }
 
-    fillEmptySpace() {
-      
+    fillEmptySpace(List row) {
+      for (int i = 0; i < row.length - 1; i++) {
+        
+      }
     }
 
 
