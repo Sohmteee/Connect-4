@@ -10,6 +10,14 @@ class ComputerPlayer extends Player {
   int humanPlayerNumber;
   ComputerPlayer(super.number, {required this.humanPlayerNumber});
 
+  String boardToString() {
+    String string = "";
+
+    for (List element in collection) {
+      
+    }
+  }
+
   int play() {
     // try to win horizontally
     if (completeHorizontalTriple(number) != null) {
