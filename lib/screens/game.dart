@@ -85,8 +85,12 @@ class _GameScreenState extends State<GameScreen> {
       body: Center(
         child: Material(
           child: Container(
-            height: (30 * (6 + 2)).w,
-            width: (30 * (7 + 2)).w,
+            height: (35 * (7 + 2.5)).w,
+            width: (35 * (7 + 2.5)).w,
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
             child: Stack(
               fit: StackFit.expand,
               children: [
