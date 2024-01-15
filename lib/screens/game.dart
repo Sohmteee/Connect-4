@@ -381,6 +381,7 @@ class _GameScreenState extends State<GameScreen> {
   void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row, int index) {}
 
+    /// Method to place a disk into an empty space 
     int? fillEmptySpace(List row, int rowIndex) {
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
         if (row[columnIndex] == 0) {
