@@ -21,13 +21,13 @@ class ComputerPlayer extends Player {
             'board_data': boardToString(),
             'player': number.toString(),
           });
-      print('Response body: ${response.body}');
 
-      Map<String, int> moves = jsonDecode(response.body);
+      Map<String, dynamic> moves = jsonDecode(response.body);
 
       
+
+      print('Response body: $moves');
     } catch (e) {
-      
       print('Error: $e');
       int columnIndex = Random().nextInt(7);
       List column = List.generate(
