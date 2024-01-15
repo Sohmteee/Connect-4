@@ -210,13 +210,13 @@ class ComputerPlayer extends Player {
       int columnIndex = lastPlayedPosition!.y;
       List column = gameBoard.map((row) => row[columnIndex]).toList();
 
-      findTopmostDisc(List column) {
+      int? findTopmostDisc(List column) {
         for (int i = 0; i < column.length; i++) {
           if (column[i] != 0) {
             return i;
           }
         }
-        return -1;
+        return null;
       }
 
       if (column.contains(0) && findTopmostDisc(column) == number) {
