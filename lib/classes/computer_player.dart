@@ -134,15 +134,17 @@ class ComputerPlayer extends Player {
             (row[columnIndex + 1] == 0 &&
                 hasSupport(lastPlayedPosition!.x, columnIndex + 1))) {
           if (Random().nextBool()) {
-            return columnIndex - 1;
-          } else {
             return columnIndex + 1;
+          } else {
+            return columnIndex - 1;
           }
         }
-        // fill the empty side
-        else if (row[columnIndex - 1] == 0) {
+        // else fill the empty side
+        else if (row[columnIndex - 1] == 0 &&
+            hasSupport(lastPlayedPosition!.x, columnIndex - 1)) {
           return columnIndex - 1;
-        } else if (row[columnIndex + 1] == 0) {
+        } else if (row[columnIndex + 1] == 0 &&
+            hasSupport(lastPlayedPosition!.x, columnIndex + 1)) {
           return columnIndex + 1;
         }
       }
