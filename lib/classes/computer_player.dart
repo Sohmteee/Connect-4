@@ -39,6 +39,7 @@ class ComputerPlayer extends Player {
     // try to complete a pair diagonally
 
     // try to play next to the last played position horizontally
+    play
 
     // try to play next to the last played position vertically
 
