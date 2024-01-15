@@ -124,6 +124,7 @@ class ComputerPlayer extends Player {
       // if there's no empty space to fill, move over to the next row
       if (!row.contains(0)) continue;
 
+      // check if the target number reccured thrice in the current row
       
 
     }
