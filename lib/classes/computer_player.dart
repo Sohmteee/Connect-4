@@ -126,6 +126,8 @@ class ComputerPlayer extends Player {
           row[columnIndex - 1] == 0 &&
           hasSupport(lastPlayedPosition!.x, columnIndex)) {
         return columnIndex - 1;
+      } else {
+        // it's neither in the first nor last column
       }
     }
     return null;
