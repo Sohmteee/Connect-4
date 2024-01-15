@@ -250,7 +250,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   Map<String, dynamic> checkHorizontal() {
-    for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+    for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
       int currentPlayerInt = 1;
       PositionsList positions = PositionsList([]);
