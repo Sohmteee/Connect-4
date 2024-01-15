@@ -120,11 +120,11 @@ class ComputerPlayer extends Player {
       // extremes
       if (columnIndex == 0 &&
           row[columnIndex + 1] == 0 &&
-          hasSupport(lastPlayedPosition!.x, columnIndex)) {
+          hasSupport(row[columnIndex + 1], columnIndex)) {
         return columnIndex + 1;
       } else if (columnIndex == 6 &&
           row[columnIndex - 1] == 0 &&
-          hasSupport(lastPlayedPosition!.x, columnIndex)) {
+          hasSupport(row[columnIndex - 1], columnIndex)) {
         return columnIndex - 1;
       } else if (columnIndex > 0 && columnIndex < 6) {
         // it's neither in the first nor last column
