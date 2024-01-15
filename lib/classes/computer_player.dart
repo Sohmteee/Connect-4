@@ -25,7 +25,7 @@ class ComputerPlayer extends Player {
 
     // try to fill in an empty space horizontally
     if (fillEmptySpace(number) != null) {
-      debugPrint('Filled Empty Space ($fillEmptySpace(number))');
+      debugPrint('Filled Empty Space (${fillEmptySpace(number)})');
       return fillEmptySpace(number)!;
     }
     if (fillEmptySpace(humanPlayerNumber) != null) {
