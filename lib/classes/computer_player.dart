@@ -99,7 +99,7 @@ class ComputerPlayer extends Player {
           }
         }
       }
-      if (row[0] && hasSupport(rowIndex, 0)) {
+      if (hasSupport(rowIndex, 0)) {
         if (row[0 + 1] == targetNumber) {
           return 0;
         }
