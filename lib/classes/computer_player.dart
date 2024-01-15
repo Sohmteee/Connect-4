@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
+import 'package:flutter/material.dart';
 
 class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
@@ -24,9 +25,11 @@ class ComputerPlayer extends Player {
 
     // try to fill in an empty space horizontally
     if (fillEmptySpace(number) != null) {
+      debugPrint('Filled Empty Space');
       return fillEmptySpace(number)!;
     }
     if (fillEmptySpace(humanPlayerNumber) != null) {
+      debugPrint('Filled Empty Space');
       return fillEmptySpace(humanPlayerNumber)!;
     }
 
@@ -43,6 +46,7 @@ class ComputerPlayer extends Player {
     // try to play next to the last played position diagonally
 
     // play random
+    debugPrint('Played Randomly');
     return playRandom();
   }
 
