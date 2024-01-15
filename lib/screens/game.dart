@@ -273,7 +273,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   Map<String, dynamic> checkVertical() {
-    for (int columnIndex = 0; columnIndex < 6; columnIndex++) {
+    for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
       List column = List.generate(
         6,
         (rowIndex) => gameBoard[rowIndex][columnIndex],
