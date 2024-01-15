@@ -137,7 +137,7 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
               ColorFiltered(
-                colorFilter: ColorFilter.mode(Colors.deepPurple!,
+                colorFilter: ColorFilter.mode(backgroundColor!,
                     BlendMode.srcOut), // This one will create the magic
                 child: Stack(
                   fit: StackFit.expand,
@@ -154,7 +154,6 @@ class _GameScreenState extends State<GameScreen> {
                         // width: (30 * (7 + 2)).w,
                         padding: EdgeInsets.all(2.5.w),
                         decoration: BoxDecoration(
-                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Column(
