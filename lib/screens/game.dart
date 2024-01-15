@@ -394,9 +394,7 @@ class _GameScreenState extends State<GameScreen> {
 
       //
 
-      if (fillEmptySpace(row, rowIndex) != null) {
-        // place disk
-      }
+      
 
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
         if (row[columnIndex] == targetNumber) {}
