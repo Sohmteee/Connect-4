@@ -243,8 +243,15 @@ class _GameScreenState extends State<GameScreen> {
 
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
         if (row[columnIndex] == 0) {
-          positions.clear();
-          continue;
+          if (positions.size() >= 4) {
+            return {
+              'winner': currentPlayerInt,
+              'positions': positions,
+            };
+          } else {
+            positions.clear();
+            continue;
+          }
         }
 
         if (row[columnIndex] == currentPlayerInt) {
