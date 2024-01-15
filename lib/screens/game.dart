@@ -127,7 +127,10 @@ class _GameScreenState extends State<GameScreen> {
                               }
                             }
                           },
-                          child: (winningPositions
+                          child: Stack(children:[],),
+                          
+                          
+                          (winningPositions
                                   .contains(Position(rowIndex, columnIndex)))
                               ? Container(
                                   width: 35.w,
