@@ -126,7 +126,7 @@ class ComputerPlayer extends Player {
           row[columnIndex - 1] == 0 &&
           hasSupport(lastPlayedPosition!.x, columnIndex)) {
         return columnIndex - 1;
-      } else if (columnIndex > 0 && columnIndex < ) {
+      } else if (columnIndex > 0 && columnIndex < 6) {
         // it's neither in the first nor last column
         // randomize if both sides are empty
         if ((row[columnIndex - 1] == 0 &&
