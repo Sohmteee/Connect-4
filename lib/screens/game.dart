@@ -145,72 +145,48 @@ class _GameScreenState extends State<GameScreen> {
                                   ),
                                 ),
                               ),
-                              if (winningPositions
-                                  .contains(Position(rowIndex, columnIndex)))
+                              (winningPositions.contains(
+                                      Position(rowIndex, columnIndex)))
+                                  ? Container(
+                                      width: 35.w,
+                                      height: 35.w,
+                                      margin: EdgeInsets.all(5.w),
+                                      decoration: BoxDecoration(
+                                        color: color,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3.sp,
+                                        ),
+                                      ),
+                                    )
+                                      .animate()
+                                      .scaleXY(
+                                        begin: 1,
+                                        end: 1.2,
+                                        duration: 500.milliseconds,
+                                        delay: 100.milliseconds,
+                                        curve: Curves.easeInOutQuart,
+                                      )
+                                      .then()
+                                      .scaleXY(
+                                        begin: 1,
+                                        end: .833333333333333333,
+                                        duration: 300.milliseconds,
+                                        delay: 500.milliseconds,
+                                        curve: Curves.bounceOut,
+                                      )
+                                  : Container(
+                                      width: 35.w,
+                                      height: 35.w,
+                                      margin: EdgeInsets.all(5.w),
+                                      decoration: BoxDecoration(
+                                        color: color,
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
                             ],
                           ),
-                          (winningPositions
-                                  .contains(Position(rowIndex, columnIndex)))
-                              ? Container(
-                                  width: 35.w,
-                                  height: 35.w,
-                                  margin: EdgeInsets.all(5.w),
-                                  decoration: BoxDecoration(
-                                    color: color,
-                                    shape: BoxShape.circle,
-                                    gradient:
-                                        gameBoard[rowIndex][columnIndex] == 0
-                                            ? LinearGradient(
-                                                colors: [
-                                                  Colors.deepPurple[400]!,
-                                                  backgroundColor!,
-                                                ],
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                              )
-                                            : null,
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 3.sp,
-                                    ),
-                                  ),
-                                )
-                                  .animate()
-                                  .scaleXY(
-                                    begin: 1,
-                                    end: 1.2,
-                                    duration: 500.milliseconds,
-                                    delay: 100.milliseconds,
-                                    curve: Curves.easeInOutQuart,
-                                  )
-                                  .then()
-                                  .scaleXY(
-                                    begin: 1,
-                                    end: .833333333333333333,
-                                    duration: 300.milliseconds,
-                                    delay: 500.milliseconds,
-                                    curve: Curves.bounceOut,
-                                  )
-                              : Container(
-                                  width: 35.w,
-                                  height: 35.w,
-                                  margin: EdgeInsets.all(5.w),
-                                  decoration: BoxDecoration(
-                                    color: color,
-                                    shape: BoxShape.circle,
-                                    gradient:
-                                        gameBoard[rowIndex][columnIndex] == 0
-                                            ? LinearGradient(
-                                                colors: [
-                                                  Colors.deepPurple[400]!,
-                                                  backgroundColor!,
-                                                ],
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                              )
-                                            : null,
-                                  ),
-                                ),
                         );
                       },
                     ),
