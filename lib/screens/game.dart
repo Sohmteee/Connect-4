@@ -19,7 +19,7 @@ class _GameScreenState extends State<GameScreen> {
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1);
   late Player currentPlayer;
   bool canPlay = true;
-  bool computerHasPlayed = false;
+  bool computerIsPlaying = false;
   PositionsList winningPositions = PositionsList([]);
 
   alternatePlayer() {
@@ -113,7 +113,7 @@ class _GameScreenState extends State<GameScreen> {
                         }
                         return GestureDetector(
                           onTap: () async {
-                            if (canPlay) {
+                            if (canPlay && comp) {
                               makeMove(columnIndex);
                               if (canPlay) {
                                 int computerMove = await player2.play();
