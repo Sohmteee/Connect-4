@@ -117,5 +117,7 @@ class ComputerPlayer extends Player {
         (rowIndex) => gameBoard[rowIndex][columnIndex],
       );
     }
+
+    return columnIndex;
   }
 }
