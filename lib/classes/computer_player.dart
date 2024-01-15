@@ -13,7 +13,6 @@ class ComputerPlayer extends Player {
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
   Future<int> play() async {
-    var client = http.Client();
     try {
       var response = await client.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
@@ -21,8 +20,7 @@ class ComputerPlayer extends Player {
             'board_data': boardToString(),
             'player': number.toString(),
           });
-      var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-      var uri = Uri.parse(decodedResponse['uri'] as String);
+      var uri = Uri.parse(response['uri'] as String);
       print(await client.get(uri));
     } finally {
       client.close();
