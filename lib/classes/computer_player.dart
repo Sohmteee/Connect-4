@@ -4,7 +4,19 @@ import 'package:connect4/data.dart';
 class ComputerPlayer extends Player {
   ComputerPlayer(super.number);
 
-  void play() {}
+  void play() {
+    // try to win horizontally
+
+    // try to block any win horizontally
+
+    // try to win vertically
+
+    //try to block any win vertically
+
+    // try to win diagonally
+
+    // try to block any win 
+  }
 
   /// Method to check if the cell has support from the bottom
   bool hasSupport(int rowIndex, int columnIndex) {
