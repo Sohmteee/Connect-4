@@ -86,7 +86,56 @@ class _GameScreenState extends State<GameScreen> {
         children: [
           const Spacer(flex: 2),
           Center(
-            child: Container(
+            child: Material(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Container(
+              // height: (30 * (6 + 2)).w,
+              // width: (30 * (7 + 2)).w,
+              padding: EdgeInsets.all(2.5.w),
+              decoration: BoxDecoration(
+                color: Colors.deepPurple,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+                  ColorFiltered(
+                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8),
+                        BlendMode.srcOut), // This one will create the magic
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              backgroundBlendMode: BlendMode
+                                  .dstOut), // This one will handle background + difference out
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 80),
+                            height: 200,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Hello World',
+                            style: TextStyle(
+                                fontSize: 70, fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
               // height: (30 * (6 + 2)).w,
               // width: (30 * (7 + 2)).w,
               padding: EdgeInsets.all(2.5.w),
