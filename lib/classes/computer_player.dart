@@ -6,4 +6,8 @@ class ComputerPlayer extends Player{
   void play() {
 
   }
+
+  void completeThree() {
+    
+  }
 }
