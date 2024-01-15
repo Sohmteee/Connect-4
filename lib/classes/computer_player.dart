@@ -39,7 +39,7 @@ class ComputerPlayer extends Player {
     // try to complete a pair diagonally
 
     // try to play next to the last played position horizontally
-    else if  (playClosestHorizontal() != null) {
+    else if (playClosestHorizontal() != null) {
       debugPrint('Played Closest Horizontal ($playClosestHorizontal)');
       return playClosestHorizontal()!;
     }
@@ -49,8 +49,9 @@ class ComputerPlayer extends Player {
     // try to play next to the last played position diagonally
 
     // play random
-    else{
-      return playRandom();}
+    else {
+      return playRandom();
+    }
   }
 
   /// Method to check if the cell has support from the bottom
@@ -117,9 +118,11 @@ class ComputerPlayer extends Player {
       List row = gameBoard[lastPlayedPosition!.x];
 
       // extremes
-      if (columnIndex == 0 && row[columnIndex + 1] == 0 && hasSupport(lastPlayedPosition!.x, columnIndex)) {}
+      if (columnIndex == 0 &&
+          row[columnIndex + 1] == 0 &&
+          hasSupport(lastPlayedPosition!.x, columnIndex)) {}
     }
-return null;
+    return null;
   }
 
   int playRandom() {
