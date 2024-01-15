@@ -146,7 +146,7 @@ class _GameScreenState extends State<GameScreen> {
                                   ),
                                 ),
                               ),
-                              (winningPositions.contains(
+                              SizedBox(child: (winningPositions.contains(
                                       Position(rowIndex, columnIndex)))
                                   ? Container(
                                       width: 35.w,
@@ -185,6 +185,18 @@ class _GameScreenState extends State<GameScreen> {
                                         color: color,
                                         shape: BoxShape.circle,
                                       ),
+                                    ),).animate().slideY(
+                                      begin: 100.h,
+                                      end: 0,
+                                      duration: 500.milliseconds,
+                                      delay: 100.milliseconds,
+                                      curve: Curves.easeInOutQuart,
+                                    ).then().slideY(
+                                      begin: 0,
+                                      end: -10,
+                                      duration: 300.milliseconds,
+                                      delay: 500.milliseconds,
+                                      curve: Curves.bounceOut,
                                     ),
                             ],
                           ),
