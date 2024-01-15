@@ -26,7 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   List<List<int>> stringToBoard(String string) {
-    return List.generate(6, (rowIndex) {
+    return List.generate(7, (rowIndex) {
       return List.generate(7, (columnIndex) {
         return int.parse(string[rowIndex * 7 + columnIndex]);
       });
@@ -34,7 +34,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeMove(int columnIndex) {
-    for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+    for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
@@ -52,12 +52,12 @@ class _GameScreenState extends State<GameScreen> {
     checkWin();
     checkTie();
 
-    print();
   }
 
   reset() {
     setState(() {
       gameBoard = [
+        [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
