@@ -84,7 +84,7 @@ class ComputerPlayer extends Player {
 
       for (int columnIndex = 1; columnIndex < row.length - 1; columnIndex++) {
         if (row[columnIndex] == 0) {
-          if ((columnIndex > 0 && columnIndex <= row.length - 2) &&
+          if ((columnIndex > 0 && columnIndex < row.length - 1) &&
               hasSupport(rowIndex, columnIndex)) {
             if (row[columnIndex - 1] == targetNumber &&
                 row[columnIndex + 1] == targetNumber) {
