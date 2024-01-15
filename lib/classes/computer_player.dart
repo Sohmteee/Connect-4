@@ -10,17 +10,8 @@ class ComputerPlayer extends Player {
   int humanPlayerNumber;
   ComputerPlayer(super.number, {required this.humanPlayerNumber});
 
-  String boardToString() {
-    String string = "";
+  String boardToString() => gameBoard.map((row) => row.join()).join();
 
-    for (List row in gameBoard) {
-      for (int number in row) {
-        string += number.toString();
-      }
-    }
-
-    return string;
-  }
 
   int play() {
     // try to win horizontally
