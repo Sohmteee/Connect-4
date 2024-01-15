@@ -107,15 +107,6 @@ class _GameScreenState extends State<GameScreen> {
                           children: List.generate(
                             7,
                             (columnIndex) {
-                              Color? color;
-                              if (gameBoard[rowIndex][columnIndex] != 0) {
-                                if (gameBoard[rowIndex][columnIndex] == 1) {
-                                  color = Colors.red;
-                                } else if (gameBoard[rowIndex][columnIndex] ==
-                                    2) {
-                                  color = Colors.yellow;
-                                }
-                              }
                               return GestureDetector(
                                 onTap: () async {
                                   if (canPlay && !computerIsPlaying) {
@@ -139,20 +130,9 @@ class _GameScreenState extends State<GameScreen> {
                                         height: 35.w,
                                         margin: EdgeInsets.all(5.w),
                                         decoration: BoxDecoration(
-                                          color: color,
+                                          color: Colors.deepPurple,
                                           shape: BoxShape.circle,
-                                          gradient: gameBoard[rowIndex]
-                                                      [columnIndex] ==
-                                                  0
-                                              ? LinearGradient(
-                                                  colors: [
-                                                    Colors.deepPurple[400]!,
-                                                    backgroundColor!,
-                                                  ],
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                )
-                                              : null,
+                                          
                                           border: Border.all(
                                             color: Colors.white,
                                             width: 3.sp,
@@ -180,7 +160,7 @@ class _GameScreenState extends State<GameScreen> {
                                         height: 35.w,
                                         margin: EdgeInsets.all(5.w),
                                         decoration: BoxDecoration(
-                                          color: color,
+                                          color: Colors.deepPurple,
                                           shape: BoxShape.circle,
                                           gradient: gameBoard[rowIndex]
                                                       [columnIndex] ==
