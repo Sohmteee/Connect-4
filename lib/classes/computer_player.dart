@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
@@ -99,5 +101,13 @@ class ComputerPlayer extends Player {
       }
     }
     return null;
+  }
+
+  void playRandom() {
+    int columnIndex = Random().nextInt(7);
+    List column = List.generate(
+      6,
+      (rowIndex) => gameBoard[rowIndex][columnIndex],
+    );
   }
 }
