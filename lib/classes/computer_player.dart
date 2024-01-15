@@ -39,7 +39,10 @@ class ComputerPlayer extends Player {
     // try to complete a pair diagonally
 
     // try to play next to the last played position horizontally
-    playClosestHorizontal();
+    else if  (playClosestHorizontal() != null) {
+      debugPrint('Filled Empty Space (${fillEmptySpace(humanPlayerNumber)})');
+      return fillEmptySpace(humanPlayerNumber)!;
+    }
 
     // try to play next to the last played position vertically
 
