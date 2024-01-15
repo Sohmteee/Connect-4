@@ -41,6 +41,20 @@ class ComputerPlayer extends Player {
       return null;
     }
 
+    getBoundaries(List row, int index) {}
+
+    for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+      List row = gameBoard[rowIndex];
+      int? emptyLeft, emptyRight;
+      bool hasFoundNearestEmptyLeft = false;
+
+      // complete a triple
+
+      // fill in an empty space
+
+      // complete a pair
+    }
+
     if (fillEmptySpace(row, rowIndex) != null) {
       // place disk
     }
