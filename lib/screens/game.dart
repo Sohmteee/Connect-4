@@ -1,3 +1,4 @@
+import 'package:connect4/classes/computer_player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/data.dart';
@@ -15,7 +16,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1);
-  final player2 = Player(2);
+  final player2 = ComputerPlayer(2);
   late Player currentPlayer;
   bool canPlay = true;
   PositionsList winningPositions = PositionsList([]);
@@ -421,7 +422,7 @@ class _GameScreenState extends State<GameScreen> {
 
       // complete a pair
 
-      // 
+      //
 
       if (fillEmptySpace(row, rowIndex) != null) {
         // place disk
