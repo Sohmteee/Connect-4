@@ -284,22 +284,30 @@ class _GameScreenState extends State<GameScreen> {
 
       for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
         if (column[rowIndex] == 0) {
-          positions.clear();
-          break;
-        }
-
-        if (column[rowIndex] == currentPlayerInt) {
-          positions.add(Position(rowIndex, columnIndex));
-          if (positions.size() == 4) {
+          if (positions.size() >= 4) {
             return {
               'winner': currentPlayerInt,
               'positions': positions,
             };
+          } else {
+            positions.clear();
+            break;
           }
-        } else {
-          positions.clear();
+        }
+
+        if (column[rowIndex] == currentPlayerInt) {
           positions.add(Position(rowIndex, columnIndex));
-          currentPlayerInt = column[rowIndex];
+        } else {
+          if (positions.size() >= 4) {
+            return {
+              'winner': currentPlayerInt,
+              'positions': positions,
+            };
+          } else {
+            positions.clear();
+            positions.add(Position(rowIndex, columnIndex));
+            currentPlayerInt = column[rowIndex];
+          }
         }
       }
     }
