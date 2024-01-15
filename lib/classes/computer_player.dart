@@ -129,7 +129,9 @@ class ComputerPlayer extends Player {
         if (row[columnIndex] == targetNumber &&
             row[columnIndex + 1] == targetNumber &&
             row[columnIndex + 2] == targetNumber) {
-              
+              if (columnIndex <= 3) {
+                
+              }
             }
       }
     }
