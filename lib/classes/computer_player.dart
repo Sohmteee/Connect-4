@@ -128,10 +128,19 @@ class ComputerPlayer extends Player {
         return columnIndex - 1;
       } else {
         // it's neither in the first nor last column
+        // randomize if both sides are empty
+        if (row[columnIndex - 1] == 0 && row[columnIndex + 1] == 0 ) {
+          if (Random().nextBool()) {
+            return columnIndex - 1;
+          } else {
+            return columnIndex + 1;
+          }
+        } else if (row[columnIndex - 1] == 0) {
+          return columnIndex - 1;
+        } else if (row[columnIndex + 1] == 0) {
+          return columnIndex + 1;
 
-        //randomize if both sides are empty
-
-        // 
+        // fill the empty side
       }
     }
     return null;
