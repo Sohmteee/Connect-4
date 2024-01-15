@@ -121,7 +121,6 @@ class _GameScreenState extends State<GameScreen> {
                                 });
                                 int computerMove = await player2.play();
                                 makeMove(computerMove);
-
                                 setState(() {
                                   computerIsPlaying = false;
                                 });
