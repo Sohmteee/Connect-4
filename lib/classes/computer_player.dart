@@ -35,7 +35,7 @@ class ComputerPlayer extends Player {
           maxIndex = i;
         }
       }
-
+      print('Max Index: $maxIndex');
       return maxIndex;
     } catch (e) {
       print('Error: $e');
