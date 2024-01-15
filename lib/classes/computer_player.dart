@@ -109,5 +109,13 @@ class ComputerPlayer extends Player {
       6,
       (rowIndex) => gameBoard[rowIndex][columnIndex],
     );
+
+    while (column.every((disc) => disc != 0)) {
+      columnIndex = Random().nextInt(7);
+      column = List.generate(
+        6,
+        (rowIndex) => gameBoard[rowIndex][columnIndex],
+      );
+    }
   }
 }
