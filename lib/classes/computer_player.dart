@@ -82,17 +82,12 @@ class ComputerPlayer extends Player {
       // if there's no empty space to fill, move over to the next row
       if (!row.contains(0)) continue;
 
-      for (int columnIndex = 0; columnIndex < row.length - 2; columnIndex++) {
+      for (int columnIndex = 1; columnIndex < row.length - 2; columnIndex++) {
         if (row[columnIndex] == 0) {
           if ((columnIndex > 0 && columnIndex <= row.length - 2) &&
               hasSupport(rowIndex, columnIndex)) {
             if (row[columnIndex - 1] == targetNumber &&
                 row[columnIndex + 1] == targetNumber) {
-              return columnIndex;
-            }
-          }
-          if (columnIndex == 0 && hasSupport(rowIndex, columnIndex)) {
-            if (row[columnIndex + 1] == targetNumber) {
               return columnIndex;
             }
           }
@@ -102,6 +97,11 @@ class ComputerPlayer extends Player {
               return columnIndex;
             }
           }
+        }
+      }
+      if (row[0] && hasSupport(rowIndex, 0)) {
+        if (row[0 + 1] == targetNumber) {
+          return 0;
         }
       }
     }
