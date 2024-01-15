@@ -30,6 +30,7 @@ class _GameScreenState extends State<GameScreen> {
       if (gameBoard[i][columnIndex] == 0) {
         setState(() {
           gameBoard[i][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
+          if (currentPlayer.number == player2.number)
           alternatePlayer();
         });
         break;
