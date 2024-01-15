@@ -117,18 +117,17 @@ class ComputerPlayer extends Player {
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
-      
+
       // terminate if there's no disc in the row
       if (row.every((disc) => disc == 0)) break;
 
       // if there's no empty space to fill, move over to the next row
       if (!row.contains(0)) continue;
 
-      // check if the target number reccured thrice in the current row
-      for (int i = 0; i < 5; i++) {
-        
+      for (int columnIndex = 0; columnIndex < 5; columnIndex++) {
+        // check if the target number reccured thrice in the current row
+        if (row[])
       }
-
     }
   }
 
