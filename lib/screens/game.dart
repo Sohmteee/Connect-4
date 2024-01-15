@@ -19,6 +19,7 @@ class _GameScreenState extends State<GameScreen> {
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1);
   late Player currentPlayer;
   bool canPlay = true;
+  bool computerHasPlayed = false;
   PositionsList winningPositions = PositionsList([]);
 
   alternatePlayer() {

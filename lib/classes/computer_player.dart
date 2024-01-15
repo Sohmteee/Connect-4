@@ -56,6 +56,5 @@ class ComputerPlayer extends Player {
       print('Played Randomly');
       return columnIndex;
     }
-    return 0;
   }
 }
