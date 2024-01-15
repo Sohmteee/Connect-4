@@ -97,7 +97,7 @@ class _GameScreenState extends State<GameScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: List.generate(
-                  6,
+                  7,
                   (rowIndex) => Row(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
