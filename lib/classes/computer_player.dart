@@ -4,7 +4,9 @@ import 'package:connect4/data.dart';
 
 class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
+  int humanPlayerNumber = number == 1 ? 2 : 1;
   ComputerPlayer(super.number);
+
 
   void play() {
     // try to win horizontally
@@ -28,9 +30,9 @@ class ComputerPlayer extends Player {
     // try to complete a pair diagonally
 
     // try to play next to the last played position horizontally
-    
+
     // try to play next to the last played position vertically
-    
+
     // try to play next to the last played position diagonally
   }
 
