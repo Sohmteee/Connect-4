@@ -129,19 +129,22 @@ class ComputerPlayer extends Player {
       } else {
         // it's neither in the first nor last column
         // randomize if both sides are empty
-        if ((row[columnIndex - 1] == 0 && hasSupport(lastPlayedPosition!.x, columnIndex - 1)) && (row[columnIndex + 1] == 0  && hasSupport(lastPlayedPosition!.x, columnIndex)) ) {
+        if ((row[columnIndex - 1] == 0 &&
+                hasSupport(lastPlayedPosition!.x, columnIndex - 1)) &&
+            (row[columnIndex + 1] == 0 &&
+                hasSupport(lastPlayedPosition!.x, columnIndex + 1))) {
           if (Random().nextBool()) {
             return columnIndex - 1;
           } else {
             return columnIndex + 1;
           }
         }
-        // fill the empty side 
+        // fill the empty side
         else if (row[columnIndex - 1] == 0) {
           return columnIndex - 1;
         } else if (row[columnIndex + 1] == 0) {
           return columnIndex + 1;
-
+        }
       }
     }
     return null;
