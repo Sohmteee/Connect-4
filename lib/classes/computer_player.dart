@@ -32,9 +32,9 @@ class ComputerPlayer extends Player {
       return fillEmptySpace(humanPlayerNumber)!;
     }
 
-    // try to complete a pair vertically
-
     // try to complete a pair horizontally
+
+    // try to complete a pair vertically
 
     // try to complete a pair diagonally
 
