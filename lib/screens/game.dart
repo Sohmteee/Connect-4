@@ -185,8 +185,7 @@ class _GameScreenState extends State<GameScreen> {
                                         color: color,
                                         shape: BoxShape.circle,
                                       ),
-                                    ),).animate().slideY(
-                                      begin: ((35 * (7 + 2.5)) - ((35 + 5) * rowIndex)).w,
+                                    ),).animate().slideY(((35 * (7 + 2.5)) - ((35 + 5) * rowIndex)).w,
                                       end: 0,
                                       duration: 500.milliseconds,
                                       delay: 100.milliseconds,
