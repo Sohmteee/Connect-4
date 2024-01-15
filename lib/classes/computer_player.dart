@@ -117,10 +117,15 @@ class ComputerPlayer extends Player {
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
-      int? emptyLeft, emptyRight;
-      bool hasFoundNearestEmptyLeft = false;
+      
+      // terminate if there's no disc in the row
+      if (row.every((disc) => disc == 0)) break;
 
-      // complete a triple
+      // if there's no empty space to fill, move over to the next row
+      if (!row.contains(0)) continue;
+
+      
+
     }
   }
 
