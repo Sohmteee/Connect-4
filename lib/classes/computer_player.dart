@@ -23,10 +23,19 @@ class ComputerPlayer extends Player {
           });
 
       Map<String, dynamic> moves = jsonDecode(response.body);
-
-      
-
       print('Response body: $moves');
+
+      // iterate through the map and find the largest value
+      int max = 0;
+      int maxIndex = 0;
+      for (int columnIndex = 0; columnIndex < moves.length; columnIndex++) {
+        if (moves[columnIndex] > max) {
+          max = moves[columnIndex];
+          maxIndex = columnIndex;
+        }
+      }
+
+
     } catch (e) {
       print('Error: $e');
       int columnIndex = Random().nextInt(7);
