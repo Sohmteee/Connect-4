@@ -265,11 +265,12 @@ class _GameScreenState extends State<GameScreen> {
               if (row[columnIndex + 1] == currentPlayerInt) {
                 continue;
               }
+            } else {
+              return {
+                'winner': currentPlayerInt,
+                'positions': positions,
+              };
             }
-            return {
-              'winner': currentPlayerInt,
-              'positions': positions,
-            };
           }
         } else {
           if (positions.size() >= 4) {
