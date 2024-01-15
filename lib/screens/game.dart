@@ -25,13 +25,13 @@ class _GameScreenState extends State<GameScreen> {
     currentPlayer = currentPlayer.number == 1 ? player2 : player1;
   }
 
-List<List<int>> stringToBoard(String string) {
-    return List.generate(
-        6,
-        (rowIndex) => List.generate(
-            7, (columnIndex) => int.parse(string[rowIndex * 7 + columnIndex])));
+  List<List<int>> stringToBoard(String string) {
+    return List.generate(6, (rowIndex) {
+      return List.generate(7, (columnIndex) {
+        return int.parse(string[rowIndex * 7 + columnIndex]);
+      });
+    });
   }
-
 
   makeMove(int columnIndex) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
@@ -51,6 +51,8 @@ List<List<int>> stringToBoard(String string) {
 
     checkWin();
     checkTie();
+
+    print();
   }
 
   reset() {
