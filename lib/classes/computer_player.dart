@@ -21,7 +21,7 @@ class ComputerPlayer extends Player {
             'player': number.toString(),
           });
       print('Response body: ${response.body}');
-    } finally {}
+    } 
     return 0;
   }
 }
