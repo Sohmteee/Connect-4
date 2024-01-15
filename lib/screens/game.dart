@@ -99,7 +99,9 @@ class _GameScreenState extends State<GameScreen> {
                               checkWin();
                               checkTie();
                               if (canPlay) {
-                                player2.play();
+                                makeMove(columnIndex);
+                                checkWin();
+                                checkTie();
                               }
                             }
                           },
