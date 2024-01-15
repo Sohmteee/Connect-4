@@ -13,9 +13,13 @@ class ComputerPlayer extends Player {
   String boardToString() {
     String string = "";
 
-    for (List element in collection) {
-      
+    for (List row in gameBoard) {
+      for (int number in row) {
+        string += number.toString();
+      }
     }
+
+    return string;
   }
 
   int play() {
