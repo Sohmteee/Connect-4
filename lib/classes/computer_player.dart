@@ -19,7 +19,12 @@ class ComputerPlayer extends Player {
 
     // try to fill in an empty space horizontally
 
-    // try to complete a pair 
+    // try to complete a pair vertically
+    
+    // try to complete a pair horizontally
+    
+    // try to complete a pair diagonally
+
   }
 
   /// Method to check if the cell has support from the bottom
