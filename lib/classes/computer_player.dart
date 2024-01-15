@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
@@ -21,7 +22,27 @@ class ComputerPlayer extends Player {
             'player': number.toString(),
           });
       print('Response body: ${response.body}');
-    } 
+      
+    } catch (e) {
+      
+      print('Error: $e');
+      int columnIndex = Random().nextInt(7);
+      List column = List.generate(
+        6,
+        (rowIndex) => gameBoard[rowIndex][columnIndex],
+      );
+
+      while (column.every((disc) => disc != 0)) {
+        columnIndex = Random().nextInt(7);
+        column = List.generate(
+          6,
+          (rowIndex) => gameBoard[rowIndex][columnIndex],
+        );
+      }
+
+      print('Played Randomly');
+      return columnIndex;
+    }
     return 0;
   }
 }
