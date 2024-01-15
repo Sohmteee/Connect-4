@@ -124,14 +124,14 @@ class _GameScreenState extends State<GameScreen> {
                                   }
                                 },
                                 child: Container(
-                                  width: 35.w,
-                                  height: 35.w,
-                                  margin: EdgeInsets.all(5.w),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.deepPurple,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: const BoxDecoration(
+                                          color: Colors.deepPurple,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      ),
                               );
                             },
                           ),
@@ -174,6 +174,116 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Container(
+              // height: (30 * (6 + 2)).w,
+              // width: (30 * (7 + 2)).w,
+              padding: EdgeInsets.all(2.5.w),
+              decoration: BoxDecoration(
+                color: Colors.deepPurple,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  7,
+                  (rowIndex) => Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(
+                      7,
+                      (columnIndex) {
+                        Color? color;
+                        if (gameBoard[rowIndex][columnIndex] != 0) {
+                          if (gameBoard[rowIndex][columnIndex] == 1) {
+                            color = Colors.red;
+                          } else if (gameBoard[rowIndex][columnIndex] == 2) {
+                            color = Colors.yellow;
+                          }
+                        }
+                        return GestureDetector(
+                          onTap: () async {
+                            if (canPlay && !computerIsPlaying) {
+                              makeMove(columnIndex);
+                              if (canPlay) {
+                                setState(() {
+                                  computerIsPlaying = true;
+                                });
+                                int computerMove = await player2.play();
+                                makeMove(computerMove);
+                                setState(() {
+                                  computerIsPlaying = false;
+                                });
+                              }
+                            }
+                          },
+                          child: (winningPositions
+                                  .contains(Position(rowIndex, columnIndex)))
+                              ? Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  margin: EdgeInsets.all(5.w),
+                                  decoration: BoxDecoration(
+                                    color: color,
+                                    shape: BoxShape.circle,
+                                    gradient:
+                                        gameBoard[rowIndex][columnIndex] == 0
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.deepPurple[400]!,
+                                                  backgroundColor!,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : null,
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3.sp,
+                                    ),
+                                  ),
+                                )
+                                  .animate()
+                                  .scaleXY(
+                                    begin: 1,
+                                    end: 1.2,
+                                    duration: 500.milliseconds,
+                                    delay: 100.milliseconds,
+                                    curve: Curves.easeInOutQuart,
+                                  )
+                                  .then()
+                                  .scaleXY(
+                                    begin: 1,
+                                    end: .833333333333333333,
+                                    duration: 300.milliseconds,
+                                    delay: 500.milliseconds,
+                                    curve: Curves.bounceOut,
+                                  )
+                              : Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  margin: EdgeInsets.all(5.w),
+                                  decoration: BoxDecoration(
+                                    color: color,
+                                    shape: BoxShape.circle,
+                                    gradient:
+                                        gameBoard[rowIndex][columnIndex] == 0
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.deepPurple[400]!,
+                                                  backgroundColor!,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : null,
+                                  ),
+                                ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
