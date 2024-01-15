@@ -166,7 +166,7 @@ class _GameScreenState extends State<GameScreen> {
                               children: List.generate(
                                 7,
                                 (columnIndex) {
-                                  Color? color;
+                                  Color color = Colors.transparent;
                                   if (gameBoard[rowIndex][columnIndex] != 0) {
                                     if (gameBoard[rowIndex][columnIndex] == 1) {
                                       color = Colors.red;
