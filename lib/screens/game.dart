@@ -137,14 +137,14 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
               ColorFiltered(
-                colorFilter: ColorFilter.mode(backgroundColor!,
+                colorFilter: ColorFilter.mode(Colors.deepPurple!,
                     BlendMode.srcOut), // This one will create the magic
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: backgroundColor,
+                          color: Colors.deepPurple,
                           backgroundBlendMode: BlendMode
                               .dstOut), // This one will handle background + difference out
                     ),
@@ -154,7 +154,7 @@ class _GameScreenState extends State<GameScreen> {
                         // width: (30 * (7 + 2)).w,
                         padding: EdgeInsets.all(2.5.w),
                         decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Column(
@@ -166,7 +166,7 @@ class _GameScreenState extends State<GameScreen> {
                               children: List.generate(
                                 7,
                                 (columnIndex) {
-                                  Color color = Colors.transparent;
+                                  Color? color;
                                   if (gameBoard[rowIndex][columnIndex] != 0) {
                                     if (gameBoard[rowIndex][columnIndex] == 1) {
                                       color = Colors.red;
