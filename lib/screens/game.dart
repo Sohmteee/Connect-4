@@ -29,7 +29,7 @@ class _GameScreenState extends State<GameScreen> {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
-          gameBoard[rowIndex][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
+          gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
           if (currentPlayer.number == player2.number) {
@@ -324,6 +324,12 @@ class _GameScreenState extends State<GameScreen> {
             currentPlayerInt = column[rowIndex];
           }
         }
+      }
+      if (positions.size() >= 4) {
+        return {
+          'winner': currentPlayerInt,
+          'positions': positions,
+        };
       }
     }
     return {};

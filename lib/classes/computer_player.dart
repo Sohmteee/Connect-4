@@ -38,15 +38,12 @@ class ComputerPlayer extends Player {
 
     // try to complete a pair diagonally
 
-    // try to play next to the last played position horizontally
-    else if (playClosestHorizontal() != null) {
-      debugPrint('Played Closest Horizontal (${playClosestHorizontal()})');
-      return playClosestHorizontal()!;
+    // try to play next to the last played position horizontally, vertically or diagonally
+    else if (playClosestHorizontal() != null ||
+        playClosestVertical() != null ||
+        playClosestDiagonal() != null) {
+      return randomizeClosePlay()!;
     }
-
-    // try to play next to the last played position vertically
-
-    // try to play next to the last played position diagonally
 
     // play random
     else {
@@ -57,6 +54,62 @@ class ComputerPlayer extends Player {
   /// Method to check if the cell has support from the bottom
   bool hasSupport(int rowIndex, int columnIndex) {
     return (rowIndex == 5) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
+  }
+
+  int? randomizeClosePlay() {
+    int? Function() fn1 = playClosestHorizontal;
+    int? Function() fn2 = playClosestVertical;
+    int? Function() fn3 = playClosestDiagonal;
+    int random = Random().nextInt(3);
+    print('Random: $random');
+    switch (random) {
+      case 0:
+        print('Doing case 0');
+        if (fn1() != null) {
+          debugPrint('Played Closet Horizontal (${playClosestHorizontal()})');
+          return fn1();
+        }
+        if (fn2() != null) {
+          debugPrint('Played Closet Vertical (${playClosestVertical()})');
+          return fn2();
+        }
+        if (fn3() != null) {
+          debugPrint('Played Closet Diagonal (${playClosestDiagonal()})');
+          return fn3();
+        }
+        return null;
+      case 1:
+        print('Doing case 1');
+        if (fn2() != null) {
+          debugPrint('Played Closet Vertical (${playClosestVertical()})');
+          return fn2();
+        }
+        if (fn3() != null) {
+          debugPrint('Played Closet Diagonal (${playClosestDiagonal()})');
+          return fn3();
+        }
+        if (fn1() != null) {
+          debugPrint('Played Closet Horizontal (${playClosestHorizontal()})');
+          return fn1();
+        }
+        return null;
+      case 2:
+        print('Doing case 2');
+        if (fn3() != null) {
+          debugPrint('Played Closet Diagonal (${playClosestDiagonal()})');
+          return fn3();
+        }
+        if (fn1() != null) {
+          debugPrint('Played Closet Horizontal (${playClosestHorizontal()})');
+          return fn1();
+        }
+        if (fn2() != null) {
+          debugPrint('Played Closet Vertical (${playClosestVertical()})');
+          return fn2();
+        }
+        return null;
+    }
+    return null;
   }
 
   void completeHorizontalThree(int targetNumber) {
@@ -146,6 +199,66 @@ class ComputerPlayer extends Player {
         } else if (row[columnIndex + 1] == 0 &&
             hasSupport(lastPlayedPosition!.x, columnIndex + 1)) {
           return columnIndex + 1;
+        }
+      }
+    }
+    return null;
+  }
+
+  int? playClosestVertical() {
+    if (lastPlayedPosition != null) {
+      int columnIndex = lastPlayedPosition!.y;
+      List column = gameBoard.map((row) => row[columnIndex]).toList();
+
+      if (column.contains(0)) {
+        return columnIndex;
+      }
+    }
+    return null;
+  }
+
+  int? playClosestDiagonal() {
+    if (lastPlayedPosition != null) {
+      int columnIndex = lastPlayedPosition!.y;
+      int rowIndex = lastPlayedPosition!.x;
+
+      // if there's a row above, try to play diagonally
+      if (rowIndex > 0) {
+        List topRow = gameBoard[rowIndex - 1];
+
+        // if there's a column to the left and right...
+        if (columnIndex > 0 && columnIndex < 6) {
+          // if both are empty, randomly play diagonally
+          if (topRow[columnIndex - 1] == 0 &&
+              hasSupport(rowIndex - 1, columnIndex - 1) &&
+              topRow[columnIndex + 1] == 0 &&
+              hasSupport(rowIndex - 1, columnIndex + 1)) {
+            if (Random().nextBool()) {
+              return columnIndex + 1;
+            } else {
+              return columnIndex - 1;
+            }
+          }
+          // else fill the empty side
+          else if (topRow[columnIndex + 1] == 0 &&
+              hasSupport(rowIndex - 1, columnIndex + 1)) {
+            return columnIndex + 1;
+          } else if (topRow[columnIndex - 1] == 0 &&
+              hasSupport(rowIndex - 1, columnIndex - 1)) {
+            return columnIndex - 1;
+          }
+        }
+        // else if there's a column to the right alone, fill it up
+        else if (columnIndex == 0 &&
+            topRow[columnIndex + 1] == 0 &&
+            hasSupport(rowIndex - 1, columnIndex + 1)) {
+          return columnIndex + 1;
+        }
+        // else if there's a column to the left alone, fill it up
+        else if (columnIndex == 6 &&
+            topRow[columnIndex - 1] == 0 &&
+            hasSupport(rowIndex - 1, columnIndex - 1)) {
+          return columnIndex - 1;
         }
       }
     }
