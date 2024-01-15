@@ -28,7 +28,7 @@ class ComputerPlayer extends Player {
       debugPrint('Filled Empty Space (${fillEmptySpace(number)})');
       return fillEmptySpace(number)!;
     }
-    if (fillEmptySpace(humanPlayerNumber) != null) {
+    else if (fillEmptySpace(humanPlayerNumber) != null) {
       debugPrint('Filled Empty Space (${fillEmptySpace(humanPlayerNumber)})');
       return fillEmptySpace(humanPlayerNumber)!;
     }
