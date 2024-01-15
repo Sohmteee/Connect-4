@@ -28,8 +28,6 @@ class ComputerPlayer extends Player {
       // place disk
     }
 
-
-
     // try to complete a pair vertically
 
     // try to complete a pair horizontally
@@ -68,6 +66,8 @@ class ComputerPlayer extends Player {
   int? fillEmptySpace(int targetNumber) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
+      if (!row.contains(0)) continue;
+
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
         if (row[columnIndex] == 0) {
           if ((columnIndex > 0 || columnIndex < row.length - 3) &&
