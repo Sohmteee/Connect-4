@@ -120,7 +120,13 @@ class ComputerPlayer extends Player {
       // extremes
       if (columnIndex == 0 &&
           row[columnIndex + 1] == 0 &&
-          hasSupport(lastPlayedPosition!.x, columnIndex)) {}
+          hasSupport(lastPlayedPosition!.x, columnIndex)) {
+        return columnIndex + 1;
+      } else if (columnIndex == 6 &&
+          row[columnIndex - 1] == 0 &&
+          hasSupport(lastPlayedPosition!.x, columnIndex)) {
+        return columnIndex - 1;
+      }
     }
     return null;
   }
