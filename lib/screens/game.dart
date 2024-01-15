@@ -114,7 +114,7 @@ class _GameScreenState extends State<GameScreen> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.deepPurple,
+                              color: backgroundColor,
                               backgroundBlendMode: BlendMode
                                   .dstOut), // This one will handle background + difference out
                         ),
