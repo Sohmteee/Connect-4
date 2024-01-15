@@ -4,8 +4,8 @@ import 'package:connect4/data.dart';
 
 class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
-  int humanPlayerNumber = number == 1 ? 2 : 1;
-  ComputerPlayer(super.number);
+  int humanPlayerNumber;
+  ComputerPlayer(super.number, {required this.humanPlayerNumber});
 
 
   void play() {
