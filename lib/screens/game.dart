@@ -119,13 +119,8 @@ class _GameScreenState extends State<GameScreen> {
                                   .dstOut), // This one will handle background + difference out
                         ),
                         Center(
-                          child: Container(
-                            // height: (30 * (6 + 2)).w,
-                            // width: (30 * (7 + 2)).w,
+                          child: Padding(
                             padding: EdgeInsets.all(2.5.w),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.r),
-                            ),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: List.generate(
