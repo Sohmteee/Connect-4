@@ -1,8 +1,9 @@
+import 'dart:convert';
+
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
 import 'package:http/http.dart' as http;
-
 
 class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
@@ -13,16 +14,16 @@ class ComputerPlayer extends Player {
 
   Future<int> play() async {
     var client = http.Client();
-try {
-  var response = await client.post(
-      Uri.https('example.com', 'whatsit/create'),
-      body: {'name': 'doodle', 'color': 'blue'});
-  var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-  var uri = Uri.parse(decodedResponse['uri'] as String);
-  print(await client.get(uri));
-} finally {
-  client.close();
-}
+    try {
+      var response = await client.post(
+          Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves?board_data=0000000000000000020000001200000210000021001012100&player=2'),
+          body: {'name': 'doodle', 'color': 'blue'});
+      var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      var uri = Uri.parse(decodedResponse['uri'] as String);
+      print(await client.get(uri));
+    } finally {
+      client.close();
+    }
     return 0;
   }
 }
