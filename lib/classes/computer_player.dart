@@ -126,7 +126,11 @@ class ComputerPlayer extends Player {
 
       for (int columnIndex = 0; columnIndex < 5; columnIndex++) {
         // check if the target number reccured thrice in the current row
-        if (row[])
+        if (row[columnIndex] == targetNumber &&
+            row[columnIndex + 1] == targetNumber &&
+            row[columnIndex + 2] == targetNumber) {
+              
+            }
       }
     }
   }
