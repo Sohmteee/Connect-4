@@ -9,7 +9,7 @@ class ComputerPlayer extends Player {
   int humanPlayerNumber;
   ComputerPlayer(super.number, {required this.humanPlayerNumber});
 
-  void play() {
+  int play() {
     // try to win horizontally
 
     // try to block any win horizontally
@@ -24,10 +24,10 @@ class ComputerPlayer extends Player {
 
     // try to fill in an empty space horizontally
     if (fillEmptySpace(number) != null) {
-      // place disk
+      return fillEmptySpace(number)!;
     }
     if (fillEmptySpace(humanPlayerNumber) != null) {
-      // place disk
+      return fillEmptySpace(humanPlayerNumber)!;
     }
 
     // try to complete a pair vertically
@@ -43,6 +43,7 @@ class ComputerPlayer extends Player {
     // try to play next to the last played position diagonally
 
     // play random
+    return playRandom();
   }
 
   /// Method to check if the cell has support from the bottom
@@ -103,7 +104,7 @@ class ComputerPlayer extends Player {
     return null;
   }
 
-  void playRandom() {
+  int playRandom() {
     int columnIndex = Random().nextInt(7);
     List column = List.generate(
       6,
