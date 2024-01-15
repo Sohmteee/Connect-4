@@ -40,7 +40,7 @@ class ComputerPlayer extends Player {
 
     // try to play next to the last played position horizontally
     else if (playClosestHorizontal() != null) {
-      debugPrint('Played Closest Horizontal ($playClosestHorizontal)');
+      debugPrint('Played Closest Horizontal (${playClosestHorizontal()})');
       return playClosestHorizontal()!;
     }
 
