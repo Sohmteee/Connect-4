@@ -301,13 +301,13 @@ class _GameScreenState extends State<GameScreen> {
   Map<String, dynamic> checkVertical() {
     for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
       List column = List.generate(
-        6,
+        7,
         (rowIndex) => gameBoard[rowIndex][columnIndex],
       );
       int currentPlayerInt = 1;
       PositionsList positions = PositionsList([]);
 
-      for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+      for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
         if (column[rowIndex] == 0) {
           if (positions.size() >= 4) {
             return {
