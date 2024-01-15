@@ -112,7 +112,7 @@ class ComputerPlayer extends Player {
     return null;
   }
 
-  void completeHorizontalTriple(int targetNumber) {
+  int? completeHorizontalTriple(int targetNumber) {
     // getBoundaries(List row, int index) {}
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
@@ -129,9 +129,9 @@ class ComputerPlayer extends Player {
         if (row[columnIndex] == targetNumber &&
             row[columnIndex + 1] == targetNumber &&
             row[columnIndex + 2] == targetNumber) {
-              if (columnIndex <= 3) {
-                
-              }
+              if (columnIndex <= 3 && row[columnIndex + 3] == 0 && hasSupport(rowIndex, columnIndex + 3)) {
+                return 
+              } 
             }
       }
     }
