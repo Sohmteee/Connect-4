@@ -137,14 +137,14 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
               ColorFiltered(
-                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8),
+                colorFilter: ColorFilter.mode(backgroundColor!,
                     BlendMode.srcOut), // This one will create the magic
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
                     Container(
-                      decoration:  BoxDecoration(
-                          color: backgroundColor!,
+                      decoration: BoxDecoration(
+                          color: backgroundColor,
                           backgroundBlendMode: BlendMode
                               .dstOut), // This one will handle background + difference out
                     ),
