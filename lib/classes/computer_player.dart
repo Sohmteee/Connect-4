@@ -25,6 +25,7 @@ class ComputerPlayer extends Player {
 
     // try to fill in an empty space horizontally
     if (fillEmptySpace(number) != null) {
+      debugPrint('Filled Empty Space (${fillEmptySpace(number)})');
       return fillEmptySpace(number)!;
     } else if (fillEmptySpace(humanPlayerNumber) != null) {
       debugPrint('Filled Empty Space (${fillEmptySpace(humanPlayerNumber)})');
@@ -44,7 +45,8 @@ class ComputerPlayer extends Player {
     // try to play next to the last played position diagonally
 
     // play random
-    else return playRandom();
+    else{
+      return playRandom();}
   }
 
   /// Method to check if the cell has support from the bottom
