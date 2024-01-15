@@ -112,7 +112,7 @@ class ComputerPlayer extends Player {
     return null;
   }
 
-  void completeHorizontalThree(int targetNumber) {
+  void completeHorizontalTriple(int targetNumber) {
     getBoundaries(List row, int index) {}
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
