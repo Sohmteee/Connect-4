@@ -37,13 +37,6 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  makeComputerMove() {
-    //win move
-    // horizontalMove();
-
-    //block move
-  }
-
   reset() {
     setState(() {
       gameBoard = [
@@ -105,6 +98,7 @@ class _GameScreenState extends State<GameScreen> {
                               makeMove(columnIndex);
                               checkWin();
                               checkTie();
+                              player2.play();
                             }
                           },
                           child: (winningPositions

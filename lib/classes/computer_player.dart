@@ -11,7 +11,7 @@ class ComputerPlayer extends Player {
     return (rowIndex == 5) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
   }
 
-  void completeHorizontalThree( int targetNumber) {
+  void completeHorizontalThree(int targetNumber) {
     /// Method to place a disk into an empty space either between two disks of
     /// the target color or at the beginning/end of a row if the next disk
     /// has the target color.
@@ -51,12 +51,10 @@ class ComputerPlayer extends Player {
       // complete a triple
 
       // fill in an empty space
-
+      if (fillEmptySpace(row, rowIndex) != null) {
+        // place disk
+      }
       // complete a pair
-    }
-
-    if (fillEmptySpace(row, rowIndex) != null) {
-      // place disk
     }
   }
 }
