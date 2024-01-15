@@ -39,7 +39,7 @@ class ComputerPlayer extends Player {
     // try to complete a pair diagonally
 
     // try to play next to the last played position horizontally
-    play
+    playClosestHorizontal();
 
     // try to play next to the last played position vertically
 
@@ -106,6 +106,11 @@ class ComputerPlayer extends Player {
       } */
     }
     return null;
+  }
+
+  int? playClosestHorizontal() {
+    
+return null;
   }
 
   int playRandom() {
