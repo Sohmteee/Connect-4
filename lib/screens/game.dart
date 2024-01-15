@@ -167,7 +167,7 @@ class _GameScreenState extends State<GameScreen> {
                                                 height: 35.w,
                                                 margin: EdgeInsets.all(5.w),
                                                 decoration: BoxDecoration(
-                                                  color: color,
+                                                  // color: Colors.transparent,
                                                   shape: BoxShape.circle,
                                                   gradient: gameBoard[rowIndex]
                                                               [columnIndex] ==
@@ -211,7 +211,7 @@ class _GameScreenState extends State<GameScreen> {
                                                 height: 35.w,
                                                 margin: EdgeInsets.all(5.w),
                                                 decoration: BoxDecoration(
-                                                  color: color,
+                                                  // color: Colors.transparent,
                                                   shape: BoxShape.circle,
                                                   gradient: gameBoard[rowIndex]
                                                               [columnIndex] ==
