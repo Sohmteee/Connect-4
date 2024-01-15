@@ -12,6 +12,7 @@ class ComputerPlayer extends Player {
 
   int play() {
     // try to win horizontally
+    if (completeHorizontalTriple(number) != null)
 
     // try to block any win horizontally
 
@@ -135,7 +136,7 @@ class ComputerPlayer extends Player {
               columnIndex <= 3 &&
               row[columnIndex + 3] == 0 &&
               hasSupport(rowIndex, columnIndex + 3)) {
-                return Random().nextBool() ? columnIndex + 3 : columnIndex - 1;
+            return Random().nextBool() ? columnIndex + 3 : columnIndex - 1;
           } else if (columnIndex <= 3 &&
               row[columnIndex + 3] == 0 &&
               hasSupport(rowIndex, columnIndex + 3)) {
@@ -148,6 +149,8 @@ class ComputerPlayer extends Player {
         }
       }
     }
+
+    return null;
   }
 
   /// Method to place a disk into an empty space either between two disks of
