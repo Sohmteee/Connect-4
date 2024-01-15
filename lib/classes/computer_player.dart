@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:connect4/classes/player.dart';
@@ -22,7 +23,9 @@ class ComputerPlayer extends Player {
           });
       print('Response body: ${response.body}');
 
-      for (int columnIndex in collection) {
+      Map<String, int> moves = jsonDecode(response.body);
+
+      for (int columnIndex in moves) {
         
       }
     } catch (e) {
