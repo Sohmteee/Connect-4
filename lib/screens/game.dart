@@ -188,21 +188,21 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
-  highlightWinningPositions(int winner, PositionsList positions) {
+  void highlightWinningPositions(int winner, PositionsList positions) {
     setState(() {
       winningPositions = positions;
       debugPrint('Winning Positions: $winningPositions');
     });
   }
 
-  checkTie() {
+  void checkTie() {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
       canPlay = false;
     }
   }
 
-  checkWin() {
+  void checkWin() {
     setState(() {
       if (checkHorizontal().isNotEmpty) {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
