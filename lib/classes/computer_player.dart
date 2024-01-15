@@ -128,6 +128,10 @@ class ComputerPlayer extends Player {
         return columnIndex - 1;
       } else {
         // it's neither in the first nor last column
+
+        //randomize if both sides are empty
+
+        // 
       }
     }
     return null;
