@@ -35,6 +35,9 @@ class _GameScreenState extends State<GameScreen> {
         break;
       }
     }
+    
+    checkWin();
+    checkTie();
   }
 
   reset() {
@@ -96,13 +99,9 @@ class _GameScreenState extends State<GameScreen> {
                           onTap: () {
                             if (canPlay) {
                               makeMove(columnIndex);
-                              checkWin();
-                              checkTie();
                               if (canPlay) {
                                 Future.delayed(600.milliseconds, () {
                                   makeMove(player2.play());
-                                  checkWin();
-                                  checkTie();
                                 });
                               }
                             }
