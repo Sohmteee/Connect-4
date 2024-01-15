@@ -26,6 +26,12 @@ class ComputerPlayer extends Player {
     // try to complete a pair horizontally
 
     // try to complete a pair diagonally
+
+    // try to play next to the last played position horizontally
+    
+    // try to play next to the last played position vertically
+    
+    // try to play next to the last played position diagonally
   }
 
   /// Method to check if the cell has support from the bottom
