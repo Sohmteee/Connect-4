@@ -249,16 +249,17 @@ class _GameScreenState extends State<GameScreen> {
 
         if (row[columnIndex] == currentPlayerInt) {
           positions.add(Position(rowIndex, columnIndex));
-          
-        } else {if (positions.size() >= 4) {
+        } else {
+          if (positions.size() >= 4) {
             return {
               'winner': currentPlayerInt,
               'positions': positions,
             };
+          } else {
+            positions.clear();
+            positions.add(Position(rowIndex, columnIndex));
+            currentPlayerInt = row[columnIndex];
           }
-          positions.clear();
-          positions.add(Position(rowIndex, columnIndex));
-          currentPlayerInt = row[columnIndex];
         }
       }
     }
