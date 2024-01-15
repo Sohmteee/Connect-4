@@ -111,15 +111,13 @@ class _GameScreenState extends State<GameScreen> {
                           }
                         }
                         return GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             if (canPlay) {
                               makeMove(columnIndex);
-                              Future.delayed(600.milliseconds, () async {
-                                if (canPlay) {
-                                  int computerMove = await player2.play();
-                                  makeMove(computerMove);
-                                }
-                              });
+                              if (canPlay) {
+                                int computerMove = await player2.play();
+                                makeMove(computerMove);
+                              }
                             }
                           },
                           child: (winningPositions
