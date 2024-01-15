@@ -95,56 +95,15 @@ class _GameScreenState extends State<GameScreen> {
               fit: StackFit.expand,
               children: [
                 Container(
-                  // height: (30 * (6 + 2)).w,
-                  // width: (30 * (7 + 2)).w,
-                  padding: EdgeInsets.all(2.5.w),
+                  height: (35 * (7 + 2.5)).w,
+                  width: (35 * (7 + 2.5)).w,
                   decoration: BoxDecoration(
                     color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(10.r),
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      7,
-                      (rowIndex) => Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(
-                          7,
-                          (columnIndex) {
-                            return GestureDetector(
-                              onTap: () async {
-                                if (canPlay && !computerIsPlaying) {
-                                  makeMove(columnIndex);
-                                  if (canPlay) {
-                                    setState(() {
-                                      computerIsPlaying = true;
-                                    });
-                                    int computerMove = await player2.play();
-                                    makeMove(computerMove);
-                                    setState(() {
-                                      computerIsPlaying = false;
-                                    });
-                                  }
-                                }
-                              },
-                              child: Container(
-                                width: 35.w,
-                                height: 35.w,
-                                margin: EdgeInsets.all(5.w),
-                                decoration: const BoxDecoration(
-                                  color: Colors.deepPurple,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
                 ColorFiltered(
-                  colorFilter: ColorFilter.mode(backgroundColor!,
+                  colorFilter: ColorFilter.mode(Colors.deepPurple,
                       BlendMode.srcOut), // This one will create the magic
                   child: Stack(
                     fit: StackFit.expand,
