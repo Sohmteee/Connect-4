@@ -40,8 +40,8 @@ class ComputerPlayer extends Player {
 
     // try to play next to the last played position horizontally
     else if  (playClosestHorizontal() != null) {
-      debugPrint('Filled Empty Space (${fillEmptySpace(humanPlayerNumber)})');
-      return fillEmptySpace(humanPlayerNumber)!;
+      debugPrint('Played Closest Horizontal ($playClosestHorizontal)');
+      return playClosestHorizontal()!;
     }
 
     // try to play next to the last played position vertically
@@ -62,9 +62,9 @@ class ComputerPlayer extends Player {
     getBoundaries(List row, int index) {}
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
-      List row = gameBoard[rowIndex];
-      int? emptyLeft, emptyRight;
-      bool hasFoundNearestEmptyLeft = false;
+      // List row = gameBoard[rowIndex];
+      // int? emptyLeft, emptyRight;
+      // bool hasFoundNearestEmptyLeft = false;
 
       // complete a triple
 
