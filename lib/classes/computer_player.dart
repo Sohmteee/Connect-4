@@ -16,9 +16,8 @@ class ComputerPlayer extends Player {
     var client = http.Client();
     try {
       var response = await client.post(
-        Uri.https('kevinalbs.com',
-            'connect4/back-end/index.php/getMoves?board_data=${boardToString()}&player=2'),
-      );
+          Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves?board_data=0000000000000000020000001200000210000021001012100&player=2'),
+          body: {'board_data': , 'color': 'blue'});
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       var uri = Uri.parse(decodedResponse['uri'] as String);
       print(await client.get(uri));
