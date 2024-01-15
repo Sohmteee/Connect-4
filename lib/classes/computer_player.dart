@@ -113,16 +113,14 @@ class ComputerPlayer extends Player {
   }
 
   void completeHorizontalTriple(int targetNumber) {
-    getBoundaries(List row, int index) {}
+    // getBoundaries(List row, int index) {}
 
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
-      // List row = gameBoard[rowIndex];
-      // int? emptyLeft, emptyRight;
-      // bool hasFoundNearestEmptyLeft = false;
+      List row = gameBoard[rowIndex];
+      int? emptyLeft, emptyRight;
+      bool hasFoundNearestEmptyLeft = false;
 
       // complete a triple
-
-      // complete a pair
     }
   }
 
