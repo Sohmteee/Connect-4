@@ -82,102 +82,99 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Column(
-        children: [
-          Center(
-            child: Material(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Container(
-                    // height: (30 * (6 + 2)).w,
-                    // width: (30 * (7 + 2)).w,
-                    padding: EdgeInsets.all(2.5.w),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Column(
+      body: Center(
+        child: Material(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Container(
+                // height: (30 * (6 + 2)).w,
+                // width: (30 * (7 + 2)).w,
+                padding: EdgeInsets.all(2.5.w),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(
+                    7,
+                    (rowIndex) => Row(
                       mainAxisSize: MainAxisSize.min,
                       children: List.generate(
                         7,
-                        (rowIndex) => Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: List.generate(
-                            7,
-                            (columnIndex) {
-                              return GestureDetector(
-                                onTap: () async {
-                                  if (canPlay && !computerIsPlaying) {
-                                    makeMove(columnIndex);
-                                    if (canPlay) {
-                                      setState(() {
-                                        computerIsPlaying = true;
-                                      });
-                                      int computerMove = await player2.play();
-                                      makeMove(computerMove);
-                                      setState(() {
-                                        computerIsPlaying = false;
-                                      });
-                                    }
-                                  }
-                                },
-                                child: Container(
-                                        width: 35.w,
-                                        height: 35.w,
-                                        margin: EdgeInsets.all(5.w),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.deepPurple,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ),
-                              );
+                        (columnIndex) {
+                          return GestureDetector(
+                            onTap: () async {
+                              if (canPlay && !computerIsPlaying) {
+                                makeMove(columnIndex);
+                                if (canPlay) {
+                                  setState(() {
+                                    computerIsPlaying = true;
+                                  });
+                                  int computerMove = await player2.play();
+                                  makeMove(computerMove);
+                                  setState(() {
+                                    computerIsPlaying = false;
+                                  });
+                                }
+                              }
                             },
-                          ),
-                        ),
+                            child: Container(
+                              width: 35.w,
+                              height: 35.w,
+                              margin: EdgeInsets.all(5.w),
+                              decoration: const BoxDecoration(
+                                color: Colors.deepPurple,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
-                  ColorFiltered(
-                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8),
-                        BlendMode.srcOut), // This one will create the magic
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Container(
-                          decoration: const BoxDecoration(
-                              color: Colors.black,
-                              backgroundBlendMode: BlendMode
-                                  .dstOut), // This one will handle background + difference out
-                        ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 80),
-                            height: 200,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                          ),
-                        ),
-                        const Center(
-                          child: Text(
-                            'Hello World',
-                            style: TextStyle(
-                                fontSize: 70, fontWeight: FontWeight.w600),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-            
+              ColorFiltered(
+                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8),
+                    BlendMode.srcOut), // This one will create the magic
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.black,
+                          backgroundBlendMode: BlendMode
+                              .dstOut), // This one will handle background + difference out
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 80),
+                        height: 200,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                    ),
+                    const Center(
+                      child: Text(
+                        'Hello World',
+                        style: TextStyle(
+                            fontSize: 70, fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-          /* Center(
+        ),
+      ),
+      /* Center(
             child: IconButton(
               onPressed: () {
                 reset();
@@ -187,8 +184,6 @@ class _GameScreenState extends State<GameScreen> {
               iconSize: 40.sp,
             ),
           ), */
-        ],
-      ),
     );
   }
 
