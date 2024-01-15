@@ -129,14 +129,13 @@ class ComputerPlayer extends Player {
         if (row[columnIndex] == targetNumber &&
             row[columnIndex + 1] == targetNumber &&
             row[columnIndex + 2] == targetNumber) {
-          if (columnIndex <= 3 &&
+          if (columnIndex >= 1 &&
+              row[columnIndex - 1] == 0 &&
+              hasSupport(rowIndex, columnIndex - 1) &&
+              columnIndex <= 3 &&
               row[columnIndex + 3] == 0 &&
               hasSupport(rowIndex, columnIndex + 3)) {
-            return columnIndex + 3;
-          } else if (columnIndex >= 1 &&
-              row[columnIndex - 1] == 0 &&
-              hasSupport(rowIndex, columnIndex - 1)) {
-            return columnIndex - 1;
+                return Random().nextBool() ? columnIndex + 3 : columnIndex - 1;
           } else if (columnIndex <= 3 &&
               row[columnIndex + 3] == 0 &&
               hasSupport(rowIndex, columnIndex + 3)) {
