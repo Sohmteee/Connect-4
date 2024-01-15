@@ -26,11 +26,15 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeMove(int columnIndex) {
-    for (int i = 5; i >= 0; i--) {
-      if (gameBoard[i][columnIndex] == 0) {
+    for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
+      if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
-          gameBoard[i][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
-          if (currentPlayer.number == player2.number)
+          gameBoard[rowIndex][columnIndex] = currentPlayer.number == 1 ? 1 : 2;
+
+          // if it was the computer's move, register the new last played position
+          if (currentPlayer.number == player2.number) {
+            player2.lastPlayedPosition = Position(rowIndex, columnIndex);
+          }
           alternatePlayer();
         });
         break;
