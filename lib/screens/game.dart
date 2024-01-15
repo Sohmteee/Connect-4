@@ -415,6 +415,10 @@ class _GameScreenState extends State<GameScreen> {
       int? emptyLeft, emptyRight;
       bool hasFoundNearestEmptyLeft = false;
 
+      // complete a triple
+
+      // fill in an empty
+
       if (fillEmptySpace(row, rowIndex) != null) {
         // place disk
       }
