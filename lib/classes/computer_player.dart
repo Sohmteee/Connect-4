@@ -25,9 +25,7 @@ class ComputerPlayer extends Player {
 
       Map<String, int> moves = jsonDecode(response.body);
 
-      for (var columnIndex in moves) {
-        
-      }
+      
     } catch (e) {
       
       print('Error: $e');
