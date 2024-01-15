@@ -417,7 +417,11 @@ class _GameScreenState extends State<GameScreen> {
 
       // complete a triple
 
-      // fill in an empty
+      // fill in an empty space
+
+      // complete a pair
+
+      // 
 
       if (fillEmptySpace(row, rowIndex) != null) {
         // place disk
