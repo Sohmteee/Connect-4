@@ -146,57 +146,55 @@ class _GameScreenState extends State<GameScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(child: (winningPositions.contains(
-                                      Position(rowIndex, columnIndex)))
-                                  ? Container(
-                                      width: 35.w,
-                                      height: 35.w,
-                                      margin: EdgeInsets.all(5.w),
-                                      decoration: BoxDecoration(
-                                        color: color,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 3.sp,
+                              SizedBox(
+                                child: (winningPositions.contains(
+                                        Position(rowIndex, columnIndex)))
+                                    ? Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 3.sp,
+                                          ),
+                                        ),
+                                      )
+                                        .animate()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: 1.2,
+                                          duration: 500.milliseconds,
+                                          delay: 100.milliseconds,
+                                          curve: Curves.easeInOutQuart,
+                                        )
+                                        .then()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: .833333333333333333,
+                                          duration: 300.milliseconds,
+                                          delay: 500.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        )
+                                    : Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
                                         ),
                                       ),
-                                    )
-                                      .animate()
-                                      .scaleXY(
-                                        begin: 1,
-                                        end: 1.2,
-                                        duration: 500.milliseconds,
-                                        delay: 100.milliseconds,
-                                        curve: Curves.easeInOutQuart,
-                                      )
-                                      .then()
-                                      .scaleXY(
-                                        begin: 1,
-                                        end: .833333333333333333,
-                                        duration: 300.milliseconds,
-                                        delay: 500.milliseconds,
-                                        curve: Curves.bounceOut,
-                                      )
-                                  : Container(
-                                      width: 35.w,
-                                      height: 35.w,
-                                      margin: EdgeInsets.all(5.w),
-                                      decoration: BoxDecoration(
-                                        color: color,
-                                        shape: BoxShape.circle,
-                                      ),
-                                    ),).animate().slideY(((35 * (7 + 2.5)) - ((35 + 5) * rowIndex)).w,
-                                      end: 0,
-                                      duration: 500.milliseconds,
-                                      delay: 100.milliseconds,
-                                      curve: Curves.easeInOutQuart,
-                                    ).then().slideY(
-                                      begin: 0,
-                                      end: -10,
-                                      duration: 300.milliseconds,
-                                      delay: 500.milliseconds,
-                                      curve: Curves.bounceOut,
-                                    ),
+                              ).animate().slideY(
+                                    begin: ((35 * (7 + 2.5)) -
+                                            ((35 + 5) * rowIndex))
+                                        .w,
+                                    end: 0,
+                                    duration: 200.milliseconds,
+                                    curve: Curves.bounceOut,
+                                  ),
                             ],
                           ),
                         );
