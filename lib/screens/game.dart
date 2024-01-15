@@ -169,21 +169,7 @@ class _GameScreenState extends State<GameScreen> {
                                                 decoration: BoxDecoration(
                                                   // color: Colors.transparent,
                                                   shape: BoxShape.circle,
-                                                  gradient: gameBoard[rowIndex]
-                                                              [columnIndex] ==
-                                                          0
-                                                      ? LinearGradient(
-                                                          colors: [
-                                                            Colors.deepPurple[
-                                                                400]!,
-                                                            backgroundColor!,
-                                                          ],
-                                                          begin: Alignment
-                                                              .topCenter,
-                                                          end: Alignment
-                                                              .bottomCenter,
-                                                        )
-                                                      : null,
+
                                                   border: Border.all(
                                                     color: Colors.white,
                                                     width: 3.sp,
@@ -213,21 +199,6 @@ class _GameScreenState extends State<GameScreen> {
                                                 decoration: BoxDecoration(
                                                   // color: Colors.transparent,
                                                   shape: BoxShape.circle,
-                                                  gradient: gameBoard[rowIndex]
-                                                              [columnIndex] ==
-                                                          0
-                                                      ? LinearGradient(
-                                                          colors: [
-                                                            Colors.deepPurple[
-                                                                400]!,
-                                                            backgroundColor!,
-                                                          ],
-                                                          begin: Alignment
-                                                              .topCenter,
-                                                          end: Alignment
-                                                              .bottomCenter,
-                                                        )
-                                                      : null,
                                                 ),
                                               ),
                                       );
