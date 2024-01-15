@@ -39,6 +39,8 @@ class ComputerPlayer extends Player {
     // try to play next to the last played position vertically
 
     // try to play next to the last played position diagonally
+
+    // play random
   }
 
   /// Method to check if the cell has support from the bottom
