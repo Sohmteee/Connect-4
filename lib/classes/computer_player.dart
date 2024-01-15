@@ -14,17 +14,14 @@ class ComputerPlayer extends Player {
 
   Future<int> play() async {
     try {
-      var response = await client.post(
+      var response = await http.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
           body: {
             'board_data': boardToString(),
             'player': number.toString(),
           });
-      var uri = Uri.parse(response['uri'] as String);
-      print(await client.get(uri));
-    } finally {
-      client.close();
-    }
+      print('Response body: ${response.body}');
+    } finally {}
     return 0;
   }
 }
