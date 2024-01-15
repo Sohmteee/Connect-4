@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:connect4/classes/player.dart';
@@ -23,7 +22,9 @@ class ComputerPlayer extends Player {
           });
       print('Response body: ${response.body}');
 
-      // 
+      for (int columnIndex in collection) {
+        
+      }
     } catch (e) {
       
       print('Error: $e');
