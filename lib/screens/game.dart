@@ -240,7 +240,7 @@ class _GameScreenState extends State<GameScreen> {
       int currentPlayerInt = 1;
       PositionsList positions = PositionsList([]);
 
-      for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
+      for (int columnIndex = 0; columnIndex < 6; columnIndex++) {
         if (row[columnIndex] == 0) {
           if (positions.size() >= 4) {
             return {
