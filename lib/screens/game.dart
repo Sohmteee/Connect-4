@@ -416,6 +416,9 @@ class _GameScreenState extends State<GameScreen> {
       bool hasFoundNearestEmptyLeft = false;
 
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
+        if (fillEmptySpace(row, rowIndex) != null) {
+          // place disk
+        }
         if (row[columnIndex] == targetNumber) {}
 
         // find the closest empty spaces
