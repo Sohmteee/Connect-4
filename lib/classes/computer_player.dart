@@ -12,9 +12,17 @@ class ComputerPlayer extends Player {
 
   int play() {
     // try to win horizontally
-    if (completeHorizontalTriple(number) != null)
-
+    if (completeHorizontalTriple(number) != null) {
+      debugPrint(
+          'Complete Horizontal Triple (${completeHorizontalTriple(number)})');
+      return completeHorizontalTriple(number)!;
+    }
     // try to block any win horizontally
+    else if (completeHorizontalTriple(humanPlayerNumber) != null) {
+      debugPrint(
+          'Block Horizontal Triple (${completeHorizontalTriple(humanPlayerNumber)})');
+      return completeHorizontalTriple(humanPlayerNumber)!;
+    }
 
     // try to win vertically
 
