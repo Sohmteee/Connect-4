@@ -114,7 +114,7 @@ class ComputerPlayer extends Player {
       List row = gameBoard[lastPlayedPosition!.x];
 
       // extremes
-      if (columnIndex == 0 && row[columnIndex + 1] == 0 && has) {}
+      if (columnIndex == 0 && row[columnIndex + 1] == 0 && hasSupport(lastPlayedPosition!.x, columnIndex)) {}
     }
 return null;
   }
