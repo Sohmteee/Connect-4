@@ -114,11 +114,12 @@ class _GameScreenState extends State<GameScreen> {
                           onTap: () {
                             if (canPlay) {
                               makeMove(columnIndex);
-                              /* Future.delayed(600.milliseconds, () {
+                              Future.delayed(600.milliseconds, () {
                                 if (canPlay) {
-                                  makeMove(player2.play());
+                                  // makeMove(player2.play());
+                                  player2.play();
                                 }
-                              }); */
+                              });
                             }
                           },
                           child: (winningPositions
