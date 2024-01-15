@@ -29,12 +29,13 @@ class ComputerPlayer extends Player {
       int max = 0;
       int maxIndex = 0;
 
-      for (int i = 0; i < moves.length; i++) {
-        if (moves[i.toString()] > max) {
-          max = moves[i.toString()];
-          maxIndex = i;
+      moves.forEach((key, value) {
+        int intValue = int.tryParse(value.toString()) ?? 0;
+        if (intValue > max) {
+          max = intValue;
+          maxKey = key;
         }
-      }
+      });
       print('Max Index: $maxIndex($max)');
       return maxIndex;
     } catch (e) {
