@@ -113,9 +113,12 @@ class _GameScreenState extends State<GameScreen> {
                         }
                         return GestureDetector(
                           onTap: () async {
-                            if (canPlay && comp) {
+                            if (canPlay && !computerIsPlaying) {
                               makeMove(columnIndex);
                               if (canPlay) {
+                                setState(() {
+                                  computerIsPlaying 
+                                });
                                 int computerMove = await player2.play();
                                 makeMove(computerMove);
                               }
