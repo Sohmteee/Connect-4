@@ -1,7 +1,9 @@
 import 'package:connect4/classes/player.dart';
+import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
 
 class ComputerPlayer extends Player {
+  Position? lastPlayedPosition;
   ComputerPlayer(super.number);
 
   void play() {
@@ -20,11 +22,10 @@ class ComputerPlayer extends Player {
     // try to fill in an empty space horizontally
 
     // try to complete a pair vertically
-    
-    // try to complete a pair horizontally
-    
-    // try to complete a pair diagonally
 
+    // try to complete a pair horizontally
+
+    // try to complete a pair diagonally
   }
 
   /// Method to check if the cell has support from the bottom
