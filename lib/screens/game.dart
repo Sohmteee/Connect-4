@@ -25,6 +25,8 @@ class _GameScreenState extends State<GameScreen> {
     currentPlayer = currentPlayer.number == 1 ? player2 : player1;
   }
 
+  stringToBo
+
   makeMove(int columnIndex) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
