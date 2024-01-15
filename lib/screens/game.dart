@@ -117,7 +117,7 @@ class _GameScreenState extends State<GameScreen> {
                               makeMove(columnIndex);
                               if (canPlay) {
                                 setState(() {
-                                  computerIsPlaying 
+                                  computerIsPlaying = true;
                                 });
                                 int computerMove = await player2.play();
                                 makeMove(computerMove);
