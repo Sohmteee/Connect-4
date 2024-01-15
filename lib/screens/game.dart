@@ -347,7 +347,7 @@ class _GameScreenState extends State<GameScreen> {
 
   Map<String, dynamic> checkDiagonal() {
     // Check diagonals from bottom-left to top-right
-    for (int rowIndex = 3; rowIndex < 6; rowIndex++) {
+    for (int rowIndex = 3; rowIndex < 7; rowIndex++) {
       for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
         PositionsList positions = PositionsList([]);
         int currentPlayerInt = 0;
@@ -356,7 +356,11 @@ class _GameScreenState extends State<GameScreen> {
           int row = rowIndex - i;
           int col = columnIndex + i;
 
-          if (gameBoard[row][col] == 0) {
+          if (row < 0 ||
+              row >= 7 ||
+              col < 0 ||
+              col >= 7 ||
+              gameBoard[row][col] == 0) {
             positions.clear();
             break;
           }
@@ -383,7 +387,7 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     // Check diagonals from bottom-right to top-left
-    for (int rowIndex = 3; rowIndex < 6; rowIndex++) {
+    for (int rowIndex = 3; rowIndex < 7; rowIndex++) {
       for (int columnIndex = 6; columnIndex >= 3; columnIndex--) {
         PositionsList positions = PositionsList([]);
         int currentPlayerInt = 0;
@@ -392,7 +396,11 @@ class _GameScreenState extends State<GameScreen> {
           int row = rowIndex - i;
           int col = columnIndex - i;
 
-          if (gameBoard[row][col] == 0) {
+          if (row < 0 ||
+              row >= 7 ||
+              col < 0 ||
+              col >= 7 ||
+              gameBoard[row][col] == 0) {
             positions.clear();
             break;
           }
