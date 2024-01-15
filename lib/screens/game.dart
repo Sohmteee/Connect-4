@@ -143,8 +143,8 @@ class _GameScreenState extends State<GameScreen> {
                   fit: StackFit.expand,
                   children: [
                     Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.black,
+                      decoration:  BoxDecoration(
+                          color: backgroundColor!,
                           backgroundBlendMode: BlendMode
                               .dstOut), // This one will handle background + difference out
                     ),
