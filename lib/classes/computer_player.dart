@@ -15,7 +15,11 @@ class ComputerPlayer extends Player {
 
     // try to win diagonally
 
-    // try to block any win 
+    // try to block any win diagonally
+
+    // try to fill in an empty space horizontally
+
+    // try to complete a pair 
   }
 
   /// Method to check if the cell has support from the bottom
