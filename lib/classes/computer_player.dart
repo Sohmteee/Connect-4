@@ -25,7 +25,7 @@ class ComputerPlayer extends Player {
 
       Map<String, int> moves = jsonDecode(response.body);
 
-      for (int columnIndex in moves) {
+      for (var columnIndex in moves) {
         
       }
     } catch (e) {
