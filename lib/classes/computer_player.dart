@@ -125,7 +125,9 @@ class ComputerPlayer extends Player {
       if (!row.contains(0)) continue;
 
       // check if the target number reccured thrice in the current row
-      
+      for (int i = 0; i < 5; i++) {
+        
+      }
 
     }
   }
