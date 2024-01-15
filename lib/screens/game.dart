@@ -381,8 +381,8 @@ class _GameScreenState extends State<GameScreen> {
   void horizontalMove(int playerNumber, int targetNumber) {
     getBoundaries(List row, int index) {}
 
-    /// Method to place a disk into an empty space either between two disks of 
-    /// the target color or at the beginning/end of a row if the next disk 
+    /// Method to place a disk into an empty space either between two disks of
+    /// the target color or at the beginning/end of a row if the next disk
     /// has the target color.
     int? fillEmptySpace(List row, int rowIndex) {
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
@@ -415,10 +415,11 @@ class _GameScreenState extends State<GameScreen> {
       int? emptyLeft, emptyRight;
       bool hasFoundNearestEmptyLeft = false;
 
+      if (fillEmptySpace(row, rowIndex) != null) {
+        // place disk
+      }
+
       for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
-        if (fillEmptySpace(row, rowIndex) != null) {
-          // place disk
-        }
         if (row[columnIndex] == targetNumber) {}
 
         // find the closest empty spaces
