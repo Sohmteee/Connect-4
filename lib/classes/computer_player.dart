@@ -66,6 +66,8 @@ class ComputerPlayer extends Player {
   int? fillEmptySpace(int targetNumber) {
     for (int rowIndex = 5; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
+      
+      // if there's no empty space to fill, move over to the next row
       if (!row.contains(0)) continue;
 
       for (int columnIndex = 0; columnIndex < row.length - 3; columnIndex++) {
