@@ -109,7 +109,19 @@ class ComputerPlayer extends Player {
   }
 
   int? playClosestHorizontal() {
-    
+    if (lastPlayedPosition != null) {
+      int columnIndex = lastPlayedPosition!.x;
+      List row = gameBoard[lastPlayedPosition!.y];
+
+      if (columnIndex > 0 && row[columnIndex - 1] == 0) {
+        debugPrint('Played Closest Horizontal');
+        return columnIndex - 1;
+      } else if (columnIndex < row.length - 1 &&
+          row[columnIndex + 1] == 0) {
+        debugPrint('Played Closest Horizontal');
+        return columnIndex + 1;
+      }
+    }
 return null;
   }
 
