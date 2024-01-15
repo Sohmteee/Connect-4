@@ -127,9 +127,28 @@ class _GameScreenState extends State<GameScreen> {
                               }
                             }
                           },
-                          child: Stack(children:[],),
-                          
-                          
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 35.w,
+                                height: 35.w,
+                                margin: EdgeInsets.all(5.w),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepPurple[400]!,
+                                      backgroundColor!,
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                              ),
+                              if (winningPositions
+                                  .contains(Position(rowIndex, columnIndex)))
+                            ],
+                          ),
                           (winningPositions
                                   .contains(Position(rowIndex, columnIndex)))
                               ? Container(
