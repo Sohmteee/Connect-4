@@ -28,14 +28,15 @@ class ComputerPlayer extends Player {
       // iterate through the map and find the largest value
       int max = 0;
       int maxIndex = 0;
-      for (int columnIndex = 0; columnIndex < moves.length; columnIndex++) {
-        if (moves[columnIndex] > max) {
-          max = moves[columnIndex];
-          maxIndex = columnIndex;
+
+      for (int i = 0; i < moves.length; i++) {
+        if (moves[i.toString()] > max) {
+          max = moves[i.toString()];
+          maxIndex = i;
         }
       }
 
-
+      return maxIndex;
     } catch (e) {
       print('Error: $e');
       int columnIndex = Random().nextInt(7);
