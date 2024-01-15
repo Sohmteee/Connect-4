@@ -99,7 +99,8 @@ class _GameScreenState extends State<GameScreen> {
                               checkWin();
                               checkTie();
                               if (canPlay) {
-                                makeMove(columnIndex);
+                                Future.delayed(600.milliseconds, ());
+                                makeMove(player2.play());
                                 checkWin();
                                 checkTie();
                               }
