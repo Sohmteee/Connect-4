@@ -213,8 +213,7 @@ class ComputerPlayer extends Player {
       int? findTopmostDisc(List column) {
         for (int i = 0; i < column.length; i++) {
           if (column[i] != 0) {
-            
-            return i;
+            return column[i];
           }
         }
         return null;
