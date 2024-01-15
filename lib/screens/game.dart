@@ -68,6 +68,7 @@ class _GameScreenState extends State<GameScreen> {
       currentPlayer = Player(1);
       player2.lastPlayedPosition = null;
       canPlay = true;
+      computerIsPlaying = false;
       winningPositions.clear();
     });
   }
