@@ -164,12 +164,8 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ),
-                Container(
+                Padding(
                   padding: EdgeInsets.all(2.5.w),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
