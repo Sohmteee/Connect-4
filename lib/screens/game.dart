@@ -270,7 +270,7 @@ class _GameScreenState extends State<GameScreen> {
                         height: 35.w,
                         margin: EdgeInsets.all(5.w),
                       ).animate().scaleXY(
-                          end: .85,
+                          end: .87,
                           duration: 300.milliseconds,
                           curve: Curves.bounceOut,
                         )
@@ -333,7 +333,7 @@ class _GameScreenState extends State<GameScreen> {
                               curve: Curves.bounceOut,
                             )
                             .scaleXY(
-                              end: .85,
+                              end: .87,
                               duration: 300.milliseconds,
                               curve: Curves.bounceOut,
                             );
