@@ -153,14 +153,7 @@ class _GameScreenState extends State<GameScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.sp,
-                ),
-              ),
-              SizedBox(width: 5.w),
+              Spacer(),
               Container(
                 width: 25.w,
                 height: 25.w,
@@ -169,7 +162,16 @@ class _GameScreenState extends State<GameScreen> {
                   color: turnColor,
                   shape: BoxShape.circle,
                 ),
-              )
+              ),
+              SizedBox(width: 5.w),
+              Text(
+                '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.sp,
+                ),
+              ),
+              Spacer(),
             ],
           ),
           const Spacer(),
