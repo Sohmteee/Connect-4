@@ -95,8 +95,9 @@ class _GameScreenState extends State<GameScreen> {
         children: [
           const Spacer(flex: 2),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 100.w),
+            padding: EdgeInsets.symmetric(horizontal: 90.w),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
