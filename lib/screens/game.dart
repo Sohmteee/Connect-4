@@ -83,15 +83,8 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Container(
-                                        width: 35.w,
-                                        height: 35.w,
-                                        margin: EdgeInsets.all(5.w),
-                                        decoration: BoxDecoration(
-                                          color: color,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      )
+    Color? turnColor = currentPlayer.number == 1 ? Colors.red : Colors.yellow;
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
@@ -166,11 +159,11 @@ class _GameScreenState extends State<GameScreen> {
               ),
               SizedBox(width: 10.w),
               Container(
-                width: 35.w,
-                height: 35.w,
+                width: 25.w,
+                height: 25.w,
                 margin: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                  color: color,
+                  color: turnColor,
                   shape: BoxShape.circle,
                 ),
               )
