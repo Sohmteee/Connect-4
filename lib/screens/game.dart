@@ -449,7 +449,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   restartGame() {
-    Future.delayed(1.seconds, () async {
+    Future.delayed(3.seconds, () async {
       reset();
 
       setState(() {
