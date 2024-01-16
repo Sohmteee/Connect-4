@@ -25,7 +25,7 @@ class _GameScreenState extends State<GameScreen> {
   late Player firstPlayer;
 
   alternatePlayer() {
-    if (!isGameOver && canTap) {
+    if (!isGameOver) {
       currentPlayer = currentPlayer.number == 1 ? player2 : player1;
     }
   }
