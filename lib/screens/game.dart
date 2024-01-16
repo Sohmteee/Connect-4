@@ -83,6 +83,15 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      )
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
@@ -146,6 +155,7 @@ class _GameScreenState extends State<GameScreen> {
           ),
           const Spacer(),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
@@ -154,7 +164,16 @@ class _GameScreenState extends State<GameScreen> {
                   fontSize: 16.sp,
                 ),
               ),
-              SizedBox(width)
+              SizedBox(width: 10.w),
+              Container(
+                width: 35.w,
+                height: 35.w,
+                margin: EdgeInsets.all(5.w),
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                ),
+              )
             ],
           ),
           const Spacer(),
