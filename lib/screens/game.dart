@@ -330,8 +330,8 @@ class _GameScreenState extends State<GameScreen> {
                         if (!isGameOver && canTap && !isComputerPlaying) {
                           setState(() {
                             canTap = false;
-                            tappedIndex = null;
                           });
+                          Future.delayed()
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
                             setState(() {
