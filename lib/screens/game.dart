@@ -253,7 +253,6 @@ class _GameScreenState extends State<GameScreen> {
                                           curve: Curves.bounceOut,
                                         )
                                         .scaleXY(
-                                          begin: 1,
                                           end: .85,
                                           duration: 300.milliseconds,
                                           curve: Curves.bounceOut,
