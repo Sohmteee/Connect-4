@@ -21,7 +21,7 @@ class _GameScreenState extends State<GameScreen> {
   bool isGameOver = true;
   bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
-  Player firstPlayer = player1;
+  late Player firstPlayer;
 
   alternatePlayer() {
     currentPlayer = currentPlayer.number == 1 ? player2 : player1;
@@ -77,7 +77,8 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    currentPlayer = player1;
+    firstPlayer = player1;
+    currentPlayer = firstPlayer;
   }
 
   @override
@@ -447,24 +448,25 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  restartGame() async {
-    Future.delayed(1.seconds, () { reset();
+  restartGame() {
+    Future.delayed(1.seconds, () async {
+      reset();
 
-    setState(() {
-      firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
-      currentPlayer = firstPlayer;
+      setState(() {
+        firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
+        currentPlayer = firstPlayer;
+      });
+
+      if (currentPlayer == player2) {
+        setState(() {
+          isComputerPlaying = true;
+        });
+        int computerMove = await player2.play();
+        makeMove(computerMove);
+        setState(() {
+          isComputerPlaying = false;
+        });
+      }
     });
-
-    if (currentPlayer == player2) {
-      setState(() {
-        isComputerPlaying = true;
-      });
-      int computerMove = await player2.play();
-      makeMove(computerMove);
-      setState(() {
-        isComputerPlaying = false;
-      });
-    }});
-   
   }
 }
