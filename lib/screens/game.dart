@@ -360,7 +360,7 @@ class _GameScreenState extends State<GameScreen> {
 
           return GestureDetector(
             onTap: () async {
-              if (!isGameOver && canTap && !isComputerPlaying) {
+              if (!isGameOver && canTap && !isComputerPlaying && canDropInColumn()) {
                 setState(() {
                   canTap = false;
                 });
