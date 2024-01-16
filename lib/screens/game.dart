@@ -312,6 +312,10 @@ class _GameScreenState extends State<GameScreen> {
                     7,
                     (columnIndex) => GestureDetector(
                       onTap: () async {
+                        setState(() {
+                          tappedIndex 
+                        });
+
                         int findRowIndex() {
                           for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
                             if (gameBoard[rowIndex][columnIndex] != 0) {
