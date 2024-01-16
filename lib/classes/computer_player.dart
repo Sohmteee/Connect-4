@@ -51,6 +51,7 @@ class ComputerPlayer extends Player {
           ? maxIndexes[0]
           : maxIndexes[Random().nextInt(maxIndexes.length)];
     } catch (e) {
+      return(play());
       debugPrint('Error: $e');
       debugPrint('Playing offline...');
       debugPrint(boardToString().length.toString());
