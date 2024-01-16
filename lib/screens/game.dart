@@ -347,19 +347,14 @@ class _GameScreenState extends State<GameScreen> {
                       child: Container(
                           height: (((35 + 10) * 7) + 5).w,
                           width: (35 + 10 + (5 / 7)).w,
+                          padding: EdgeInsets.all(2.5.w),
                           decoration: BoxDecoration(
                             color: columnIndex == 4
                                 ? Colors.white.withOpacity(.6)
                                 : Colors.transparent,
                             // color: Colors.transparent,
-                            borderRadius: (columnIndex == 0)
-                                ? BorderRadius.horizontal(
-                                    left: Radius.circular(10.r))
-                                : (columnIndex == 6)
-                                    ? BorderRadius.horizontal(
-                                        right: Radius.circular(10.r))
-                                    : Border,
-                          )),
+                            borderRadius: BorderRadius.circular(10.sp),
+                          ),),
                     ),
                   ),
                 ),
