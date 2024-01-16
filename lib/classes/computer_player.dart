@@ -118,10 +118,10 @@ class ComputerPlayer extends Player {
     int? Function() fn2 = playClosestVertical;
     int? Function() fn3 = playClosestDiagonal;
     int random = Random().nextInt(3);
-    print('Random: $random');
+    debugPrint('Random: $random');
     switch (random) {
       case 0:
-        print('Doing case 0');
+        debugPrint('Doing case 0');
         if (fn1() != null) {
           debugPrint('Played Closet Horizontal (${playClosestHorizontal()})');
           return fn1();
@@ -136,7 +136,7 @@ class ComputerPlayer extends Player {
         }
         return null;
       case 1:
-        print('Doing case 1');
+        debugPrint('Doing case 1');
         if (fn2() != null) {
           debugPrint('Played Closet Vertical (${playClosestVertical()})');
           return fn2();
@@ -151,7 +151,7 @@ class ComputerPlayer extends Player {
         }
         return null;
       case 2:
-        print('Doing case 2');
+        debugPrint('Doing case 2');
         if (fn3() != null) {
           debugPrint('Played Closet Diagonal (${playClosestDiagonal()})');
           return fn3();
