@@ -108,6 +108,7 @@ class _GameScreenState extends State<GameScreen> {
           Center(
             child: Stack(
               alignment: Alignment.center,
+              clipBehavior: Clip.none,
               children: [
                 Container(
                   padding: EdgeInsets.all(2.5.w),
