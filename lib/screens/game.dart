@@ -178,204 +178,9 @@ class _GameScreenState extends State<GameScreen> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Container(
-                  padding: EdgeInsets.all(2.5.w),
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      7,
-                      (rowIndex) => Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(
-                          7,
-                          (columnIndex) {
-                            return Container(
-                              width: 35.w,
-                              height: 35.w,
-                              margin: EdgeInsets.all(5.w),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.deepPurple[400]!,
-                                    backgroundColor!,
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(2.5.w),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      7,
-                      (rowIndex) => Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(
-                          7,
-                          (columnIndex) {
-                            Color? color;
-                            if (gameBoard[rowIndex][columnIndex] != 0) {
-                              if (gameBoard[rowIndex][columnIndex] == 1) {
-                                color = Colors.red;
-                              } else if (gameBoard[rowIndex][columnIndex] ==
-                                  2) {
-                                color = Colors.yellow;
-                              }
-                            }
-                            return gameBoard[rowIndex][columnIndex] == 0
-                                ? Container(
-                                    width: 35.w,
-                                    height: 35.w,
-                                    margin: EdgeInsets.all(5.w),
-                                  ).animate().scaleXY(
-                                      end: .85,
-                                      duration: 300.milliseconds,
-                                      curve: Curves.bounceOut,
-                                    )
-                                : (winningPositions.contains(
-                                        Position(rowIndex, columnIndex)))
-                                    ? Container(
-                                        width: 35.w,
-                                        height: 35.w,
-                                        margin: EdgeInsets.all(5.w),
-                                        decoration: BoxDecoration(
-                                          color: color,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 3.sp,
-                                          ),
-                                        ),
-                                      )
-                                        .animate()
-                                        .scaleXY(
-                                          begin: 1,
-                                          end: 1.2,
-                                          duration: 300.milliseconds,
-                                          delay: (rowIndex * 100 + 200)
-                                              .milliseconds,
-                                          curve: Curves.easeIn,
-                                        )
-                                        .then()
-                                        .scaleXY(
-                                          begin: 1,
-                                          end: .833333333333333333,
-                                          duration: 300.milliseconds,
-                                          delay: 300.milliseconds,
-                                          curve: Curves.easeOut,
-                                        )
-                                    : Container(
-                                        width: 35.w,
-                                        height: 35.w,
-                                        margin: EdgeInsets.all(5.w),
-                                        decoration: BoxDecoration(
-                                          color: color,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      )
-                                        .animate()
-                                        .moveY(
-                                          begin: -((35 * (rowIndex + 2))).w,
-                                          end: 0,
-                                          duration: (rowIndex * 100 + 100)
-                                              .milliseconds,
-                                          delay: 100.milliseconds,
-                                          curve: Curves.bounceOut,
-                                        )
-                                        .scaleXY(
-                                          end: .85,
-                                          duration: 300.milliseconds,
-                                          curve: Curves.bounceOut,
-                                        );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    7,
-                    (columnIndex) => GestureDetector(
-                      onTap: () async {
-                        setState(() {
-                          tappedIndex = columnIndex;
-                        });
-
-                        int findRowIndex() {
-                          for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
-                            if (gameBoard[rowIndex][columnIndex] != 0) {
-                              return rowIndex;
-                            }
-                          }
-                          return 0;
-                        }
-
-                        int rowIndex = findRowIndex();
-
-                        if (!isGameOver && canTap && !isComputerPlaying) {
-                          setState(() {
-                            canTap = false;
-                          });
-                          Future.delayed((rowIndex * 100 + 200).milliseconds,
-                              () {
-                            setState(() {
-                              tappedIndex = null;
-                            });
-                          });
-                          makeMove(rowIndex, columnIndex);
-                          if (!isGameOver) {
-                            setState(() {
-                              isComputerPlaying = true;
-                            });
-                            int computerMove = await player2.play();
-                            makeMove(rowIndex, computerMove);
-                            setState(() {
-                              isComputerPlaying = false;
-                              Future.delayed(300.milliseconds, () {
-                                setState(() {
-                                  canTap = true;
-                                });
-                              });
-                            });
-                          }
-                        }
-                      },
-                      onTapCancel: () {
-                        setState(() {
-                          tappedIndex = null;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: (rowIndex * 100 + 200).milliseconds,
-                        height: (((35 + 10) * 7)).w,
-                        width: (35 + 10 + (5 / 7)).w,
-                        decoration: BoxDecoration(
-                          color: (tappedIndex != null &&
-                                  columnIndex == tappedIndex)
-                              ? Colors.white.withOpacity(.3)
-                              : Colors.transparent,
-                          // color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(10.sp),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                buildBoard(),
+                buildDiscs(),
+                buildTapHighlight(),
               ],
             ),
           ),
@@ -395,6 +200,208 @@ class _GameScreenState extends State<GameScreen> {
           ),
           const Spacer(),
         ],
+      ),
+    );
+  }
+
+  Container buildBoard() {
+    return Container(
+      padding: EdgeInsets.all(2.5.w),
+      decoration: BoxDecoration(
+        color: Colors.deepPurple,
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          7,
+          (rowIndex) => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              7,
+              (columnIndex) {
+                return Container(
+                  width: 35.w,
+                  height: 35.w,
+                  margin: EdgeInsets.all(5.w),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.deepPurple[400]!,
+                        backgroundColor!,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding buildDiscs() {
+    return Padding(
+      padding: EdgeInsets.all(2.5.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          7,
+          (rowIndex) => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              7,
+              (columnIndex) {
+                Color? color;
+                if (gameBoard[rowIndex][columnIndex] != 0) {
+                  if (gameBoard[rowIndex][columnIndex] == 1) {
+                    color = Colors.red;
+                  } else if (gameBoard[rowIndex][columnIndex] == 2) {
+                    color = Colors.yellow;
+                  }
+                }
+                return gameBoard[rowIndex][columnIndex] == 0
+                    ? Container(
+                        width: 35.w,
+                        height: 35.w,
+                        margin: EdgeInsets.all(5.w),
+                      ).animate().scaleXY(
+                          end: .85,
+                          duration: 300.milliseconds,
+                          curve: Curves.bounceOut,
+                        )
+                    : (winningPositions
+                            .contains(Position(rowIndex, columnIndex)))
+                        ? Container(
+                            width: 35.w,
+                            height: 35.w,
+                            margin: EdgeInsets.all(5.w),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 3.sp,
+                              ),
+                            ),
+                          )
+                            .animate()
+                            .scaleXY(
+                              begin: 1,
+                              end: 1.2,
+                              duration: 300.milliseconds,
+                              delay: (rowIndex * 100 + 200).milliseconds,
+                              curve: Curves.easeIn,
+                            )
+                            .then()
+                            .scaleXY(
+                              begin: 1,
+                              end: .833333333333333333,
+                              duration: 300.milliseconds,
+                              delay: 300.milliseconds,
+                              curve: Curves.easeOut,
+                            )
+                        : Container(
+                            width: 35.w,
+                            height: 35.w,
+                            margin: EdgeInsets.all(5.w),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                            ),
+                          )
+                            .animate()
+                            .moveY(
+                              begin: -((35 * (rowIndex + 2))).w,
+                              end: 0,
+                              duration: (rowIndex * 100 + 100).milliseconds,
+                              delay: 100.milliseconds,
+                              curve: Curves.bounceOut,
+                            )
+                            .scaleXY(
+                              end: .85,
+                              duration: 300.milliseconds,
+                              curve: Curves.bounceOut,
+                            );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Row buildTapHighlight() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        7,
+        (columnIndex) => GestureDetector(
+          onTap: () async {
+            setState(() {
+              tappedIndex = columnIndex;
+            });
+
+            int findRowIndex() {
+              for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
+                if (gameBoard[rowIndex][columnIndex] != 0) {
+                  return rowIndex;
+                }
+              }
+              return 0;
+            }
+
+            int rowIndex = findRowIndex();
+
+            if (!isGameOver && canTap && !isComputerPlaying) {
+              setState(() {
+                canTap = false;
+              });
+              Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+                setState(() {
+                  tappedIndex = null;
+                });
+              });
+              makeMove(rowIndex, columnIndex);
+              if (!isGameOver) {
+                setState(() {
+                  isComputerPlaying = true;
+                });
+                int computerMove = await player2.play();
+                makeMove(rowIndex, computerMove);
+                setState(() {
+                  isComputerPlaying = false;
+                  Future.delayed(300.milliseconds, () {
+                    setState(() {
+                      canTap = true;
+                    });
+                  });
+                });
+              }
+            }
+          },
+          onTapCancel: () {
+            setState(() {
+              tappedIndex = null;
+            });
+          },
+          child: AnimatedContainer(
+            duration: (rowIndex * 100 + 200).milliseconds,
+            height: (((35 + 10) * 7)).w,
+            width: (35 + 10 + (5 / 7)).w,
+            decoration: BoxDecoration(
+              color: (tappedIndex != null && columnIndex == tappedIndex)
+                  ? Colors.white.withOpacity(.3)
+                  : Colors.transparent,
+              // color: Colors.transparent,
+              borderRadius: BorderRadius.circular(10.sp),
+            ),
+          ),
+        ),
       ),
     );
   }
