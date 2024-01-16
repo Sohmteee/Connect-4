@@ -349,7 +349,7 @@ class _GameScreenState extends State<GameScreen> {
                         height: (((35 + 10) * 7)).w,
                         width: (35 + 10 + (5 / 7)).w,
                         decoration: BoxDecoration(
-                          color:  columnIndex == 
+                          color: (tappedIndex != null && columnIndex == tappedIndex)
                               ? Colors.white.withOpacity(.3)
                               : Colors.transparent,
                           // color: Colors.transparent,
