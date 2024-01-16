@@ -249,6 +249,7 @@ class _GameScreenState extends State<GameScreen> {
                                     end: 0,
                                     duration:
                                         (rowIndex * 100 + 100).milliseconds,
+                                    delay: 100.milliseconds,
                                     curve: Curves.bounceOut,
                                   ),
                             );
