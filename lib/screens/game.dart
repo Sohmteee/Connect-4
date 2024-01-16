@@ -35,7 +35,7 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  makeMove(int rowIndex,int columnIndex) {
+  makeMove(int rowIndex, int columnIndex) {
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
@@ -51,11 +51,10 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
 
-    Future.delayed((rowIndex * 100 + 100)
-                                                .milliseconds,)
-
-    checkWin(rowIndex);
-    checkTie(rowIndex);
+    Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+      checkWin(rowIndex);
+      checkTie(rowIndex);
+    });
   }
 
   reset() {
@@ -374,9 +373,7 @@ class _GameScreenState extends State<GameScreen> {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
       isGameOver = false;
-      restartGame(
-        rowIndex
-      );
+      restartGame(rowIndex);
     }
   }
 
