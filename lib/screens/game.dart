@@ -349,7 +349,7 @@ class _GameScreenState extends State<GameScreen> {
                         width: (35 + 10 + (5 / 7)).w,
                         decoration: BoxDecoration(
                           color: columnIndex == 4
-                              ? Colors.white.withOpacity(.5)
+                              ? Colors.white.withOpacity(.3)
                               : Colors.transparent,
                           // color: Colors.transparent,
                           borderRadius: BorderRadius.circular(10.sp),
