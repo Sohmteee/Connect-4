@@ -272,8 +272,8 @@ class _GameScreenState extends State<GameScreen> {
                                           begin: 1,
                                           end: .833333333333333333,
                                           duration: 300.milliseconds,
-                                          delay: 200.milliseconds,
-                                          curve: Curves.elasticOut,
+                                          delay: 300.milliseconds,
+                                          curve: Curves.easeOut,
                                         )
                                     : Container(
                                         width: 35.w,
