@@ -193,36 +193,19 @@ class _GameScreenState extends State<GameScreen> {
                         children: List.generate(
                           7,
                           (columnIndex) {
-                            return GestureDetector(
-                              onTap: () async {
-                                if (!isGameOver && !isComputerPlaying) {
-                                  makeMove(rowIndex, columnIndex);
-                                  if (!isGameOver) {
-                                    setState(() {
-                                      isComputerPlaying = true;
-                                    });
-                                    int computerMove = await player2.play();
-                                    makeMove(rowIndex, computerMove);
-                                    setState(() {
-                                      isComputerPlaying = false;
-                                    });
-                                  }
-                                }
-                              },
-                              child: Container(
-                                width: 35.w,
-                                height: 35.w,
-                                margin: EdgeInsets.all(5.w),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.deepPurple[400]!,
-                                      backgroundColor!,
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
+                            return Container(
+                              width: 35.w,
+                              height: 35.w,
+                              margin: EdgeInsets.all(5.w),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.deepPurple[400]!,
+                                    backgroundColor!,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 ),
                               ),
                             );
@@ -252,88 +235,71 @@ class _GameScreenState extends State<GameScreen> {
                                 color = Colors.yellow;
                               }
                             }
-                            return GestureDetector(
-                              onTap: () async {
-                                if (!isGameOver && !isComputerPlaying) {
-                                  makeMove(rowIndex, columnIndex);
-                                  if (!isGameOver) {
-                                    setState(() {
-                                      isComputerPlaying = true;
-                                    });
-                                    int computerMove = await player2.play();
-                                    makeMove(rowIndex, computerMove);
-                                    setState(() {
-                                      isComputerPlaying = false;
-                                    });
-                                  }
-                                }
-                              },
-                              child: gameBoard[rowIndex][columnIndex] == 0
-                                  ? Container(
-                                      width: 35.w,
-                                      height: 35.w,
-                                      margin: EdgeInsets.all(5.w),
-                                    ).animate().scaleXY(
-                                        end: .85,
-                                        duration: 300.milliseconds,
-                                        curve: Curves.bounceOut,
+                            return gameBoard[rowIndex][columnIndex] == 0
+                                ? Container(
+                                    width: 35.w,
+                                    height: 35.w,
+                                    margin: EdgeInsets.all(5.w),
+                                  ).animate().scaleXY(
+                                      end: .85,
+                                      duration: 300.milliseconds,
+                                      curve: Curves.bounceOut,
+                                    )
+                                : (winningPositions.contains(
+                                        Position(rowIndex, columnIndex)))
+                                    ? Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 3.sp,
+                                          ),
+                                        ),
                                       )
-                                  : (winningPositions.contains(
-                                          Position(rowIndex, columnIndex)))
-                                      ? Container(
-                                          width: 35.w,
-                                          height: 35.w,
-                                          margin: EdgeInsets.all(5.w),
-                                          decoration: BoxDecoration(
-                                            color: color,
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                              color: Colors.white,
-                                              width: 3.sp,
-                                            ),
-                                          ),
+                                        .animate()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: 1.2,
+                                          duration: 300.milliseconds,
+                                          delay: (rowIndex * 100 + 200)
+                                              .milliseconds,
+                                          curve: Curves.easeIn,
                                         )
-                                          .animate()
-                                          .scaleXY(
-                                            begin: 1,
-                                            end: 1.2,
-                                            duration: 300.milliseconds,
-                                            delay: (rowIndex * 100 + 200)
-                                                .milliseconds,
-                                            curve: Curves.easeIn,
-                                          )
-                                          .then()
-                                          .scaleXY(
-                                            begin: 1,
-                                            end: .833333333333333333,
-                                            duration: 200.milliseconds,
-                                            delay: 400.milliseconds,
-                                            curve: Curves.bounceOut,
-                                          )
-                                      : Container(
-                                          width: 35.w,
-                                          height: 35.w,
-                                          margin: EdgeInsets.all(5.w),
-                                          decoration: BoxDecoration(
-                                            color: color,
-                                            shape: BoxShape.circle,
-                                          ),
+                                        .then()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: .833333333333333333,
+                                          duration: 200.milliseconds,
+                                          delay: 400.milliseconds,
+                                          curve: Curves.bounceOut,
                                         )
-                                          .animate()
-                                          .moveY(
-                                            begin: -((35 * (7 + 2.5))).w,
-                                            end: 0,
-                                            duration: (rowIndex * 100 + 100)
-                                                .milliseconds,
-                                            delay: 100.milliseconds,
-                                            curve: Curves.bounceOut,
-                                          )
-                                          .scaleXY(
-                                            end: .85,
-                                            duration: 300.milliseconds,
-                                            curve: Curves.bounceOut,
-                                          ),
-                            );
+                                    : Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      )
+                                        .animate()
+                                        .moveY(
+                                          begin: -((35 * (7 + 2.5))).w,
+                                          end: 0,
+                                          duration: (rowIndex * 100 + 100)
+                                              .milliseconds,
+                                          delay: 100.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        )
+                                        .scaleXY(
+                                          end: .85,
+                                          duration: 300.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        );
                           },
                         ),
                       ),
@@ -344,9 +310,15 @@ class _GameScreenState extends State<GameScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     7,
-                    (columnIndex) => Container(
-                      height: (35 * (7 + 2.5)).w,
-                      width: (35 * 2.5).w,
+                    (columnIndex) => GestureDetector(
+                      onTap: () {
+
+                      },
+                      child: Container(
+                        height: (35 * (7 + 2.5)).w,
+                        width: (35 * 2.5).w,
+                        color: Colors.transparent,
+                      ),
                     ),
                   ),
                 ),
