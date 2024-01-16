@@ -91,8 +91,9 @@ class _GameScreenState extends State<GameScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Container(),
                 IconButton(
                   onPressed: () {
                     reset();
