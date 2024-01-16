@@ -348,7 +348,9 @@ class _GameScreenState extends State<GameScreen> {
             return 0;
           }
 
-          bool ca
+          bool canDropInColumn() {
+            
+          }
 
           int rowIndex = findRowIndex();
 
