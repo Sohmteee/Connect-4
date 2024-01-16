@@ -340,68 +340,69 @@ class _GameScreenState extends State<GameScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         7,
-        (columnIndex) => GestureDetector(
-          onTap: () async {
-            setState(() {
-              tappedIndex = columnIndex;
-            });
-
-            int findRowIndex() {
-              for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
-                if (gameBoard[rowIndex][columnIndex] != 0) {
-                  return rowIndex;
-                }
+        (columnIndex) {
+          int findRowIndex() {
+            for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
+              if (gameBoard[rowIndex][columnIndex] != 0) {
+                return rowIndex;
               }
-              return 0;
             }
+            return 0;
+          }
 
-            int rowIndex = findRowIndex();
-
-            if (!isGameOver && canTap && !isComputerPlaying) {
+          int rowIndex = findRowIndex();
+          return GestureDetector(
+            onTap: () async {
               setState(() {
-                canTap = false;
+                tappedIndex = columnIndex;
               });
-              Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+
+              if (!isGameOver && canTap && !isComputerPlaying) {
                 setState(() {
-                  tappedIndex = null;
+                  canTap = false;
                 });
-              });
-              makeMove(rowIndex, columnIndex);
-              if (!isGameOver) {
-                setState(() {
-                  isComputerPlaying = true;
-                });
-                int computerMove = await player2.play();
-                makeMove(rowIndex, computerMove);
-                setState(() {
-                  isComputerPlaying = false;
-                  Future.delayed(300.milliseconds, () {
-                    setState(() {
-                      canTap = true;
-                    });
+                Future.delayed((rowIndex * 100 + 100).milliseconds, () {
+                  setState(() {
+                    tappedIndex = null;
                   });
                 });
+                makeMove(rowIndex, columnIndex);
+                if (!isGameOver) {
+                  setState(() {
+                    isComputerPlaying = true;
+                  });
+                  int computerMove = await player2.play();
+                  makeMove(rowIndex, computerMove);
+                  setState(() {
+                    isComputerPlaying = false;
+                    Future.delayed(300.milliseconds, () {
+                      setState(() {
+                        canTap = true;
+                      });
+                    });
+                  });
+                }
               }
-            }
-          },
-          onTapCancel: () {
-            setState(() {
-              tappedIndex = null;
-            });
-          },
-          child: AnimatedContainer(
-            duration: (rowIndex * 100 + 200).milliseconds,
-            height: (((35 + 10) * 7)).w,
-            width: (35 + 10 + (5 / 7)).w,
-            decoration: BoxDecoration(
-              color: (tappedIndex != null && columnIndex == tappedIndex)
-                  ? Colors.white.withOpacity(.3)
-                  : Colors.transparent,
-              // color: Colors.transparent,
-              borderRadius: BorderRadius.circular(10.sp),
+            },
+            onTapCancel: () {
+              setState(() {
+                tappedIndex = null;
+              });
+            },
+            child: AnimatedContainer(
+              duration: (rowIndex * 100 + 100).milliseconds,
+              height: (((35 + 10) * 7)).w,
+              width: (35 + 10 + (5 / 7)).w,
+              decoration: BoxDecoration(
+                color: (tappedIndex != null && columnIndex == tappedIndex)
+                    ? Colors.white.withOpacity(.3)
+                    : Colors.transparent,
+                // color: Colors.transparent,
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
