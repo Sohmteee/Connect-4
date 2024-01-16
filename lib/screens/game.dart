@@ -87,7 +87,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: backgroundColor,
       body: Column(
         children: [
-          const Spacer(),
+          const Spacer(flex: 2),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
@@ -144,7 +144,7 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 3),
+          const Spacer(flex: 2),
           Center(
             child: Stack(
               alignment: Alignment.center,
