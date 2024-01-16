@@ -176,7 +176,6 @@ class _GameScreenState extends State<GameScreen> {
           Center(
             child: Stack(
               alignment: Alignment.center,
-              clipBehavior: Clip.none,
               children: [
                 Container(
                   padding: EdgeInsets.all(2.5.w),
@@ -348,7 +347,8 @@ class _GameScreenState extends State<GameScreen> {
                       child: Container(
                         height: (35 * (7 + 2.5)).w,
                         width: (35 + 10).w,
-                        color: Colors.transparent,
+                        color: Colors.green.withOpacity(.3),
+                        // color: Colors.transparent,
                       ),
                     ),
                   ),
