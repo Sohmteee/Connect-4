@@ -270,7 +270,11 @@ class _GameScreenState extends State<GameScreen> {
                                     ? SizedBox(
                                         width: 35.w,
                                         height: 35.w,
-                                      )
+                                      ).animate().scaleXY(
+                                          end: .85,
+                                          duration: 300.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        )
                                     : (winningPositions.contains(
                                             Position(rowIndex, columnIndex)))
                                         ? Container(
