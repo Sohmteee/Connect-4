@@ -197,7 +197,7 @@ class _GameScreenState extends State<GameScreen> {
                               onTap: () async {
                                 if (!isGameOver && !isComputerPlaying) {
                                   makeMove(rowIndex, columnIndex);
-                                  if (!!isGameOver) {
+                                  if (!isGameOver) {
                                     setState(() {
                                       isComputerPlaying = true;
                                     });
