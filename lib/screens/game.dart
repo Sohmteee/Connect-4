@@ -151,9 +151,8 @@ class _GameScreenState extends State<GameScreen> {
           ),
           const Spacer(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(),
+              const Spacer(flex: 5),
               Container(
                 width: 25.w,
                 height: 25.w,
@@ -171,7 +170,7 @@ class _GameScreenState extends State<GameScreen> {
                   fontSize: 16.sp,
                 ),
               ),
-              Spacer(),
+              const Spacer(flex: 6),
             ],
           ),
           const Spacer(),
