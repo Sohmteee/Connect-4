@@ -389,6 +389,11 @@ class _GameScreenState extends State<GameScreen> {
                 tappedIndex = columnIndex;
               });
             },
+            onTapUp: (details) {
+              setState(() {
+                tappedIndex = null;
+              });
+            },
             onTapCancel: () {
               setState(() {
                 tappedIndex = null;
