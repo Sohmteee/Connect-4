@@ -24,7 +24,9 @@ class _GameScreenState extends State<GameScreen> {
   late Player firstPlayer;
 
   alternatePlayer() {
-    if ()
+    if (!isGameOver) {
+      currentPlayer = currentPlayer.number == 1 ? player2 : player1;
+    }
   }
 
   List<List<int>> stringToBoard(String string) {
@@ -48,7 +50,7 @@ class _GameScreenState extends State<GameScreen> {
           Future.delayed((rowIndex * 100 + 200).milliseconds, () {
             checkWin(rowIndex);
             checkTie(rowIndex);
-          alternatePlayer();
+            alternatePlayer();
           });
         });
         break;
