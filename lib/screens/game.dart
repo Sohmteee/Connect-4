@@ -74,6 +74,7 @@ class _GameScreenState extends State<GameScreen> {
       // currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
       isGameOver = false;
+      canTap = true;
       isComputerPlaying = false;
       winningPositions.clear();
     });
@@ -322,7 +323,10 @@ class _GameScreenState extends State<GameScreen> {
 
                         int rowIndex = findRowIndex();
 
-                        if (!isGameOver && !isComputerPlaying) {
+                        if (!isGameOver && canTap && !isComputerPlaying) {
+                          setState(() {
+                            canTap = false;
+                          });
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
                             setState(() {
@@ -332,6 +336,11 @@ class _GameScreenState extends State<GameScreen> {
                             makeMove(rowIndex, computerMove);
                             setState(() {
                               isComputerPlaying = false;
+                              Future.delayed(300.milliseconds, () {
+                                setState(() {
+                            canTap = true;
+                          });
+                              })
                             });
                           }
                         }
