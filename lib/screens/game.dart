@@ -21,7 +21,7 @@ class _GameScreenState extends State<GameScreen> {
   bool isGameOver = true;
   bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
-  
+  Player firstPlayer = player1;
 
   alternatePlayer() {
     currentPlayer = currentPlayer.number == 1 ? player2 : player1;
@@ -449,5 +449,9 @@ class _GameScreenState extends State<GameScreen> {
 
   restartGame() {
     reset();
+
+    setState(() {
+firstPlayer = firstPlayer.number
+    });
   }
 }
