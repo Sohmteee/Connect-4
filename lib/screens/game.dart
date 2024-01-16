@@ -94,6 +94,7 @@ class _GameScreenState extends State<GameScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(),
+                // Image.asset('assets/images/computer.png'),
                 IconButton(
                   onPressed: () {
                     reset();
