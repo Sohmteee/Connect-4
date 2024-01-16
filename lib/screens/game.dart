@@ -16,7 +16,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
-  final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Alex');
+  final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora');
   late Player currentPlayer;
   bool isGameOver = false;
   bool isComputerPlaying = false;
