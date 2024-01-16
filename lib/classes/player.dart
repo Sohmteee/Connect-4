@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:connect4/data.dart';
+import 'package:http/http.dart' as http;
 
 class Player {
   int number;
@@ -7,7 +10,7 @@ class Player {
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
-  Future<List<int>>? getHint() {
+  Future<List<int>>? getHint() async {
     try {
       var response = await http.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
@@ -37,27 +40,10 @@ class Player {
           .toList();
 
       print('Max Index: $maxIndexes($max)');
-      return maxIndexes.length == 1
-          ? maxIndexes[0]
-          : maxIndexes[Random().nextInt(maxIndexes.length)];
+      return maxIndexes;
     } catch (e) {
       print('Error: $e');
-      int columnIndex = Random().nextInt(7);
-      List column = List.generate(
-        6,
-        (rowIndex) => gameBoard[rowIndex][columnIndex],
-      );
-
-      while (column.every((disc) => disc != 0)) {
-        columnIndex = Random().nextInt(7);
-        column = List.generate(
-          6,
-          (rowIndex) => gameBoard[rowIndex][columnIndex],
-        );
-      }
-
-      print('Played Randomly');
-      return columnIndex;
+      return null;
     }
   }
 
