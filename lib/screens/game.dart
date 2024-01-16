@@ -448,18 +448,23 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   restartGame() async {
-    reset();
+    Future.delayed(1.seconds, () { reset();
 
-    setState(()  {
+    setState(() {
       firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
       currentPlayer = firstPlayer;
-
-      if (currentPlayer == player2) {
-        isComputerPlaying = true;
-        int computerMove = await player2.play();
-        makeMove(computerMove);
-        isComputerPlaying = false;
-      }
     });
+
+    if (currentPlayer == player2) {
+      setState(() {
+        isComputerPlaying = true;
+      });
+      int computerMove = await player2.play();
+      makeMove(computerMove);
+      setState(() {
+        isComputerPlaying = false;
+      });
+    }});
+   
   }
 }
