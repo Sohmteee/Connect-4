@@ -226,12 +226,9 @@ class _GameScreenState extends State<GameScreen> {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        Colors.deepPurple[700]!,
                         Colors.deepPurple[400]!,
                         Colors.deepPurple[700]!,
                       ],
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
                     ),
                   ),
                 );
@@ -256,6 +253,7 @@ class _GameScreenState extends State<GameScreen> {
               7,
               (columnIndex) {
                 Color? color;
+                List<Color> colors;
                 if (gameBoard[rowIndex][columnIndex] != 0) {
                   if (gameBoard[rowIndex][columnIndex] == 1) {
                     color = Colors.red;
@@ -311,6 +309,14 @@ class _GameScreenState extends State<GameScreen> {
                             decoration: BoxDecoration(
                               color: color,
                               shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.deepPurple[400]!,
+                                  Colors.deepPurple[700]!,
+                                ],
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
                             ),
                           )
                             .animate()
