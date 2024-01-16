@@ -106,69 +106,166 @@ class _GameScreenState extends State<GameScreen> {
           ),
           const Spacer(flex: 5),
           Center(
-            child: Container(
-              // height: (30 * (6 + 2)).w,
-              // width: (30 * (7 + 2)).w,
-              padding: EdgeInsets.all(2.5.w),
-              decoration: BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: List.generate(
-                  7,
-                  (rowIndex) => Row(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(2.5.w),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
                       7,
-                      (columnIndex) {
-                        Color? color;
-                        if (gameBoard[rowIndex][columnIndex] != 0) {
-                          if (gameBoard[rowIndex][columnIndex] == 1) {
-                            color = Colors.red;
-                          } else if (gameBoard[rowIndex][columnIndex] == 2) {
-                            color = Colors.yellow;
-                          }
-                        }
-                        return GestureDetector(
-                          onTap: () async {
-                            if (isGameOver && !isComputerPlaying) {
-                              makeMove(columnIndex);
-                              if (isGameOver) {
-                                setState(() {
-                                  isComputerPlaying = true;
-                                });
-                                int computerMove = await player2.play();
-                                makeMove(computerMove);
-                                setState(() {
-                                  isComputerPlaying = false;
-                                });
+                      (rowIndex) => Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(
+                          7,
+                          (columnIndex) {
+                            Color? color;
+                            if (gameBoard[rowIndex][columnIndex] != 0) {
+                              if (gameBoard[rowIndex][columnIndex] == 1) {
+                                color = Colors.red;
+                              } else if (gameBoard[rowIndex][columnIndex] == 2) {
+                                color = Colors.yellow;
                               }
                             }
-                          },
-                          child: Container(
-                            width: 35.w,
-                            height: 35.w,
-                            margin: EdgeInsets.all(5.w),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.deepPurple[400]!,
-                                  backgroundColor!,
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
+                            return GestureDetector(
+                              onTap: () async {
+                                if (isGameOver && !isComputerPlaying) {
+                                  makeMove(columnIndex);
+                                  if (isGameOver) {
+                                    setState(() {
+                                      isComputerPlaying = true;
+                                    });
+                                    int computerMove = await player2.play();
+                                    makeMove(computerMove);
+                                    setState(() {
+                                      isComputerPlaying = false;
+                                    });
+                                  }
+                                }
+                              },
+                              child: Container(
+                                width: 35.w,
+                                height: 35.w,
+                                margin: EdgeInsets.all(5.w),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepPurple[400]!,
+                                      backgroundColor!,
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        );
-                      },
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+              Container(
+                  padding: EdgeInsets.all(2.5.w),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(
+                      7,
+                      (rowIndex) => Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(
+                          7,
+                          (columnIndex) {
+                            Color? color;
+                            if (gameBoard[rowIndex][columnIndex] != 0) {
+                              if (gameBoard[rowIndex][columnIndex] == 1) {
+                                color = Colors.red;
+                              } else if (gameBoard[rowIndex][columnIndex] ==
+                                  2) {
+                                color = Colors.yellow;
+                              }
+                            }
+                            return GestureDetector(
+                              onTap: () async {
+                                if (isGameOver && !isComputerPlaying) {
+                                  makeMove(columnIndex);
+                                  if (isGameOver) {
+                                    setState(() {
+                                      isComputerPlaying = true;
+                                    });
+                                    int computerMove = await player2.play();
+                                    makeMove(computerMove);
+                                    setState(() {
+                                      isComputerPlaying = false;
+                                    });
+                                  }
+                                }
+                              },
+                              child: SizedBox(
+                                child: (winningPositions.contains(
+                                        Position(rowIndex, columnIndex)))
+                                    ? Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 3.sp,
+                                          ),
+                                        ),
+                                      )
+                                        .animate()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: 1.2,
+                                          duration: 500.milliseconds,
+                                          delay: 100.milliseconds,
+                                          curve: Curves.easeInOutQuart,
+                                        )
+                                        .then()
+                                        .scaleXY(
+                                          begin: 1,
+                                          end: .833333333333333333,
+                                          duration: 300.milliseconds,
+                                          delay: 500.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        )
+                                    : Container(
+                                        width: 35.w,
+                                        height: 35.w,
+                                        margin: EdgeInsets.all(5.w),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      ),
+                              ).animate().moveY(
+                                    begin: -((35 * (7 + 2.5))).h,
+                                    end: 0,
+                                    duration: 200.milliseconds,
+                                    curve: Curves.bounceOut,
+                                  ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const Spacer(flex: 7),
