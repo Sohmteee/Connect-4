@@ -18,9 +18,10 @@ class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1);
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1);
   late Player currentPlayer;
-  bool canPlay = true;
-  bool computerIsPlaying = false;
+  bool isGameOver = true;
+  bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
+  
 
   alternatePlayer() {
     currentPlayer = currentPlayer.number == 1 ? player2 : player1;
@@ -67,8 +68,8 @@ class _GameScreenState extends State<GameScreen> {
       ];
       currentPlayer = Player(1);
       player2.lastPlayedPosition = null;
-      canPlay = true;
-      computerIsPlaying = false;
+      isGameOver = true;
+      isComputerPlaying = false;
       winningPositions.clear();
     });
   }
@@ -114,16 +115,16 @@ class _GameScreenState extends State<GameScreen> {
                         }
                         return GestureDetector(
                           onTap: () async {
-                            if (canPlay && !computerIsPlaying) {
+                            if (isGameOver && !isComputerPlaying) {
                               makeMove(columnIndex);
-                              if (canPlay) {
+                              if (isGameOver) {
                                 setState(() {
-                                  computerIsPlaying = true;
+                                  isComputerPlaying = true;
                                 });
                                 int computerMove = await player2.play();
                                 makeMove(computerMove);
                                 setState(() {
-                                  computerIsPlaying = false;
+                                  isComputerPlaying = false;
                                 });
                               }
                             }
@@ -231,7 +232,7 @@ class _GameScreenState extends State<GameScreen> {
   void checkTie() {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
-      canPlay = false;
+      isGameOver = false;
       restartGame();
     }
   }
@@ -244,7 +245,7 @@ class _GameScreenState extends State<GameScreen> {
           checkHorizontal()['winner'],
           checkHorizontal()['positions'],
         );
-        canPlay = false;
+        isGameOver = false;
         restartGame();
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
@@ -252,7 +253,7 @@ class _GameScreenState extends State<GameScreen> {
           checkVertical()['winner'],
           checkVertical()['positions'],
         );
-        canPlay = false;
+        isGameOver = false;
         restartGame();
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
@@ -260,7 +261,7 @@ class _GameScreenState extends State<GameScreen> {
           checkDiagonal()['winner'],
           checkDiagonal()['positions'],
         );
-        canPlay = false;
+        isGameOver = false;
         restartGame();
       }
     });
@@ -444,5 +445,9 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     return {};
+  }
+
+  restartGame() {
+    reset();
   }
 }
