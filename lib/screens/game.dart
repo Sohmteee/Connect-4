@@ -191,7 +191,7 @@ class _GameScreenState extends State<GameScreen> {
                                     begin: ((35 * (7 + 2.5)) -
                                             ((35 + 5) * rowIndex))
                                         .w,
-                                    end: 0,
+                                    end: 1,
                                     duration: 200.milliseconds,
                                     curve: Curves.bounceOut,
                                   ),
