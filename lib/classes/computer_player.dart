@@ -30,8 +30,10 @@ class ComputerPlayer extends Player {
       debugPrint('Response body: $moves');
 
       // iterate through the map and find the largest value
-      int max = 0;
+      int max = moves['0'];
       List<int> maxIndexes = [];
+
+      for (int n in )
 
       max = moves.values.fold(moves['0'], (prev, element) {
         int intValue = moves['0'];
