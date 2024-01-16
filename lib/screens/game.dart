@@ -144,7 +144,7 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 5),
+          const Spacer(flex: 3),
           Center(
             child: Stack(
               alignment: Alignment.center,
@@ -304,7 +304,9 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           const Spacer(flex: 6),
-          Row(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
               IconButton(
                 onPressed: () {
                   reset();
@@ -313,7 +315,8 @@ class _GameScreenState extends State<GameScreen> {
                 color: Colors.white,
                 iconSize: 25.sp,
               ),
-            ],),
+            ],
+          ),
           const Spacer(),
         ],
       ),
