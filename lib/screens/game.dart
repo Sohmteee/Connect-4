@@ -23,6 +23,7 @@ class _GameScreenState extends State<GameScreen> {
   bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
   late Player firstPlayer;
+  int? tappedIndex;
 
   alternatePlayer() {
     if (!isGameOver) {
@@ -348,7 +349,7 @@ class _GameScreenState extends State<GameScreen> {
                         height: (((35 + 10) * 7)).w,
                         width: (35 + 10 + (5 / 7)).w,
                         decoration: BoxDecoration(
-                          color: columnIndex == 4
+                          color:  columnIndex == 
                               ? Colors.white.withOpacity(.3)
                               : Colors.transparent,
                           // color: Colors.transparent,
