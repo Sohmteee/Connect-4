@@ -313,7 +313,7 @@ class _GameScreenState extends State<GameScreen> {
                     (columnIndex) => GestureDetector(
                       onTap: () async {
                         setState(() {
-                          tappedIndex 
+                          tappedIndex = columnIndex;
                         });
 
                         int findRowIndex() {
@@ -349,6 +349,12 @@ class _GameScreenState extends State<GameScreen> {
                           }
                         }
                       },
+                      onTapCancel: () {
+                        setState(() {
+                          tappedIndex = null;
+                        });
+                      },
+                      
                       child: Container(
                         height: (((35 + 10) * 7)).w,
                         width: (35 + 10 + (5 / 7)).w,
