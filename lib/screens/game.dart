@@ -207,7 +207,9 @@ class _GameScreenState extends State<GameScreen> {
                                   }
                                 }
                               },
-                              child: Container(
+                              child: gameBoard[rowIndex][columnIndex] == 0 ? Container(
+                                width: 35.w,
+                                height: 35.w,)  Container(
                                 width: 35.w,
                                 height: 35.w,
                                 margin: EdgeInsets.all(5.w),
