@@ -346,6 +346,7 @@ class _GameScreenState extends State<GameScreen> {
                     7,
                     (columnIndex) => Container(
                       height: (35 * (7 + 2.5)).w,
+                      width: (35 * 2.5).w,
                     ),
                   ),
                 ),
