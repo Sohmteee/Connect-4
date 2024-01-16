@@ -282,6 +282,11 @@ class _GameScreenState extends State<GameScreen> {
                             decoration: BoxDecoration(
                               color: color,
                               shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: colors,
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
                               border: Border.all(
                                 color: Colors.white,
                                 width: 3.sp,
