@@ -298,7 +298,8 @@ class _GameScreenState extends State<GameScreen> {
                                             begin: 1,
                                             end: 1.2,
                                             duration: 300.milliseconds,
-                                            delay: 100.milliseconds,
+                                            delay: (rowIndex * 100 + 200)
+                                                .milliseconds,
                                             curve: Curves.easeIn,
                                           )
                                           .then()
