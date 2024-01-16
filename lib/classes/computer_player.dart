@@ -34,7 +34,10 @@ class ComputerPlayer extends Player {
         return intValue > prev ? intValue : prev;
       });
 
-      maxIndex = 
+      maxIndex = int.parse(moves.entries.firstWhere((element) {
+        int intValue = int.tryParse(element.value.toString()) ?? 0;
+        return intValue == max;
+      }).key);
 
       print('Max Index: $maxIndex($max)');
       return maxIndex;
