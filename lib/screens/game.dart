@@ -265,7 +265,7 @@ class _GameScreenState extends State<GameScreen> {
                                           duration: 300.milliseconds,
                                           delay: (rowIndex * 100 + 200)
                                               .milliseconds,
-                                          curve: Curves.elasticOut,
+                                          curve: Curves.easeIn,
                                         )
                                         .then()
                                         .scaleXY(
@@ -273,7 +273,7 @@ class _GameScreenState extends State<GameScreen> {
                                           end: .833333333333333333,
                                           duration: 200.milliseconds,
                                           delay: 400.milliseconds,
-                                          curve: Curves.bounceOut,
+                                          curve: Curves.elasticOut,
                                         )
                                     : Container(
                                         width: 35.w,
