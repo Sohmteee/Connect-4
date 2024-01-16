@@ -224,13 +224,13 @@ class _GameScreenState extends State<GameScreen> {
                   margin: EdgeInsets.all(5.w),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.deepPurple[600]!;
-                    /* gradient: RadialGradient(
+                    color: Colors.dee
+                    gradient: RadialGradient(
                       colors: [
                         Colors.deepPurple[400]!,
                         Colors.deepPurple[700]!,
                       ],
-                    ), */
+                    ),
                   ),
                 );
               },
