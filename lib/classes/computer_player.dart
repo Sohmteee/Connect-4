@@ -34,6 +34,8 @@ class ComputerPlayer extends Player {
         return intValue > prev ? intValue : prev;
       });
 
+      maxIndex = 
+
       print('Max Index: $maxIndex($max)');
       return maxIndex;
     } catch (e) {
