@@ -18,7 +18,7 @@ class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Alex');
   late Player currentPlayer;
-  bool isGameOver = true;
+  bool isGameOver = false;
   bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
   late Player firstPlayer;
@@ -71,7 +71,7 @@ class _GameScreenState extends State<GameScreen> {
       // firstPlayer = player1;
       // currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
-      isGameOver = true;
+      !isGameOver = false;
       isComputerPlaying = false;
       winningPositions.clear();
     });
@@ -195,9 +195,9 @@ class _GameScreenState extends State<GameScreen> {
                           (columnIndex) {
                             return GestureDetector(
                               onTap: () async {
-                                if (isGameOver && !isComputerPlaying) {
+                                if (!isGameOver && !isComputerPlaying) {
                                   makeMove(rowIndex, columnIndex);
-                                  if (isGameOver) {
+                                  if (!!isGameOver) {
                                     setState(() {
                                       isComputerPlaying = true;
                                     });
@@ -254,9 +254,9 @@ class _GameScreenState extends State<GameScreen> {
                             }
                             return GestureDetector(
                               onTap: () async {
-                                if (isGameOver && !isComputerPlaying) {
+                                if (!isGameOver && !isComputerPlaying) {
                                   makeMove(rowIndex, columnIndex);
-                                  if (isGameOver) {
+                                  if (!isGameOver) {
                                     setState(() {
                                       isComputerPlaying = true;
                                     });
