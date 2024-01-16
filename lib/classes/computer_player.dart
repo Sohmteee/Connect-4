@@ -25,9 +25,6 @@ class ComputerPlayer extends Player {
             'board_data': boardToString(),
             'player': number.toString(),
           });
-            var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-      var uri = Uri.parse(decodedResponse['uri'] as String);
-
 
       Map<String, dynamic> moves = jsonDecode(response.body);
       debugPrint('Response body: $moves');
@@ -71,6 +68,8 @@ class ComputerPlayer extends Player {
 
       debugPrint('Played Randomly');
       return columnIndex;
+    } finally {
+      client.close();
     }
   }
 }
