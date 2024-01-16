@@ -124,14 +124,6 @@ class _GameScreenState extends State<GameScreen> {
                         children: List.generate(
                           7,
                           (columnIndex) {
-                            Color? color;
-                            if (gameBoard[rowIndex][columnIndex] != 0) {
-                              if (gameBoard[rowIndex][columnIndex] == 1) {
-                                color = Colors.red;
-                              } else if (gameBoard[rowIndex][columnIndex] == 2) {
-                                color = Colors.yellow;
-                              }
-                            }
                             return GestureDetector(
                               onTap: () async {
                                 if (isGameOver && !isComputerPlaying) {
@@ -171,7 +163,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ),
-              Container(
+                Container(
                   padding: EdgeInsets.all(2.5.w),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
