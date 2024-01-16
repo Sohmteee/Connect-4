@@ -188,10 +188,10 @@ class _GameScreenState extends State<GameScreen> {
                                         ),
                                       ),
                               ).animate().slideY(
-                                    begin: ((35 * (7 + 2.5)) -
+                                    begin: -((35 * (7 + 2.5)) -
                                             ((35 + 5) * rowIndex))
                                         .w,
-                                    end: 1,
+                                    end: 0,
                                     duration: 200.milliseconds,
                                     curve: Curves.bounceOut,
                                   ),
