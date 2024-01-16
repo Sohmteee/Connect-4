@@ -339,8 +339,8 @@ class _GameScreenState extends State<GameScreen> {
                       },
                       child: Container(
                         height: (35 * (7 + 2.5)).w,
-                        width: (35 * 2.5).w,
-                        color: Colors.transparent,
+                        width: (35 + 10).w,
+                        color: Colors.red,
                       ),
                     ),
                   ),
