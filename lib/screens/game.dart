@@ -340,9 +340,14 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: (35 * (7 + 2.5)).w,
-                  child: Row(children: List.generate(7, (columnIndex) => null)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    7,
+                    (columnIndex) => Container(
+                      height: (35 * (7 + 2.5)).w,
+                    ),
+                  ),
                 ),
               ],
             ),
