@@ -87,7 +87,20 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: backgroundColor,
       body: Column(
         children: [
-          const Spacer(flex: 2),
+          const Spacer(),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  reset();
+                },
+                icon: const Icon(Icons.restart_alt_rounded),
+                color: Colors.white,
+                iconSize: 40.sp,
+              ),
+            ],
+          ),
+          const Spacer(),
           Center(
             child: Container(
               // height: (30 * (6 + 2)).w,
@@ -206,18 +219,7 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
           ),
-          const Spacer(),
-          Center(
-            child: IconButton(
-              onPressed: () {
-                reset();
-              },
-              icon: const Icon(Icons.restart_alt_rounded),
-              color: Colors.white,
-              iconSize: 40.sp,
-            ),
-          ),
-          const Spacer(),
+          const Spacer(flex: 2),
         ],
       ),
     );
