@@ -228,7 +228,10 @@ class _GameScreenState extends State<GameScreen> {
                       colors: [
                         Colors.deepPurple[700]!,
                         Colors.deepPurple[400]!,
+                        Colors.deepPurple[700]!,
                       ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
                     ),
                   ),
                 );
