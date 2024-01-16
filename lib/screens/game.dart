@@ -312,7 +312,14 @@ class _GameScreenState extends State<GameScreen> {
                     7,
                     (columnIndex) => GestureDetector(
                       onTap: () async {
-                        int rowIndex = 
+                        findTopmostDiscIndex() {
+                          for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
+                            if (gameBoard[rowIndex][columnIndex]!= 0) {
+                              return rowIndex;
+                            }
+                          }
+                          return 0;
+                        }
                         if (!isGameOver && !isComputerPlaying) {
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
