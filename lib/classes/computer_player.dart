@@ -52,6 +52,7 @@ class ComputerPlayer extends Player {
           : maxIndexes[Random().nextInt(maxIndexes.length)];
     } catch (e) {
       debugPrint('Error: $e');
+      debugPrint('Playing offline...');
       return offlinePlay();
     } finally {
       client.close();
@@ -376,7 +377,3 @@ class ComputerPlayer extends Player {
     return columnIndex;
   }
 }
-
-
-
-
