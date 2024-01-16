@@ -232,6 +232,7 @@ class _GameScreenState extends State<GameScreen> {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
       canPlay = false;
+      restartGame();
     }
   }
 
@@ -244,6 +245,7 @@ class _GameScreenState extends State<GameScreen> {
           checkHorizontal()['positions'],
         );
         canPlay = false;
+        restartGame();
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
         highlightWinningPositions(
@@ -251,6 +253,7 @@ class _GameScreenState extends State<GameScreen> {
           checkVertical()['positions'],
         );
         canPlay = false;
+        restartGame();
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
         highlightWinningPositions(
@@ -258,6 +261,7 @@ class _GameScreenState extends State<GameScreen> {
           checkDiagonal()['positions'],
         );
         canPlay = false;
+        restartGame();
       }
     });
   }
