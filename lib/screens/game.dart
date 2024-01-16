@@ -94,65 +94,55 @@ class _GameScreenState extends State<GameScreen> {
       body: Column(
         children: [
           const Spacer(flex: 2),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/computer.png',
-                            height: 40.h,
-                            width: 40.w,
-                          ),
-                          SizedBox(height: 5.h),
-                          Text(
-                            player2.name!,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                        ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 100.w),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/computer.png',
+                      height: 40.h,
+                      width: 40.w,
+                    ),
+                    SizedBox(height: 5.h),
+                    Text(
+                      player2.name!,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
-                          child: Text(
-                            '${player2.score} - ${player1.score}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/player.png',
-                            height: 40.h,
-                            width: 40.w,
-                          ),
-                          SizedBox(height: 5.h),
-                          Text(
-                            player1.name!,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
+                  child: Text(
+                    '${player2.score} - ${player1.score}',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                    ),
                   ),
-                ],
-              ),
+                ),
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/player.png',
+                      height: 40.h,
+                      width: 40.w,
+                    ),
+                    SizedBox(height: 5.h),
+                    Text(
+                      player1.name!,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           const Spacer(),
