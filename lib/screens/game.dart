@@ -451,7 +451,19 @@ class _GameScreenState extends State<GameScreen> {
     reset();
 
     setState(() {
-firstPlayer = firstPlayer.number
+firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
+      currentPlayer = firstPlayer;
+
+      if (currentPlayer == player2) {
+        setState(() {
+                                  isComputerPlaying = true;
+                                });
+                                int computerMove = await player2.play();
+                                makeMove(computerMove);
+                                setState(() {
+                                  isComputerPlaying = false;
+                                });
+      }
     });
   }
 }
