@@ -257,8 +257,10 @@ class _GameScreenState extends State<GameScreen> {
                 if (gameBoard[rowIndex][columnIndex] != 0) {
                   if (gameBoard[rowIndex][columnIndex] == 1) {
                     color = Colors.red;
+                    colors = [Colors.red[400]!, Colors.red[700]!];
                   } else if (gameBoard[rowIndex][columnIndex] == 2) {
                     color = Colors.yellow;
+                colors = [color![400]!, color![700]!];
                   }
                 }
                 return gameBoard[rowIndex][columnIndex] == 0
