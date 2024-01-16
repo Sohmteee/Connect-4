@@ -188,7 +188,7 @@ class _GameScreenState extends State<GameScreen> {
                                           shape: BoxShape.circle,
                                         ),
                                       ),
-                              ).animate().slideY(
+                              ).animate().moveY(
                                     begin: -((35 * (7 + 2.5))).h,
                                     end: 0,
                                     duration: 200.milliseconds,
