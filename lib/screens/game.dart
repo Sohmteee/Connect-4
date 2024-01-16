@@ -66,7 +66,8 @@ class _GameScreenState extends State<GameScreen> {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
       ];
-      currentPlayer = Player(1);
+      firstPlayer = Player(1);
+      currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
       isGameOver = true;
       isComputerPlaying = false;
@@ -334,7 +335,7 @@ class _GameScreenState extends State<GameScreen> {
             children: [
               IconButton(
                 onPressed: () {
-                  restartGame();
+                  reset();
                 },
                 icon: const Icon(Icons.restart_alt_rounded),
                 color: Colors.white,
