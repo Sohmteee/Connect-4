@@ -303,7 +303,18 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 7),
+          const Spacer(flex: 6),
+          Row(children: [
+              IconButton(
+                onPressed: () {
+                  reset();
+                },
+                icon: const Icon(Icons.restart_alt_rounded),
+                color: Colors.white,
+                iconSize: 25.sp,
+              ),
+            ],),
+          const Spacer(),
         ],
       ),
     );
