@@ -348,7 +348,9 @@ class _GameScreenState extends State<GameScreen> {
                           height: (((35 + 10) * 7) + 5).w,
                           width: (35 + 10 + (5 / 7)).w,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(.3),
+                            color: columnIndex == 4
+                                ? Colors.white.withOpacity(.6)
+                                : Colors.transparent,
                             // color: Colors.transparent,
                             borderRadius: (columnIndex == 0)
                                 ? BorderRadius.horizontal(
@@ -356,7 +358,7 @@ class _GameScreenState extends State<GameScreen> {
                                 : (columnIndex == 6)
                                     ? BorderRadius.horizontal(
                                         right: Radius.circular(10.r))
-                                    : null,
+                                    : Border,
                           )),
                     ),
                   ),
