@@ -146,7 +146,7 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(),
+          const Spacer(flex: 2),
           Row(
             children: [
               const Spacer(flex: 5),
@@ -346,7 +346,7 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 5),
+          const Spacer(flex: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
