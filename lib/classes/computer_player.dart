@@ -5,7 +5,6 @@ import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
 
 class ComputerPlayer extends Player {
@@ -59,7 +58,8 @@ class ComputerPlayer extends Player {
       // return (play());
       debugPrint('Error: $e');
       debugPrint('Playing offline...');
-      return Future.delayed(400.milliseconds, () => offlinePlay());
+
+      return offlinePlay();
     } finally {
       client.close();
     }
