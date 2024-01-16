@@ -58,7 +58,8 @@ class ComputerPlayer extends Player {
       // return (play());
       debugPrint('Error: $e');
       debugPrint('Playing offline...');
-      return offlinePlay();
+      Future.delayed(400.milliseconds, () {
+      return offlinePlay();});
     } finally {
       client.close();
     }
