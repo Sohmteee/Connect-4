@@ -349,15 +349,18 @@ class _GameScreenState extends State<GameScreen> {
           }
 
           bool canDropInColumn() => List.generate(
-              7,
-              (rowIndex) => gameBoard[rowIndex][columnIndex],
-            ).contains(0);
+                7,
+                (rowIndex) => gameBoard[rowIndex][columnIndex],
+              ).contains(0);
 
           int rowIndex = findRowIndex();
 
           return GestureDetector(
             onTap: () async {
-              if (!isGameOver && canTap && !isComputerPlaying && canDropInColumn()) {
+              if (!isGameOver &&
+                  canTap &&
+                  !isComputerPlaying &&
+                  canDropInColumn()) {
                 setState(() {
                   canTap = false;
                 });
