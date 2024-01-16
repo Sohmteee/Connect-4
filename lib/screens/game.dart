@@ -346,6 +346,7 @@ class _GameScreenState extends State<GameScreen> {
           checkHorizontal()['winner'],
           checkHorizontal()['positions'],
         );
+        checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
         restartGame();
       } else if (checkVertical().isNotEmpty) {
@@ -354,6 +355,7 @@ class _GameScreenState extends State<GameScreen> {
           checkVertical()['winner'],
           checkVertical()['positions'],
         );
+        checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
         restartGame();
       } else if (checkDiagonal().isNotEmpty) {
@@ -362,6 +364,7 @@ class _GameScreenState extends State<GameScreen> {
           checkDiagonal()['winner'],
           checkDiagonal()['positions'],
         );
+        checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
         restartGame();
       }
