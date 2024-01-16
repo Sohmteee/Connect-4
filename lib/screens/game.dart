@@ -19,12 +19,13 @@ class _GameScreenState extends State<GameScreen> {
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora');
   late Player currentPlayer;
   bool isGameOver = false;
+  bool canTap = true;
   bool isComputerPlaying = false;
   PositionsList winningPositions = PositionsList([]);
   late Player firstPlayer;
 
   alternatePlayer() {
-    if (!isGameOver) {
+    if (!isGameOver && canTap) {
       currentPlayer = currentPlayer.number == 1 ? player2 : player1;
     }
   }
