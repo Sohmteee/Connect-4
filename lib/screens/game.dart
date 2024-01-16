@@ -36,12 +36,10 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeMove(int columnIndex) {
-    List newGameBoard = List.from(gameBoard);
-
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
-      if (newGameBoard[rowIndex][columnIndex] == 0) {
+      if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
-          newGameBoard[rowIndex][columnIndex] = currentPlayer.number;
+          gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
           if (currentPlayer.number == player2.number) {
@@ -52,10 +50,6 @@ class _GameScreenState extends State<GameScreen> {
         break;
       }
     }
-
-    setState(() {
-      gameBoard = newGameBoard;
-    });
 
     checkWin();
     checkTie();
