@@ -366,14 +366,14 @@ class ComputerPlayer extends Player {
   int playRandom() {
     int columnIndex = Random().nextInt(7);
     List column = List.generate(
-      6,
+      7,
       (rowIndex) => gameBoard[rowIndex][columnIndex],
     );
 
     while (column.every((disc) => disc != 0)) {
       columnIndex = Random().nextInt(7);
       column = List.generate(
-        6,
+        7,
         (rowIndex) => gameBoard[rowIndex][columnIndex],
       );
     }
