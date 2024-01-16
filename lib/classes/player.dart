@@ -11,7 +11,7 @@ class Player {
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
-  Future<List<int>> getHint() async {
+  Future<List<int>> getHints() async {
     try {
       var response = await http.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
