@@ -226,8 +226,8 @@ class _GameScreenState extends State<GameScreen> {
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                       colors: [
-                        Colors.deepPurple[400]!,
-                        backgroundColor!,
+                        Colors.deepPurple,
+                        Colors.deepPurple[700]!,
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
