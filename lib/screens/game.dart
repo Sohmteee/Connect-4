@@ -87,7 +87,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: backgroundColor,
       body: Column(
         children: [
-          const Spacer(flex: 2),
+          const Spacer(flex: 1),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
@@ -145,6 +145,10 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           const Spacer(flex: 2),
+          Text(
+            '${currentPlayer.name} to play',
+          ),
+          const Spacer(),
           Center(
             child: Stack(
               alignment: Alignment.center,
