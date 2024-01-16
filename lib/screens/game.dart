@@ -24,7 +24,7 @@ class _GameScreenState extends State<GameScreen> {
   late Player firstPlayer;
 
   alternatePlayer() {
-    currentPlayer = currentPlayer.number == 1 ? player2 : player1;
+    if ()
   }
 
   List<List<int>> stringToBoard(String string) {
@@ -45,16 +45,15 @@ class _GameScreenState extends State<GameScreen> {
           if (currentPlayer.number == player2.number) {
             player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           }
+          Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+            checkWin(rowIndex);
+            checkTie(rowIndex);
           alternatePlayer();
+          });
         });
         break;
       }
     }
-
-    Future.delayed((rowIndex * 100 + 200).milliseconds, () {
-      checkWin(rowIndex);
-      checkTie(rowIndex);
-    });
   }
 
   reset() {
