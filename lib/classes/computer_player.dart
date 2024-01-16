@@ -33,12 +33,14 @@ class ComputerPlayer extends Player {
       int max = moves['0'];
       List<int> maxIndexes = [];
 
-      for (int n in )
-
-      max = moves.values.fold(moves['0'], (prev, element) {
-        int intValue = moves['0'];
-        return intValue > prev ? intValue : prev;
-      });
+      for (int move in moves.values) {
+        if (move > max) {
+          max = move;
+          maxIndexes = [int.parse(moves.keys.first)];
+        } else if (move == max) {
+          maxIndexes.add(int.parse(moves.keys.first));
+        }
+      }
 
       maxIndexes = moves.entries
           .where((element) {
