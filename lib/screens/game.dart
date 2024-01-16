@@ -390,7 +390,7 @@ class _GameScreenState extends State<GameScreen> {
               });
             },
             child: AnimatedContainer(
-              duration: (rowIndex * 100 + 100).milliseconds,
+              duration: 200.milliseconds,
               height: (((35 + 10) * 7)).w,
               width: (35 + 10 + (5 / 7)).w,
               decoration: BoxDecoration(
