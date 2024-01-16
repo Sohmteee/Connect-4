@@ -351,19 +351,12 @@ class _GameScreenState extends State<GameScreen> {
           int rowIndex = findRowIndex();
           return GestureDetector(
             onTap: () async {
-              /* setState(() {
-                tappedIndex = columnIndex;
-              }); */
+              
 
               if (!isGameOver && canTap && !isComputerPlaying) {
                 setState(() {
                   canTap = false;
                 });
-                /* Future.delayed((rowIndex * 100 + 100).milliseconds, () {
-                  setState(() {
-                    tappedIndex = null;
-                  });
-                }); */
                 makeMove(rowIndex, columnIndex);
                 if (!isGameOver) {
                   setState(() {
