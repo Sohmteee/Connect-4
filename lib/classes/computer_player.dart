@@ -53,7 +53,7 @@ class ComputerPlayer extends Player {
     } catch (e) {
       debugPrint('Error: $e');
       debugPrint('Playing offline...');
-      debugPrint()
+      debugPrint(boardToString());
       return offlinePlay();
     } finally {
       client.close();
