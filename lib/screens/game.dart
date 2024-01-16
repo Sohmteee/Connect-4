@@ -288,7 +288,7 @@ class _GameScreenState extends State<GameScreen> {
                                       )
                                         .animate()
                                         .moveY(
-                                          begin: -((35 * (7 + 2.5))).w,
+                                          begin: -((35 * (rowIndex + 2))).w,
                                           end: 0,
                                           duration: (rowIndex * 100 + 100)
                                               .milliseconds,
