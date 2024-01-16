@@ -345,16 +345,17 @@ class _GameScreenState extends State<GameScreen> {
                         }
                       },
                       child: Container(
-                          height: (((35 + 10) * 7) + 5).w,
-                          width: (35 + 10 + (5 / 7)).w,
-                          padding: EdgeInsets.all(2.5.w),
-                          decoration: BoxDecoration(
-                            color: columnIndex == 4
-                                ? Colors.white.withOpacity(.6)
-                                : Colors.transparent,
-                            // color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(10.sp),
-                          ),),
+                        height: (((35 + 10) * 7) + 5).w,
+                        width: (35 + 10 + (5 / 7)).w,
+                        margin: EdgeInsets.all(2.5.w),
+                        decoration: BoxDecoration(
+                          color: columnIndex == 4
+                              ? Colors.white.withOpacity(.6)
+                              : Colors.transparent,
+                          // color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(10.sp),
+                        ),
+                      ),
                     ),
                   ),
                 ),
