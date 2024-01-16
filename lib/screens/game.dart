@@ -87,7 +87,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: backgroundColor,
       body: Column(
         children: [
-          const Spacer(flex: 1),
+          const Spacer(flex: 2),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
@@ -144,13 +144,18 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 2),
-          Text(
-            '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.sp,
-            ),
+          const Spacer(),
+          Row(
+            children: [
+              Text(
+                '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.sp,
+                ),
+              ),
+              SizedBox(width)
+            ],
           ),
           const Spacer(),
           Center(
