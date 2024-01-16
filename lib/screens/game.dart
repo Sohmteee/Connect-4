@@ -243,19 +243,18 @@ class _GameScreenState extends State<GameScreen> {
                                           shape: BoxShape.circle,
                                         ),
                                       )
-                                        .animate() /* .moveY(
+                                        .animate() .moveY(
                                         begin: -((35 * (7 + 2.5))).h,
                                         end: 0,
                                         duration:
                                             (rowIndex * 100 + 100).milliseconds,
                                         delay: 100.milliseconds,
                                         curve: Curves.bounceOut,
-                                      ), */
+                                      )
                                         .scaleXY(
                                           begin: 1,
                                           end: .833333333333333333,
                                           duration: 300.milliseconds,
-                                          delay: 500.milliseconds,
                                           curve: Curves.bounceOut,
                                         ));
                           },
