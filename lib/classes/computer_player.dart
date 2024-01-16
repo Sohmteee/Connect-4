@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/data.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ComputerPlayer extends Player {
@@ -21,7 +22,7 @@ class ComputerPlayer extends Player {
           });
 
       Map<String, dynamic> moves = jsonDecode(response.body);
-      print('Response body: $moves');
+      debugPrint('Response body: $moves');
 
       // iterate through the map and find the largest value
       int max = 0;
@@ -40,12 +41,12 @@ class ComputerPlayer extends Player {
           .map((element) => int.parse(element.key))
           .toList();
 
-      print('Max Index: $maxIndexes($max)');
+      debugPrint('Max Index: $maxIndexes($max)');
       return maxIndexes.length == 1
           ? maxIndexes[0]
           : maxIndexes[Random().nextInt(maxIndexes.length)];
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
       int columnIndex = Random().nextInt(7);
       List column = List.generate(
         6,
@@ -60,7 +61,7 @@ class ComputerPlayer extends Player {
         );
       }
 
-      print('Played Randomly');
+      debugPrint('Played Randomly');
       return columnIndex;
     }
   }
