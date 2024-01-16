@@ -116,7 +116,7 @@ class ComputerPlayer extends Player {
 
   /// Method to check if the cell has support from the bottom
   bool hasSupport(int rowIndex, int columnIndex) {
-    return (rowIndex == 5) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
+    return (rowIndex == 6) ? true : gameBoard[rowIndex + 1][columnIndex] != 0;
   }
 
   int? randomizeClosePlay() {
