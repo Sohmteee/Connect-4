@@ -95,58 +95,7 @@ class _GameScreenState extends State<GameScreen> {
       body: Column(
         children: [
           const Spacer(flex: 2),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 90.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/computer.png',
-                      height: 40.h,
-                      width: 40.w,
-                    ),
-                    SizedBox(height: 5.h),
-                    Text(
-                      player2.name!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
-                  child: Text(
-                    '${player2.score} - ${player1.score}',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/player.png',
-                      height: 40.h,
-                      width: 40.w,
-                    ),
-                    SizedBox(height: 5.h),
-                    Text(
-                      player1.name!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          buildTurn(),
           const Spacer(flex: 2),
           Row(
             children: [
@@ -200,6 +149,61 @@ class _GameScreenState extends State<GameScreen> {
         ],
       ),
     );
+  }
+
+  Padding buildTurn() {
+    return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 90.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/computer.png',
+                    height: 40.h,
+                    width: 40.w,
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    player2.name!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
+                child: Text(
+                  '${player2.score} - ${player1.score}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/player.png',
+                    height: 40.h,
+                    width: 40.w,
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    player1.name!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
   }
 
   Container buildBoard() {
