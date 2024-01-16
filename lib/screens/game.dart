@@ -157,7 +157,7 @@ class _GameScreenState extends State<GameScreen> {
                   fontSize: 16.sp,
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: 5.w),
               Container(
                 width: 25.w,
                 height: 25.w,
