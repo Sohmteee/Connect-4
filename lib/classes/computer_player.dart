@@ -17,13 +17,17 @@ class ComputerPlayer extends Player {
   });
 
   Future<int> play() async {
+    var client = http.Client();
     try {
-      var response = await http.post(
+      var response = await client.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
           body: {
             'board_data': boardToString(),
             'player': number.toString(),
           });
+            var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      var uri = Uri.parse(decodedResponse['uri'] as String);
+
 
       Map<String, dynamic> moves = jsonDecode(response.body);
       debugPrint('Response body: $moves');
