@@ -334,7 +334,7 @@ class _GameScreenState extends State<GameScreen> {
             children: [
               IconButton(
                 onPressed: () {
-                  reset();
+                  restartGame();
                 },
                 icon: const Icon(Icons.restart_alt_rounded),
                 color: Colors.white,
