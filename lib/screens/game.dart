@@ -267,9 +267,10 @@ class _GameScreenState extends State<GameScreen> {
                                 }
                               },
                               child: gameBoard[rowIndex][columnIndex] == 0
-                                  ? SizedBox(
+                                  ? Container(
                                       width: 35.w,
                                       height: 35.w,
+                                      margin: EdgeInsets.all(5.w),
                                     ).animate().scaleXY(
                                         end: .85,
                                         duration: 300.milliseconds,
