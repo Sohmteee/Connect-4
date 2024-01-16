@@ -66,7 +66,7 @@ class _GameScreenState extends State<GameScreen> {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
       ];
-      firstPlayer = Player(1);
+      firstPlayer = player1;
       currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
       isGameOver = true;
