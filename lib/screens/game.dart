@@ -51,8 +51,11 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
 
-    checkWin();
-    checkTie();
+    Future.delayed((rowIndex * 100 + 100)
+                                                .milliseconds,)
+
+    checkWin(rowIndex);
+    checkTie(rowIndex);
   }
 
   reset() {
@@ -367,15 +370,17 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  void checkTie() {
+  void checkTie(int rowIndex) {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
       isGameOver = false;
-      restartGame();
+      restartGame(
+        rowIndex
+      );
     }
   }
 
-  void checkWin() {
+  void checkWin(int rowIndex) {
     setState(() {
       if (checkHorizontal().isNotEmpty) {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
@@ -385,7 +390,7 @@ class _GameScreenState extends State<GameScreen> {
         );
         checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
-        restartGame();
+        restartGame(rowIndex);
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
         highlightWinningPositions(
@@ -394,7 +399,7 @@ class _GameScreenState extends State<GameScreen> {
         );
         checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
-        restartGame();
+        restartGame(rowIndex);
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
         highlightWinningPositions(
@@ -403,7 +408,7 @@ class _GameScreenState extends State<GameScreen> {
         );
         checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
         isGameOver = false;
-        restartGame();
+        restartGame(rowIndex);
       }
     });
   }
