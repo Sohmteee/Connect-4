@@ -348,7 +348,7 @@ class _GameScreenState extends State<GameScreen> {
                           height: (((35 + 10) * 7) + 5).w,
                           width: (35 + 10 + (5 / 7)).w,
                           decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(.3),
+                            color: Colors.white.withOpacity(.3),
                             // color: Colors.transparent,
                             borderRadius: (columnIndex == 0)
                                 ? BorderRadius.horizontal(
