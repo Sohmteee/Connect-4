@@ -331,7 +331,7 @@ class _GameScreenState extends State<GameScreen> {
                           setState(() {
                             canTap = false;
                           });
-                          Future.delayed()
+                          Future.delayed((rowIndex * 100 + 200).duration, )
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
                             setState(() {
