@@ -27,14 +27,14 @@ class ComputerPlayer extends Player {
 
       // iterate through the map and find the largest value
       int max = 0;
-      int maxIndex = 0;
+      List<int> maxIndex = [];
 
       max = moves.values.fold(0, (prev, element) {
         int intValue = int.tryParse(element.toString()) ?? 0;
         return intValue > prev ? intValue : prev;
       });
 
-      maxIndex = int.parse(moves.entries.firstWhere((element) {
+      maxIndex = int.parse(moves.entries.where((element) {
         int intValue = int.tryParse(element.value.toString()) ?? 0;
         return intValue == max;
       }).key);
