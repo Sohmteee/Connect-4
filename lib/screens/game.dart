@@ -331,7 +331,12 @@ class _GameScreenState extends State<GameScreen> {
                           setState(() {
                             canTap = false;
                           });
-                          Future.delayed((rowIndex * 100 + 200).duration, )
+                          Future.delayed((rowIndex * 100 + 200).milliseconds,
+                              () {
+                            setState(() {
+                              tappedIndex = null;
+                            });
+                          });
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
                             setState(() {
@@ -355,7 +360,7 @@ class _GameScreenState extends State<GameScreen> {
                           tappedIndex = null;
                         });
                       },
-                      child: Container(
+                      child: AnimatedContainer(
                         height: (((35 + 10) * 7)).w,
                         width: (35 + 10 + (5 / 7)).w,
                         decoration: BoxDecoration(
