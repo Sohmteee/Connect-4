@@ -253,14 +253,14 @@ class _GameScreenState extends State<GameScreen> {
               7,
               (columnIndex) {
                 Color? color;
-                List<Color> colors;
+                List<Color> colors = [];
                 if (gameBoard[rowIndex][columnIndex] != 0) {
                   if (gameBoard[rowIndex][columnIndex] == 1) {
                     color = Colors.red;
                     colors = [Colors.red[400]!, Colors.red[700]!];
                   } else if (gameBoard[rowIndex][columnIndex] == 2) {
                     color = Colors.yellow;
-                colors = [color![400]!, color![700]!];
+                    colors = [Colors.yellow[400]!, Colors.yellow[700]!];
                   }
                 }
                 return gameBoard[rowIndex][columnIndex] == 0
@@ -312,10 +312,7 @@ class _GameScreenState extends State<GameScreen> {
                               color: color,
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
-                                colors: [
-                                  Colors.deepPurple[400]!,
-                                  Colors.deepPurple[700]!,
-                                ],
+                                colors: colors,
                                 begin: Alignment.topRight,
                                 end: Alignment.bottomLeft,
                               ),
