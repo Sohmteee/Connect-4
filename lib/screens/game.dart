@@ -350,7 +350,7 @@ class _GameScreenState extends State<GameScreen> {
                         decoration: BoxDecoration(
                         color: Colors.green.withOpacity(.3),
                         // color: Colors.transparent,
-                        if (columnIndex == 0) borderRadius: BorderRadius.(topLeft: Radius.circular(10.r), bottomLeft: Radius.circular(10.r)),
+                          borderRadius:(columnIndex == 0) ? BorderRadius.horizontal(left: Radius.circular(10.r)) :,
 
                         )
                       ),
