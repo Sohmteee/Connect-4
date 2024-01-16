@@ -27,21 +27,25 @@ class ComputerPlayer extends Player {
 
       // iterate through the map and find the largest value
       int max = 0;
-      List<int> maxIndex = [];
+      List<int> maxIndexes = [];
 
       max = moves.values.fold(0, (prev, element) {
         int intValue = int.tryParse(element.toString()) ?? 0;
         return intValue > prev ? intValue : prev;
       });
 
-      maxIndex = moves.entries.where((element) {
-        int intValue = int.tryParse(element.value.toString())?? 0;
-        return intValue == max;
-      }).map((element) => int.parse(element.key)).toList();
+      maxIndexes = moves.entries
+          .where((element) {
+            int intValue = int.tryParse(element.value.toString()) ?? 0;
+            return intValue == max;
+          })
+          .map((element) => int.parse(element.key))
+          .toList();
 
-      
-      print('Max Index: $maxIndex($max)');
-      return maxIndex;
+      print('Max Index: $maxIndexes($max)');
+      return maxIndexes.length == 1
+          ? maxIndexes[0]
+          : maxIndexes[Random().nextInt(maxIndexes.length)];
     } catch (e) {
       print('Error: $e');
       int columnIndex = Random().nextInt(7);
