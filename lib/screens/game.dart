@@ -311,8 +311,21 @@ class _GameScreenState extends State<GameScreen> {
                   children: List.generate(
                     7,
                     (columnIndex) => GestureDetector(
-                      onTap: () {
-
+                      onTap: () async {
+                        int rowIndex = 
+                        if (!isGameOver && !isComputerPlaying) {
+                          makeMove(rowIndex, columnIndex);
+                          if (!isGameOver) {
+                            setState(() {
+                              isComputerPlaying = true;
+                            });
+                            int computerMove = await player2.play();
+                            makeMove(rowIndex, computerMove);
+                            setState(() {
+                              isComputerPlaying = false;
+                            });
+                          }
+                        }
                       },
                       child: Container(
                         height: (35 * (7 + 2.5)).w,
