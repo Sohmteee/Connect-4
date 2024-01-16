@@ -401,7 +401,8 @@ class _GameScreenState extends State<GameScreen> {
           checkHorizontal()['positions'],
         );
         checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = true; canTap = false;
+        isGameOver = true;
+        canTap = false;
         restartGame(rowIndex);
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
@@ -410,7 +411,8 @@ class _GameScreenState extends State<GameScreen> {
           checkVertical()['positions'],
         );
         checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = true; canTap = false;
+        isGameOver = true;
+        canTap = false;
         restartGame(rowIndex);
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
@@ -419,7 +421,8 @@ class _GameScreenState extends State<GameScreen> {
           checkDiagonal()['positions'],
         );
         checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = true; canTap = false;
+        isGameOver = true;
+        canTap = false;
         restartGame(rowIndex);
       }
     });
