@@ -345,7 +345,7 @@ class _GameScreenState extends State<GameScreen> {
                         }
                       },
                       child: Container(
-                        height: (7 * (35 + 5)).w,
+                        height: (7 * (35 + 5) + 5).w,
                         width: (35 + 10 + (5 / 7)).w,
                         color: Colors.green.withOpacity(.3),
                         // color: Colors.transparent,
