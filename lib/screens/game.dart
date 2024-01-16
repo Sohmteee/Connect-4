@@ -42,10 +42,20 @@ class _GameScreenState extends State<GameScreen> {
       if (newGameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
           newGameBoard[rowIndex][columnIndex] = currentPlayer.number;
+
+          // if it was the computer's move, register the new last played position
+          if (currentPlayer.number == player2.number) {
+            player2.lastPlayedPosition = Position(rowIndex, columnIndex);
+          }
+          alternatePlayer();
         });
         break;
       }
     }
+
+    setState(() {
+      gameBoard = newGameBoard;
+    });
 
     checkWin();
     checkTie();
