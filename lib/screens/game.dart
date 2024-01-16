@@ -89,13 +89,69 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     Color? turnColor = currentPlayer.number == 1 ? Colors.red : Colors.yellow;
+    List<Color> turnColors = currentPlayer.number == 1 ? [Colors.red[400]!, Colors.red[700]!];
+      } else if (gameBoard[rowIndex][columnIndex] == 2) {
+        turnColors = [Colors.yellow[400]!, Colors.yellow[700]!];
+      }
+    }
 
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
         children: [
           const Spacer(flex: 2),
-          buildTurn(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 90.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/computer.png',
+                      height: 40.h,
+                      width: 40.w,
+                    ),
+                    SizedBox(height: 5.h),
+                    Text(
+                      player2.name!,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
+                  child: Text(
+                    '${player2.score} - ${player1.score}',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/player.png',
+                      height: 40.h,
+                      width: 40.w,
+                    ),
+                    SizedBox(height: 5.h),
+                    Text(
+                      player1.name!,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           const Spacer(flex: 2),
           Row(
             children: [
@@ -149,61 +205,6 @@ class _GameScreenState extends State<GameScreen> {
         ],
       ),
     );
-  }
-
-  Padding buildTurn() {
-    return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 90.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Image.asset(
-                    'assets/images/computer.png',
-                    height: 40.h,
-                    width: 40.w,
-                  ),
-                  SizedBox(height: 5.h),
-                  Text(
-                    player2.name!,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
-                child: Text(
-                  '${player2.score} - ${player1.score}',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                  ),
-                ),
-              ),
-              Column(
-                children: [
-                  Image.asset(
-                    'assets/images/player.png',
-                    height: 40.h,
-                    width: 40.w,
-                  ),
-                  SizedBox(height: 5.h),
-                  Text(
-                    player1.name!,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
   }
 
   Container buildBoard() {
