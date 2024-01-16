@@ -442,30 +442,33 @@ class _GameScreenState extends State<GameScreen> {
           );
           checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
         });
-        
 
         isGameOver = true;
         canTap = false;
         restartGame(rowIndex);
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
-        Future.delayed((rowIndex * 100 + 200).milliseconds, () {highlightWinningPositions(
-          checkVertical()['winner'],
-          checkVertical()['positions'],
-        );
-        checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;});
-        
+        Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+          highlightWinningPositions(
+            checkVertical()['winner'],
+            checkVertical()['positions'],
+          );
+          checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
+        });
+
         isGameOver = true;
         canTap = false;
         restartGame(rowIndex);
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
-        Future.delayed((rowIndex * 100 + 200).milliseconds, () {});
-        highlightWinningPositions(
-          checkDiagonal()['winner'],
-          checkDiagonal()['positions'],
-        );
-        checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
+        Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+          highlightWinningPositions(
+            checkDiagonal()['winner'],
+            checkDiagonal()['positions'],
+          );
+          checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
+        });
+
         isGameOver = true;
         canTap = false;
         restartGame(rowIndex);
