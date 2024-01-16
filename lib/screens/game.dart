@@ -348,7 +348,10 @@ class _GameScreenState extends State<GameScreen> {
             return 0;
           }
 
+          bool ca
+
           int rowIndex = findRowIndex();
+
           return GestureDetector(
             onTap: () async {
               if (!isGameOver && canTap && !isComputerPlaying) {
