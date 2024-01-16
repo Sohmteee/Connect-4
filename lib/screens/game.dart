@@ -129,6 +129,7 @@ class _GameScreenState extends State<GameScreen> {
                             }
                           },
                           child: Stack(
+                            clipBehavior: Clip.none,
                             children: [
                               Container(
                                 width: 35.w,
