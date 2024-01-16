@@ -1,11 +1,11 @@
+import 'package:connect4/data.dart';
+
 class Player {
   int number;
   String? name;
   int? score;
 
-  // void alternatePlayer() {
-  //   number = number == 1 ? 2 : 1;
-  // }
+  String boardToString() => gameBoard.map((row) => row.join()).join();
 
   Player(this.number);
 }

@@ -11,8 +11,6 @@ class ComputerPlayer extends Player {
   int humanPlayerNumber;
   ComputerPlayer(super.number, {required this.humanPlayerNumber});
 
-  String boardToString() => gameBoard.map((row) => row.join()).join();
-
   Future<int> play() async {
     try {
       var response = await http.post(
