@@ -91,9 +91,8 @@ class _GameScreenState extends State<GameScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(),
                 Row(
                   children: [
                     Column(
@@ -141,14 +140,6 @@ class _GameScreenState extends State<GameScreen> {
                       ],
                     ),
                   ],
-                ),
-                IconButton(
-                  onPressed: () {
-                    reset();
-                  },
-                  icon: const Icon(Icons.restart_alt_rounded),
-                  color: Colors.white,
-                  iconSize: 25.sp,
                 ),
               ],
             ),
