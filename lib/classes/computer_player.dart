@@ -33,7 +33,7 @@ class ComputerPlayer extends Player {
       int max = 0;
       List<int> maxIndexes = [];
 
-      max = moves.values.fold(0, (prev, element) {
+      max = moves.values.fold(moves['0'], (prev, element) {
         int intValue = int.tryParse(element.toString()) ?? 0;
         return intValue > prev ? intValue : prev;
       });
