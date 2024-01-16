@@ -50,10 +50,8 @@ class _GameScreenState extends State<GameScreen> {
             player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           }
           alternatePlayer();
-          Future.delayed((rowIndex * 100 + 200).milliseconds, () {
             checkWin(rowIndex);
             checkTie(rowIndex);
-          });
         });
         break;
       }
