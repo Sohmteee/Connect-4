@@ -330,7 +330,7 @@ class _GameScreenState extends State<GameScreen> {
                         if (!isGameOver && canTap && !isComputerPlaying) {
                           setState(() {
                             canTap = false;
-                              tappedIndex = null;
+                            tappedIndex = null;
                           });
                           makeMove(rowIndex, columnIndex);
                           if (!isGameOver) {
@@ -355,7 +355,6 @@ class _GameScreenState extends State<GameScreen> {
                           tappedIndex = null;
                         });
                       },
-
                       child: Container(
                         height: (((35 + 10) * 7)).w,
                         width: (35 + 10 + (5 / 7)).w,
