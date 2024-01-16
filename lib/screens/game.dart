@@ -188,22 +188,21 @@ class _GameScreenState extends State<GameScreen> {
                               }
                             }
                             return GestureDetector(
-                              onTap: () async {
-                                if (isGameOver && !isComputerPlaying) {
-                                  makeMove(columnIndex);
-                                  if (isGameOver) {
-                                    setState(() {
-                                      isComputerPlaying = true;
-                                    });
-                                    int computerMove = await player2.play();
-                                    makeMove(computerMove);
-                                    setState(() {
-                                      isComputerPlaying = false;
-                                    });
+                                onTap: () async {
+                                  if (isGameOver && !isComputerPlaying) {
+                                    makeMove(columnIndex);
+                                    if (isGameOver) {
+                                      setState(() {
+                                        isComputerPlaying = true;
+                                      });
+                                      int computerMove = await player2.play();
+                                      makeMove(computerMove);
+                                      setState(() {
+                                        isComputerPlaying = false;
+                                      });
+                                    }
                                   }
-                                }
-                              },
-                              child: SizedBox(
+                                },
                                 child: (winningPositions.contains(
                                         Position(rowIndex, columnIndex)))
                                     ? Container(
@@ -243,16 +242,14 @@ class _GameScreenState extends State<GameScreen> {
                                           color: color,
                                           shape: BoxShape.circle,
                                         ),
-                                      ),
-                              ).animate().moveY(
-                                    begin: -((35 * (7 + 2.5))).h,
-                                    end: 0,
-                                    duration:
-                                        (rowIndex * 100 + 100).milliseconds,
-                                    delay: 100.milliseconds,
-                                    curve: Curves.bounceOut,
-                                  ),
-                            );
+                                      ).animate().moveY(
+                                          begin: -((35 * (7 + 2.5))).h,
+                                          end: 0,
+                                          duration: (rowIndex * 100 + 100)
+                                              .milliseconds,
+                                          delay: 100.milliseconds,
+                                          curve: Curves.bounceOut,
+                                        ));
                           },
                         ),
                       ),
