@@ -373,7 +373,7 @@ class _GameScreenState extends State<GameScreen> {
   void checkTie(int rowIndex) {
     if (gameBoard.every((row) => row.every((cell) => cell != 0))) {
       debugPrint('Tie!');
-      isGameOver = false;
+      isGameOver = true;
       restartGame(rowIndex);
     }
   }
@@ -387,7 +387,7 @@ class _GameScreenState extends State<GameScreen> {
           checkHorizontal()['positions'],
         );
         checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = false;
+        isGameOver = true;
         restartGame(rowIndex);
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
@@ -396,7 +396,7 @@ class _GameScreenState extends State<GameScreen> {
           checkVertical()['positions'],
         );
         checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = false;
+        isGameOver = true;
         restartGame(rowIndex);
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
@@ -405,7 +405,7 @@ class _GameScreenState extends State<GameScreen> {
           checkDiagonal()['positions'],
         );
         checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
-        isGameOver = false;
+        isGameOver = true;
         restartGame(rowIndex);
       }
     });
