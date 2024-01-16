@@ -113,11 +113,14 @@ class _GameScreenState extends State<GameScreen> {
                         ),
                       ],
                     ),
-                    Text(
-                      '${player2.score} - ${player1.score}',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.sp,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text(
+                        '${player2.score} - ${player1.score}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.sp,
+                        ),
                       ),
                     ),
                     Column(
