@@ -340,6 +340,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: (35 ),)
               ],
             ),
           ),
