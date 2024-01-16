@@ -353,19 +353,19 @@ class _GameScreenState extends State<GameScreen> {
           int rowIndex = findRowIndex();
           return GestureDetector(
             onTap: () async {
-              setState(() {
+              /* setState(() {
                 tappedIndex = columnIndex;
-              });
+              }); */
 
               if (!isGameOver && canTap && !isComputerPlaying) {
                 setState(() {
                   canTap = false;
                 });
-                Future.delayed((rowIndex * 100 + 100).milliseconds, () {
+                /* Future.delayed((rowIndex * 100 + 100).milliseconds, () {
                   setState(() {
                     tappedIndex = null;
                   });
-                });
+                }); */
                 makeMove(rowIndex, columnIndex);
                 if (!isGameOver) {
                   setState(() {
@@ -383,6 +383,11 @@ class _GameScreenState extends State<GameScreen> {
                   });
                 }
               }
+            },
+            onTapDown: (details) {
+              setState(() {
+                tappedIndex = columnIndex;
+              });
             },
             onTapCancel: () {
               setState(() {
