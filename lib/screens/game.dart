@@ -114,12 +114,12 @@ class _GameScreenState extends State<GameScreen> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
                       child: Text(
                         '${player2.score} - ${player1.score}',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14.sp,
+                          fontSize: 16.sp,
                         ),
                       ),
                     ),
@@ -148,7 +148,7 @@ class _GameScreenState extends State<GameScreen> {
                   },
                   icon: const Icon(Icons.restart_alt_rounded),
                   color: Colors.white,
-                  iconSize: 30.sp,
+                  iconSize: 25.sp,
                 ),
               ],
             ),
