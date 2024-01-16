@@ -37,8 +37,9 @@ class ComputerPlayer extends Player {
       maxIndex = moves.entries.where((element) {
         int intValue = int.tryParse(element.value.toString())?? 0;
         return intValue == max;
-      }).;
+      }).map((element) => int.parse(element.key)).toList();
 
+      
       print('Max Index: $maxIndex($max)');
       return maxIndex;
     } catch (e) {
