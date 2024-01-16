@@ -271,8 +271,8 @@ class _GameScreenState extends State<GameScreen> {
                                         .scaleXY(
                                           begin: 1,
                                           end: .833333333333333333,
-                                          duration: 200.milliseconds,
-                                          delay: 400.milliseconds,
+                                          duration: 300.milliseconds,
+                                          delay: 200.milliseconds,
                                           curve: Curves.elasticOut,
                                         )
                                     : Container(
