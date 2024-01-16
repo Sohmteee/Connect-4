@@ -71,7 +71,7 @@ class _GameScreenState extends State<GameScreen> {
       // firstPlayer = player1;
       // currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
-      !isGameOver = false;
+      isGameOver = false;
       isComputerPlaying = false;
       winningPositions.clear();
     });
