@@ -348,13 +348,10 @@ class _GameScreenState extends State<GameScreen> {
             return 0;
           }
 
-          bool canDropInColumn() {
-            return List.generate(
+          bool canDropInColumn() => List.generate(
               7,
               (rowIndex) => gameBoard[rowIndex][columnIndex],
             ).contains(0);
-
-          }
 
           int rowIndex = findRowIndex();
 
