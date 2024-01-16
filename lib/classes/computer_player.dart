@@ -35,8 +35,9 @@ class ComputerPlayer extends Player {
       });
 
       maxIndex = moves.entries.where((element) {
-        
-      });
+        int intValue = int.tryParse(element.value.toString())?? 0;
+        return intValue == max;
+      }).;
 
       print('Max Index: $maxIndex($max)');
       return maxIndex;
