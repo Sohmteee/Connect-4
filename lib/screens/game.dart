@@ -91,7 +91,7 @@ class _GameScreenState extends State<GameScreen> {
     Color? turnColor = currentPlayer.number == 1 ? Colors.red : Colors.yellow;
 
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: backgroundColor,
       body: Column(
         children: [
           const Spacer(flex: 2),
@@ -206,7 +206,7 @@ class _GameScreenState extends State<GameScreen> {
     return Container(
       padding: EdgeInsets.all(2.5.w),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: Colors.deepPurple,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Column(
@@ -226,10 +226,10 @@ class _GameScreenState extends State<GameScreen> {
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                       colors: [
-                        backgroundColor!,
                         Colors.deepPurple[400]!,
+                        backgroundColor!,
                       ],
-                      begin: Alignment.topRight,
+                      begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                     ),
                   ),
