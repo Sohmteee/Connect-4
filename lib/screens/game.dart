@@ -146,7 +146,7 @@ class _GameScreenState extends State<GameScreen> {
           ),
           const Spacer(flex: 2),
           Text(
-            '${currentPlayer == player1 ? 'Your' : currentPlayer.name + ''s} turn',
+            '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16.sp,
