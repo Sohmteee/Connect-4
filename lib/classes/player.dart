@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class Player {
   int number;
   String? name;
-  int? score;
+  int score = 0;
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
@@ -48,5 +48,5 @@ class Player {
     }
   }
 
-  Player(this.number);
+  Player(this.number, {this.name});
 }

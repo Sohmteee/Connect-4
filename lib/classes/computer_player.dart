@@ -10,7 +10,11 @@ import 'package:http/http.dart' as http;
 class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
   int humanPlayerNumber;
-  ComputerPlayer(super.number, {required this.humanPlayerNumber});
+  ComputerPlayer(
+    super.number, {
+    required this.humanPlayerNumber,
+    super.name,
+  });
 
   Future<int> play() async {
     try {

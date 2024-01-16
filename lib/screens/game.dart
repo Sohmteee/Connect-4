@@ -15,8 +15,8 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  final player1 = Player(1);
-  final player2 = ComputerPlayer(2, humanPlayerNumber: 1);
+  final player1 = Player(1, name: 'You');
+  final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Alex');
   late Player currentPlayer;
   bool isGameOver = true;
   bool isComputerPlaying = false;
@@ -94,7 +94,51 @@ class _GameScreenState extends State<GameScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(),
-                // Image.asset('assets/images/computer.png'),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/computer.png',
+                          height: 40.h,
+                          width: 40.w,
+                        ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          player2.name!,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      '${player2.score} - ${player1.score}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/player.png',
+                          height: 40.h,
+                          width: 40.w,
+                        ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          player1.name!,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
                 IconButton(
                   onPressed: () {
                     reset();
