@@ -223,7 +223,7 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
           ),
-          const Spacer(flex: 2),
+          const Spacer(flex: 7),
         ],
       ),
     );
