@@ -16,21 +16,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MaterialApp(
-            title: 'Connect 4',
-            theme: ThemeData(
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
-              useMaterial3: true,
-              fontFamily: 'Supercell',
-            ),
-            home: const SplashScreen(),
-            debugShowCheckedModeBanner: false,
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          title: 'Connect 4',
+          theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
+            useMaterial3: true,
+            fontFamily: 'Supercell',
+          ),
+          home: const SplashScreen(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
+    );
   }
 }
