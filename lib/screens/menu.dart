@@ -131,42 +131,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             (columnIndex == 1 && rowIndex == 2) ||
                             (columnIndex == 2 && rowIndex == 1) ||
                             (columnIndex == 3 && rowIndex == 0))
-                        ? Container(
-                            width: 35.w,
-                            height: 35.w,
-                            margin: EdgeInsets.all(5.w),
-                            decoration: BoxDecoration(
-                              color: color,
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                colors: colors,
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                              ),
-                            ),
-                          )
-                            .animate(onComplete: (controller) {})
-                            .moveY(
-                              begin: -((200 * (rowIndex + 2))).w,
-                              end: 0,
-                              duration: (rowIndex * 400 + 100).milliseconds,
-                              delay: (columnIndex * 600 + 100).milliseconds,
-                              curve: Curves.bounceOut,
-                            )
-                            .scaleXY(
-                              end: .87,
-                              duration: 300.milliseconds,
-                              curve: Curves.bounceOut,
-                            )
-                            .then()
-                            .scaleXY(
-                              curve: Curves.easeOutSine,
-                              delay: (rowIndex * 100 + 200).milliseconds,
-                              duration: .2.seconds,
-                              begin: 1,
-                              end: .8,
-                            )
-                        : (highlightPositions
+                        ? (highlightPositions
                                 .contains(Position(rowIndex, columnIndex)))
                             ? Container(
                                 width: 35.w,
@@ -186,7 +151,57 @@ class _SplashScreenState extends State<SplashScreen> {
                                   ),
                                 ),
                               )
-                            :  Container(
+                                .animate()
+                                .scaleXY(
+                                  curve: Curves.easeOutSine,
+                                  delay: (rowIndex * 100 + 200).milliseconds,
+                                  duration: .2.seconds,
+                                  begin: 1,
+                                  end: .8,
+                                )
+                                .then()
+                                .scaleXY(
+                                  curve: Curves.easeOutSine,
+                                  duration: .4.seconds,
+                                  begin: .8,
+                                  end: 1.2,
+                                )
+                                .then()
+                                .scaleXY(
+                                  curve: Curves.bounceOut,
+                                  duration: .4.seconds,
+                                  begin: 1.2,
+                                  end: 1,
+                                )
+                            : Container(
+                                width: 35.w,
+                                height: 35.w,
+                                margin: EdgeInsets.all(5.w),
+                                decoration: BoxDecoration(
+                                  color: color,
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: colors,
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                  ),
+                                ),
+                              )
+                                .animate(onComplete: (controller) {})
+                                .moveY(
+                                  begin: -((200 * (rowIndex + 2))).w,
+                                  end: 0,
+                                  duration: (rowIndex * 400 + 100).milliseconds,
+                                  delay: (columnIndex * 600 + 100).milliseconds,
+                                  curve: Curves.bounceOut,
+                                )
+                                .scaleXY(
+                                  end: .87,
+                                  duration: 300.milliseconds,
+                                  curve: Curves.bounceOut,
+                                
+                                )
+                        : Container(
                             width: 35.w,
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
