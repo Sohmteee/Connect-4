@@ -19,18 +19,11 @@ class _SplashScreenState extends State<SplashScreen> {
     [1, 1, 1, 1, 1],
     [2, 2, 2, 1, 2],
   ];
-  PositionsList highlightPositions = PositionsList(
-    [
-      Position(0, 3),
-      Position(1, 2),
-      Position(2, 1),
-      Position(3, 0),
-    ],
-  );
+  PositionsList highlightPositions = PositionsList([]);
 
   @override
   void initState() {
-    Future.delayed(1.seconds, () {
+    Future.delayed(4.seconds, () {
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -140,9 +133,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               ),
                             ),
                           )
-                            .animate(onComplete: (controller) {
-                              
-                            })
+                            .animate(onComplete: (controller) {})
                             .moveY(
                               begin: -((200 * (rowIndex + 2))).w,
                               end: 0,
