@@ -79,16 +79,16 @@ class _SplashScreenState extends State<SplashScreen> {
               (columnIndex) {
                 Color? color;
                 List<Color> colors = [];
-                if (gameBoard[rowIndex][columnIndex] != 0) {
-                  if (gameBoard[rowIndex][columnIndex] == 1) {
+                if (board[rowIndex][columnIndex] != 0) {
+                  if (board[rowIndex][columnIndex] == 1) {
                     color = Colors.red;
                     colors = [Colors.red[400]!, Colors.red[700]!];
-                  } else if (gameBoard[rowIndex][columnIndex] == 2) {
+                  } else if (board[rowIndex][columnIndex] == 2) {
                     color = Colors.yellow;
                     colors = [Colors.yellow[400]!, Colors.yellow[700]!];
                   }
                 }
-                return gameBoard[rowIndex][columnIndex] == 0
+                return board[rowIndex][columnIndex] == 0
                     ? Container(
                         width: 35.w,
                         height: 35.w,

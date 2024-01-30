@@ -1,4 +1,5 @@
 import 'package:connect4/screens/game.dart';
+import 'package:connect4/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
               fontFamily: 'Supercell',
             ),
-            home: const GameScreen(),
+            home: const SplashScreen(),
             debugShowCheckedModeBanner: false,
           );
         });
