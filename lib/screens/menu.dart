@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(3.seconds, () {
+    Future.delayed(2.5.seconds, () {
       setState(() {
         highlightPositions = PositionsList(
           [
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         );
       });
-      Future.delayed(1.seconds, () {
+      Future.delayed(3.seconds, () {
         Navigator.push(
           context,
           MaterialPageRoute(
