@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class _SplashScreenState extends State<SplashScreen> {
+  List<int> board = [
+    
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +39,11 @@ class _MenuScreenState extends State<MenuScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          7,
+          4,
           (rowIndex) => Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              7,
+              4,
               (columnIndex) {
                 return Container(
                   width: 35.w,
