@@ -57,7 +57,8 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
     );
   }
-Padding buildDiscs() {
+
+  Padding buildDiscs() {
     return Padding(
       padding: EdgeInsets.all(2.5.w),
       child: Column(
@@ -91,32 +92,32 @@ Padding buildDiscs() {
                           curve: Curves.bounceOut,
                         )
                     : Container(
-                            width: 35.w,
-                            height: 35.w,
-                            margin: EdgeInsets.all(5.w),
-                            decoration: BoxDecoration(
-                              color: color,
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                colors: colors,
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                              ),
-                            ),
-                          )
-                            .animate()
-                            .moveY(
-                              begin: -((35 * (rowIndex + 2))).w,
-                              end: 0,
-                              duration: (rowIndex * 100 + 100).milliseconds,
-                              delay: 100.milliseconds,
-                              curve: Curves.bounceOut,
-                            )
-                            .scaleXY(
-                              end: .87,
-                              duration: 300.milliseconds,
-                              curve: Curves.bounceOut,
-                            );
+                        width: 35.w,
+                        height: 35.w,
+                        margin: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                          color: color,
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: colors,
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          ),
+                        ),
+                      )
+                        .animate()
+                        .moveY(
+                          begin: -((35 * (rowIndex + 2))).w,
+                          end: 0,
+                          duration: (rowIndex * 100 + 100).milliseconds,
+                          delay: 100.milliseconds,
+                          curve: Curves.bounceOut,
+                        )
+                        .scaleXY(
+                          end: .87,
+                          duration: 300.milliseconds,
+                          curve: Curves.bounceOut,
+                        );
               },
             ),
           ),
@@ -124,6 +125,4 @@ Padding buildDiscs() {
       ),
     );
   }
-
-
 }
