@@ -166,21 +166,49 @@ class _SplashScreenState extends State<SplashScreen> {
                               begin: 1,
                               end: .8,
                             )
-                            .then()
-                            .scaleXY(
-                              curve: Curves.easeOutSine,
-                              duration: .4.seconds,
-                              begin: .8,
-                              end: 1.2,
-                            )
-                            .then()
-                            .scaleXY(
-                              curve: Curves.bounceOut,
-                              duration: .4.seconds,
-                              begin: 1.2,
-                              end: 1,
-                            )
-                        : Container(
+                        : (highlightPositions
+                                .contains(Position(rowIndex, columnIndex)))
+                            ? Container(
+                                width: 35.w,
+                                height: 35.w,
+                                margin: EdgeInsets.all(5.w),
+                                decoration: BoxDecoration(
+                                  color: color,
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: colors,
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                  ),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3.sp,
+                                  ),
+                                ),
+                              )
+                                .animate()
+                                .scaleXY(
+                                  curve: Curves.easeOutSine,
+                                  delay: (rowIndex * 100 + 200).milliseconds,
+                                  duration: .2.seconds,
+                                  begin: 1,
+                                  end: .8,
+                                )
+                                .then()
+                                .scaleXY(
+                                  curve: Curves.easeOutSine,
+                                  duration: .4.seconds,
+                                  begin: .8,
+                                  end: 1.2,
+                                )
+                                .then()
+                                .scaleXY(
+                                  curve: Curves.bounceOut,
+                                  duration: .4.seconds,
+                                  begin: 1.2,
+                                  end: 1,
+                                )
+                            :  Container(
                             width: 35.w,
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
