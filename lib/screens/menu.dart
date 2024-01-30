@@ -57,4 +57,73 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
     );
   }
+Padding buildDiscs() {
+    return Padding(
+      padding: EdgeInsets.all(2.5.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          7,
+          (rowIndex) => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              7,
+              (columnIndex) {
+                Color? color;
+                List<Color> colors = [];
+                if (gameBoard[rowIndex][columnIndex] != 0) {
+                  if (gameBoard[rowIndex][columnIndex] == 1) {
+                    color = Colors.red;
+                    colors = [Colors.red[400]!, Colors.red[700]!];
+                  } else if (gameBoard[rowIndex][columnIndex] == 2) {
+                    color = Colors.yellow;
+                    colors = [Colors.yellow[400]!, Colors.yellow[700]!];
+                  }
+                }
+                return gameBoard[rowIndex][columnIndex] == 0
+                    ? Container(
+                        width: 35.w,
+                        height: 35.w,
+                        margin: EdgeInsets.all(5.w),
+                      ).animate().scaleXY(
+                          end: .87,
+                          duration: 300.milliseconds,
+                          curve: Curves.bounceOut,
+                        )
+                    : Container(
+                            width: 35.w,
+                            height: 35.w,
+                            margin: EdgeInsets.all(5.w),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: colors,
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
+                            ),
+                          )
+                            .animate()
+                            .moveY(
+                              begin: -((35 * (rowIndex + 2))).w,
+                              end: 0,
+                              duration: (rowIndex * 100 + 100).milliseconds,
+                              delay: 100.milliseconds,
+                              curve: Curves.bounceOut,
+                            )
+                            .scaleXY(
+                              end: .87,
+                              duration: 300.milliseconds,
+                              curve: Curves.bounceOut,
+                            );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
 }
