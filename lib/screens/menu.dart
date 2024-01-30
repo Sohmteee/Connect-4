@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-         5,
+          5,
           (rowIndex) => Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
@@ -99,33 +99,38 @@ class _SplashScreenState extends State<SplashScreen> {
                           duration: 300.milliseconds,
                           curve: Curves.bounceOut,
                         )
-                    : ((columnIndex ==0 && rowIndex == )) ? Container(
-                        width: 35.w,
-                        height: 35.w,
-                        margin: EdgeInsets.all(5.w),
-                        decoration: BoxDecoration(
-                          color: color,
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: colors,
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                          ),
-                        ),
-                      )
-                        .animate()
-                        .moveY(
-                          begin: -((35 * (rowIndex + 2))).w,
-                          end: 0,
-                          duration: (rowIndex * 100 + 100).milliseconds,
-                          delay: 100.milliseconds,
-                          curve: Curves.bounceOut,
-                        )
-                        .scaleXY(
-                          end: .87,
-                          duration: 300.milliseconds,
-                          curve: Curves.bounceOut,
-                        ) : Container(
+                    : ((columnIndex == 0 && rowIndex == 3) ||
+                            (columnIndex == 1 && rowIndex == 2) ||
+                            (columnIndex == 2 && rowIndex == 1) ||
+                            (columnIndex == 3 && rowIndex == 0))
+                        ? Container(
+                            width: 35.w,
+                            height: 35.w,
+                            margin: EdgeInsets.all(5.w),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: colors,
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
+                            ),
+                          )
+                            .animate()
+                            .moveY(
+                              begin: -((35 * (rowIndex + 2))).w,
+                              end: 0,
+                              duration: (rowIndex * 100 + 100).milliseconds,
+                              delay: 100.milliseconds,
+                              curve: Curves.bounceOut,
+                            )
+                            .scaleXY(
+                              end: .87,
+                              duration: 300.milliseconds,
+                              curve: Curves.bounceOut,
+                            )
+                        : Container(
                             width: 35.w,
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
