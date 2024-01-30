@@ -29,6 +29,19 @@ class _SplashScreenState extends State<SplashScreen> {
   );
 
   @override
+  void initState() {
+    Future.delayed(1.seconds, () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const GameScreen(),
+        ),
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -128,17 +141,10 @@ class _SplashScreenState extends State<SplashScreen> {
                             ),
                           )
                             .animate(onComplete: (controller) {
-                              Future.delayed(.7.seconds, () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const GameScreen(),
-                                  ),
-                                );
-                              });
+                              
                             })
                             .moveY(
-                              begin: -((150 * (rowIndex + 2))).w,
+                              begin: -((200 * (rowIndex + 2))).w,
                               end: 0,
                               duration: (rowIndex * 400 + 100).milliseconds,
                               delay: (columnIndex * 600 + 100).milliseconds,
