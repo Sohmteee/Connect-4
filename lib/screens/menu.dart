@@ -119,10 +119,10 @@ class _SplashScreenState extends State<SplashScreen> {
                           )
                             .animate()
                             .moveY(
-                              begin: -((100 * (rowIndex + 2))).w,
+                              begin: -((150 * (rowIndex + 2))).w,
                               end: 0,
-                              duration: (rowIndex * 100 + 100).milliseconds,
-                              delay: (columnIndex * 700 + 100).milliseconds,
+                              duration: (rowIndex * 400 + 100).milliseconds,
+                              delay: (columnIndex * 600 + 100).milliseconds,
                               curve: Curves.bounceOut,
                             )
                             .scaleXY(
