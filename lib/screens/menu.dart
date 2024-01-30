@@ -10,8 +10,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  List<int> board = [
+  List<List<int>> board = [
     []
+    [1, 1, 1, 1],
+    [2, 2, 1, 2],
   ];
 
   @override
