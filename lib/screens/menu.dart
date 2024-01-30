@@ -1,4 +1,5 @@
 import 'package:connect4/classes/position.dart';
+import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -49,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       body: Center(
         child: Stack(
           alignment: Alignment.center,
