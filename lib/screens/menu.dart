@@ -174,7 +174,11 @@ class _SplashScreenState extends State<SplashScreen> {
                                 end: Alignment.bottomLeft,
                               ),
                             ),
-                          );
+                          ).animate().scaleXY(
+                              end: .87,
+                              duration: 300.milliseconds,
+                              curve: Curves.bounceOut,
+                            );
               },
             ),
           ),
