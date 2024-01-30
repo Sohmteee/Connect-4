@@ -11,7 +11,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   List<List<int>> board = [
-    []
+    [0, 0, 1, 0],
+    [0, 1, 2, 0],
     [1, 1, 1, 1],
     [2, 2, 1, 2],
   ];
