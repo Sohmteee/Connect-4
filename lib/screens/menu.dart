@@ -23,13 +23,25 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(4.seconds, () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const GameScreen(),
-        ),
-      );
+    Future.delayed(3.seconds, () {
+      setState(() {
+        highlightPositions = PositionsList(
+          [
+            Position(0, 3),
+            Position(1, 2),
+            Position(2, 1),
+            Position(3, 0),
+          ],
+        );
+      });
+      Future.delayed(1.seconds, () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const GameScreen(),
+          ),
+        );
+      });
     });
     super.initState();
   }
