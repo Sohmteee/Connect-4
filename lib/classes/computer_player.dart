@@ -31,18 +31,18 @@ class ComputerPlayer extends Player {
 
       // iterate through the map and find the largest value
       int max = moves['0'];
-      List<int> maxIndexes = [];
+      List<int> moveIndexes = [];
 
       for (int move in moves.values) {
         if (move > max) {
           max = move;
-          maxIndexes = [int.parse(moves.keys.first)];
+          moveIndexes = [int.parse(moves.keys.first)];
         } else if (move == max) {
-          maxIndexes.add(int.parse(moves.keys.first));
+          moveIndexes.add(int.parse(moves.keys.first));
         }
       }
 
-      maxIndexes = moves.entries
+      moveIndexes = moves.entries
           .where((element) {
             int intValue = int.tryParse(element.value.toString()) ?? 0;
             return intValue == max;
@@ -50,12 +50,11 @@ class ComputerPlayer extends Player {
           .map((element) => int.parse(element.key))
           .toList();
 
-      debugPrint('Max Index: $maxIndexes($max)');
-      return maxIndexes.length == 1
-          ? maxIndexes[0]
-          : maxIndexes[Random().nextInt(maxIndexes.length)];
+      debugPrint('Move Indexes: $moveIndexes($max)');
+      return moveIndexes.length == 1
+          ? moveIndexes[0]
+          : moveIndexes[Random().nextInt(moveIndexes.length)];
     } catch (e) {
-      // return (play());
       debugPrint('Error: $e');
       debugPrint('Playing offline...');
       return offlinePlay();

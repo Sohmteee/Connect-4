@@ -11,7 +11,7 @@ class Player {
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
-  Future<List<int>> getHints() async {
+  Future<List<int>?> getHints() async {
     try {
       var response = await http.post(
           Uri.https('kevinalbs.com', 'connect4/back-end/index.php/getMoves'),
@@ -20,19 +20,23 @@ class Player {
             'player': number.toString(),
           });
 
-      Map<String, dynamic> moves = jsonDecode(response.body);
-      debugPrint('Response body: $moves');
+      Map<String, dynamic> hints = jsonDecode(response.body);
+      debugPrint('Response body: $hints');
 
       // iterate through the map and find the largest value
-      int max = 0;
-      List<int> maxIndexes = [];
+      int max = hints['0'];
+      List<int> hintIndexes = [];
 
-      max = moves.values.fold(0, (prev, element) {
-        int intValue = int.tryParse(element.toString()) ?? 0;
-        return intValue > prev ? intValue : prev;
-      });
+      for (int move in hints.values) {
+        if (move > max) {
+          max = move;
+          hintIndexes = [int.parse(hints.keys.first)];
+        } else if (move == max) {
+          hintIndexes.add(int.parse(hints.keys.first));
+        }
+      }
 
-      maxIndexes = moves.entries
+      hintIndexes = hints.entries
           .where((element) {
             int intValue = int.tryParse(element.value.toString()) ?? 0;
             return intValue == max;
@@ -40,11 +44,11 @@ class Player {
           .map((element) => int.parse(element.key))
           .toList();
 
-      debugPrint('Max Index: $maxIndexes($max)');
-      return maxIndexes;
+      debugPrint('Hint Indexes: $hintIndexes');
+      return hintIndexes;
     } catch (e) {
       debugPrint('Error: $e');
-      return [];
+      return null;
     }
   }
 

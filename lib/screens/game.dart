@@ -1,11 +1,15 @@
+import 'dart:math';
+
 import 'package:connect4/classes/computer_player.dart';
+import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/data.dart';
-import 'package:connect4/classes/player.dart';
+import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -17,13 +21,16 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
   final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora');
+  int? winner;
   late Player currentPlayer;
   bool isGameOver = false;
   bool canTap = true;
   bool isComputerPlaying = false;
+  bool isAutoPlaying = false;
   PositionsList winningPositions = PositionsList([]);
   late Player firstPlayer;
   int? tappedIndex;
+  List<int>? hints = [];
 
   alternatePlayer() {
     if (!isGameOver) {
@@ -39,7 +46,12 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  makeMove(int rowIndex, int columnIndex) {
+  makeMove(int columnIndex) {
+    if (hints != null) {
+      setState(() {
+        hints = null;
+      });
+    }
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
@@ -58,7 +70,7 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  reset() {
+  reset() async {
     setState(() {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
@@ -69,14 +81,33 @@ class _GameScreenState extends State<GameScreen> {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
       ];
-      // firstPlayer = player1;
-      // currentPlayer = firstPlayer;
+
+      currentPlayer = firstPlayer;
       player2.lastPlayedPosition = null;
       isGameOver = false;
       canTap = true;
       isComputerPlaying = false;
       winningPositions.clear();
+      hints = null;
+      winner = null;
     });
+
+    if (currentPlayer == player2) {
+      setState(() {
+        isComputerPlaying = true;
+      });
+      int computerMove = await player2.play();
+
+      makeMove(computerMove);
+      setState(() {
+        isComputerPlaying = false;
+        Future.delayed(300.milliseconds, () {
+          setState(() {
+            canTap = true;
+          });
+        });
+      });
+    }
   }
 
   @override
@@ -89,11 +120,9 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     Color? turnColor = currentPlayer.number == 1 ? Colors.red : Colors.yellow;
-    List<Color> turnColors = currentPlayer.number == 1 ? [Colors.red[400]!, Colors.red[700]!];
-      } else if (gameBoard[rowIndex][columnIndex] == 2) {
-        turnColors = [Colors.yellow[400]!, Colors.yellow[700]!];
-      }
-    }
+    List<Color> turnColors = currentPlayer.number == 1
+        ? [Colors.red[400]!, Colors.red[700]!]
+        : [Colors.yellow[400]!, Colors.yellow[700]!];
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -163,16 +192,34 @@ class _GameScreenState extends State<GameScreen> {
                 decoration: BoxDecoration(
                   color: turnColor,
                   shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: turnColors,
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
                 ),
               ),
               SizedBox(width: 5.w),
-              Text(
-                '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.sp,
-                ),
-              ),
+              winner == null
+                  ? Text(
+                      '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                      ),
+                    )
+                  : Text(
+                      switch (winner) {
+                        0 => 'It\'s a tie!',
+                        1 => 'You won!',
+                        2 => '${player2.name} won!',
+                        _ => '',
+                      },
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                      ),
+                    ),
               const Spacer(flex: 6),
             ],
           ),
@@ -187,21 +234,104 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const Spacer(flex: 4),
+          const Spacer(flex: 2),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: () {
+              const Spacer(flex: 3),
+              ZoomTapAnimation(
+                onTap: () async {
+                  try {
+                    setState(() {
+                      isAutoPlaying = true;
+                    });
+
+                    while (!isGameOver) {
+                      if (canTap) {
+                        List<int>? options = await player1.getHints();
+                        int move = options!.length == 1
+                            ? options[0]
+                            : options[Random().nextInt(options.length)];
+                        makeMove(move);
+                      }
+                    }
+                  } catch (e) {
+                    List freeColumns = gameBoard.where((row) {
+                      return row.any((disc) => disc == 0);
+                    }).map((row) {
+                      return row.indexOf(0);
+                    }).toList();
+
+                    makeMove(freeColumns[Random().nextInt(freeColumns.length)]);
+
+                    setState(() {
+                      isAutoPlaying = false;
+                    });
+                  }
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.play_arrow_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              ZoomTapAnimation(
+                onTap: () async {
+                  hints = await player1.getHints();
+                  setState(() {});
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.lightbulb_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              ZoomTapAnimation(
+                onTap: () {
                   reset();
                 },
-                icon: const Icon(Icons.restart_alt_rounded),
-                color: Colors.white,
-                iconSize: 25.sp,
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.restart_alt_rounded,
+                    size: 25.sp,
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              const Spacer(flex: 3),
             ],
           ),
-          const Spacer(),
+          const Spacer(flex: 3),
         ],
       ),
     );
@@ -223,21 +353,64 @@ class _GameScreenState extends State<GameScreen> {
             children: List.generate(
               7,
               (columnIndex) {
-                return Container(
-                  width: 35.w,
-                  height: 35.w,
-                  margin: EdgeInsets.all(5.w),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.deepPurple[700],
-                    /*  gradient: RadialGradient(
-                      colors: [
-                        Colors.deepPurple[400]!,
-                        Colors.deepPurple[700]!,
-                      ],
-                    ), */
-                  ),
-                );
+                int findRowIndex() {
+                  for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
+                    if (gameBoard[rowIndex][columnIndex] == 0) {
+                      return rowIndex;
+                    }
+                  }
+                  return -1;
+                }
+
+                return hints != null &&
+                        hints!.contains(columnIndex) &&
+                        rowIndex == findRowIndex()
+                    ? Container(
+                        width: 35.w,
+                        height: 35.w,
+                        margin: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.deepPurple[700],
+                          border: Border.all(
+                            color: Colors.grey[300]!,
+                            width: 2.sp,
+                          ),
+                        ),
+                      )
+                        .animate(
+                          onPlay: (controller) => controller.repeat(),
+                        )
+                        .scaleXY(
+                          curve: Curves.easeOutSine,
+                          delay: 2.seconds,
+                          duration: .2.seconds,
+                          begin: 1,
+                          end: .8,
+                        )
+                        .then()
+                        .scaleXY(
+                          curve: Curves.easeOutSine,
+                          duration: .4.seconds,
+                          begin: .8,
+                          end: 1.2,
+                        )
+                        .then()
+                        .scaleXY(
+                          curve: Curves.bounceOut,
+                          duration: .4.seconds,
+                          begin: 1.2,
+                          end: 1,
+                        )
+                    : Container(
+                        width: 35.w,
+                        height: 35.w,
+                        margin: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.deepPurple[700],
+                        ),
+                      );
               },
             ),
           ),
@@ -301,19 +474,25 @@ class _GameScreenState extends State<GameScreen> {
                           )
                             .animate()
                             .scaleXY(
-                              begin: 1,
-                              end: 1.2,
-                              duration: 300.milliseconds,
+                              curve: Curves.easeOutSine,
                               delay: (rowIndex * 100 + 200).milliseconds,
-                              curve: Curves.easeIn,
+                              duration: .2.seconds,
+                              begin: 1,
+                              end: .8,
                             )
                             .then()
                             .scaleXY(
-                              begin: 1,
-                              end: .833333333333333333,
-                              duration: 300.milliseconds,
-                              delay: 300.milliseconds,
-                              curve: Curves.easeOut,
+                              curve: Curves.easeOutSine,
+                              duration: .4.seconds,
+                              begin: .8,
+                              end: 1.2,
+                            )
+                            .then()
+                            .scaleXY(
+                              curve: Curves.bounceOut,
+                              duration: .4.seconds,
+                              begin: 1.2,
+                              end: 1,
                             )
                         : Container(
                             width: 35.w,
@@ -358,7 +537,7 @@ class _GameScreenState extends State<GameScreen> {
         (columnIndex) {
           int findRowIndex() {
             for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
-              if (gameBoard[rowIndex][columnIndex] != 0) {
+              if (gameBoard[rowIndex][columnIndex] == 0) {
                 return rowIndex;
               }
             }
@@ -370,24 +549,24 @@ class _GameScreenState extends State<GameScreen> {
                 (rowIndex) => gameBoard[rowIndex][columnIndex],
               ).contains(0);
 
-          int rowIndex = findRowIndex();
-
           return GestureDetector(
             onTap: () async {
-              if (!isGameOver &&
+              if (!canTap && !isGameOver) {
+                showNotYourTurnDialog(context);
+              } else if (!isGameOver &&
                   canTap &&
                   !isComputerPlaying &&
                   canDropInColumn()) {
                 setState(() {
                   canTap = false;
                 });
-                makeMove(rowIndex, columnIndex);
+                makeMove(columnIndex);
                 if (!isGameOver) {
                   setState(() {
                     isComputerPlaying = true;
                   });
                   int computerMove = await player2.play();
-                  makeMove(rowIndex, computerMove);
+                  makeMove(computerMove);
                   setState(() {
                     isComputerPlaying = false;
                     Future.delayed(300.milliseconds, () {
@@ -444,6 +623,7 @@ class _GameScreenState extends State<GameScreen> {
       debugPrint('Tie!');
       isGameOver = true;
       canTap = false;
+      winner = 0;
       restartGame(rowIndex);
     }
   }
@@ -457,7 +637,10 @@ class _GameScreenState extends State<GameScreen> {
             checkHorizontal()['winner'],
             checkHorizontal()['positions'],
           );
-          checkHorizontal()['winner'] == 1 ? player1.score++ : player2.score++;
+          setState(() {
+            winner = checkHorizontal()['winner'];
+          });
+          winner == 1 ? player1.score++ : player2.score++;
         });
 
         isGameOver = true;
@@ -470,7 +653,11 @@ class _GameScreenState extends State<GameScreen> {
             checkVertical()['winner'],
             checkVertical()['positions'],
           );
-          checkVertical()['winner'] == 1 ? player1.score++ : player2.score++;
+
+          setState(() {
+            winner = checkVertical()['winner'];
+          });
+          winner == 1 ? player1.score++ : player2.score++;
         });
 
         isGameOver = true;
@@ -483,7 +670,11 @@ class _GameScreenState extends State<GameScreen> {
             checkDiagonal()['winner'],
             checkDiagonal()['positions'],
           );
-          checkDiagonal()['winner'] == 1 ? player1.score++ : player2.score++;
+
+          setState(() {
+            winner = checkDiagonal()['winner'];
+          });
+          winner == 1 ? player1.score++ : player2.score++;
         });
 
         isGameOver = true;
@@ -675,23 +866,10 @@ class _GameScreenState extends State<GameScreen> {
 
   restartGame(int rowIndex) {
     Future.delayed(3.seconds, () async {
-      reset();
-
       setState(() {
         firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
-        currentPlayer = firstPlayer;
+        reset();
       });
-
-      if (currentPlayer == player2) {
-        setState(() {
-          isComputerPlaying = true;
-        });
-        int computerMove = await player2.play();
-        makeMove(rowIndex, computerMove);
-        setState(() {
-          isComputerPlaying = false;
-        });
-      }
     });
   }
 }
