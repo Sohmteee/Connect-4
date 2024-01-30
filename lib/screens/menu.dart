@@ -127,16 +127,16 @@ class _SplashScreenState extends State<SplashScreen> {
                               ),
                             ),
                           )
-                            .animate(
-                              onComplete: (controller) {
+                            .animate(onComplete: (controller) {
+                              Future.delayed(.7.seconds, () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const GameScreen(),
                                   ),
-                                )
-                              }
-                            )
+                                );
+                              });
+                            })
                             .moveY(
                               begin: -((150 * (rowIndex + 2))).w,
                               end: 0,
