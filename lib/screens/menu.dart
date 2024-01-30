@@ -18,7 +18,14 @@ class _SplashScreenState extends State<SplashScreen> {
     [1, 1, 1, 1, 1],
     [2, 2, 2, 1, 2],
   ];
-  PositionsList
+  PositionsList highlightPositions = PositionsList(
+    [
+      Position(0, 3),
+      Position(1, 2),
+      Position(2, 1),
+      Position(3, 0),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
