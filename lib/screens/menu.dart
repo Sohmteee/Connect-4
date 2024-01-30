@@ -99,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           duration: 300.milliseconds,
                           curve: Curves.bounceOut,
                         )
-                    : Container(
+                    : ((columnIndex ==0 && rowIndex == )) ? Container(
                         width: 35.w,
                         height: 35.w,
                         margin: EdgeInsets.all(5.w),
@@ -125,7 +125,20 @@ class _SplashScreenState extends State<SplashScreen> {
                           end: .87,
                           duration: 300.milliseconds,
                           curve: Curves.bounceOut,
-                        );
+                        ) : Container(
+                            width: 35.w,
+                            height: 35.w,
+                            margin: EdgeInsets.all(5.w),
+                            decoration: BoxDecoration(
+                              color: color,
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: colors,
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
+                            ),
+                          );
               },
             ),
           ),
