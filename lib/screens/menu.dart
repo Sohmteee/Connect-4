@@ -12,6 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   List<List<int>> board = [
     [0, 0, 0, 1, 0],
+    [0, 0, 1, 1, 0],
     [0, 1, 2, 1, 0],
     [1, 1, 1, 1, 1],
     [2, 2, 2, 1, 2],
@@ -42,11 +43,11 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          4,
+          5,
           (rowIndex) => Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              4,
+              5,
               (columnIndex) {
                 return Container(
                   width: 35.w,
@@ -71,11 +72,11 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          4,
+         5,
           (rowIndex) => Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              4,
+              5,
               (columnIndex) {
                 Color? color;
                 List<Color> colors = [];
