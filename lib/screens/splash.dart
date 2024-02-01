@@ -13,6 +13,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool showBoard = true;
   List<List<int>> board = [
     [0, 0, 0, 1, 0],
     [0, 0, 1, 1, 0],
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(2.5.seconds, () {
+    Future.delayed(2.8.seconds, () {
       setState(() {
         highlightPositions = PositionsList(
           [
@@ -35,7 +36,12 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         );
       });
-      Future.delayed(3.seconds, () {
+      Future.delayed(1.4.seconds, () {
+        setState(() {
+          showBoard = false;
+        });
+      });
+      Future.delayed(5.seconds, () {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -52,12 +58,44 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            buildBoard(),
-            buildDiscs(),
-          ],
+        child: SizedBox(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              if (showBoard) buildBoard(),
+              Stack(
+                alignment: Alignment.centerLeft,
+                clipBehavior: Clip.none,
+                children: [
+                  showBoard ? buildDiscs() : buildCompressedDiscs(),
+                  if (!showBoard)
+                    Positioned(
+                      left: -50.w,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 40.h),
+                          Text(
+                            'CONNECT',
+                            style: TextStyle(
+                              fontSize: 40.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.yellow,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ).animate().moveX(
+                          delay: .3.seconds,
+                          begin: -250.w,
+                          end: 0,
+                          duration: .5.seconds,
+                          curve: Curves.bounceOut,
+                        ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -201,20 +239,30 @@ class _SplashScreenState extends State<SplashScreen> {
                                   end: .87,
                                   duration: 300.milliseconds,
                                   curve: Curves.bounceOut,
-                                
                                 )
-                        : Container(
+                        : AnimatedContainer(
+                            duration: .4.seconds,
                             width: 35.w,
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
                               color: color,
                               shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                colors: colors,
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                              ),
+                              gradient: (!showBoard &&
+                                      board[rowIndex][columnIndex] == 2)
+                                  ? const LinearGradient(
+                                      colors: [
+                                        Colors.transparent,
+                                        Colors.transparent,
+                                      ],
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                    )
+                                  : LinearGradient(
+                                      colors: colors,
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                    ),
                             ),
                           ).animate().scaleXY(
                               end: .87,
@@ -227,5 +275,81 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  Widget buildCompressedDiscs() {
+    return Padding(
+      padding: EdgeInsets.all(2.5.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          5,
+          (rowIndex) => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              5,
+              (columnIndex) {
+                Color? color;
+                List<Color> colors = [];
+                if (board[rowIndex][columnIndex] != 0) {
+                  if (board[rowIndex][columnIndex] == 1) {
+                    color = Colors.red;
+                    colors = [Colors.red[400]!, Colors.red[700]!];
+                  } else if (board[rowIndex][columnIndex] == 2) {
+                    color = Colors.yellow;
+                    colors = [Colors.yellow[400]!, Colors.yellow[700]!];
+                  } else {
+                    color = Colors.transparent;
+                    colors = [Colors.transparent, Colors.transparent];
+                  }
+                }
+                return Container(
+                  width: 35.w,
+                  height: 35.w,
+                  margin: EdgeInsets.all(5.w),
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: board[rowIndex][columnIndex] == 1
+                          ? Colors.white
+                          : Colors.transparent,
+                      width: 3.sp,
+                    ),
+                    gradient: (board[rowIndex][columnIndex] == 1)
+                        ? LinearGradient(
+                            colors: colors,
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          )
+                        : LinearGradient(
+                            colors:
+                                colors.map((c) => c.withOpacity(0)).toList(),
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          ),
+                  ),
+                ).animate().scaleXY(
+                      end: .87,
+                      duration: 300.milliseconds,
+                      curve: Curves.bounceOut,
+                    );
+              },
+            ),
+          ),
+        ),
+      ),
+    )
+        .animate()
+        .scaleXY(
+          end: .5,
+          duration: 500.milliseconds,
+          curve: Curves.easeOutSine,
+        )
+        .moveX(
+          end: 110.w,
+          duration: 500.milliseconds,
+          curve: Curves.easeOutSine,
+        );
   }
 }
