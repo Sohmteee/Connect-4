@@ -1,3 +1,5 @@
+import 'package:connect4/screens/game.dart';
+import 'package:connect4/screens/menu.dart';
 import 'package:connect4/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,6 +31,11 @@ class MyApp extends StatelessWidget {
           ),
           home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
+          routes: {
+            '/splash': (context) => const SplashScreen(),
+            '/menu': (context) => const MenuScreen(),
+            '/game': (context) => const GameScreen(),
+          },
         );
       },
     );
