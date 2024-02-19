@@ -95,7 +95,6 @@ class _MenuScreenState extends State<MenuScreen> {
                   (states) => backgroundColor!,
                 ),
                 activeColor: backgroundColor,
-                
               ),
               SwitchListTile(
                 value: provider.sound,
@@ -112,7 +111,11 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
                 activeColor: backgroundColor,
               ),
-              
+              Slider.adaptive(
+                value: 0.5,
+                onChanged: (value) {},
+                activeColor: backgroundColor,
+              ),
             ],
           );
         }),
