@@ -1,3 +1,4 @@
+import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -10,8 +11,9 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      body: const Column(
         children: [
           Spacer(flex: 2),
           Center(
@@ -25,8 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           Spacer(flex: 4),
-          Spacer(),
-          Spacer(),
+          
           Spacer(flex: 4),
         ],
       ),
