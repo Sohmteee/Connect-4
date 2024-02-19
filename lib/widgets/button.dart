@@ -21,7 +21,6 @@ class GameButton extends StatelessWidget {
     return ZoomTapAnimation(
       onTap: onPressed,
       child: Container(
-        width: 250.w,
         padding: padding ??
             EdgeInsets.symmetric(
               vertical: 10.h,
