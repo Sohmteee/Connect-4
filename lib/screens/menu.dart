@@ -52,11 +52,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     builder: (context) {
                       return Dialog(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                            25, 20,25,20
-                            vertical: 20.h,
-                            horizontal: 25.w,
-                          ),
+                          padding: EdgeInsets.fromLTRB(5.w, 20.h, 10.w, 20.h),
                           decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
