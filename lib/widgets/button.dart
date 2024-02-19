@@ -23,8 +23,8 @@ class GameButton extends StatelessWidget {
       child: Container(
         padding: padding ??
             EdgeInsets.symmetric(
-              vertical: 10.h,
-              horizontal: 15.w,
+              vertical: 20.h,
+              horizontal: 25.w,
             ),
         decoration: const BoxDecoration(
           image: DecorationImage(
