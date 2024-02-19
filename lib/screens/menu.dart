@@ -61,12 +61,16 @@ class _MenuScreenState extends State<MenuScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               SwitchListTile(
-                                value: false,
+                                value: true,
                                 onChanged: (value) {},
                                 title: const Text('Sound'),
                                 inactiveThumbColor: Colors.transparent,
                                 inactiveTrackColor: Colors.transparent,
-                                trackOutlineColor: MaterialStateColor.,
+                                trackOutlineColor:
+                                    MaterialStateColor.resolveWith(
+                                  (states) => backgroundColor!,
+                                ),
+                                ac
                               ),
                             ],
                           ),
