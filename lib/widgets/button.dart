@@ -3,9 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GameButton extends StatelessWidget {
-  const GameButton({super.key, this.text, this.onPressed});
+  const GameButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.color = Colors.deepPurple,
+    this.padding = EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+  });
 
-  
+  final String text;
+  final VoidCallback onPressed;
+  final Color color;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
