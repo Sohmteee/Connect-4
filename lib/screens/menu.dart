@@ -36,10 +36,10 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
           const SizedBox(height: 20),
           Container(
-            padding: EdgeInsets.all(10.sp),
+            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
             decoration: BoxDecoration(
-              color: Colors.deepPurple[200],
-              borderRadius: BorderRadius.circular(10.sp),
+              color: Colors.deepPurple[800],
+              borderRadius: BorderRadius.circular(50.r),
             ),
             child: Text(
               'Settings',
