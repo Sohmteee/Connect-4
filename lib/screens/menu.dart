@@ -95,9 +95,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   (states) => backgroundColor!,
                 ),
                 activeColor: backgroundColor,
-                overlayColor: MaterialStateColor.resolveWith(
-                  (states) => Colors.transparent,
-                ),
+                enableFeedback: ,
               ),
               SwitchListTile(
                 value: provider.sound,
