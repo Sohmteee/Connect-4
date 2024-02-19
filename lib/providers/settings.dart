@@ -4,13 +4,13 @@ class SettingsProvider extends ChangeNotifier {
   bool music = false;
   bool sound = false;
 
-  void toggleMusic() {
-    music = !music;
+  void toggleMusic(bool value) {
+    music = value;
     notifyListeners();
   }
 
-  void toggleSound() {
-    sound = !sound;
+  void toggleSound(bool newSound) {
+    sound = newSound;
     notifyListeners();
   }
 }

@@ -16,7 +16,6 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-
     return DoubleTapToExit(
       snackBar: const SnackBar(
         content: Text(
@@ -84,7 +83,7 @@ class _MenuScreenState extends State<MenuScreen> {
             SwitchListTile(
               value: provider.music,
               onChanged: (value) {
-                provider.music = value;
+                provider.toggleMusic(value);
               },
               title: const Text('Music'),
               inactiveThumbColor: Colors.transparent,
@@ -97,7 +96,7 @@ class _MenuScreenState extends State<MenuScreen> {
             SwitchListTile(
               value: provider.sound,
               onChanged: (value) {
-                provider.
+                provider.toggleSound(value);
               },
               title: const Text('Sound'),
               inactiveThumbColor: Colors.transparent,
