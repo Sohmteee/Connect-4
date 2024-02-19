@@ -77,37 +77,41 @@ class _MenuScreenState extends State<MenuScreen> {
       child: Container(
         padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
         decoration: const BoxDecoration(),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SwitchListTile(
-              value: provider.music,
-              onChanged: (value) {
-                provider.toggleMusic(value);
-              },
-              title: const Text('Music'),
-              inactiveThumbColor: Colors.transparent,
-              inactiveTrackColor: Colors.transparent,
-              trackOutlineColor: MaterialStateColor.resolveWith(
-                (states) => backgroundColor!,
+        child: StatefulBuilder(builder: (context, updateState) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SwitchListTile(
+                value: provider.music,
+                onChanged: (value) {
+                  provider.toggleMusic(value);
+                  updateState(() {});
+                },
+                title: const Text('Music'),
+                inactiveThumbColor: Colors.transparent,
+                inactiveTrackColor: Colors.transparent,
+                trackOutlineColor: MaterialStateColor.resolveWith(
+                  (states) => backgroundColor!,
+                ),
+                activeColor: backgroundColor,
               ),
-              activeColor: backgroundColor,
-            ),
-            SwitchListTile(
-              value: provider.sound,
-              onChanged: (value) {
-                provider.toggleSound(value);
-              },
-              title: const Text('Sound'),
-              inactiveThumbColor: Colors.transparent,
-              inactiveTrackColor: Colors.transparent,
-              trackOutlineColor: MaterialStateColor.resolveWith(
-                (states) => backgroundColor!,
+              SwitchListTile(
+                value: provider.sound,
+                onChanged: (value) {
+                  provider.toggleSound(value);
+                  updateState(() {});
+                },
+                title: const Text('Sound'),
+                inactiveThumbColor: Colors.transparent,
+                inactiveTrackColor: Colors.transparent,
+                trackOutlineColor: MaterialStateColor.resolveWith(
+                  (states) => backgroundColor!,
+                ),
+                activeColor: backgroundColor,
               ),
-              activeColor: backgroundColor,
-            ),
-          ],
-        ),
+            ],
+          );
+        }),
       ),
     );
   }

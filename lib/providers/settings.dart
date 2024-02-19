@@ -9,8 +9,8 @@ class SettingsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleSound(bool newSound) {
-    sound = newSound;
+  void toggleSound(bool value) {
+    sound = value;
     notifyListeners();
   }
 }
