@@ -14,7 +14,10 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return DoubleTapToExit(
-      ns
+      snackBar: SnackBar(
+                content: Text('Tap again to exit!'),
+                
+              ),
       child: Scaffold(
         backgroundColor: backgroundColor,
         body: Column(
