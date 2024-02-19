@@ -30,7 +30,9 @@ class _MenuScreenState extends State<MenuScreen> {
           const Spacer(flex: 5),
           GameButton(
             text: 'Play',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/game');
+            },
           ),
           const Spacer(),
           GameButton(
