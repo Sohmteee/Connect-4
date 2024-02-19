@@ -12,6 +12,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  final settingsProvider = SettingsProvider();
   @override
   Widget build(BuildContext context) {
     return DoubleTapToExit(
