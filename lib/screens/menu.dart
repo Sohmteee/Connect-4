@@ -42,10 +42,10 @@ class _MenuScreenState extends State<MenuScreen> {
               borderRadius: BorderRadius.circular(50.r),
             ),
             child: Text(
-              'Settings',
+              'Play ',
               style: TextStyle(
                 color: Colors.deepPurple[100],
-                fontSize: 20.sp,
+                fontSize: 18.sp,
               ),
             ),
           ),
