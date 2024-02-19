@@ -16,13 +16,13 @@ class _MenuScreenState extends State<MenuScreen> {
       body: Column(
         children: [
           const SizedBox(height: 100),
-          const Center(
+          Center(
             child: Text(
-              'Connect 4',
+              'CONNECT 4',
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
+                color: Colors.deepPurple[100],
               ),
             ),
           ),
