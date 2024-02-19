@@ -34,6 +34,7 @@ class _MenuScreenState extends State<MenuScreen> {
             child: const Text('Play'),
           ),
           const SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/settings');
