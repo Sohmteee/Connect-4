@@ -70,7 +70,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     MaterialStateColor.resolveWith(
                                   (states) => backgroundColor!,
                                 ),
-                                ac
+                                activeColor: backgroundColor,
                               ),
                             ],
                           ),
