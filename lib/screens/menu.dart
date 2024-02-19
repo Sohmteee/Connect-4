@@ -50,7 +50,10 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          Image.asset('name'),
+          Image.asset(
+            'assets/images/game button.png',
+            width: 200.w,
+          ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
