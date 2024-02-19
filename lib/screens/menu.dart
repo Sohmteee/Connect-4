@@ -63,7 +63,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               SwitchListTile(
                                 value: true,
                                 onChanged: (value) {},
-                                title: const Text('Sound'),
+                                title: const Text('SOUND'),
                                 inactiveThumbColor: Colors.transparent,
                                 inactiveTrackColor: Colors.transparent,
                                 trackOutlineColor:
