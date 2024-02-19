@@ -1,7 +1,6 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -28,52 +27,22 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 100),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/game');
-            },
-            child: const Text('Play'),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
-            decoration: BoxDecoration(
-              color: Colors.deepPurple[800],
-              borderRadius: BorderRadius.circular(50.r),
-            ),
-            child: Text(
-              'Play ',
-              style: TextStyle(
-                color: Colors.deepPurple[100],
-                fontSize: 18.sp,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
+          const Spacer(),
           GameButton(
             text: 'Play',
             onPressed: () {},
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           GameButton(
             text: 'Settings',
             onPressed: () {},
           ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/settings');
-            },
-            child: const Text('Settings'),
+          const SizedBox(height: 30),
+          GameButton(
+            text: 'About',
+            onPressed: () {},
           ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/about');
-            },
-            child: const Text('About'),
-          ),
+          const Spacer(),
         ],
       ),
     );
