@@ -69,8 +69,6 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Dialog buildSettings() {
-    bool music = false;
-    bool sound = false;
 
     return Dialog(
       child: Container(
