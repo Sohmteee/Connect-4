@@ -1,6 +1,5 @@
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/colors/app_colors.dart';
-import 'package:connect4/screens/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,14 +40,14 @@ class _SplashScreenState extends State<SplashScreen> {
           showBoard = false;
         });
       });
-      Future.delayed(5.seconds, () {
+      /* Future.delayed(5.seconds, () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const GameScreen(),
           ),
         );
-      });
+      }); */
     });
     super.initState();
   }
