@@ -1,5 +1,7 @@
+import 'package:connect4/screens/about.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/menu.dart';
+import 'package:connect4/screens/settings.dart';
 import 'package:connect4/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
             '/splash': (context) => const SplashScreen(),
             '/menu': (context) => const MenuScreen(),
             '/game': (context) => const GameScreen(),
+            '/settings': (context) => const SettingsScreen(),
+            '/about': (context) => const AboutScreen(),
           },
         );
       },
