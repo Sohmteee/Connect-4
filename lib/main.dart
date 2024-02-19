@@ -1,4 +1,3 @@
-import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
