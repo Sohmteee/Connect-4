@@ -221,7 +221,6 @@ class _SplashScreenState extends State<SplashScreen> {
                                 height: 35.w,
                                 margin: EdgeInsets.all(5.w),
                                 decoration: BoxDecoration(
-                                  color: color,
                                   shape: BoxShape.circle,
                                   gradient: LinearGradient(
                                     colors: colors,
@@ -249,7 +248,6 @@ class _SplashScreenState extends State<SplashScreen> {
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
-                              color: color,
                               shape: BoxShape.circle,
                               gradient: (!showBoard &&
                                       board[rowIndex][columnIndex] == 2)
@@ -311,7 +309,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 35.w,
                   margin: EdgeInsets.all(5.w),
                   decoration: BoxDecoration(
-                    color: color,
                     shape: BoxShape.circle,
                     border: Border.all(
                       color: board[rowIndex][columnIndex] == 1
