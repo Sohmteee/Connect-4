@@ -1,3 +1,4 @@
+import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       body: Column(
         children: [
           const SizedBox(height: 100),
