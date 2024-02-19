@@ -84,8 +84,9 @@ class _MenuScreenState extends State<MenuScreen> {
               SwitchListTile(
                 value: provider.music,
                 onChanged: (value) {
-                  provider.toggleMusic(value);
-                  updateState(() {});
+                  updateState(() {
+                    provider.toggleMusic(value);
+                  });
                 },
                 title: const Text('Music'),
                 inactiveThumbColor: Colors.transparent,
@@ -94,12 +95,14 @@ class _MenuScreenState extends State<MenuScreen> {
                   (states) => backgroundColor!,
                 ),
                 activeColor: backgroundColor,
+                Color
               ),
               SwitchListTile(
                 value: provider.sound,
                 onChanged: (value) {
-                  provider.toggleSound(value);
-                  updateState(() {});
+                  updateState(() {
+                    provider.toggleSound(value);
+                  });
                 },
                 title: const Text('Sound'),
                 inactiveThumbColor: Colors.transparent,
