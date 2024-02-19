@@ -56,6 +56,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           children: [
                             SwitchListTile(
                               value: true,
+                              contentPadding: EdgeInsets.symmetric(),
                               onChanged: (value) {},
                               title: const Text('Music'),
                               inactiveThumbColor: Colors.transparent,
