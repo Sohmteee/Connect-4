@@ -35,7 +35,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
               ),
             ),
-            const Spacer(flex: 5),
+            const Spacer(flex: 4),
             GameButton(
               text: 'PLAY',
               onPressed: () {
@@ -52,7 +52,7 @@ class _MenuScreenState extends State<MenuScreen> {
               text: 'ABOUT',
               onPressed: () {},
             ),
-            const Spacer(flex: 5),
+            const Spacer(flex: 4),
           ],
         ),
       ),
