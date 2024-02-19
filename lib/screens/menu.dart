@@ -51,8 +51,26 @@ class _MenuScreenState extends State<MenuScreen> {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                        child: ,
-                      );
+                          child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 20.h,
+                          horizontal: 25.w,
+                        ),
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/game_button.png'),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'SETTINGS',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                            ),
+                          ),
+                        ),
+                      ));
                     });
               },
             ),
