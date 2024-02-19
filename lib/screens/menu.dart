@@ -57,7 +57,9 @@ class _MenuScreenState extends State<MenuScreen> {
                             horizontal: 25.w,
                           ),
                           decoration: const BoxDecoration(),
-                          child: Container(),
+                          child: const Column(
+                            children: [],
+                          ),
                         ),
                       );
                     });
