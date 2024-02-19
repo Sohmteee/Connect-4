@@ -53,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
                       return Dialog(
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            vertical: 50.h,
+                            vertical: 20.h,
                             horizontal: 25.w,
                           ),
                           decoration: const BoxDecoration(),
