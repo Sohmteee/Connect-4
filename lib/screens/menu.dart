@@ -115,6 +115,8 @@ class _MenuScreenState extends State<MenuScreen> {
                 value: 0.5,
                 onChanged: (value) {},
                 activeColor: backgroundColor,
+                divisions: 10,
+                
               ),
             ],
           );
