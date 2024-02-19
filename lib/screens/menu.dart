@@ -26,7 +26,7 @@ class _MenuScreenState extends State<MenuScreen> {
         body: Column(
           children: [
             const Spacer(flex: 2),
-             Center(
+            Center(
               child: Text(
                 'CONNECT 4',
                 style: TextStyle(
@@ -47,7 +47,13 @@ class _MenuScreenState extends State<MenuScreen> {
             GameButton(
               text: 'SETTINGS',
               onPressed: () {
-                showDialog(context: context, builder: (context))
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        child: ,
+                      );
+                    });
               },
             ),
             const Spacer(),
