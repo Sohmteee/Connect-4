@@ -1,8 +1,10 @@
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/providers/settings.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -12,9 +14,9 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  final settingsProvider = SettingsProvider();
   @override
   Widget build(BuildContext context) {
+
     return DoubleTapToExit(
       snackBar: const SnackBar(
         content: Text(
@@ -70,6 +72,7 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Dialog buildSettings() {
+    final value = Provider.of<SettingsProvider>(context);
 
     return Dialog(
       child: Container(
@@ -79,7 +82,7 @@ class _MenuScreenState extends State<MenuScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SwitchListTile(
-              value: true,
+              value: value.,
               onChanged: (value) {},
               title: const Text('Music'),
               inactiveThumbColor: Colors.transparent,
