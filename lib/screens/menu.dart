@@ -45,12 +45,16 @@ class _MenuScreenState extends State<MenuScreen> {
             const Spacer(),
             GameButton(
               text: 'SETTINGS',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              },
             ),
             const Spacer(),
             GameButton(
               text: 'ABOUT',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/about');
+              },
             ),
             const Spacer(flex: 4),
           ],
