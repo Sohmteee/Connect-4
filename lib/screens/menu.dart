@@ -12,40 +12,43 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: Column(
-        children: [
-          const Spacer(flex: 2),
-          const Center(
-            child: Text(
-              'CONNECT 4',
-              style: TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-                color: Colors.yellow,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        body: Column(
+          children: [
+            const Spacer(flex: 2),
+            const Center(
+              child: Text(
+                'CONNECT 4',
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
               ),
             ),
-          ),
-          const Spacer(flex: 5),
-          GameButton(
-            text: 'Play',
-            onPressed: () {
-              Navigator.pushNamed(context, '/game');
-            },
-          ),
-          const Spacer(),
-          GameButton(
-            text: 'Settings',
-            onPressed: () {},
-          ),
-          const Spacer(),
-          GameButton(
-            text: 'About',
-            onPressed: () {},
-          ),
-          const Spacer(flex: 5),
-        ],
+            const Spacer(flex: 5),
+            GameButton(
+              text: 'Play',
+              onPressed: () {
+                Navigator.pushNamed(context, '/game');
+              },
+            ),
+            const Spacer(),
+            GameButton(
+              text: 'Settings',
+              onPressed: () {},
+            ),
+            const Spacer(),
+            GameButton(
+              text: 'About',
+              onPressed: () {},
+            ),
+            const Spacer(flex: 5),
+          ],
+        ),
       ),
     );
   }
