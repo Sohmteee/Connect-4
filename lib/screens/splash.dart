@@ -147,7 +147,10 @@ class _SplashScreenState extends State<SplashScreen> {
               5,
               (columnIndex) {
                 Color? color;
-                List<Color> colors = [];
+                List<Color> colors = [
+                  Colors.transparent,
+                  Colors.transparent,
+                ];
                 if (board[rowIndex][columnIndex] != 0) {
                   if (board[rowIndex][columnIndex] == 1) {
                     color = Colors.red;
