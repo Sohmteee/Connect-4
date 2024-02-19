@@ -1,5 +1,6 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/widgets/button.dart';
+import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
+    return DoubleTapToExit(
+      ns
       child: Scaffold(
         backgroundColor: backgroundColor,
         body: Column(
