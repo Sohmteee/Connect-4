@@ -14,10 +14,12 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return DoubleTapToExit(
-      snackBar: SnackBar(
-                content: Text('Tap again to exit!'),
-                
-              ),
+      snackBar: const SnackBar(
+        content: Text(
+          'Tap again to exit!',
+          textAlign: TextAlign.center,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: backgroundColor,
         body: Column(
@@ -35,19 +37,19 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
             const Spacer(flex: 5),
             GameButton(
-              text: 'Play',
+              text: 'PLAY',
               onPressed: () {
                 Navigator.pushNamed(context, '/game');
               },
             ),
             const Spacer(),
             GameButton(
-              text: 'Settings',
+              text: 'SETTINGS',
               onPressed: () {},
             ),
             const Spacer(),
             GameButton(
-              text: 'About',
+              text: 'ABOUT',
               onPressed: () {},
             ),
             const Spacer(flex: 5),
