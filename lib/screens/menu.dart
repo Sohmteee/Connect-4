@@ -63,7 +63,19 @@ class _MenuScreenState extends State<MenuScreen> {
                               SwitchListTile(
                                 value: true,
                                 onChanged: (value) {},
-                                title: const Text('SOUND'),
+                                title: const Text('Music'),
+                                inactiveThumbColor: Colors.transparent,
+                                inactiveTrackColor: Colors.transparent,
+                                trackOutlineColor:
+                                    MaterialStateColor.resolveWith(
+                                  (states) => backgroundColor!,
+                                ),
+                                activeColor: backgroundColor,
+                              ),
+                              SwitchListTile(
+                                value: true,
+                                onChanged: (value) {},
+                                title: const Text('Sound'),
                                 inactiveThumbColor: Colors.transparent,
                                 inactiveTrackColor: Colors.transparent,
                                 trackOutlineColor:
