@@ -57,10 +57,14 @@ class _MenuScreenState extends State<MenuScreen> {
                             horizontal: 25.w,
                           ),
                           decoration: const BoxDecoration(),
-                          child: const Column(
+                          child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              SwitchListTile(value: true, onChanged: onChanged)
+                              SwitchListTile(
+                                value: true,
+                                onChanged: (value) {},
+                                title: const Text('Sound'),
+                              ),
                             ],
                           ),
                         ),
