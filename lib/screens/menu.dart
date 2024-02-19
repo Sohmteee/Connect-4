@@ -56,13 +56,15 @@ class _MenuScreenState extends State<MenuScreen> {
                           children: [
                             SwitchListTile(
                               value: true,
-                              contentPadding: EdgeInsets.symmetric(),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 15.h,
+                                horizontal: 25.w,
+                              ),
                               onChanged: (value) {},
                               title: const Text('Music'),
                               inactiveThumbColor: Colors.transparent,
                               inactiveTrackColor: Colors.transparent,
-                              trackOutlineColor:
-                                  MaterialStateColor.resolveWith(
+                              trackOutlineColor: MaterialStateColor.resolveWith(
                                 (states) => backgroundColor!,
                               ),
                               activeColor: backgroundColor,
@@ -73,8 +75,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               title: const Text('Sound'),
                               inactiveThumbColor: Colors.transparent,
                               inactiveTrackColor: Colors.transparent,
-                              trackOutlineColor:
-                                  MaterialStateColor.resolveWith(
+                              trackOutlineColor: MaterialStateColor.resolveWith(
                                 (states) => backgroundColor!,
                               ),
                               activeColor: backgroundColor,
