@@ -50,6 +50,8 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
           ),
           const SizedBox(height: 20),
+          Image.asset('name'),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/settings');
