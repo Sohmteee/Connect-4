@@ -1,6 +1,6 @@
 import 'package:connect4/classes/position.dart';
 import 'package:connect4/colors/app_colors.dart';
-import 'package:connect4/screens/game.dart';
+import 'package:connect4/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const GameScreen(),
+            builder: (context) => const MenuScreen(),
           ),
         );
       });
