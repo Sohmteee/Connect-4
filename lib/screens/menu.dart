@@ -51,36 +51,38 @@ class _MenuScreenState extends State<MenuScreen> {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SwitchListTile(
-                              value: true,
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.h,
-                                horizontal: 25.w,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                          decoration: const BoxDecoration(),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SwitchListTile(
+                                value: true,
+                                onChanged: (value) {},
+                                title: const Text('Music'),
+                                inactiveThumbColor: Colors.transparent,
+                                inactiveTrackColor: Colors.transparent,
+                                trackOutlineColor:
+                                    MaterialStateColor.resolveWith(
+                                  (states) => backgroundColor!,
+                                ),
+                                activeColor: backgroundColor,
                               ),
-                              onChanged: (value) {},
-                              title: const Text('Music'),
-                              inactiveThumbColor: Colors.transparent,
-                              inactiveTrackColor: Colors.transparent,
-                              trackOutlineColor: MaterialStateColor.resolveWith(
-                                (states) => backgroundColor!,
+                              SwitchListTile(
+                                value: true,
+                                onChanged: (value) {},
+                                title: const Text('Sound'),
+                                inactiveThumbColor: Colors.transparent,
+                                inactiveTrackColor: Colors.transparent,
+                                trackOutlineColor:
+                                    MaterialStateColor.resolveWith(
+                                  (states) => backgroundColor!,
+                                ),
+                                activeColor: backgroundColor,
                               ),
-                              activeColor: backgroundColor,
-                            ),
-                            SwitchListTile(
-                              value: true,
-                              onChanged: (value) {},
-                              title: const Text('Sound'),
-                              inactiveThumbColor: Colors.transparent,
-                              inactiveTrackColor: Colors.transparent,
-                              trackOutlineColor: MaterialStateColor.resolveWith(
-                                (states) => backgroundColor!,
-                              ),
-                              activeColor: backgroundColor,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     });
