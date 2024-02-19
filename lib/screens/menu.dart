@@ -1,6 +1,7 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -50,9 +51,17 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          Image.asset(
-            'assets/images/game button.png',
-            width: 200.w,
+          ZoomTapAnimation(
+            child: Container(
+              decoration: BoxDecoration(
+                image:  AssetImage('assets/images/game button.png'),
+                width: 150.w,
+              ),
+              child: Image.asset(
+                'assets/images/game button.png',
+                width: 150.w,
+              ),
+            ),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
