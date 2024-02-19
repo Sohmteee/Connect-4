@@ -72,7 +72,7 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Dialog buildSettings() {
-    final value = Provider.of<SettingsProvider>(context);
+    final provider = Provider.of<SettingsProvider>(context);
 
     return Dialog(
       child: Container(
@@ -82,8 +82,10 @@ class _MenuScreenState extends State<MenuScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SwitchListTile(
-              value: value.,
-              onChanged: (value) {},
+              value: provider.music,
+              onChanged: (value) {
+                provider.music = value;
+              },
               title: const Text('Music'),
               inactiveThumbColor: Colors.transparent,
               inactiveTrackColor: Colors.transparent,
@@ -93,8 +95,10 @@ class _MenuScreenState extends State<MenuScreen> {
               activeColor: backgroundColor,
             ),
             SwitchListTile(
-              value: true,
-              onChanged: (value) {},
+              value: provider.sound,
+              onChanged: (value) {
+                provider.
+              },
               title: const Text('Sound'),
               inactiveThumbColor: Colors.transparent,
               inactiveTrackColor: Colors.transparent,
