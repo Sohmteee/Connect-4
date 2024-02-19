@@ -53,15 +53,20 @@ class _MenuScreenState extends State<MenuScreen> {
           const SizedBox(height: 20),
           ZoomTapAnimation(
             child: Container(
-              width: 150.w,
+              padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/game button.png'),
                 ),
               ),
-              child: Image.asset(
-                'assets/images/game button.png',
-                width: 150.w,
+              child: Center(
+                child: Text(
+                  'Play ',
+                  style: TextStyle(
+                    color: Colors.deepPurple[100],
+                    fontSize: 18.sp,
+                  ),
+                ),
               ),
             ),
           ),
