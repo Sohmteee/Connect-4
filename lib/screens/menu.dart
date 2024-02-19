@@ -1,5 +1,6 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -34,6 +35,20 @@ class _MenuScreenState extends State<MenuScreen> {
             child: const Text('Play'),
           ),
           const SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.all(10.sp),
+            decoration: BoxDecoration(
+              color: Colors.deepPurple[200],
+              borderRadius: BorderRadius.circular(10.sp),
+            ),
+            child: Text(
+              'Settings',
+              style: TextStyle(
+                color: Colors.deepPurple[100],
+                fontSize: 20.sp,
+              ),
+            ),
+          ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
