@@ -7,7 +7,7 @@ class GameButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.color = Colors.deepPurple,
+    this.color = Colors.white,
     this.padding,
   });
 
@@ -31,7 +31,7 @@ class GameButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: color,
               fontSize: 18.sp,
             ),
           ),
