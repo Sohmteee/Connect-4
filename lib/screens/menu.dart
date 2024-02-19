@@ -16,7 +16,7 @@ class _MenuScreenState extends State<MenuScreen> {
       backgroundColor: backgroundColor,
       body: Column(
         children: [
-          const SizedBox(height: 100),
+          const Spacer(flex: 2),
           Center(
             child: Text(
               'CONNECT 4',
@@ -27,22 +27,22 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
           ),
-          const Spacer(),
+          const Spacer(flex: 5),
           GameButton(
             text: 'Play',
             onPressed: () {},
           ),
-          const SizedBox(height: 30),
+          const Spacer(),
           GameButton(
             text: 'Settings',
             onPressed: () {},
           ),
-          const SizedBox(height: 30),
+          const Spacer(),
           GameButton(
             text: 'About',
             onPressed: () {},
           ),
-          const Spacer(),
+          const Spacer(flex: 5),
         ],
       ),
     );
