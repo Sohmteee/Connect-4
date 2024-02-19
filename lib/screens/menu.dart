@@ -58,7 +58,10 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           decoration: const BoxDecoration(),
                           child: const Column(
-                            children: [],
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SwitchListTile(value: true, onChanged: onChanged)
+                            ],
                           ),
                         ),
                       );
