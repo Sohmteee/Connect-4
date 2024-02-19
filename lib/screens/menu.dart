@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
             GameButton(
               text: 'SETTINGS',
               onPressed: () {
-                Navigator.pushNamed(context, '/settings');
+                showDialog(context: context, builder: (context))
               },
             ),
             const Spacer(),
