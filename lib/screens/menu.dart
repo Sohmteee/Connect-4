@@ -2,6 +2,7 @@ import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -25,11 +26,11 @@ class _MenuScreenState extends State<MenuScreen> {
         body: Column(
           children: [
             const Spacer(flex: 2),
-            const Center(
+             Center(
               child: Text(
                 'CONNECT 4',
                 style: TextStyle(
-                  fontSize: 50,
+                  fontSize: 50.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.yellow,
                 ),
