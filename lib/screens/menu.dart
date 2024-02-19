@@ -61,9 +61,10 @@ class _MenuScreenState extends State<MenuScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               SwitchListTile(
-                                value: true,
+                                value: false,
                                 onChanged: (value) {},
                                 title: const Text('Sound'),
+                                inactiveThumbColor: Colors.transparent,
                               ),
                             ],
                           ),
