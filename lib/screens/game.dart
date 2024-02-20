@@ -123,12 +123,9 @@ class _GameScreenState extends State<GameScreen> {
         });
       });
     } else {
-      setState(() {
-        isComputerPlaying = false;
-        Future.delayed(300.milliseconds, () {
-          setState(() {
-            canTap = true;
-          });
+      Future.delayed(300.milliseconds, () {
+        setState(() {
+          canTap = true;
         });
       });
     }
