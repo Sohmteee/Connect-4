@@ -32,7 +32,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
-  late final dynamic player2;
+  late final Player player2;
   int? winner;
   late Player currentPlayer;
   bool isGameOver = false;
@@ -95,7 +95,9 @@ class _GameScreenState extends State<GameScreen> {
       ];
 
       currentPlayer = firstPlayer;
-      player2.lastPlayedPosition = null;
+      if (player2 is ComputerPlayer) {
+        player2.lastPlayedPosition = null;
+      }
       isGameOver = false;
       canTap = true;
       isComputerPlaying = false;
