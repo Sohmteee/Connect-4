@@ -149,6 +149,7 @@ class _GameScreenState extends State<GameScreen> {
             context: context,
             builder: (context) {
               return Dialog(
+                backgroundColor: backgroundColor,
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10.w,
@@ -186,7 +187,10 @@ class _GameScreenState extends State<GameScreen> {
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
                             inputFormatters: const [],
-                            onChanged: (value) {},
+                            onSubmitted: (value) {
+                              player2.name = value;
+                              
+                            },
                           ),
                         ),
                       ],
