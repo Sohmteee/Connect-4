@@ -11,6 +11,8 @@ class Player {
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 
+  void clearScore() => score = 0;
+
   Future<List<int>?> getHints() async {
     try {
       var response = await http.post(

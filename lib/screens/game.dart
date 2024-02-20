@@ -142,7 +142,7 @@ class _GameScreenState extends State<GameScreen> {
     reset();
 
     if (player2 is Player) {
-       showDialog(
+      showDialog(
           context: context,
           builder: (context) {
             return Dialog(
@@ -153,43 +153,41 @@ class _GameScreenState extends State<GameScreen> {
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                     SizedBox(
-      height: 50.h,
-      child: TextField(
-        onTapOutside: (event) {
-          FocusScope.of(context).unfocus();
-        },
-        decoration: InputDecoration(
-          labelText: hintText,
-          labelStyle: TextStyle(
-            color: Colors.grey[400],
-            fontSize: 16.sp,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
-            borderSide: BorderSide(
-              color: Colors.purple,
-              width: 1.w,
-            ),
-          ),
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 14.w,
-            vertical: 20.h,
-          ),
-        ),
-        keyboardType: TextInputType.name,
-        textCapitalization: TextCapitalization.words,
-        inputFormatters: const [],
-        onChanged: (value) {},
-      ),
-    ),
- 
+                      SizedBox(
+                        height: 50.h,
+                        child: TextField(
+                          onTapOutside: (event) {
+                            FocusScope.of(context).unfocus();
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Enter player 2\'s name',
+                            labelStyle: TextStyle(
+                              color: Colors.grey[400],
+                              fontSize: 16.sp,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: BorderSide(
+                                color: Colors.purple,
+                                width: 1.w,
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 14.w,
+                              vertical: 20.h,
+                            ),
+                          ),
+                          keyboardType: TextInputType.name,
+                          textCapitalization: TextCapitalization.words,
+                          inputFormatters: const [],
+                          onChanged: (value) {},
+                        ),
+                      ),
                     ],
                   );
                 }),
               ),
-            )
-          ;
+            );
           });
     }
   }
