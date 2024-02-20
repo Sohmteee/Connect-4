@@ -31,7 +31,10 @@ class GameButton extends StatelessWidget {
             ),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: Image.asset('assets/images/game button.png', fit: ,).image,
+            image: Image.asset(
+              'assets/images/game button.png',
+              fit: BoxFit.fitWidth,
+            ).image,
           ),
         ),
         child: Center(
