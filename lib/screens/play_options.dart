@@ -34,18 +34,19 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
             onPressed: () {
               Navigator.pushNamed(context, '/game');
             },
+            padding: EdgeInsets.symmetric(
+              vertical: 20.h,
+              horizontal: 55.w,
+            ),
           ),
           const Spacer(),
           GameButton(
             text: 'PLAY WITH FRIEND',
-            onPressed: () {
-             
-            },
+            onPressed: () {},
           ),
           const Spacer(flex: 4),
         ],
       ),
     );
   }
-
-  }
+}
