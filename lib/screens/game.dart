@@ -148,174 +148,169 @@ class _GameScreenState extends State<GameScreen> {
         showDialog(
             context: context,
             builder: (context) {
-              return Dialog(
-                backgroundColor: backgroundColor,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 20.h,
-                  ),
-                  decoration: const BoxDecoration(),
-                  child: StatefulBuilder(builder: (context, updateState) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Player 1',
-                          style: TextStyle(
-                            color: Colors.yellow,
-                            fontSize: 16.sp,
-                          ),
-                        ),
-                        SizedBox(height: 20.h),
-                        SizedBox(
-                          height: 50.h,
-                          child: TextField(
-                            onTapOutside: (event) {
-                              FocusScope.of(context).unfocus();
-                            },
-                            decoration: InputDecoration(
-                              labelText: 'Enter Name',
-                              labelStyle: TextStyle(
-                                color: Colors.grey[300],
-                                fontSize: 12.sp,
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                  width: 1.w,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                  width: 1.w,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                  width: 1.w,
-                                ),
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 14.w,
-                                vertical: 20.h,
-                              ),
-                            ),
-                            keyboardType: TextInputType.name,
-                            textCapitalization: TextCapitalization.words,
-                            inputFormatters: const [],
-                            onSubmitted: (value) {
-                              setState(() {
-                                player1.name = value;
-                              });
-                              Navigator.pop(context);
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Dialog(
-                                      backgroundColor: backgroundColor,
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w,
-                                          vertical: 20.h,
-                                        ),
-                                        decoration: const BoxDecoration(),
-                                        child: StatefulBuilder(
-                                            builder: (context, updateState) {
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'Player 2',
-                                                style: TextStyle(
-                                                  color: Colors.yellow,
-                                                  fontSize: 16.sp,
-                                                ),
-                                              ),
-                                              SizedBox(height: 20.h),
-                                              SizedBox(
-                                                height: 50.h,
-                                                child: TextField(
-                                                  onTapOutside: (event) {
-                                                    FocusScope.of(context)
-                                                        .unfocus();
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    labelText: 'Enter Name',
-                                                    labelStyle: TextStyle(
-                                                      color: Colors.grey[300],
-                                                      fontSize: 12.sp,
-                                                    ),
-                                                    border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.r),
-                                                      borderSide: BorderSide(
-                                                        color: Colors.purple,
-                                                        width: 1.w,
-                                                      ),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.r),
-                                                      borderSide: BorderSide(
-                                                        color: Colors.purple,
-                                                        width: 1.w,
-                                                      ),
-                                                    ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.r),
-                                                      borderSide: BorderSide(
-                                                        color: Colors.purple,
-                                                        width: 1.w,
-                                                      ),
-                                                    ),
-                                                    contentPadding:
-                                                        EdgeInsets.symmetric(
-                                                      horizontal: 14.w,
-                                                      vertical: 20.h,
-                                                    ),
-                                                  ),
-                                                  keyboardType:
-                                                      TextInputType.name,
-                                                  textCapitalization:
-                                                      TextCapitalization.words,
-                                                  inputFormatters: const [],
-                                                  onSubmitted: (value) {
-                                                    setState(() {
-                                                      player2.name = value;
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        }),
-                                      ),
-                                    );
-                                  });
-                            },
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-              );
+              return buildPlayer1Dialog();
             });
       }
     });
+  }
+
+  Dialog buildPlayer1Dialog() {
+    return Dialog(
+      backgroundColor: backgroundColor,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10.w,
+          vertical: 20.h,
+        ),
+        decoration: const BoxDecoration(),
+        child: StatefulBuilder(builder: (context, updateState) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Player 1',
+                style: TextStyle(
+                  color: Colors.yellow,
+                  fontSize: 16.sp,
+                ),
+              ),
+              SizedBox(height: 20.h),
+              SizedBox(
+                height: 50.h,
+                child: TextField(
+                  onTapOutside: (event) {
+                    FocusScope.of(context).unfocus();
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Enter Name',
+                    labelStyle: TextStyle(
+                      color: Colors.grey[300],
+                      fontSize: 12.sp,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 14.w,
+                      vertical: 20.h,
+                    ),
+                  ),
+                  keyboardType: TextInputType.name,
+                  textCapitalization: TextCapitalization.words,
+                  inputFormatters: const [],
+                  onSubmitted: (value) {
+                    setState(() {
+                      player1.name = value;
+                    });
+                    Navigator.pop(context);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return buildPlayer2Dialog();
+                        });
+                  },
+                ),
+              ),
+            ],
+          );
+        }),
+      ),
+    );
+  }
+
+  Dialog buildPlayer2Dialog() {
+    return Dialog(
+      backgroundColor: backgroundColor,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10.w,
+          vertical: 20.h,
+        ),
+        decoration: const BoxDecoration(),
+        child: StatefulBuilder(builder: (context, updateState) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Player 2',
+                style: TextStyle(
+                  color: Colors.yellow,
+                  fontSize: 16.sp,
+                ),
+              ),
+              SizedBox(height: 20.h),
+              SizedBox(
+                height: 50.h,
+                child: TextField(
+                  onTapOutside: (event) {
+                    FocusScope.of(context).unfocus();
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Enter Name',
+                    labelStyle: TextStyle(
+                      color: Colors.grey[300],
+                      fontSize: 12.sp,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: BorderSide(
+                        color: Colors.purple,
+                        width: 1.w,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 14.w,
+                      vertical: 20.h,
+                    ),
+                  ),
+                  keyboardType: TextInputType.name,
+                  textCapitalization: TextCapitalization.words,
+                  inputFormatters: const [],
+                  onSubmitted: (value) {
+                    setState(() {
+                      player2.name = value;
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+            ],
+          );
+        }),
+      ),
+    );
   }
 
   @override
