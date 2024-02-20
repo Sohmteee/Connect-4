@@ -29,9 +29,9 @@ class GameButton extends StatelessWidget {
               vertical: 20.h,
               horizontal: 25.w,
             ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/game button.png'),
+            image: Image.asset('assets/images/game button.png', fit: ,).image,
           ),
         ),
         child: Center(
