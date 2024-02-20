@@ -140,6 +140,10 @@ class _GameScreenState extends State<GameScreen> {
     firstPlayer = player1;
     currentPlayer = firstPlayer;
     reset();
+
+    if (player2 is Player) {
+     showDialog(context: context, builder: builder)
+    }
   }
 
   @override
