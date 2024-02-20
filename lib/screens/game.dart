@@ -177,10 +177,24 @@ class _GameScreenState extends State<GameScreen> {
                             decoration: InputDecoration(
                               labelText: 'Enter Name',
                               labelStyle: TextStyle(
-                                color: Colors.grey[400],
+                                color: Colors.white,
                                 fontSize: 12.sp,
                               ),
                               border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                                borderSide: BorderSide(
+                                  color: Colors.purple,
+                                  width: 1.w,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                                borderSide: BorderSide(
+                                  color: Colors.purple,
+                                  width: 1.w,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.r),
                                 borderSide: BorderSide(
                                   color: Colors.purple,
