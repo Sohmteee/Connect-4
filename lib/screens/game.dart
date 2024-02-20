@@ -127,6 +127,7 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
     firstPlayer = player1;
     currentPlayer = firstPlayer;
+    restartGame();
   }
 
   @override
@@ -635,7 +636,7 @@ class _GameScreenState extends State<GameScreen> {
       isGameOver = true;
       canTap = false;
       winner = 0;
-      restartGame(rowIndex);
+      restartGame();
     }
   }
 
@@ -656,7 +657,7 @@ class _GameScreenState extends State<GameScreen> {
 
         isGameOver = true;
         canTap = false;
-        restartGame(rowIndex);
+        restartGame();
       } else if (checkVertical().isNotEmpty) {
         debugPrint('Player ${checkVertical()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
@@ -673,7 +674,7 @@ class _GameScreenState extends State<GameScreen> {
 
         isGameOver = true;
         canTap = false;
-        restartGame(rowIndex);
+        restartGame();
       } else if (checkDiagonal().isNotEmpty) {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
@@ -690,7 +691,7 @@ class _GameScreenState extends State<GameScreen> {
 
         isGameOver = true;
         canTap = false;
-        restartGame(rowIndex);
+        restartGame();
       }
     });
   }
@@ -875,7 +876,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  restartGame(int rowIndex) {
+  restartGame() {
     Future.delayed(3.seconds, () async {
       setState(() {
         firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
