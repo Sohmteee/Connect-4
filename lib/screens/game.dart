@@ -153,52 +153,37 @@ class _GameScreenState extends State<GameScreen> {
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SwitchListTile(
-                        value: provider.music,
-                        onChanged: (value) {
-                          updateState(() {
-                            provider.toggleMusic(value);
-                          });
-                        },
-                        title: Text(
-                          'Music',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        inactiveThumbColor: Colors.transparent,
-                        inactiveTrackColor: Colors.transparent,
-                        trackOutlineColor: MaterialStateColor.resolveWith(
-                          (states) => backgroundColor!,
-                        ),
-                        activeColor: backgroundColor,
-                      ),
-                      SwitchListTile(
-                        value: provider.sound,
-                        onChanged: (value) {
-                          updateState(() {
-                            provider.toggleSound(value);
-                          });
-                        },
-                        title: Text(
-                          'Sound',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        inactiveThumbColor: Colors.transparent,
-                        inactiveTrackColor: Colors.transparent,
-                        trackOutlineColor: MaterialStateColor.resolveWith(
-                          (states) => backgroundColor!,
-                        ),
-                        activeColor: backgroundColor,
-                      ),
-                      Slider.adaptive(
-                        value: 0.5,
-                        onChanged: (value) {},
-                        activeColor: backgroundColor,
-                        divisions: 10,
-                      ),
+                     SizedBox(
+      height: 50.h,
+      child: TextField(
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
+        decoration: InputDecoration(
+          labelText: hintText,
+          labelStyle: TextStyle(
+            color: Colors.grey[400],
+            fontSize: 16.sp,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.r),
+            borderSide: BorderSide(
+              color: Colors.purple,
+              width: 1.w,
+            ),
+          ),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 14.w,
+            vertical: 20.h,
+          ),
+        ),
+        keyboardType: TextInputType.name,
+        textCapitalization: TextCapitalization.words,
+        inputFormatters: const [],
+        onChanged: (value) {},
+      ),
+    ),
+ 
                     ],
                   );
                 }),
