@@ -15,8 +15,8 @@ class SettingsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setVolumne(bool value) {
-    volume = value ? 0.7 : 0.0;
+  void setVolumne(double value) {
+    volume = value;
     notifyListeners();
   }
 }

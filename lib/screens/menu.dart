@@ -122,8 +122,12 @@ class _MenuScreenState extends State<MenuScreen> {
                 activeColor: backgroundColor,
               ),
               Slider.adaptive(
-                value: 0.5,
-                onChanged: (value) {},
+                value: provider.volume,
+                onChanged: (value) {
+                  updateState(() {
+                    provider.setVolumne(value);
+                  });
+                },
                 activeColor: backgroundColor,
                 divisions: 10,
               ),
