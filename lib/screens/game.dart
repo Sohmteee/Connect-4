@@ -144,7 +144,7 @@ class _GameScreenState extends State<GameScreen> {
     reset();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (player2 is Player) {
+      if (!player2 is ComputerPlayer) {
         showDialog(
             context: context,
             builder: (context) {
