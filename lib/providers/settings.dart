@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SettingsProvider extends ChangeNotifier {
   bool music = false;
   bool sound = false;
-  double volume = 0.5;
+  double volume = 0.7;
 
   void toggleMusic(bool value) {
     music = value;
@@ -16,7 +16,7 @@ class SettingsProvider extends ChangeNotifier {
   }
 
   void setVolumne(bool value) {
-    sound = value;
+    volume = value ? 0.7 : 0.0;
     notifyListeners();
   }
 }
