@@ -599,6 +599,12 @@ class _GameScreenState extends State<GameScreen> {
                       });
                     });
                   });
+                } else if (!isGameOver) {
+                  Future.delayed(300.milliseconds, () {
+                    setState(() {
+                      canTap = true;
+                    });
+                  });
                 }
               }
             },
