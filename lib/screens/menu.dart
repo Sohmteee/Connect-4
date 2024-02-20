@@ -130,7 +130,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
                 activeColor: backgroundColor,
                 divisions: 10,
-                label: '(provider.volume * 100)'',
+                label: '${provider.volume * 100}%'.toStringAsFixed(0),  
               ),
             ],
           );
