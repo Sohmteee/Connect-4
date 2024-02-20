@@ -167,6 +167,7 @@ class _GameScreenState extends State<GameScreen> {
                             fontSize: 16.sp,
                           ),
                         ),
+                        SizedBox(height: 20.h),
                         SizedBox(
                           height: 50.h,
                           child: TextField(
@@ -174,7 +175,7 @@ class _GameScreenState extends State<GameScreen> {
                               FocusScope.of(context).unfocus();
                             },
                             decoration: InputDecoration(
-                              labelText: 'Enter player 2\'s name',
+                              labelText: 'Enter Name',
                               labelStyle: TextStyle(
                                 color: Colors.grey[400],
                                 fontSize: 12.sp,
