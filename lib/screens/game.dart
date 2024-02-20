@@ -142,7 +142,70 @@ class _GameScreenState extends State<GameScreen> {
     reset();
 
     if (player2 is Player) {
-     showDialog(context: context, builder: builder)
+       showDialog(
+          context: context,
+          builder: (context) {
+            return Dialog(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                decoration: const BoxDecoration(),
+                child: StatefulBuilder(builder: (context, updateState) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SwitchListTile(
+                        value: provider.music,
+                        onChanged: (value) {
+                          updateState(() {
+                            provider.toggleMusic(value);
+                          });
+                        },
+                        title: Text(
+                          'Music',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                        inactiveThumbColor: Colors.transparent,
+                        inactiveTrackColor: Colors.transparent,
+                        trackOutlineColor: MaterialStateColor.resolveWith(
+                          (states) => backgroundColor!,
+                        ),
+                        activeColor: backgroundColor,
+                      ),
+                      SwitchListTile(
+                        value: provider.sound,
+                        onChanged: (value) {
+                          updateState(() {
+                            provider.toggleSound(value);
+                          });
+                        },
+                        title: Text(
+                          'Sound',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                        inactiveThumbColor: Colors.transparent,
+                        inactiveTrackColor: Colors.transparent,
+                        trackOutlineColor: MaterialStateColor.resolveWith(
+                          (states) => backgroundColor!,
+                        ),
+                        activeColor: backgroundColor,
+                      ),
+                      Slider.adaptive(
+                        value: 0.5,
+                        onChanged: (value) {},
+                        activeColor: backgroundColor,
+                        divisions: 10,
+                      ),
+                    ],
+                  );
+                }),
+              ),
+            )
+          ;
+          });
     }
   }
 
