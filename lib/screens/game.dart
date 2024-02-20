@@ -32,7 +32,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
-  final player2 = ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora');
+  final player2 = widget.gameMode ==  ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora');
   int? winner;
   late Player currentPlayer;
   bool isGameOver = false;
