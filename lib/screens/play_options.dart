@@ -32,7 +32,12 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
           GameButton(
             text: 'PLAY WITH\nCOMPUTER',
             onPressed: () {
-              Navigator.pushNamed(context, '/game');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const nextPage(),
+                ),
+              )
             },
           ),
           const Spacer(),

@@ -24,6 +24,8 @@ class GameScreen extends StatefulWidget {
     required this.gameMode,
   });
 
+  final GameMode gameMode;
+
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
