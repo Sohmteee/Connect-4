@@ -126,7 +126,8 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     player2 = widget.gameMode == GameMode.singlePlayer
-        ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora'): Player(2, name: 'Player 2');
+        ? ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora')
+        : Player(2, name: 'Player 2');
     firstPlayer = player1;
     currentPlayer = firstPlayer;
     reset();
