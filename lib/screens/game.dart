@@ -127,7 +127,7 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
     firstPlayer = player1;
     currentPlayer = firstPlayer;
-    restartGame();
+    reset();
   }
 
   @override
