@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/splash': (context) => const SplashScreen(),
             '/menu': (context) => const MenuScreen(),
-            '/game': (context) => const GameScreen(),
+            '/game': (context) => const GameScreen(gameMode: GameMode.singlePlayer),
             '/settings': (context) => const SettingsScreen(),
             '/about': (context) => const AboutScreen(),
             '/play-options': (context) => const PlayOptionsScreen(),
