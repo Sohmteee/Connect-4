@@ -88,7 +88,12 @@ class _MenuScreenState extends State<MenuScreen> {
                     provider.toggleMusic(value);
                   });
                 },
-                title: const Text('Music'),
+                title: Text(
+                  'Music',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                  ),
+                ),
                 inactiveThumbColor: Colors.transparent,
                 inactiveTrackColor: Colors.transparent,
                 trackOutlineColor: MaterialStateColor.resolveWith(
@@ -103,7 +108,12 @@ class _MenuScreenState extends State<MenuScreen> {
                     provider.toggleSound(value);
                   });
                 },
-                title: const Text('Sound'),
+                title: Text(
+                  'Sound',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                  ),
+                ),
                 inactiveThumbColor: Colors.transparent,
                 inactiveTrackColor: Colors.transparent,
                 trackOutlineColor: MaterialStateColor.resolveWith(
