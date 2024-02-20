@@ -143,55 +143,57 @@ class _GameScreenState extends State<GameScreen> {
     player2.clearScore();
     reset();
 
-    if (player2 is Player) {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return Dialog(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                decoration: const BoxDecoration(),
-                child: StatefulBuilder(builder: (context, updateState) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: 50.h,
-                        child: TextField(
-                          onTapOutside: (event) {
-                            FocusScope.of(context).unfocus();
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Enter player 2\'s name',
-                            labelStyle: TextStyle(
-                              color: Colors.grey[400],
-                              fontSize: 16.sp,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                              borderSide: BorderSide(
-                                color: Colors.purple,
-                                width: 1.w,
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (player2 is Player) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return Dialog(
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                  decoration: const BoxDecoration(),
+                  child: StatefulBuilder(builder: (context, updateState) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          height: 50.h,
+                          child: TextField(
+                            onTapOutside: (event) {
+                              FocusScope.of(context).unfocus();
+                            },
+                            decoration: InputDecoration(
+                              labelText: 'Enter player 2\'s name',
+                              labelStyle: TextStyle(
+                                color: Colors.grey[400],
+                                fontSize: 16.sp,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                                borderSide: BorderSide(
+                                  color: Colors.purple,
+                                  width: 1.w,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 14.w,
+                                vertical: 20.h,
                               ),
                             ),
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 14.w,
-                              vertical: 20.h,
-                            ),
+                            keyboardType: TextInputType.name,
+                            textCapitalization: TextCapitalization.words,
+                            inputFormatters: const [],
+                            onChanged: (value) {},
                           ),
-                          keyboardType: TextInputType.name,
-                          textCapitalization: TextCapitalization.words,
-                          inputFormatters: const [],
-                          onChanged: (value) {},
                         ),
-                      ),
-                    ],
-                  );
-                }),
-              ),
-            );
-          });
-    }
+                      ],
+                    );
+                  }),
+                ),
+              );
+            });
+      }
+    });
   }
 
   @override
