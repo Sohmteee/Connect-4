@@ -164,7 +164,7 @@ class _GameScreenState extends State<GameScreen> {
                           'Player 1',
                           style: TextStyle(
                             color: Colors.yellow,
-                            fontSize: 16.sp
+                            fontSize: 16.sp,
                           ),
                         ),
                         SizedBox(
