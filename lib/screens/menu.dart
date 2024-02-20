@@ -121,9 +121,10 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
                 activeColor: backgroundColor,
               ),
+              SizedBox(height: 15.h),
               Row(
                 children: [
-                  SizedBox(width: 20.w),
+                  const SizedBox(width: 15),
                   Text(
                     'Volume',
                     style: TextStyle(
