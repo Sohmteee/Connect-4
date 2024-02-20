@@ -167,7 +167,7 @@ class _GameScreenState extends State<GameScreen> {
                               FocusScope.of(context).unfocus();
                             },
                             decoration: InputDecoration(
-                              labelText: 'Enter player 2\'s name',
+                              labelText: 'Enter player 1\'s name',
                               labelStyle: TextStyle(
                                 color: Colors.grey[400],
                                 fontSize: 12.sp,
