@@ -160,6 +160,13 @@ class _GameScreenState extends State<GameScreen> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        Text(
+                          'Player 1',
+                          style: TextStyle(
+                            color: Colors.yellow,
+                            fontSize: 16.sp
+                          ),
+                        ),
                         SizedBox(
                           height: 50.h,
                           child: TextField(
@@ -189,11 +196,9 @@ class _GameScreenState extends State<GameScreen> {
                             inputFormatters: const [],
                             onSubmitted: (value) {
                               setState(() {
-                                
                                 player2.name = value;
                               });
                               Navigator.pop(context);
-
                             },
                           ),
                         ),
