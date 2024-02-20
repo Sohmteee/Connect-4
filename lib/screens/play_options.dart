@@ -30,19 +30,18 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
           ),
           const Spacer(flex: 4),
           GameButton(
-            text: 'PLAY WITH COMPUTER',
+            text: 'PLAY WITH\nCOMPUTER',
             onPressed: () {
               Navigator.pushNamed(context, '/game');
             },
             padding: EdgeInsets.symmetric(
               vertical: 20.h,
-              horizontal: 55.w,
+              horizontal: 95.w,
             ),
-            width: 400.w,
           ),
           const Spacer(),
           GameButton(
-            text: 'PLAY WITH FRIEND',
+            text: 'PLAY WITH\nFRIEND',
             onPressed: () {},
           ),
           const Spacer(flex: 4),

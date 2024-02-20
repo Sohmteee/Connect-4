@@ -9,32 +9,26 @@ class GameButton extends StatelessWidget {
     required this.onPressed,
     this.color = Colors.white,
     this.padding,
-    this.width,
   });
 
   final String text;
   final VoidCallback onPressed;
   final Color color;
   final EdgeInsets? padding;
-  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       onTap: onPressed,
       child: Container(
-        width: width ?? 200.w,
         padding: padding ??
             EdgeInsets.symmetric(
               vertical: 20.h,
               horizontal: 25.w,
             ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: Image.asset(
-              'assets/images/game button.png',
-              fit: BoxFit.fitWidth,
-            ).image,
+            image: AssetImage('assets/images/game button.png'),
           ),
         ),
         child: Center(
@@ -42,7 +36,7 @@ class GameButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: color,
-              fontSize: 16.sp,
+              fontSize: 18.sp,
             ),
           ),
         ),
