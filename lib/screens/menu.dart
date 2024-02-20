@@ -60,7 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
             GameButton(
               text: 'ABOUT',
               onPressed: () {
-                Navigator.pushNamed(context, '/about');
+                // Navigator.pushNamed(context, '/about');
               },
             ),
             const Spacer(flex: 4),

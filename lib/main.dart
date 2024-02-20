@@ -1,5 +1,4 @@
 import 'package:connect4/providers/settings.dart';
-import 'package:connect4/screens/about.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/menu.dart';
 import 'package:connect4/screens/play_options.dart';
@@ -48,7 +47,6 @@ class MyApp extends StatelessWidget {
             '/menu': (context) => const MenuScreen(),
             '/game': (context) => const GameScreen(gameMode: GameMode.singlePlayer),
             '/settings': (context) => const SettingsScreen(),
-            '/about': (context) => const AboutScreen(),
             '/play-options': (context) => const PlayOptionsScreen(),
           },
         );
