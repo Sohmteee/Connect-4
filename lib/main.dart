@@ -2,6 +2,7 @@ import 'package:connect4/providers/settings.dart';
 import 'package:connect4/screens/about.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/menu.dart';
+import 'package:connect4/screens/play_options.dart';
 import 'package:connect4/screens/settings.dart';
 import 'package:connect4/screens/splash.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
             '/game': (context) => const GameScreen(),
             '/settings': (context) => const SettingsScreen(),
             '/about': (context) => const AboutScreen(),
+            '/play-options': (context) => const PlayOptionsScreen(),
           },
         );
       },
