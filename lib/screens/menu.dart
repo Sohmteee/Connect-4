@@ -44,6 +44,10 @@ class _MenuScreenState extends State<MenuScreen> {
               onPressed: () {
                 Navigator.pushNamed(context, '/play-options');
               },
+              padding: EdgeInsets.symmetric(
+                vertical: 20.h,
+                horizontal: 205.w,
+              ),
             ),
             const Spacer(),
             GameButton(
@@ -116,7 +120,6 @@ class _MenuScreenState extends State<MenuScreen> {
                 onChanged: (value) {},
                 activeColor: backgroundColor,
                 divisions: 10,
-
               ),
             ],
           );
