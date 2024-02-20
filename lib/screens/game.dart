@@ -150,7 +150,10 @@ class _GameScreenState extends State<GameScreen> {
             builder: (context) {
               return Dialog(
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 20.h,
+                  ),
                   decoration: const BoxDecoration(),
                   child: StatefulBuilder(builder: (context, updateState) {
                     return Column(
@@ -166,7 +169,7 @@ class _GameScreenState extends State<GameScreen> {
                               labelText: 'Enter player 2\'s name',
                               labelStyle: TextStyle(
                                 color: Colors.grey[400],
-                                fontSize: 16.sp,
+                                fontSize: 12.sp,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.r),
