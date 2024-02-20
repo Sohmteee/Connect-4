@@ -13,4 +13,9 @@ class SettingsProvider extends ChangeNotifier {
     sound = value;
     notifyListeners();
   }
+
+  void setVolumne(bool value) {
+    sound = value;
+    notifyListeners();
+  }
 }
