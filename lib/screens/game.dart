@@ -32,7 +32,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final player1 = Player(1, name: 'You');
-  late final Player player2;
+  late final dynamic player2;
   int? winner;
   late Player currentPlayer;
   bool isGameOver = false;
@@ -70,7 +70,7 @@ class _GameScreenState extends State<GameScreen> {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
-          if (currentPlayer.number == player2.number) {
+          if (currentPlayer.number == player2.number && player2 is ComputerPlayer) {
             player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           }
           alternatePlayer();
