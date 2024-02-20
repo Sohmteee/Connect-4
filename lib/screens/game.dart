@@ -204,7 +204,7 @@ class _GameScreenState extends State<GameScreen> {
                       '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16.sp,
+                        fontSize: 14.sp,
                       ),
                     )
                   : Text(
