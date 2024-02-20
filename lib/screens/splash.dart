@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           Text(
                             'CONNECT',
                             style: TextStyle(
-                              fontSize: 40.sp,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.yellow,
                             ),
