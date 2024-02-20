@@ -139,6 +139,8 @@ class _GameScreenState extends State<GameScreen> {
         : Player(2, name: 'Player 2');
     firstPlayer = player1;
     currentPlayer = firstPlayer;
+    player1.clearScore();
+    player2.clearScore();
     reset();
 
     if (player2 is Player) {
