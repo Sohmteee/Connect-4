@@ -121,6 +121,17 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
                 activeColor: backgroundColor,
               ),
+              Row(
+                children: [
+                  SizedBox(width: 20.w),
+                  Text(
+                    'Volume',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
               Slider.adaptive(
                 value: provider.volume,
                 onChanged: (value) {
