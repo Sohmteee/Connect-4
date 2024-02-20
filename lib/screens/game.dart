@@ -177,7 +177,7 @@ class _GameScreenState extends State<GameScreen> {
                             decoration: InputDecoration(
                               labelText: 'Enter Name',
                               labelStyle: TextStyle(
-                                color: Colors.white,
+                                color: Colors.grey[300],
                                 fontSize: 12.sp,
                               ),
                               border: OutlineInputBorder(
@@ -211,7 +211,7 @@ class _GameScreenState extends State<GameScreen> {
                             inputFormatters: const [],
                             onSubmitted: (value) {
                               setState(() {
-                                player2.name = value;
+                                player1.name = value;
                               });
                               Navigator.pop(context);
                             },
