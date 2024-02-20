@@ -70,7 +70,8 @@ class _GameScreenState extends State<GameScreen> {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
-          if (currentPlayer.number == player2.number && player2 is ComputerPlayer) {
+          if (currentPlayer.number == player2.number &&
+              player2 is ComputerPlayer) {
             player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           }
           alternatePlayer();
@@ -113,6 +114,15 @@ class _GameScreenState extends State<GameScreen> {
       int computerMove = await player2.play();
 
       makeMove(computerMove);
+      setState(() {
+        isComputerPlaying = false;
+        Future.delayed(300.milliseconds, () {
+          setState(() {
+            canTap = true;
+          });
+        });
+      });
+    } else {
       setState(() {
         isComputerPlaying = false;
         Future.delayed(300.milliseconds, () {
