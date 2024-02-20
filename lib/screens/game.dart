@@ -188,8 +188,10 @@ class _GameScreenState extends State<GameScreen> {
                             textCapitalization: TextCapitalization.words,
                             inputFormatters: const [],
                             onSubmitted: (value) {
-                              player2.name = value;
-                              
+                              setState(() {
+                                player2.name = value;
+                              });
+                              Navigator.pop(context);
                             },
                           ),
                         ),
