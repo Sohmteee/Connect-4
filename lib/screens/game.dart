@@ -11,8 +11,18 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+enum GameMode {
+  singlePlayer,
+  twoPlayersOffline,
+  twoPlayersOnline,
+  twoPlayersBluetooth,
+}
+
 class GameScreen extends StatefulWidget {
-  const GameScreen({super.key, });
+  const GameScreen({
+    super.key,
+    required this.gameMode,
+  });
 
   @override
   State<GameScreen> createState() => _GameScreenState();
