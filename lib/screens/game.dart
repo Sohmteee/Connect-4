@@ -106,7 +106,7 @@ class _GameScreenState extends State<GameScreen> {
       winner = null;
     });
 
-    if (currentPlayer == player2) {
+    if (currentPlayer == player2 && player2 is ComputerPlayer) {
       setState(() {
         isComputerPlaying = true;
       });
