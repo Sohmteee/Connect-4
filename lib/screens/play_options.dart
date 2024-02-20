@@ -22,7 +22,7 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
             child: Text(
               'CONNECT 4',
               style: TextStyle(
-                fontSize: 50.sp,
+                fontSize: 40.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.yellow,
               ),

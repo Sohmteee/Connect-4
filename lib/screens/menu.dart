@@ -32,7 +32,7 @@ class _MenuScreenState extends State<MenuScreen> {
               child: Text(
                 'CONNECT 4',
                 style: TextStyle(
-                  fontSize: 50.sp,
+                  fontSize: 40.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.yellow,
                 ),
@@ -116,7 +116,6 @@ class _MenuScreenState extends State<MenuScreen> {
                 onChanged: (value) {},
                 activeColor: backgroundColor,
                 divisions: 10,
-
               ),
             ],
           );
