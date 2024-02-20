@@ -189,9 +189,11 @@ class _GameScreenState extends State<GameScreen> {
                             inputFormatters: const [],
                             onSubmitted: (value) {
                               setState(() {
+                                
                                 player2.name = value;
                               });
                               Navigator.pop(context);
+
                             },
                           ),
                         ),
