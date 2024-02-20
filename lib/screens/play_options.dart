@@ -34,10 +34,6 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
             onPressed: () {
               Navigator.pushNamed(context, '/game');
             },
-            padding: EdgeInsets.symmetric(
-              vertical: 20.h,
-              horizontal: 95.w,
-            ),
           ),
           const Spacer(),
           GameButton(

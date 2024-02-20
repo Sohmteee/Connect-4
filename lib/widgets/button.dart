@@ -38,6 +38,7 @@ class GameButton extends StatelessWidget {
               color: color,
               fontSize: 18.sp,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
       ),
