@@ -36,7 +36,7 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
             },
             padding: EdgeInsets.symmetric(
               vertical: 20.h,
-              horizontal: 105.w,
+              horizontal: 55.w,
             ),
           ),
           const Spacer(),
