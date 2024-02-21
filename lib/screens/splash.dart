@@ -165,6 +165,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         width: 35.w,
                         height: 35.w,
                         margin: EdgeInsets.all(5.w),
+                        color: Colors.transparent,
                       ).animate().scaleXY(
                           end: .87,
                           duration: 300.milliseconds,
