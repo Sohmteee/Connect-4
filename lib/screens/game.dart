@@ -398,9 +398,10 @@ class _GameScreenState extends State<GameScreen> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  setState(() {
+                                  updateState(() {
                                     canExit = true;
                                   });
+                                  setState(() {});
                                   Navigator.pop(context);
                                   Navigator.pop(context);
                                 },
