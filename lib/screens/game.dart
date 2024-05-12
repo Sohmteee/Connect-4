@@ -375,8 +375,10 @@ class _GameScreenState extends State<GameScreen> {
         showDialog(
             context: context,
             builder: (context) {
-              return const Dialog(
-                child: ,
+              return  Dialog(
+                child: Container(
+                  child: ,
+                ),
               );
             });
       },
