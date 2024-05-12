@@ -370,7 +370,7 @@ class _GameScreenState extends State<GameScreen> {
         : [Colors.yellow[400]!, Colors.yellow[700]!];
 
     return PopScope(
-      canPop: canExit,
+      // canPop: canExit,
       onPopInvoked: (didPop) {
         showDialog(
             context: context,
@@ -401,7 +401,7 @@ class _GameScreenState extends State<GameScreen> {
                                   updateState(() {
                                     canExit = true;
                                   });
-                                  setState(() {});
+                                  // setState(() {});
                                   Navigator.pop(context);
                                   Navigator.pop(context);
                                 },
