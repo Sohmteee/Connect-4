@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   audioplayers: ^5.2.1
+  back_pressed: ^0.0.2
   cupertino_icons: ^1.0.6
   double_tap_to_exit: ^1.0.1
   flutter:
