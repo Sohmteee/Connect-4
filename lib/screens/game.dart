@@ -372,7 +372,9 @@ class _GameScreenState extends State<GameScreen> {
     return PopScope(
       canPop: canExit,
       onPopInvoked: (didPop) {
-        Navigator.popUntil(context, ModalRoute.withName('/menu'));
+        showDialog(context: context, builder: (context) {
+          return 
+        });
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
