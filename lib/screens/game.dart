@@ -386,7 +386,13 @@ class _GameScreenState extends State<GameScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text('Are you sure you want to exit?'),
+                      Text(
+                        'Are you sure you want to quit?',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12.sp,
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
