@@ -371,9 +371,8 @@ class _GameScreenState extends State<GameScreen> {
     return PopScope(
       onPopInvoked: (didPop) {
         if (didPop) {
-          Navigator.push;
+          Navigator.pushReplacementNamed(context, '/menu');
         }
-      
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
@@ -420,7 +419,8 @@ class _GameScreenState extends State<GameScreen> {
                                 iterationCount = 20;
                               }); */
                               setState(() {
-                                if (countDownController.getTimeInSeconds() >= 9) {
+                                if (countDownController.getTimeInSeconds() >=
+                                    9) {
                                   isGameOver = true;
                                   canTap = false;
                                   player2.score++;
@@ -494,7 +494,8 @@ class _GameScreenState extends State<GameScreen> {
                                 iterationCount = 20;
                               }); */
                               setState(() {
-                                if (countDownController.getTimeInSeconds() >= 9) {
+                                if (countDownController.getTimeInSeconds() >=
+                                    9) {
                                   isGameOver = true;
                                   player1.score++;
                                   restartGame();
@@ -589,7 +590,7 @@ class _GameScreenState extends State<GameScreen> {
                       setState(() {
                         isAutoPlaying = true;
                       });
-      
+
                       while (!isGameOver) {
                         if (canTap) {
                           List<int>? options = await player1.getHints();
@@ -605,9 +606,10 @@ class _GameScreenState extends State<GameScreen> {
                       }).map((row) {
                         return row.indexOf(0);
                       }).toList();
-      
-                      makeMove(freeColumns[Random().nextInt(freeColumns.length)]);
-      
+
+                      makeMove(
+                          freeColumns[Random().nextInt(freeColumns.length)]);
+
                       setState(() {
                         isAutoPlaying = false;
                       });
