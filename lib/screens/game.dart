@@ -372,9 +372,13 @@ class _GameScreenState extends State<GameScreen> {
     return PopScope(
       canPop: canExit,
       onPopInvoked: (didPop) {
-        showDialog(context: context, builder: (context) {
-          return 
-        });
+        showDialog(
+            context: context,
+            builder: (context) {
+              return const Dialog(
+                child: ,
+              );
+            });
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
