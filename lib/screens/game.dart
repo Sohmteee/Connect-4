@@ -384,6 +384,7 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                   decoration: const BoxDecoration(),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text('Are you sure you want to exit?'),
                       Row(
