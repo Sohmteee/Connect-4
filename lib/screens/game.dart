@@ -369,10 +369,9 @@ class _GameScreenState extends State<GameScreen> {
         : [Colors.yellow[400]!, Colors.yellow[700]!];
 
     return PopScope(
+      canPop: true,
       onPopInvoked: (didPop) {
-        if (didPop) {
-          Navigator.popUntil(context, ModalRoute.withName('/menu'));
-        }
+        Navigator.popUntil(context, ModalRoute.withName('/menu'));
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
