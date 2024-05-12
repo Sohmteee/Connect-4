@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 // import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:back_pressed/back_pressed.dart';
 import 'package:connect4/classes/computer_player.dart';
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
@@ -369,10 +370,8 @@ class _GameScreenState extends State<GameScreen> {
         ? [Colors.red[400]!, Colors.red[700]!]
         : [Colors.yellow[400]!, Colors.yellow[700]!];
 
-    return PopScope(
-      onPopInvoked: (didPop) {
-        // canExit = true;
-        debugPrint('Did Pop: $didPop');
+    return OnBackPressed(
+      perform: () {
         showDialog(
             context: context,
             builder: (context) {
@@ -397,7 +396,6 @@ class _GameScreenState extends State<GameScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              didPop = true;
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
