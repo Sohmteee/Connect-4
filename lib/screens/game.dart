@@ -371,7 +371,7 @@ class _GameScreenState extends State<GameScreen> {
     return PopScope(
       onPopInvoked: (didPop) {
         if (didPop) {
-          Navigator.pushReplacementNamed(context, '/menu');
+          Navigator.popUntil(context, ModalRoute.withName('/menu'));
         }
       },
       child: Scaffold(
