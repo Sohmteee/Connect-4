@@ -1,5 +1,8 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:connect4/colors/app_colors.dart';
-import 'package:connect4/providers/settings.dart';
+import 'package:connect4/data/controllers.dart';
+import 'package:connect4/main.dart';
+import 'package:connect4/providers/audio.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:double_tap_to_exit/double_tap_to_exit.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,29 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  @override
+  void initState() {
+    super.initState();
+    playBGAudio(context);
+    // Future.microtask(() => initializeEffectsVolume());
+  }
+
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        playBGAudio(context);
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.hidden:
+        pauseBGAudio();
+        break;
+      case AppLifecycleState.detached:
+        stopBGAudio();
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DoubleTapToExit(
@@ -42,13 +68,23 @@ class _MenuScreenState extends State<MenuScreen> {
             GameButton(
               text: 'PLAY',
               onPressed: () {
-                Navigator.pushNamed(context, '/game');
+                playTap(context);
+                Navigator.pushNamed(context, '/match');
+              },
+            ),
+            const Spacer(),
+            GameButton(
+              text: 'LEADERBOARD',
+              onPressed: () {
+                playTap(context);
+                // Navigator.pushNamed(context, '/match');
               },
             ),
             const Spacer(),
             GameButton(
               text: 'SETTINGS',
               onPressed: () {
+                playTap(context);
                 showDialog(
                     context: context,
                     builder: (context) {
@@ -60,6 +96,7 @@ class _MenuScreenState extends State<MenuScreen> {
             GameButton(
               text: 'ABOUT',
               onPressed: () {
+                playTap(context);
                 // Navigator.pushNamed(context, '/about');
               },
             ),
@@ -71,7 +108,7 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Dialog buildSettings() {
-    final provider = Provider.of<SettingsProvider>(context);
+    final provider = Provider.of<AudioProvider>(context);
 
     return Dialog(
       child: Container(
@@ -84,6 +121,7 @@ class _MenuScreenState extends State<MenuScreen> {
               SwitchListTile(
                 value: provider.music,
                 onChanged: (value) {
+                  playTap(context);
                   updateState(() {
                     provider.toggleMusic(value);
                   });
@@ -102,10 +140,11 @@ class _MenuScreenState extends State<MenuScreen> {
                 activeColor: backgroundColor,
               ),
               SwitchListTile(
-                value: provider.sound,
+                value: provider.soundEffects,
                 onChanged: (value) {
+                  playTap(context);
                   updateState(() {
-                    provider.toggleSound(value);
+                    provider.toggleSoundEffects(value);
                   });
                 },
                 title: Text(
@@ -136,8 +175,9 @@ class _MenuScreenState extends State<MenuScreen> {
               Slider.adaptive(
                 value: provider.volume,
                 onChanged: (value) {
+                  playTap(context);
                   updateState(() {
-                    provider.setVolumne(value);
+                    provider.setVolume(value);
                   });
                 },
                 activeColor: backgroundColor,
@@ -149,5 +189,32 @@ class _MenuScreenState extends State<MenuScreen> {
         }),
       ),
     );
+  }
+
+  Future<void> playBGAudio(context) async {
+    final audioProvider = Provider.of<AudioProvider>(context, listen: false);
+
+    if (audioProvider.music) {
+      await bgPlayer.setSource(AssetSource("audio/bg-music.mp3"));
+      await bgPlayer.resume();
+      debugPrint("music playing");
+    }
+
+    bgPlayer.onPlayerComplete.listen((_) async {
+      await bgPlayer.setSource(AssetSource("audio/bg-music.mp3"));
+      Future.delayed(const Duration(seconds: 5), () async {
+        await bgPlayer.resume();
+      });
+    });
+  }
+
+  Future<void> pauseBGAudio() async {
+    await bgPlayer.pause();
+    debugPrint("music paused");
+  }
+
+  Future<void> stopBGAudio() async {
+    await bgPlayer.stop();
+    debugPrint("music stopped");
   }
 }

@@ -182,7 +182,6 @@ class _SplashScreenState extends State<SplashScreen> {
                                 height: 35.w,
                                 margin: EdgeInsets.all(5.w),
                                 decoration: BoxDecoration(
-                                  color: color,
                                   shape: BoxShape.circle,
                                   gradient: LinearGradient(
                                     colors: colors,
@@ -291,14 +290,12 @@ class _SplashScreenState extends State<SplashScreen> {
             children: List.generate(
               5,
               (columnIndex) {
-                List<Color> colors = [];
+                List<Color> colors = [Colors.transparent, Colors.transparent];
                 if (board[rowIndex][columnIndex] != 0) {
                   if (board[rowIndex][columnIndex] == 1) {
                     colors = [Colors.red[400]!, Colors.red[700]!];
                   } else if (board[rowIndex][columnIndex] == 2) {
                     colors = [Colors.yellow[400]!, Colors.yellow[700]!];
-                  } else {
-                    colors = [Colors.transparent, Colors.transparent];
                   }
                 }
                 return Container(
@@ -320,8 +317,10 @@ class _SplashScreenState extends State<SplashScreen> {
                             end: Alignment.bottomLeft,
                           )
                         : LinearGradient(
-                            colors:
-                                colors.map((c) => c.withOpacity(0)).toList(),
+                            colors: [
+                              colors[0].withOpacity(0),
+                              colors[1].withOpacity(0),
+                            ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
                           ),

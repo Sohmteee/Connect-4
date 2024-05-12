@@ -28,7 +28,7 @@ class GameButton extends StatelessWidget {
             ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/game button.png'),
+            image: AssetImage('assets/images/game-button.png'),
           ),
         ),
         child: Center(
@@ -36,7 +36,7 @@ class GameButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: color,
-              fontSize: 18.sp,
+              fontSize: 14.sp,
             ),
             textAlign: TextAlign.center,
           ),

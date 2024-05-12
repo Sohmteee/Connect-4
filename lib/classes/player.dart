@@ -8,6 +8,7 @@ class Player {
   int number;
   String? name;
   int score = 0;
+  int? timeLeft;
 
   String boardToString() => gameBoard.map((row) => row.join()).join();
 

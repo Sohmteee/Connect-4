@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:math';
 
+// import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:connect4/classes/computer_player.dart';
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
@@ -9,10 +11,10 @@ import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 enum GameMode {
-  singlePlayer,
   twoPlayersOffline,
   twoPlayersOnline,
   twoPlayersBluetooth,
@@ -21,10 +23,12 @@ enum GameMode {
 class GameScreen extends StatefulWidget {
   const GameScreen({
     super.key,
-    required this.gameMode,
+    this.gameMode = GameMode.twoPlayersOnline,
+    required this.secondPlayer,
   });
 
   final GameMode gameMode;
+  final Map<String, dynamic> secondPlayer;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -37,16 +41,23 @@ class _GameScreenState extends State<GameScreen> {
   late Player currentPlayer;
   bool isGameOver = false;
   bool canTap = true;
-  bool isComputerPlaying = false;
+  bool isPlayer2Playing = false;
   bool isAutoPlaying = false;
   PositionsList winningPositions = PositionsList([]);
   late Player firstPlayer;
   int? tappedIndex;
   List<int>? hints = [];
 
+  final countDownController = CountDownController();
+  // late Timer timer;
+  bool answered = false;
+  // int iterationCount = 20;
+  bool hasStartedCountDown = false;
+
   alternatePlayer() {
     if (!isGameOver) {
       currentPlayer = currentPlayer.number == 1 ? player2 : player1;
+      isPlayer2Playing = !isPlayer2Playing;
     }
   }
 
@@ -59,6 +70,12 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeMove(int columnIndex) {
+    // countDownController.reset();
+    /* setState(() {
+      iterationCount = 20;
+    });
+    timer.cancel(); */
+    countDownController.pause();
     if (hints != null) {
       setState(() {
         hints = null;
@@ -77,6 +94,10 @@ class _GameScreenState extends State<GameScreen> {
           alternatePlayer();
           checkWin(rowIndex);
           checkTie(rowIndex);
+
+          if (!isGameOver) {
+            countDownController.start();
+          }
         });
         break;
       }
@@ -101,7 +122,7 @@ class _GameScreenState extends State<GameScreen> {
       }
       isGameOver = false;
       canTap = true;
-      isComputerPlaying = false;
+      isPlayer2Playing = false;
       winningPositions.clear();
       hints = null;
       winner = null;
@@ -109,13 +130,13 @@ class _GameScreenState extends State<GameScreen> {
 
     if (currentPlayer == player2 && player2 is ComputerPlayer) {
       setState(() {
-        isComputerPlaying = true;
+        isPlayer2Playing = true;
       });
       int computerMove = await player2.play();
 
       makeMove(computerMove);
       setState(() {
-        isComputerPlaying = false;
+        isPlayer2Playing = false;
         Future.delayed(300.milliseconds, () {
           setState(() {
             canTap = true;
@@ -134,24 +155,36 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    player2 = widget.gameMode == GameMode.singlePlayer
-        ? ComputerPlayer(2, humanPlayerNumber: 1, name: 'Nora')
-        : Player(2, name: 'Player 2');
+
+    player2 = ComputerPlayer(2,
+        humanPlayerNumber: 1, name: widget.secondPlayer['name']);
     firstPlayer = player1;
     currentPlayer = firstPlayer;
     player1.clearScore();
     player2.clearScore();
     reset();
+    // countDownController.start();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (player2 is Player) {
+      /*   if (player2 is Player) {
         showDialog(
             context: context,
             builder: (context) {
               return buildPlayer1Dialog();
             });
-      }
+      } */
+      /* Future.delayed(5.seconds, () {
+        Timer timer = Timer.periodic(1.seconds, (timer) {
+          print(countDownController.getTimeInSeconds());
+        });
+      }); */
     });
+  }
+
+  @override
+  void dispose() {
+    // countDownController.reset();
+    super.dispose();
   }
 
   Dialog buildPlayer1Dialog() {
@@ -313,6 +346,21 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
+  Color getColor(int? time) {
+    if (time == null) {
+      return Colors.green[400]!;
+    } else {
+      if (time > 10) {
+        return Colors.green[400]!;
+      } else {
+        if (time > 5) {
+          return Colors.yellow[400]!;
+        }
+        return Colors.red[400]!;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Color? turnColor = currentPlayer.number == 1 ? Colors.red : Colors.yellow;
@@ -331,14 +379,63 @@ class _GameScreenState extends State<GameScreen> {
               const Spacer(flex: 2),
               Column(
                 children: [
-                  Image.asset(
-                    'assets/images/computer.png',
-                    height: 40.h,
-                    width: 40.w,
+                  Stack(
+                    alignment: Alignment.center,
+                    clipBehavior: Clip.none,
+                    children: [
+                      if (!isPlayer2Playing)
+                        NeonCircularTimer(
+                          width: 50.w,
+                          duration: 10,
+                          strokeWidth: 3.sp,
+                          controller: countDownController,
+                          isTimerTextShown: false,
+                          neumorphicEffect: true,
+                          isReverse: false,
+                          isReverseAnimation: true,
+                          backgroudColor: Colors.transparent,
+                          outerStrokeColor: Colors.transparent,
+                          onStart: () {
+                            /* timer = Timer.periodic(1.seconds, (timer) {
+                              if (iterationCount > 0) {
+                                setState(() {
+                                  iterationCount--;
+                                  
+                                });
+                              } else {
+                                timer.cancel();
+                              }
+                            }); */
+                          },
+                          onComplete: () {
+                            // timer.cancel();
+                            /* setState(() {
+                              iterationCount = 20;
+                            }); */
+                            setState(() {
+                              if (countDownController.getTimeInSeconds() >= 9) {
+                                isGameOver = true;
+                                canTap = false;
+                                player2.score++;
+                                restartGame();
+                              }
+                            });
+                          },
+                          innerFillGradient: LinearGradient(colors: [
+                            Colors.yellow.shade400,
+                            Colors.yellow.shade200,
+                          ]),
+                        ),
+                      Image.asset(
+                        'assets/images/player.png',
+                        height: 40.h,
+                        width: 40.w,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 5.h),
                   Text(
-                    player2.name!,
+                    player1.name!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12.sp,
@@ -349,7 +446,7 @@ class _GameScreenState extends State<GameScreen> {
               Padding(
                 padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
                 child: Text(
-                  '${player2.score} - ${player1.score}',
+                  '${player1.score} - ${player2.score}',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14.sp,
@@ -358,14 +455,60 @@ class _GameScreenState extends State<GameScreen> {
               ),
               Column(
                 children: [
-                  Image.asset(
-                    'assets/images/player.png',
-                    height: 40.h,
-                    width: 40.w,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (isPlayer2Playing)
+                        NeonCircularTimer(
+                          width: 50.w,
+                          duration: 10,
+                          strokeWidth: 3.sp,
+                          controller: countDownController,
+                          isTimerTextShown: false,
+                          neumorphicEffect: false,
+                          isReverse: false,
+                          isReverseAnimation: true,
+                          backgroudColor: Colors.transparent,
+                          outerStrokeColor: Colors.transparent,
+                          onStart: () {
+                            /*  timer = Timer.periodic(1.seconds, (timer) {
+                              if (iterationCount > 0) {
+                                setState(() {
+                                  iterationCount--;
+                                });
+                              } else {
+                                timer.cancel();
+                              }
+                            }); */
+                          },
+                          onComplete: () {
+                            // timer.cancel();
+                            /* setState(() {
+                              iterationCount = 20;
+                            }); */
+                            setState(() {
+                              if (countDownController.getTimeInSeconds() >= 9) {
+                                isGameOver = true;
+                                player1.score++;
+                                restartGame();
+                              }
+                            });
+                          },
+                          innerFillGradient: LinearGradient(colors: [
+                            Colors.yellow.shade400,
+                            Colors.yellow.shade200,
+                          ]),
+                        ),
+                      Image.asset(
+                        'assets/images/computer.png',
+                        height: 40.h,
+                        width: 40.w,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 5.h),
                   Text(
-                    player1.name!,
+                    player2.name!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12.sp,
@@ -626,14 +769,11 @@ class _GameScreenState extends State<GameScreen> {
             children: List.generate(
               7,
               (columnIndex) {
-                Color? color;
-                List<Color> colors = [];
+                List<Color> colors = [Colors.transparent, Colors.transparent];
                 if (gameBoard[rowIndex][columnIndex] != 0) {
                   if (gameBoard[rowIndex][columnIndex] == 1) {
-                    color = Colors.red;
                     colors = [Colors.red[400]!, Colors.red[700]!];
                   } else if (gameBoard[rowIndex][columnIndex] == 2) {
-                    color = Colors.yellow;
                     colors = [Colors.yellow[400]!, Colors.yellow[700]!];
                   }
                 }
@@ -654,7 +794,6 @@ class _GameScreenState extends State<GameScreen> {
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
-                              color: color,
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                 colors: colors,
@@ -694,7 +833,6 @@ class _GameScreenState extends State<GameScreen> {
                             height: 35.w,
                             margin: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
-                              color: color,
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                 colors: colors,
@@ -730,15 +868,6 @@ class _GameScreenState extends State<GameScreen> {
       children: List.generate(
         7,
         (columnIndex) {
-          int findRowIndex() {
-            for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
-              if (gameBoard[rowIndex][columnIndex] == 0) {
-                return rowIndex;
-              }
-            }
-            return 0;
-          }
-
           bool canDropInColumn() => List.generate(
                 7,
                 (rowIndex) => gameBoard[rowIndex][columnIndex],
@@ -750,7 +879,7 @@ class _GameScreenState extends State<GameScreen> {
                 showNotYourTurnDialog(context);
               } else if (!isGameOver &&
                   canTap &&
-                  !isComputerPlaying &&
+                  !isPlayer2Playing &&
                   canDropInColumn()) {
                 setState(() {
                   canTap = false;
@@ -758,12 +887,12 @@ class _GameScreenState extends State<GameScreen> {
                 makeMove(columnIndex);
                 if (!isGameOver && player2 is ComputerPlayer) {
                   setState(() {
-                    isComputerPlaying = true;
+                    isPlayer2Playing = true;
                   });
                   int computerMove = await player2.play();
                   makeMove(computerMove);
                   setState(() {
-                    isComputerPlaying = false;
+                    isPlayer2Playing = false;
                     Future.delayed(300.milliseconds, () {
                       setState(() {
                         canTap = true;

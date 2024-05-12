@@ -1,4 +1,4 @@
-import 'package:connect4/colors/app_colors.dart';
+/* import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -63,3 +63,4 @@ class _PlayOptionsScreenState extends State<PlayOptionsScreen> {
     );
   }
 }
+ */
