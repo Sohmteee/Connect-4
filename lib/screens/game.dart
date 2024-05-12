@@ -375,9 +375,30 @@ class _GameScreenState extends State<GameScreen> {
         showDialog(
             context: context,
             builder: (context) {
-              return  Dialog(
+              return Dialog(
                 child: Container(
-                  child: ,
+                  child: Column(
+                    children: [
+                      const Text('Are you sure you want to exit?'),
+                      Row(
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('No'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Yes'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             });
