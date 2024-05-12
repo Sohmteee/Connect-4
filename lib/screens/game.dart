@@ -372,6 +372,7 @@ class _GameScreenState extends State<GameScreen> {
     return PopScope(
       canPop: canExit,
       onPopInvoked: (didPop) {
+        canExit = true;
         showDialog(
             context: context,
             builder: (context) {
@@ -396,7 +397,7 @@ class _GameScreenState extends State<GameScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              set
+                              didPop = true;
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
