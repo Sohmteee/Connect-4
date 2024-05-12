@@ -383,11 +383,6 @@ class _GameScreenState extends State<GameScreen> {
                     vertical: 20.h,
                   ),
                   decoration: const BoxDecoration(),
-                  child: 
-                ),
-              );
-              return Dialog(
-                child: Container(
                   child: Column(
                     children: [
                       const Text('Are you sure you want to exit?'),
