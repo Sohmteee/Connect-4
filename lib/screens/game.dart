@@ -383,30 +383,34 @@ class _GameScreenState extends State<GameScreen> {
                     vertical: 20.h,
                   ),
                   decoration: const BoxDecoration(),
-                  child: Column(
-                    children: [
-                      const Text('Are you sure you want to exit?'),
-                      Row(
+                  child: StatefulBuilder(
+                    builder: (context, updateState) {
+                      return Column(
                         children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('No'),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                canExit = true
-                              });
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Yes'),
+                          const Text('Are you sure you want to exit?'),
+                          Row(
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('No'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    canExit = true;
+                                  });
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Yes'),
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               );
