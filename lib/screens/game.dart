@@ -389,7 +389,7 @@ class _GameScreenState extends State<GameScreen> {
                       Text(
                         'Are you sure you want to quit?',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.yellow,
                           fontSize: 12.sp,
                         ),
                       ),
@@ -399,15 +399,27 @@ class _GameScreenState extends State<GameScreen> {
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
+                              Navigator.pop(context);
                             },
-                            child: const Text('No'),
+                            child: Text(
+                              'Yes',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.sp,
+                              ),
+                            ),
                           ),
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              Navigator.pop(context);
                             },
-                            child: const Text('Yes'),
+                            child: Text(
+                              'No',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.sp,
+                              ),
+                            ),
                           ),
                         ],
                       ),
