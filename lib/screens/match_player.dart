@@ -524,7 +524,7 @@ class _MatchPlayerScreenState extends State<MatchPlayerScreen> {
                       children: List.generate(
                         25,
                         (index) => Image.asset(
-                          'assets/images/computer.png',
+                          'assets/images/avatar/avatar_${aiPlayers}.png',
                           height: 60.h,
                           width: 60.w,
                         ),
