@@ -376,6 +376,17 @@ class _GameScreenState extends State<GameScreen> {
             context: context,
             builder: (context) {
               return Dialog(
+                backgroundColor: backgroundColor,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 20.h,
+                  ),
+                  decoration: const BoxDecoration(),
+                  child: 
+                ),
+              );
+              return Dialog(
                 child: Container(
                   child: Column(
                     children: [
