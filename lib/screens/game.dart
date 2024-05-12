@@ -379,7 +379,7 @@ class _GameScreenState extends State<GameScreen> {
                 backgroundColor: backgroundColor,
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
+                    horizontal: 20.w,
                     vertical: 20.h,
                   ),
                   decoration: const BoxDecoration(),
@@ -388,6 +388,7 @@ class _GameScreenState extends State<GameScreen> {
                     children: [
                       const Text('Are you sure you want to exit?'),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           TextButton(
                             onPressed: () {
