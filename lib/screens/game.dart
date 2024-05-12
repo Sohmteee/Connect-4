@@ -390,7 +390,7 @@ class _GameScreenState extends State<GameScreen> {
                         'Are you sure you want to quit?',
                         style: TextStyle(
                           color: const Color.fromRGBO(255, 235, 59, 1),
-                          fontSize: 12.sp,
+                          fontSize: 16.sp,
                         ),
                         textAlign: TextAlign.center,
                       ),
