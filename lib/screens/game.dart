@@ -370,7 +370,7 @@ class _GameScreenState extends State<GameScreen> {
         : [Colors.yellow[400]!, Colors.yellow[700]!];
 
     return PopScope(
-      // canPop: canExit,
+      canPop: canExit,
       onPopInvoked: (didPop) {
         showDialog(
             context: context,
@@ -383,35 +383,28 @@ class _GameScreenState extends State<GameScreen> {
                     vertical: 20.h,
                   ),
                   decoration: const BoxDecoration(),
-                  child: StatefulBuilder(
-                    builder: (context, updateState) {
-                      return Column(
+                  child: Column(
+                    children: [
+                      const Text('Are you sure you want to exit?'),
+                      Row(
                         children: [
-                          const Text('Are you sure you want to exit?'),
-                          Row(
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('No'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  updateState(() {
-                                    canExit = true;
-                                  });
-                                  // setState(() {});
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Yes'),
-                              ),
-                            ],
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('No'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              set
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Yes'),
                           ),
                         ],
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
               );
