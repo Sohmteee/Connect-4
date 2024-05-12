@@ -389,10 +389,12 @@ class _GameScreenState extends State<GameScreen> {
                       Text(
                         'Are you sure you want to quit?',
                         style: TextStyle(
-                          color: Colors.yellow,
+                          color: const Color.fromRGBO(255, 235, 59, 1),
                           fontSize: 12.sp,
                         ),
+                        textAlign: TextAlign.center,
                       ),
+                      SizedBox(height: 20.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
