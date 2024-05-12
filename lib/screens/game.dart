@@ -368,318 +368,312 @@ class _GameScreenState extends State<GameScreen> {
         ? [Colors.red[400]!, Colors.red[700]!]
         : [Colors.yellow[400]!, Colors.yellow[700]!];
 
-    return PopScope(
-      canPop: true,
-      onPopInvoked: (didPop) {
-        Navigator.popUntil(context, ModalRoute.withName('/menu'));
-      },
-      child: Scaffold(
-        backgroundColor: backgroundColor,
-        body: Column(
-          children: [
-            const Spacer(flex: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Spacer(flex: 2),
-                Column(
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      clipBehavior: Clip.none,
-                      children: [
-                        if (!isPlayer2Playing)
-                          NeonCircularTimer(
-                            width: 50.w,
-                            duration: 10,
-                            strokeWidth: 3.sp,
-                            controller: countDownController,
-                            isTimerTextShown: false,
-                            neumorphicEffect: true,
-                            isReverse: false,
-                            isReverseAnimation: true,
-                            backgroudColor: Colors.transparent,
-                            outerStrokeColor: Colors.transparent,
-                            onStart: () {
-                              /* timer = Timer.periodic(1.seconds, (timer) {
-                                if (iterationCount > 0) {
-                                  setState(() {
-                                    iterationCount--;
-                                    
-                                  });
-                                } else {
-                                  timer.cancel();
-                                }
-                              }); */
-                            },
-                            onComplete: () {
-                              // timer.cancel();
-                              /* setState(() {
-                                iterationCount = 20;
-                              }); */
-                              setState(() {
-                                if (countDownController.getTimeInSeconds() >=
-                                    9) {
-                                  isGameOver = true;
-                                  canTap = false;
-                                  player2.score++;
-                                  restartGame();
-                                }
-                              });
-                            },
-                            innerFillGradient: LinearGradient(colors: [
-                              Colors.yellow.shade400,
-                              Colors.yellow.shade200,
-                            ]),
-                          ),
-                        Image.asset(
-                          'assets/images/player.png',
-                          height: 40.h,
-                          width: 40.w,
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      body: Column(
+        children: [
+          const Spacer(flex: 2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Spacer(flex: 2),
+              Column(
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    clipBehavior: Clip.none,
+                    children: [
+                      if (!isPlayer2Playing)
+                        NeonCircularTimer(
+                          width: 50.w,
+                          duration: 10,
+                          strokeWidth: 3.sp,
+                          controller: countDownController,
+                          isTimerTextShown: false,
+                          neumorphicEffect: true,
+                          isReverse: false,
+                          isReverseAnimation: true,
+                          backgroudColor: Colors.transparent,
+                          outerStrokeColor: Colors.transparent,
+                          onStart: () {
+                            /* timer = Timer.periodic(1.seconds, (timer) {
+                              if (iterationCount > 0) {
+                                setState(() {
+                                  iterationCount--;
+                                  
+                                });
+                              } else {
+                                timer.cancel();
+                              }
+                            }); */
+                          },
+                          onComplete: () {
+                            // timer.cancel();
+                            /* setState(() {
+                              iterationCount = 20;
+                            }); */
+                            setState(() {
+                              if (countDownController.getTimeInSeconds() >=
+                                  9) {
+                                isGameOver = true;
+                                canTap = false;
+                                player2.score++;
+                                restartGame();
+                              }
+                            });
+                          },
+                          innerFillGradient: LinearGradient(colors: [
+                            Colors.yellow.shade400,
+                            Colors.yellow.shade200,
+                          ]),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 5.h),
-                    Text(
-                      player1.name!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12.sp,
+                      Image.asset(
+                        'assets/images/player.png',
+                        height: 40.h,
+                        width: 40.w,
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
-                  child: Text(
-                    '${player1.score} - ${player2.score}',
+                    ],
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    player1.name!,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14.sp,
+                      fontSize: 12.sp,
                     ),
                   ),
-                ),
-                Column(
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        if (isPlayer2Playing)
-                          NeonCircularTimer(
-                            width: 50.w,
-                            duration: 10,
-                            strokeWidth: 3.sp,
-                            controller: countDownController,
-                            isTimerTextShown: false,
-                            neumorphicEffect: false,
-                            isReverse: false,
-                            isReverseAnimation: true,
-                            backgroudColor: Colors.transparent,
-                            outerStrokeColor: Colors.transparent,
-                            onStart: () {
-                              /*  timer = Timer.periodic(1.seconds, (timer) {
-                                if (iterationCount > 0) {
-                                  setState(() {
-                                    iterationCount--;
-                                  });
-                                } else {
-                                  timer.cancel();
-                                }
-                              }); */
-                            },
-                            onComplete: () {
-                              // timer.cancel();
-                              /* setState(() {
-                                iterationCount = 20;
-                              }); */
-                              setState(() {
-                                if (countDownController.getTimeInSeconds() >=
-                                    9) {
-                                  isGameOver = true;
-                                  player1.score++;
-                                  restartGame();
-                                }
-                              });
-                            },
-                            innerFillGradient: LinearGradient(colors: [
-                              Colors.yellow.shade400,
-                              Colors.yellow.shade200,
-                            ]),
-                          ),
-                        Image.asset(
-                          'assets/images/avatars/avatar_${widget.secondPlayer['avatar']}.png',
-                          height: 40.h,
-                          width: 40.w,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5.h),
-                    Text(
-                      player2.name!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12.sp,
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(flex: 2),
-              ],
-            ),
-            const Spacer(flex: 2),
-            Row(
-              children: [
-                const Spacer(flex: 5),
-                Container(
-                  width: 25.w,
-                  height: 25.w,
-                  margin: EdgeInsets.all(5.w),
-                  decoration: BoxDecoration(
-                    color: turnColor,
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: turnColors,
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5.w),
-                winner == null
-                    ? Text(
-                        '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                        ),
-                      )
-                    : Text(
-                        switch (winner) {
-                          0 => 'It\'s a tie!',
-                          1 => 'You won!',
-                          2 => '${player2.name} won!',
-                          _ => '',
-                        },
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp,
-                        ),
-                      ),
-                const Spacer(flex: 6),
-              ],
-            ),
-            const Spacer(flex: 2),
-            Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  buildBoard(),
-                  buildDiscs(),
-                  buildTapHighlight(),
                 ],
               ),
-            ),
-            const Spacer(flex: 2),
-            Row(
+              Padding(
+                padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
+                child: Text(
+                  '${player1.score} - ${player2.score}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (isPlayer2Playing)
+                        NeonCircularTimer(
+                          width: 50.w,
+                          duration: 10,
+                          strokeWidth: 3.sp,
+                          controller: countDownController,
+                          isTimerTextShown: false,
+                          neumorphicEffect: false,
+                          isReverse: false,
+                          isReverseAnimation: true,
+                          backgroudColor: Colors.transparent,
+                          outerStrokeColor: Colors.transparent,
+                          onStart: () {
+                            /*  timer = Timer.periodic(1.seconds, (timer) {
+                              if (iterationCount > 0) {
+                                setState(() {
+                                  iterationCount--;
+                                });
+                              } else {
+                                timer.cancel();
+                              }
+                            }); */
+                          },
+                          onComplete: () {
+                            // timer.cancel();
+                            /* setState(() {
+                              iterationCount = 20;
+                            }); */
+                            setState(() {
+                              if (countDownController.getTimeInSeconds() >=
+                                  9) {
+                                isGameOver = true;
+                                player1.score++;
+                                restartGame();
+                              }
+                            });
+                          },
+                          innerFillGradient: LinearGradient(colors: [
+                            Colors.yellow.shade400,
+                            Colors.yellow.shade200,
+                          ]),
+                        ),
+                      Image.asset(
+                        'assets/images/avatars/avatar_${widget.secondPlayer['avatar']}.png',
+                        height: 40.h,
+                        width: 40.w,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    player2.name!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(flex: 2),
+            ],
+          ),
+          const Spacer(flex: 2),
+          Row(
+            children: [
+              const Spacer(flex: 5),
+              Container(
+                width: 25.w,
+                height: 25.w,
+                margin: EdgeInsets.all(5.w),
+                decoration: BoxDecoration(
+                  color: turnColor,
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: turnColors,
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                ),
+              ),
+              SizedBox(width: 5.w),
+              winner == null
+                  ? Text(
+                      '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                      ),
+                    )
+                  : Text(
+                      switch (winner) {
+                        0 => 'It\'s a tie!',
+                        1 => 'You won!',
+                        2 => '${player2.name} won!',
+                        _ => '',
+                      },
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                      ),
+                    ),
+              const Spacer(flex: 6),
+            ],
+          ),
+          const Spacer(flex: 2),
+          Center(
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                const Spacer(flex: 3),
-                ZoomTapAnimation(
-                  onTap: () async {
-                    try {
-                      setState(() {
-                        isAutoPlaying = true;
-                      });
-
-                      while (!isGameOver) {
-                        if (canTap) {
-                          List<int>? options = await player1.getHints();
-                          int move = options!.length == 1
-                              ? options[0]
-                              : options[Random().nextInt(options.length)];
-                          makeMove(move);
-                        }
-                      }
-                    } catch (e) {
-                      List freeColumns = gameBoard.where((row) {
-                        return row.any((disc) => disc == 0);
-                      }).map((row) {
-                        return row.indexOf(0);
-                      }).toList();
-
-                      makeMove(
-                          freeColumns[Random().nextInt(freeColumns.length)]);
-
-                      setState(() {
-                        isAutoPlaying = false;
-                      });
-                    }
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8.sp),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple[400]!,
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2.sp,
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.play_arrow_rounded,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const Spacer(),
-                ZoomTapAnimation(
-                  onTap: () async {
-                    hints = await player1.getHints();
-                    setState(() {});
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8.sp),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple[400]!,
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2.sp,
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.lightbulb_rounded,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const Spacer(),
-                ZoomTapAnimation(
-                  onTap: () {
-                    reset();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8.sp),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple[400]!,
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2.sp,
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.restart_alt_rounded,
-                      size: 25.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const Spacer(flex: 3),
+                buildBoard(),
+                buildDiscs(),
+                buildTapHighlight(),
               ],
             ),
-            const Spacer(flex: 3),
-          ],
-        ),
+          ),
+          const Spacer(flex: 2),
+          Row(
+            children: [
+              const Spacer(flex: 3),
+              ZoomTapAnimation(
+                onTap: () async {
+                  try {
+                    setState(() {
+                      isAutoPlaying = true;
+                    });
+    
+                    while (!isGameOver) {
+                      if (canTap) {
+                        List<int>? options = await player1.getHints();
+                        int move = options!.length == 1
+                            ? options[0]
+                            : options[Random().nextInt(options.length)];
+                        makeMove(move);
+                      }
+                    }
+                  } catch (e) {
+                    List freeColumns = gameBoard.where((row) {
+                      return row.any((disc) => disc == 0);
+                    }).map((row) {
+                      return row.indexOf(0);
+                    }).toList();
+    
+                    makeMove(
+                        freeColumns[Random().nextInt(freeColumns.length)]);
+    
+                    setState(() {
+                      isAutoPlaying = false;
+                    });
+                  }
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.play_arrow_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              ZoomTapAnimation(
+                onTap: () async {
+                  hints = await player1.getHints();
+                  setState(() {});
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.lightbulb_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              ZoomTapAnimation(
+                onTap: () {
+                  reset();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.sp),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[400]!,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.sp,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.restart_alt_rounded,
+                    size: 25.sp,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Spacer(flex: 3),
+            ],
+          ),
+          const Spacer(flex: 3),
+        ],
       ),
     );
   }

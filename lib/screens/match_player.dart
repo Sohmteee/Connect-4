@@ -556,7 +556,7 @@ class _MatchPlayerScreenState extends State<MatchPlayerScreen> {
             text: 'CONTINUE',
             onPressed: () {
               playTap(context);
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => GameScreen(
