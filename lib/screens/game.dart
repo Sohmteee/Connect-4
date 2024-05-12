@@ -500,7 +500,7 @@ class _GameScreenState extends State<GameScreen> {
                           ]),
                         ),
                       Image.asset(
-                        'assets/images/computer.png',
+                        'assets/images/avatars/.png',
                         height: 40.h,
                         width: 40.w,
                       ),
