@@ -69,12 +69,12 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  alternatePlayer() {
+  alternatePlayer() async {
     if (!isGameOver) {
       currentPlayer =
           currentPlayer.number == 1 ? widget.player2 : widget.player1;
       isPlayer2Playing = !isPlayer2Playing;
-      gameRoom.update({
+      await gameRoom.update({
         'currentPlayerNumber': currentPlayer.number,
       });
     }
@@ -102,7 +102,7 @@ class _GameScreenState extends State<GameScreen> {
     }
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
-        setState(() {
+        setState(() async {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
@@ -110,6 +110,9 @@ class _GameScreenState extends State<GameScreen> {
               widget.player2 is ComputerPlayer) {
             widget.player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           } */
+         await gameRoom.update({
+            'gameBoard': gameBoard,
+          });
           alternatePlayer();
           checkWin(rowIndex);
           checkTie(rowIndex);
