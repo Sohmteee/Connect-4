@@ -74,6 +74,9 @@ class _GameScreenState extends State<GameScreen> {
       currentPlayer =
           currentPlayer.number == 1 ? widget.player2 : widget.player1;
       isPlayer2Playing = !isPlayer2Playing;
+      gameRoom.update({
+        'currentPlayerNumber': currentPlayer.number,
+      });
     }
   }
 
