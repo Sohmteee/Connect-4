@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:connect4/colors/app_colors.dart';
-import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,11 +19,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   @override
   void initState() {
     timer = Timer.periodic(1.seconds, (t) {
-      if (dots < 3) {
-        dots++;
-      } else {
-        dots = 0;
-      }
+      dots = (dots + 1) % 4;
       setState(() {});
     });
     super.initState();
@@ -49,14 +44,27 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Text(
-                'join...',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
-                ),
-                textAlign: TextAlign.center,
+              Row(
+                children: [
+                  Text(
+                    'join',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    '.' * dots,
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ],
           ),
