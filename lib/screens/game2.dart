@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 import 'dart:math';
 
 // import 'package:circular_countdown_timer/circular_countdown_timer.dart';
@@ -9,7 +9,6 @@ import 'package:connect4/classes/position.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/data.dart';
 import 'package:connect4/dialogs/not_your_turn.dart';
-import 'package:connect4/screens/rooms/room.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,8 +38,6 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-final gameRoom = room.doc(roomName.text);
-
 class _GameScreenState extends State<GameScreen> {
   int? winner;
   late Player currentPlayer;
@@ -60,23 +57,10 @@ class _GameScreenState extends State<GameScreen> {
   // int iterationCount = 20;
   bool hasStartedCountDown = false;
 
-  void initializeServerParameters() async {
-    await gameRoom.set({
-      'gameBoard': gameBoard,
-      'winner': winner,
-      'currentPlayerNumber': currentPlayer.number,
-      'isGameOver': isGameOver,
-    });
-  }
-
-  alternatePlayer() async {
+  alternatePlayer() {
     if (!isGameOver) {
-      currentPlayer =
-          currentPlayer.number == 1 ? widget.player2 : widget.player1;
+      currentPlayer = currentPlayer.number == 1 ? widget.player2 : widget.player1;
       isPlayer2Playing = !isPlayer2Playing;
-      await gameRoom.update({
-        'currentPlayerNumber': currentPlayer.number,
-      });
     }
   }
 
@@ -102,7 +86,7 @@ class _GameScreenState extends State<GameScreen> {
     }
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
-        setState(() async {
+        setState(() {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
@@ -110,9 +94,6 @@ class _GameScreenState extends State<GameScreen> {
               widget.player2 is ComputerPlayer) {
             widget.player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           } */
-         await gameRoom.update({
-            'gameBoard': gameBoard,
-          });
           alternatePlayer();
           checkWin(rowIndex);
           checkTie(rowIndex);
@@ -126,8 +107,8 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  reset()  {
-    setState(()  {
+  reset() async {
+    setState(() {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -148,13 +129,6 @@ class _GameScreenState extends State<GameScreen> {
       winningPositions.clear();
       hints = null;
       winner = null;
-
-      await gameRoom.set({
-        'gameBoard': gameBoard,
-        'winner': winner,
-        'currentPlayerNumber': currentPlayer.number,
-        'isGameOver': isGameOver,
-      });
     });
 
     /* if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
@@ -173,19 +147,17 @@ class _GameScreenState extends State<GameScreen> {
         });
       });
     } else { */
-    Future.delayed(300.milliseconds, () {
-      setState(() {
-        canTap = true;
+      Future.delayed(300.milliseconds, () {
+        setState(() {
+          canTap = true;
+        });
       });
-    });
-  }
+    }
   // }
 
   @override
   void initState() {
     super.initState();
-
-    initializeServerParameters();
 
     /* widget.player2 = ComputerPlayer(2,
         humanPlayerNumber: 1, name: widget.widget.player2['name']); */
@@ -996,12 +968,12 @@ class _GameScreenState extends State<GameScreen> {
                     });
                   });
                 } else if (!isGameOver) { */
-                Future.delayed(300.milliseconds, () {
-                  setState(() {
-                    canTap = true;
+                  Future.delayed(300.milliseconds, () {
+                    setState(() {
+                      canTap = true;
+                    });
                   });
-                });
-              }
+                }
               // }
             },
             onTapDown: (details) {
@@ -1293,14 +1265,10 @@ class _GameScreenState extends State<GameScreen> {
   restartGame() {
     Future.delayed(3.seconds, () async {
       setState(() {
-        firstPlayer = firstPlayer.number == widget.player1.number
-            ? widget.player2
-            : widget.player1;
+        firstPlayer = firstPlayer.number == widget.player1.number ? widget.player2 : widget.player1;
         reset();
       });
     });
   }
 }
-
-
-
+ */
