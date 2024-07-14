@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
@@ -100,17 +99,19 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   return room.doc(roomKey).get().then((doc) => doc.exists);
                 }
 
-                 showDialog(
+                showDialog(
                     context: context,
                     builder: (context) {
-                      return Container(
-                        child: Text(
-                          'Are you sure you want to quit?',
-                          style: TextStyle(
-                            color: const Color.fromRGBO(255, 235, 59, 1),
-                            fontSize: 16.sp,
+                      return Dialog(
+                        child: Container(
+                          child: Text(
+                            'Are you sure you want to quit?',
+                            style: TextStyle(
+                              color: const Color.fromRGBO(255, 235, 59, 1),
+                              fontSize: 16.sp,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       );
                     });
