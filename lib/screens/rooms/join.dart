@@ -37,7 +37,12 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
 
     if (docSnapshot.exists) {
       var players = List.from(docSnapshot.data()!['players']);
-      players.add(Player(2, name: 'Ada').toMap());
+      players.add({
+        'name': player.name,
+        'color': player.color,
+        'isHost': false,
+      
+      });
       await doc.update({'players': players});
     }
   }
