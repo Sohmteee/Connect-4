@@ -67,7 +67,7 @@ class _GameScreenState extends State<GameScreen> {
       'winner': winner,
       'currentPlayerNumber': currentPlayer.number,
       'isGameOver': isGameOver,
-    });
+    }, SetOptions(merge: true),);
   }
 
   alternatePlayer() async {
