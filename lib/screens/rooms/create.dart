@@ -95,7 +95,11 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onPressed: () {
                 playTap(context);
                 if (roomName.text.isNotEmpty && roomKey.text.isNotEmpty) {
-                if (room.doc(roomKey.text).get()) {
+                roomsContains(String key) {
+                  return room.doc(key).get().then((doc) => doc.exists);
+
+                }
+                if (r) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Room key already exists'),
