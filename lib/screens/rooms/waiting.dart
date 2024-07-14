@@ -21,6 +21,12 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   @override
   void initState() {
     timer = Timer.periodic(1.seconds, (t) {
+      if (timer.tick == 300) {
+        room.doc(roomName.text).delete();
+        Navigator.pop(context);
+        Navigator.pop(context);
+      }
+      
       dots = (dots + 1) % 4;
       setState(() {});
     });
@@ -73,7 +79,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               ),
               const Spacer(flex: 2),
               Text(
-                '${timer.tick}s',
+                '${300 - timer.tick}s',
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,

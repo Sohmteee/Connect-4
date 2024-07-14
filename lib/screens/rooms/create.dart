@@ -179,7 +179,13 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   padding: EdgeInsets.fromLTRB(
                                       10.w, 20.h, 0.w, 20.h),
                                   decoration: const BoxDecoration(),
-                                  child: Container(),
+                                  child: Text(
+                                    'Room canceled!',
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               );
                             });
