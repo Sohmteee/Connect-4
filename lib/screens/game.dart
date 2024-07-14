@@ -326,7 +326,7 @@ class _GameScreenState extends State<GameScreen> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
                         child: Text(
-                          '${widget.player1.score} - ${widget.player2.score}',
+                          '${players.data![0]['score']} - ${players.data![1]['score']}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14.sp,
