@@ -138,13 +138,14 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       builder: (context) {
                         return FutureBuilder(
                             future: room.doc(roomKey.text).get().then((doc) {
-                    if (doc.exists) {
-                      Navigator.pushNamed(context, '/game', arguments: {
-                        'roomKey': roomKey.text,
-                        'roomName': roomName.text,
-                      });
-                    }
-                  }),
+                              if (doc.exists) {
+                                Navigator.pushNamed(context, '/game',
+                                    arguments: {
+                                      'roomKey': roomKey.text,
+                                      'roomName': roomName.text,
+                                    });
+                              }
+                            }),
                             builder: (context, snapshot) {
                               return Dialog(
                                 child: Container(
@@ -162,7 +163,6 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               );
                             });
                       });
-                  
                 }
               },
             ),
