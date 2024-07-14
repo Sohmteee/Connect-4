@@ -1,5 +1,6 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
+import 'package:connect4/screens/rooms/room.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +13,20 @@ class CreateRoomScreen extends StatefulWidget {
 }
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
+  @override
+  void initState() {
+    super.initState();
+    roomKey = TextEditingController();
+    
+  }
+
+@override
+void dispose() {
+  roomName.dispose();
+  roomKey.dispose();
+  super.dispose();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
