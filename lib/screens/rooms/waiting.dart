@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:connect4/classes/player.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/rooms/room.dart';
@@ -74,7 +75,13 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               } else if (snapshot.hasData && snapshot.data == 1) {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
-                toPlayer(Map)
+               Player toPlayer(Map json) {
+                  return Player(
+                    name: json['name'],
+                    number: json['number'],
+                    isHost: json['isHost'],
+                  );
+                }
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
                   if (t.tick == 10) {
                     startTimer?.cancel();
