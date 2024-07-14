@@ -102,44 +102,42 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                 }
 
                 if (roomName.text.isEmpty) {
-                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                          decoration: const BoxDecoration(),
-                          child: Text(
-                            'Room name is empty!',
-                            style: TextStyle(
-                              fontSize: 14.sp,
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                            decoration: const BoxDecoration(),
+                            child: Text(
+                              'Room name is empty!',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
-                        ),
-                      );
-                    });
+                        );
+                      });
                 } else if (roomKey.text.isEmpty) {
-                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                          decoration: const BoxDecoration(),
-                          child: Text(
-                            'Room already exists!',
-                            style: TextStyle(
-                              fontSize: 14.sp,
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                            decoration: const BoxDecoration(),
+                            child: Text(
+                              'Room key is empty!',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
-                        ),
-                      );
-                    });
-                }
-
-                if (await roomsContains(roomKey.text)) {
+                        );
+                      });
+                } else if (await roomsContains(roomKey.text)) {
                   showDialog(
                       context: context,
                       builder: (context) {
