@@ -265,7 +265,7 @@ class _GameScreenState extends State<GameScreen> {
                 stream: gameRoom.snapshots().map((snapshot) {
                   return snapshot.data()!['players'];
                 }),
-                builder: (context, snapshot) {
+                builder: (context, players) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -307,7 +307,7 @@ class _GameScreenState extends State<GameScreen> {
                                   ]),
                                 ),
                               Image.asset(
-                                'assets/images/avatars/avatar_${widget.player1.avatar}.png',
+                                'assets/images/avatars/avatar_${players.data![0]['avatar']}.png',
                                 height: 40.h,
                                 width: 40.w,
                               ),
@@ -368,7 +368,7 @@ class _GameScreenState extends State<GameScreen> {
                                   ]),
                                 ),
                               Image.asset(
-                                'assets/images/avatars/avatar_${widget.player2.avatar}.png',
+                                'assets/images/avatars/avatar_${players.data![1]['avatar']}.png',
                                 height: 40.h,
                                 width: 40.w,
                               ),
