@@ -8,7 +8,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
-  const WaitingRoomScreen({super.key});
+  const WaitingRoomScreen({super.key, required this.players});
 
   @override
   State<WaitingRoomScreen> createState() => _WaitingRoomScreenState();
@@ -17,6 +17,7 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   int dots = 0;
   late Timer timer;
+  
 
   @override
   void initState() {
