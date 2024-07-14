@@ -59,64 +59,7 @@ Stream<int> getNumberOfPlayersStream() {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Spacer(flex: 5),
-              Text(
-                'Waiting for player to',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                      width: (MediaQuery.of(context).size.width / 2) - 40.w),
-                  Text(
-                    'join',
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    '.' * dots,
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              const Spacer(flex: 2),
-              Text(
-                '${300 - timer.tick}s',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
-                ),
-              ),
-              const Spacer(flex: 2),
-              GameButton(
-                  text: 'CANCEL',
-                  onPressed: () {
-                    room.doc(roomName.text).delete();
-                    Navigator.pop(context);
-                  }),
-              const Spacer(flex: 2),
-            ],
-          ),
-        ),
+          child:  StreamBuilder(stream: getNumberOfPlayersStream(), builder: (context, snapshot))),
       ),
     );
   }
