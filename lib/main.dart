@@ -2,7 +2,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:connect4/data/box.dart';
 import 'package:connect4/data/controllers.dart';
 import 'package:connect4/providers/audio.dart';
-import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/match_player.dart';
 import 'package:connect4/screens/menu.dart';
 import 'package:connect4/screens/rooms/create.dart';
@@ -68,8 +67,8 @@ class MyApp extends StatelessWidget {
           routes: {
             '/splash': (context) => const SplashScreen(),
             '/menu': (context) => const MenuScreen(),
-            '/game': (context) =>
-                const GameScreen(player2: {'name': 'Player 2', 'avatar': 13}),
+            /* '/game': (context) =>
+                const GameScreen(player2: {'name': 'Player 2', 'avatar': 13}), */
             '/settings': (context) => const SettingsScreen(),
             '/room': (context) => const RoomScreen(),
             '/create-room': (context) => const CreateRoomScreen(),
