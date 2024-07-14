@@ -80,6 +80,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     name: json['name'],
                     number: json['number'],
                     avatar: json['avatar'],
+                    id: json['id'],
                     score: json['score'],
                     timeLeft: json['timeLeft'],
                   );
