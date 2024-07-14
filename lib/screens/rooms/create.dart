@@ -174,20 +174,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   size: 50.sp,
                                 );
                               }
-                              return Dialog(
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                      10.w, 20.h, 0.w, 20.h),
-                                  decoration: const BoxDecoration(),
-                                  child: Text(
-                                    'Room created!',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              );
+                              return; Navigator.pop(context);
                             });
                       });
 
