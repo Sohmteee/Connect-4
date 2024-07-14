@@ -11,10 +11,11 @@ class ComputerPlayer extends Player {
   Position? lastPlayedPosition;
   int humanPlayerNumber;
   ComputerPlayer(
-    super.number, {
-    required this.humanPlayerNumber,
-    super.name,
-  });
+      {required this.humanPlayerNumber,
+      required String name,
+      required int number})
+      : super(name: name, number: number, avatar: );
+   
 
   Future<int> play() async {
     var client = http.Client();
