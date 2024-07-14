@@ -33,7 +33,9 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       setState(() {});
     });
 
-    hasOpponent = 
+    /* hasOpponent =  */room.doc(roomName.text).get().then((room) {
+      return 
+    });
     super.initState();
   }
 
