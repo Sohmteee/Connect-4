@@ -19,7 +19,6 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   int dots = 0;
   late Timer timer;
-  late bool hasOpponent;
 
   @override
   void initState() {
@@ -42,7 +41,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
     super.dispose();
   }
 
-Stream<int> getNumberOfPlayersStream() {
+  Stream<int> getNumberOfPlayersStream() {
     return room.doc(roomName.text).snapshots().map((snapshot) {
       if (snapshot.exists) {
         return snapshot.data()!['players'].length;
@@ -59,9 +58,23 @@ Stream<int> getNumberOfPlayersStream() {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child:  StreamBuilder(stream: getNumberOfPlayersStream(), builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting)
-          },),),
+          child: StreamBuilder(
+            stream: getNumberOfPlayersStream(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return;
+              } else if (snapshot.data == 2) {
+                timer.cancel();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RoomScreen(),
+                  ),
+                );
+              }
+            },
+          ),
+        ),
       ),
     );
   }
