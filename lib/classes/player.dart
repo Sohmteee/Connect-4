@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 class Player {
   int number;
   String? name;
+  int? avatar;
   int score = 0;
   int? timeLeft;
 
@@ -61,6 +62,7 @@ class Player {
     return {
       'number': number,
       'name': name,
+      'avatar': avatar,
       'score': score,
       'timeLeft': timeLeft,
     };
