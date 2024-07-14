@@ -169,13 +169,9 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return SizedBox(
-                                  width: 20.w,
-                                  height: 20.h,
-                                  child: LoadingAnimationWidget.inkDrop(
-                                    color: backgroundColor!,
-                                    size: 200,
-                                  ),
+                                return LoadingAnimationWidget.inkDrop(
+                                  color: backgroundColor!,
+                                  size: 100,
                                 );
                               }
                               return Dialog(
