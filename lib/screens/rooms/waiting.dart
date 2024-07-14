@@ -71,7 +71,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                   ),
                 ],
               ),
-              const Spacer(flex: 3),
+              const Spacer(flex: 2),
+              const Spacer(flex: 2),
               GameButton(
                   text: 'CANCEL',
                   onPressed: () {
