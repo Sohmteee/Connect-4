@@ -99,25 +99,9 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   return room.doc(roomKey).get().then((doc) => doc.exists);
                 }
 
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                          decoration: const BoxDecoration(),
-                          child: Text(
-                            'Room already exists!',
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      );
-                    });
+               
 
-                /* if (await roomsContains(roomKey.text)) {
+                if (await roomsContains(roomKey.text)) {
                    showDialog(
                       context: context,
                       builder: (context) {
@@ -140,7 +124,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                     'players': 1,
                   });
                   // Navigator.pushNamed(context, '/room');
-                } */
+                }
               },
             ),
             const Spacer(flex: 4),
