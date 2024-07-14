@@ -296,7 +296,7 @@ class _GameScreenState extends State<GameScreen> {
                                           9) {
                                         isGameOver = true;
                                         canTap = false;
-                                        widget.player2.score++;
+                                        widget.player2.score++
                                         restartGame();
                                       }
                                     });
