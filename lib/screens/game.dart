@@ -156,8 +156,7 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     initializeServerParameters();
-    gameStream = gameRoom
-        .snapshots();
+    gameStream = gameRoom.snapshots().map;
     scoreStream = FirebaseFirestore.instance
         .collection('scores')
         .doc('gameID')
