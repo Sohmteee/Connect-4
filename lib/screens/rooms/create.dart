@@ -92,13 +92,14 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
             const Spacer(flex: 4),
             GameButton(
               text: 'CREATE',
-              onPressed: () {
+              onPressed: () async {
                 playTap(context);
                 if (roomName.text.isNotEmpty && roomKey.text.isNotEmpty) {
                 Future<bool> roomsContains(String key) async {
-                  return await room.doc(key).get().then((doc) => doc.exists);
-
+                  return room.doc(key).get().then((doc) => doc.exists);
                 }
+
+                
                 if (await roomsContains(roomKey.text)) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
