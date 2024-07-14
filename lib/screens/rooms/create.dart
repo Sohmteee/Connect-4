@@ -63,6 +63,11 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+              keyboardType: TextInputType.name,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]')),
+              ],
+              maxLength: 20,
             ),
             const Spacer(),
             TextField(
