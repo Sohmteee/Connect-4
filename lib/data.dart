@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:xid/xid.dart';
+
 List gameBoard = [
   [0, 0, 0, 0, 0, 0, 0], // 0
   [0, 0, 0, 0, 0, 0, 0], // 1
