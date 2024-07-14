@@ -158,6 +158,16 @@ class _GameScreenState extends State<GameScreen> {
     initializeServerParameters();
     gameStream = gameRoom.snapshots().map((snapshot) {
       
+        return snapshot.data()!['gameBoard'] ?? [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+        ;
+      
     });
     scoreStream = FirebaseFirestore.instance
         .collection('scores')
