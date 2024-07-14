@@ -435,7 +435,7 @@ class _GameScreenState extends State<GameScreen> {
                 SizedBox(width: 5.w),
                 winner == null
                     ? Text(
-                        '${currentPlayer == widget.player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                        '${currentPlayer.id == playerID.toString() ? 'Your' : '${currentPlayer.name}\'s'} Turn',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14.sp,
