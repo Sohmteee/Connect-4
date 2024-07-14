@@ -272,6 +272,9 @@ class _GameScreenState extends State<GameScreen> {
                   return snapshot.data()!['players'];
                 }),
                 builder: (context, players) {
+                  if (players.connectionState == ConnectionState.waiting) {
+                    
+                  }
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
