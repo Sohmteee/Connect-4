@@ -15,7 +15,8 @@ class WaitingRoomScreen extends StatefulWidget {
 }
 
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
-  int dots = 0;
+  ValueNotifier<int> dots = ValueNotifier<int>(0);
+  ValueNotifier<int> countdown = ValueNotifier<int>(300);
   late Timer timer;
   Timer? startTimer;
 
@@ -27,8 +28,9 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
         room.doc(roomName.text).delete();
         Navigator.pop(context);
       }
-      dots = (dots + 1) % 4;
-      setState(() {});
+
+      dots.value = (dots.value + 1) % 4;
+      countdown.value = 300 - t.tick;
     });
   }
 
@@ -36,6 +38,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   void dispose() {
     timer.cancel();
     startTimer?.cancel();
+    dots.dispose();
+    countdown.dispose();
     super.dispose();
   }
 
@@ -100,8 +104,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           textAlign: TextAlign.center,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: (MediaQuery.of(context).size.width / 2) - 40.w),
             Text(
               'join',
               style: TextStyle(
@@ -111,25 +115,35 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               ),
               textAlign: TextAlign.center,
             ),
-            Text(
-              '.' * dots,
+            ValueListenableBuilder<int>(
+              valueListenable: dots,
+              builder: (context, value, child) {
+                return Text(
+                  '.' * value,
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.yellow,
+                  ),
+                  textAlign: TextAlign.center,
+                );
+              },
+            ),
+          ],
+        ),
+        const Spacer(flex: 2),
+        ValueListenableBuilder<int>(
+          valueListenable: countdown,
+          builder: (context, value, child) {
+            return Text(
+              '${value}s',
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.yellow,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        const Spacer(flex: 2),
-        Text(
-          '${300 - timer.tick}s',
-          style: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.yellow,
-          ),
+            );
+          },
         ),
         const Spacer(flex: 2),
         GameButton(
