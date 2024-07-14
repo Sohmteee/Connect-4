@@ -55,9 +55,7 @@ class _GameScreenState extends State<GameScreen> {
   List<int>? hints = [];
 
   final countDownController = CountDownController();
-  // late Timer timer;
   bool answered = false;
-  // int iterationCount = 20;
   bool hasStartedCountDown = false;
 
   void initializeServerParameters() async {
@@ -89,11 +87,6 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   makeMove(int columnIndex) {
-    // countDownController.reset();
-    /* setState(() {
-      iterationCount = 20;
-    });
-    timer.cancel(); */
     countDownController.pause();
     if (hints != null) {
       setState(() {
@@ -104,12 +97,6 @@ class _GameScreenState extends State<GameScreen> {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() async {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
-
-          // if it was the computer's move, register the new last played position
-          /* if (currentPlayer.number == widget.player2.number &&
-              widget.player2 is ComputerPlayer) {
-            widget.player2.lastPlayedPosition = Position(rowIndex, columnIndex);
-          } */
          await gameRoom.update({
             'gameBoard': gameBoard,
           });
@@ -127,7 +114,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   reset()  {
-    setState(()  {
+    setState(() async {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -140,7 +127,6 @@ class _GameScreenState extends State<GameScreen> {
 
       currentPlayer = firstPlayer;
       if (widget.player2 is ComputerPlayer) {
-        // widget.player2.lastPlayedPosition = null;
       }
       isGameOver = false;
       canTap = true;
@@ -156,45 +142,22 @@ class _GameScreenState extends State<GameScreen> {
         'isGameOver': isGameOver,
       });
     });
-
-    /* if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
-      setState(() {
-        isPlayer2Playing = true;
-      });
-      int computerMove = await widget.player2.play();
-
-      makeMove(computerMove);
-      setState(() {
-        isPlayer2Playing = false;
-        Future.delayed(300.milliseconds, () {
-          setState(() {
-            canTap = true;
-          });
-        });
-      });
-    } else { */
     Future.delayed(300.milliseconds, () {
       setState(() {
         canTap = true;
       });
     });
   }
-  // }
 
   @override
   void initState() {
     super.initState();
-
     initializeServerParameters();
-
-    /* widget.player2 = ComputerPlayer(2,
-        humanPlayerNumber: 1, name: widget.widget.player2['name']); */
     firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
     widget.player1.clearScore();
     widget.player2.clearScore();
     reset();
-    // countDownController.start();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       /*   if (widget.player2 is Player) {
