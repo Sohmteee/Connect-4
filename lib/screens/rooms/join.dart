@@ -1,9 +1,9 @@
 import 'package:connect4/colors/app_colors.dart';
-import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -155,7 +155,12 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               }
 
                               if (snapshot.data == true) {
-                                Future.delayed(1.seconds, () => Navigator.pushNamed(context, '/waiting-room'),);
+                                Future.delayed(
+                                  1.seconds,
+                                  () => Navigator.pushNamed(
+                                      context, '/waiting-room'),
+                                );
+
                                 return Dialog(
                                   child: Container(
                                     padding: EdgeInsets.fromLTRB(
