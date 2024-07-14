@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
@@ -10,6 +14,10 @@ class WaitingRoomScreen extends StatefulWidget {
 }
 
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
+  int dots = 
+  final timer = Timer.periodic(1.seconds, () {
+
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +29,16 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Waiting for player to join...',
+                'Waiting for player to',
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                'join...',
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
