@@ -192,7 +192,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       children: [
         const Spacer(flex: 5),
         Text(
-          'Found a player!',
+          'Connection to \'${roomName.text}\' successful!',
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
