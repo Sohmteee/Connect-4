@@ -127,7 +127,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   reset()  {
-    setState(() async {
+    setState(()  {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
