@@ -3,6 +3,7 @@ import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateRoomScreen extends StatefulWidget {
@@ -65,6 +66,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
             ),
             const Spacer(),
             TextField(
+              controller: roomKey,
               style: TextStyle(
                 color: Colors.grey[100],
               ),
@@ -75,6 +77,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
+              maxLength: 6,
             ),
             const Spacer(flex: 4),
             GameButton(
