@@ -1,5 +1,6 @@
 import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
   const WaitingRoomScreen({super.key});
@@ -14,7 +15,23 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
-        children: [Container()],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text(
+                'Waiting for player to join...',
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
