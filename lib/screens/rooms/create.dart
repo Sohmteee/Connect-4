@@ -171,7 +171,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   ConnectionState.waiting) {
                                 return LoadingAnimationWidget.inkDrop(
                                   color: backgroundColor!,
-                                  size: 100,
+                                  size: 50.sp,
                                 );
                               }
                               return Dialog(
