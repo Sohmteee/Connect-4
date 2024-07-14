@@ -59,7 +59,7 @@ class _GameScreenState extends State<GameScreen> {
   bool answered = false;
   bool hasStartedCountDown = false;
 
-  late Stream<DocumentSnapshot> gameStream; 
+  late Stream<DocumentSnapshot> gameStream;
   late Stream<DocumentSnapshot> scoreStream;
 
   void initializeServerParameters() async {
@@ -101,7 +101,7 @@ class _GameScreenState extends State<GameScreen> {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() async {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
-         await gameRoom.update({
+          await gameRoom.update({
             'gameBoard': gameBoard,
           });
           alternatePlayer();
@@ -117,7 +117,7 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  reset()  {
+  reset() {
     setState(() async {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
@@ -130,8 +130,7 @@ class _GameScreenState extends State<GameScreen> {
       ];
 
       currentPlayer = firstPlayer;
-      if (widget.player2 is ComputerPlayer) {
-      }
+      if (widget.player2 is ComputerPlayer) {}
       isGameOver = false;
       canTap = true;
       isPlayer2Playing = false;
@@ -157,15 +156,22 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     initializeServerParameters();
+    gameStream = FirebaseFirestore.instance
+        .collection('games')
+        .doc('gameID')
+        .snapshots();
+    scoreStream = FirebaseFirestore.instance
+        .collection('scores')
+        .doc('gameID')
+        .snapshots();
+
     firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
     widget.player1.clearScore();
     widget.player2.clearScore();
     reset();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-    
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
   }
 
   @override
@@ -283,11 +289,8 @@ class _GameScreenState extends State<GameScreen> {
                             isReverseAnimation: true,
                             backgroudColor: Colors.transparent,
                             outerStrokeColor: Colors.transparent,
-                            onStart: () {
-                            
-                            },
+                            onStart: () {},
                             onComplete: () {
-                             
                               setState(() {
                                 if (countDownController.getTimeInSeconds() >=
                                     9) {
@@ -347,11 +350,8 @@ class _GameScreenState extends State<GameScreen> {
                             isReverseAnimation: true,
                             backgroudColor: Colors.transparent,
                             outerStrokeColor: Colors.transparent,
-                            onStart: () {
-                             
-                            },
+                            onStart: () {},
                             onComplete: () {
-                              
                               setState(() {
                                 if (countDownController.getTimeInSeconds() >=
                                     9) {
@@ -754,7 +754,7 @@ class _GameScreenState extends State<GameScreen> {
                   canTap = false;
                 });
                 makeMove(columnIndex);
-              
+
                 Future.delayed(300.milliseconds, () {
                   setState(() {
                     canTap = true;
@@ -1058,6 +1058,3 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 }
-
-
-
