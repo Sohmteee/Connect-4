@@ -556,15 +556,7 @@ class _MatchPlayerScreenState extends State<MatchPlayerScreen> {
             text: 'CONTINUE',
             onPressed: () {
               playTap(context);
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => GameScreen(
-                    gameMode: GameMode.twoPlayersOnline,
-                    player2: aiPlayers.last,
-                  ),
-                ),
-              );
+              
             },
           ).animate().moveY(
                 begin: 200.h,

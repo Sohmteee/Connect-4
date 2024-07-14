@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/rooms/room.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -73,9 +74,19 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               } else if (snapshot.hasData && snapshot.data == 1) {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
+                toPlayer(Map)
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
                   if (t.tick == 10) {
                     startTimer?.cancel();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GameScreen(
+                          gameMode: GameMode.twoPlayersOnline,
+                          player1: 
+                        ),
+                      ),
+                    );
                   }
                   startCountdown.value = 10 - t.tick;
                 });
