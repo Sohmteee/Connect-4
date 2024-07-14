@@ -126,8 +126,8 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  reset() async {
-    setState(() {
+  reset()  {
+    setState(() async {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -148,6 +148,13 @@ class _GameScreenState extends State<GameScreen> {
       winningPositions.clear();
       hints = null;
       winner = null;
+
+      await gameRoom.set({
+        'gameBoard': gameBoard,
+        'winner': winner,
+        'currentPlayerNumber': currentPlayer.number,
+        'isGameOver': isGameOver,
+      });
     });
 
     /* if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
