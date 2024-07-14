@@ -131,7 +131,7 @@ class _GameScreenState extends State<GameScreen> {
       winner = null;
     });
 
-    if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
+    /* if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
       setState(() {
         isPlayer2Playing = true;
       });
@@ -146,21 +146,21 @@ class _GameScreenState extends State<GameScreen> {
           });
         });
       });
-    } else {
+    } else { */
       Future.delayed(300.milliseconds, () {
         setState(() {
           canTap = true;
         });
       });
     }
-  }
+  // }
 
   @override
   void initState() {
     super.initState();
 
-    widget.player2 = ComputerPlayer(2,
-        humanPlayerNumber: 1, name: widget.widget.player2['name']);
+    /* widget.player2 = ComputerPlayer(2,
+        humanPlayerNumber: 1, name: widget.widget.player2['name']); */
     firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
     widget.player1.clearScore();
@@ -566,7 +566,7 @@ class _GameScreenState extends State<GameScreen> {
                             ]),
                           ),
                         Image.asset(
-                          'assets/images/avatars/avatar_${widget.widget.player2['avatar']}.png',
+                          'assets/images/avatars/avatar_${widget.player2.['avatar']}.png',
                           height: 40.h,
                           width: 40.w,
                         ),
