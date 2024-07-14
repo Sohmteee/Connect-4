@@ -120,7 +120,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   reset() {
-    setState(() async {
+    setState(()  {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -140,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
       hints = null;
       winner = null;
 
-      await gameRoom.set(
+       gameRoom.set(
         {
           'gameBoard': gameBoard,
           'winner': winner,
