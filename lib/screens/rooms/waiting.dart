@@ -200,6 +200,19 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           textAlign: TextAlign.center,
         ),
         const Spacer(flex: 2),
+        ValueListenableBuilder<int>(
+          valueListenable: startCountdown,
+          builder: (context, value, child) {
+            return Text(
+              'Match starts in ${10 - (value.tick ?? 0)}s',
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow,
+              ),
+            );
+          },
+        ),
         Text(
           'Match starts in ${10 - (startTimer?.tick ?? 0)}s',
           style: TextStyle(
