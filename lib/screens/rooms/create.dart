@@ -104,11 +104,12 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                     builder: (context) {
                       return Dialog(
                         child: Container(
+                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                          decoration: const BoxDecoration(),
                           child: Text(
-                            'Are you sure you want to quit?',
+                            'Room already exists!',
                             style: TextStyle(
-                              color: const Color.fromRGBO(255, 235, 59, 1),
-                              fontSize: 16.sp,
+                              fontSize: 14.sp,
                             ),
                             textAlign: TextAlign.center,
                           ),
