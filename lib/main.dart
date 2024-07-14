@@ -73,6 +73,7 @@ class MyApp extends StatelessWidget {
             '/room': (context) => const RoomScreen(),
             '/create-room': (context) => const CreateRoomScreen(),
             '/join-room': (context) => const JoinRoomScreen(),
+            '/waiting-room': (context) => const WaitingRoomScreen(),
             '/match': (context) => const MatchPlayerScreen(),
           },
         );
