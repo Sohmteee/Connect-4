@@ -193,7 +193,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                       });
 
                   // Navigator.pop(context);
-                  Navigator.pushNamed(context, '/waiting-room');
+                  Navigator.pushNamed(context, '/waiting-room', arguments: [{'hasOpponent': false}]);
                 }
               },
             ),

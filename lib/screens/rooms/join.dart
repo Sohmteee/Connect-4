@@ -158,7 +158,10 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                                 Future.delayed(
                                   1.seconds,
                                   () => Navigator.pushNamed(
-                                      context, '/waiting-room'),
+                                      context, '/waiting-room',
+                                      arguments: [
+                                        {'hasOpponent': true}
+                                      ]),
                                 );
 
                                 return Dialog(
