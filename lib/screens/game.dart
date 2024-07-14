@@ -142,7 +142,7 @@ class _GameScreenState extends State<GameScreen> {
         'winner': winner,
         'currentPlayerNumber': currentPlayer.number,
         'isGameOver': isGameOver,
-      });
+      }, SetOptions(merge: true),);
     });
     Future.delayed(300.milliseconds, () {
       setState(() {
@@ -299,7 +299,12 @@ class _GameScreenState extends State<GameScreen> {
                                           'isGameOver': isGameOver,
                                         });
                                         canTap = false;
-                                        widget.player2.score++
+                                        widget.player2.score++;
+                                        gameRoom.snapshots().map((snapshot) {
+                                          snapshot
+                                        }).update({
+                                          'winner': 2,
+                                        });
                                         restartGame();
                                       }
                                     });
