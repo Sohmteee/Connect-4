@@ -12,8 +12,9 @@ import 'package:connect4/dialogs/not_your_turn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../widgets/neon_circular_timer/neon_circular_timer.dart';
 
 enum GameMode {
   twoPlayersOffline,

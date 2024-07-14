@@ -1,5 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:neon_circular_timer/neon_circular_timer.dart';
+import 'package:connect4/widgets/neon_circular_timer/neon_circular_timer.dart';
 
 final countDownController = CountDownController();
 final bgPlayer = AudioPlayer();
