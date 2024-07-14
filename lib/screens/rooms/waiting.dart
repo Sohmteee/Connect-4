@@ -81,6 +81,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     number: json['number'],
                     avatar: json['avatar'],
                     score: json['score'],
+                    timeLeft: json['timeLeft'],
                   );
                 }
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
