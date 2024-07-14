@@ -191,7 +191,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             });
                       });
 
-                  // Navigator.pushNamed(context, '/room');
+                  Navigator.pushNamed(context, '/waiting-room');
                 }
               },
             ),

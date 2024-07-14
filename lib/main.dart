@@ -7,6 +7,7 @@ import 'package:connect4/screens/match_player.dart';
 import 'package:connect4/screens/menu.dart';
 import 'package:connect4/screens/rooms/create.dart';
 import 'package:connect4/screens/rooms/join.dart';
+import 'package:connect4/screens/rooms/waiting.dart';
 import 'package:connect4/screens/settings.dart';
 import 'package:connect4/screens/splash.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -1,17 +1,21 @@
+import 'package:connect4/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class WaitingRoom extends StatefulWidget {
-  const WaitingRoom({super.key});
+class WaitingRoomScreen extends StatefulWidget {
+  const WaitingRoomScreen({super.key});
 
   @override
-  State<WaitingRoom> createState() => _WaitingRoomState();
+  State<WaitingRoomScreen> createState() => _WaitingRoomScreenState();
 }
 
-class _WaitingRoomState extends State<WaitingRoom> {
+class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column()
+      backgroundColor: backgroundColor,
+      body: Column(
+        children: [Container()],
+      ),
     );
   }
 }
