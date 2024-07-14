@@ -62,7 +62,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               ),
               Row(
                 children: [
-                  const SizedBox(width: MediaQuery(data: data, child: child) / 2),
+                  SizedBox(
+                      width: (MediaQuery.of(context).size.width / 2) - 40.w),
                   Text(
                     'join',
                     style: TextStyle(
