@@ -159,23 +159,23 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return Dialog(
-                          child: FutureBuilder(
-                              future: room.doc(roomName.text).set({
-                                'name': roomName.text,
-                                'key': roomKey.text,
-                                'players': 1,
-                              }),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return SizedBox(
-                                    width: 20.w,
-                                    child:
-                                        const CircularProgressIndicator(),
-                                  );
-                                }
-                                return Container(
+                        return FutureBuilder(
+                            future: room.doc(roomName.text).set({
+                              'name': roomName.text,
+                              'key': roomKey.text,
+                              'players': 1,
+                            }),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return SizedBox(
+                                  width: 20.w,
+                                  height: 20.h,
+                                  child: const CircularProgressIndicator(),
+                                );
+                              }
+                              return Dialog(
+                                child: Container(
                                   padding: EdgeInsets.fromLTRB(
                                       10.w, 20.h, 0.w, 20.h),
                                   decoration: const BoxDecoration(),
@@ -186,9 +186,9 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
-                                );
-                              }),
-                        );
+                                ),
+                              );
+                            });
                       });
 
                   // Navigator.pushNamed(context, '/room');
