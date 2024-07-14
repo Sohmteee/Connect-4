@@ -66,10 +66,10 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   List<List<int>> unflattenGameBoard(
-      List<int> flattenedBoard, int rows, int columns) {
+      List<int> flattenedBoard) {
     List<List<int>> board = [];
-    for (int i = 0; i < rows; i++) {
-      board.add(flattenedBoard.sublist(i * columns, (i + 1) * columns));
+    for (int i = 0; i < 7; i++) {
+      board.add(flattenedBoard.sublist(i * 7, (i + 1) * 7));
     }
     return board;
   }
@@ -118,7 +118,7 @@ class _GameScreenState extends State<GameScreen> {
         setState(() async {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
           await gameRoom.update({
-            'gameBoard': gameBoard,
+            'gameBoard': flattenGameBoard(gameBoard),
           });
           alternatePlayer();
           checkWin(rowIndex);
@@ -156,7 +156,7 @@ class _GameScreenState extends State<GameScreen> {
 
       gameRoom.set(
         {
-          'gameBoard': gameBoard,
+          'gameBoard': flattenGameBoard(gameBoard),
           'winner': winner,
           'currentPlayerNumber': currentPlayer.number,
           'isGameOver': isGameOver,
