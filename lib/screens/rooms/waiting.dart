@@ -36,7 +36,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       countdown.value = 300 - t.tick;
     });
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < 4; i++) {
       
     }
   }
