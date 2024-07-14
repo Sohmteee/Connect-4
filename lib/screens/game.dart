@@ -120,7 +120,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   reset() {
-    setState(()  {
+    setState(() {
       gameBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -140,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
       hints = null;
       winner = null;
 
-       gameRoom.set(
+      gameRoom.set(
         {
           'gameBoard': gameBoard,
           'winner': winner,
@@ -160,7 +160,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-   /*  boardStream = gameRoom.snapshots().map((snapshot) {
+    /*  boardStream = gameRoom.snapshots().map((snapshot) {
       return snapshot.data()!['gameBoard'];
     }); */
 
@@ -273,7 +273,7 @@ class _GameScreenState extends State<GameScreen> {
                 }),
                 builder: (context, players) {
                   if (players.connectionState == ConnectionState.waiting) {
-                    
+                    return Container();
                   }
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -462,23 +462,22 @@ class _GameScreenState extends State<GameScreen> {
             const Spacer(flex: 2),
             Center(
               child: StreamBuilder(
-                stream: gameRoom.snapshots().map((snapshot) {
-                  return snapshot.data()!['gameBoard'];
-                }),
-                builder: (context, board) {
-                  if (board.hasData) {
-                    gameBoard = board.data()!;
-                  }
-                  return Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      buildBoard(),
-                      buildDiscs(),
-                      buildTapHighlight(),
-                    ],
-                  );
-                }
-              ),
+                  stream: gameRoom.snapshots().map((snapshot) {
+                    return snapshot.data()!['gameBoard'];
+                  }),
+                  builder: (context, board) {
+                    if (board.hasData) {
+                      gameBoard = board.data()!;
+                    }
+                    return Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        buildBoard(),
+                        buildDiscs(),
+                        buildTapHighlight(),
+                      ],
+                    );
+                  }),
             ),
             const Spacer(flex: 2),
             Row(
