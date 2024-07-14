@@ -100,26 +100,37 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   return room.doc(roomKey).get().then((doc) => doc.exists);
                 }
 
-                if (await roomsContains(roomKey.text)) {
+                 showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        child: Text(
+                          'Are you sure you want to quit?',
+                          style: TextStyle(
+                            color: const Color.fromRGBO(255, 235, 59, 1),
+                            fontSize: 16.sp,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    });
+
+                /* if (await roomsContains(roomKey.text)) {
                    showDialog(
                       context: context,
                       builder: (context) {
                         return Container(
                           child: Text(
-                        'Are you sure you want to quit?',
-                        style: TextStyle(
-                          color: const Color.fromRGBO(255, 235, 59, 1),
-                          fontSize: 16.sp,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),,
+                            'Are you sure you want to quit?',
+                            style: TextStyle(
+                              color: const Color.fromRGBO(255, 235, 59, 1),
+                              fontSize: 16.sp,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         );
                       });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Room key already exists'),
-                    ),
-                  );
+                  
                 } else {
                   room.doc(roomKey.text).set({
                     'name': roomName.text,
@@ -127,7 +138,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                     'players': 1,
                   });
                   // Navigator.pushNamed(context, '/room');
-                }
+                } */
               },
             ),
             const Spacer(flex: 4),
