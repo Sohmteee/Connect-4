@@ -42,8 +42,14 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
     super.dispose();
   }
 
-  Future<int> getNumberOfPlayers() async{
-    return room.doc(roomName.text).get().then((room) => room['players'].length);
+Stream<int> getNumberOfPlayersStream() {
+    return room.doc(roomName.text).snapshots().map((snapshot) {
+      if (snapshot.exists) {
+        return snapshot.data()!['players'].length;
+      } else {
+        return 0;
+      }
+    });
   }
 
   @override
