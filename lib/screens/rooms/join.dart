@@ -3,7 +3,6 @@ import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -20,8 +19,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
   @override
   void initState() {
     super.initState();
-    roomKey = TextEditingController();
     roomName = TextEditingController();
+    roomKey = TextEditingController();
   }
 
   @override
@@ -29,6 +28,18 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
     roomName.dispose();
     roomKey.dispose();
     super.dispose();
+  }
+
+  Future<void> addPlayerToRoom() async {
+    var doc = room.doc(roomName.text);
+    var docSnapshot = await doc.get();
+
+    if (docSnapshot.exists) {
+      var players = List.from(docSnapshot.data()!['players']);
+      players.add(
+          'newPlayer');
+      await doc.update({'players': players});
+    }
   }
 
   @override
@@ -95,7 +106,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
             const Spacer(flex: 4),
             GameButton(
               text: 'JOIN',
-              onPressed: () {
+              onPressed: () async {
                 playTap(context);
 
                 if (roomName.text.isEmpty) {
@@ -136,63 +147,66 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       });
                 } else {
                   showDialog(
-                      context: context,
-                      builder: (context) {
-                        return FutureBuilder(
-                            future: room.doc(roomName.text).get().then((doc) {
-                              if (doc.exists &&
-                                  doc.data()!['key'] == roomKey.text) {
-                                return true;
-                              }
-                            }),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting) {
-                                return LoadingAnimationWidget.inkDrop(
-                                  color: backgroundColor!,
-                                  size: 50.sp,
-                                );
-                              }
+                    context: context,
+                    builder: (context) {
+                      return FutureBuilder(
+                        future: room.doc(roomName.text).get().then((doc) {
+                          if (doc.exists &&
+                              doc.data()!['key'] == roomKey.text) {
+                            return true;
+                          }
+                          return false;
+                        }),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(
+                              child: LoadingAnimationWidget.inkDrop(
+                                color: backgroundColor!,
+                                size: 50.sp,
+                              ),
+                            );
+                          }
 
-                              if (snapshot.data == true) {
-                                Future.delayed(
-                                  1.seconds,
-                                  () => Navigator.pushNamed(
-                                      context, '/waiting-room'),
-                                );
-
-                                return Dialog(
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        10.w, 20.h, 0.w, 20.h),
-                                    decoration: const BoxDecoration(),
-                                    child: Text(
-                                      'Room found!',
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                return Dialog(
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        10.w, 20.h, 0.w, 20.h),
-                                    decoration: const BoxDecoration(),
-                                    child: Text(
-                                      'Room does not exist!',
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                );
-                              }
+                          if (snapshot.data == true) {
+                            addPlayerToRoom().then((_) {
+                              Navigator.pushNamed(context, '/waiting-room');
                             });
-                      });
+
+                            return Dialog(
+                              child: Container(
+                                padding:
+                                    EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                                decoration: const BoxDecoration(),
+                                child: Text(
+                                  'Room found!',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Dialog(
+                              child: Container(
+                                padding:
+                                    EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                                decoration: const BoxDecoration(),
+                                child: Text(
+                                  'Room does not exist!',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  );
                 }
               },
             ),
