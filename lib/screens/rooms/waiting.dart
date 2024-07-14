@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,6 +37,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Spacer(flex: 5),
               Text(
                 'Waiting for player to',
                 style: TextStyle(
@@ -68,6 +70,11 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                   ),
                 ],
               ),
+              Spacer(flex: 3),
+              GameButton(text: 'CANCEL', onPressed: () {
+                
+              })
+              Spacer(flex: 2),
             ],
           ),
         ),
