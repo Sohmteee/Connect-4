@@ -165,6 +165,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             future: room.doc(roomName.text).set({
                               'name': roomName.text,
                               'key': roomKey.text,
+                              'time-to-start': 10,
                               'players': [Player(1, name: 'Somto').toMap()],
                             }),
                             builder: (context, snapshot) {
@@ -180,19 +181,12 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   padding: EdgeInsets.fromLTRB(
                                       10.w, 20.h, 0.w, 20.h),
                                   decoration: const BoxDecoration(),
-                                  child: Text(
-                                    'Room canceled!',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  child: Container(),
                                 ),
                               );
                             });
                       });
 
-                  // Navigator.pop(context);
                   Navigator.pushNamed(context, '/waiting-room');
                 }
               },

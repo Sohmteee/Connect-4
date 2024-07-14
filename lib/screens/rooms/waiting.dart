@@ -100,6 +100,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                       text: 'GO BACK',
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.pop(context);
                       },
                     ),
                     const Spacer(flex: 2),
@@ -176,6 +177,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           onPressed: () {
             room.doc(roomName.text).delete();
             Navigator.pop(context);
+            Navigator.pop(context);
           },
         ),
         const Spacer(flex: 2),
@@ -217,6 +219,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           text: 'CANCEL',
           onPressed: () {
             room.doc(roomName.text).delete();
+            Navigator.pop(context);
             Navigator.pop(context);
           },
         ),
