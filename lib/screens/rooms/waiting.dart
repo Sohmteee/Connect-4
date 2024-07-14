@@ -94,11 +94,10 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                       textAlign: TextAlign.center,
                     ),
                    
-                    const Spacer(flex: 2),
+                    const Spacer(flex: 3),
                     GameButton(
                       text: 'GO BACK',
                       onPressed: () {
-                        room.doc(roomName.text).delete();
                         Navigator.pop(context);
                       },
                     ),
