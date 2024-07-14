@@ -6,6 +6,7 @@ import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'room.dart';
 
@@ -146,16 +147,15 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                                     ...Player(2, name: 'Ada').toMap(),
                                   ]),
                                 });
-                                /*  Navigator.pushNamed(context, '/waiting-room',
-                                    arguments: {
-                                      'roomKey': roomKey.text,
-                                      'roomName': roomName.text,
-                                    }); */
                               }
                             }),
                             builder: (context, snapshot) {
-                              if(ConnectionState.waiting == snapshot.connectionState) {
-                                
+                               if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return LoadingAnimationWidget.inkDrop(
+                                  color: backgroundColor!,
+                                  size: 50.sp,
+                                );
                               }
                               return Dialog(
                                 child: Container(
