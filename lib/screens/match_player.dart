@@ -561,7 +561,7 @@ class _MatchPlayerScreenState extends State<MatchPlayerScreen> {
                 MaterialPageRoute(
                   builder: (context) => GameScreen(
                     gameMode: GameMode.twoPlayersOnline,
-                    secondPlayer: aiPlayers.last,
+                    player2: aiPlayers.last,
                   ),
                 ),
               );

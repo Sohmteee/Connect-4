@@ -26,11 +26,12 @@ class GameScreen extends StatefulWidget {
   const GameScreen({
     super.key,
     this.gameMode = GameMode.twoPlayersOnline,
-    required this
+    required this.player1,
     required this.player2,
   });
 
   final GameMode gameMode;
+  final Map<String, dynamic> player1;
   final Map<String, dynamic> player2;
 
   @override
@@ -38,8 +39,6 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  final player1 = Player(1, name: 'You');
-  late final dynamic player2;
   int? winner;
   late Player currentPlayer;
   bool isGameOver = false;
@@ -60,7 +59,7 @@ class _GameScreenState extends State<GameScreen> {
 
   alternatePlayer() {
     if (!isGameOver) {
-      currentPlayer = currentPlayer.number == 1 ? player2 : player1;
+      currentPlayer = currentPlayer.number == 1 ? widget.player2 : widget.player1;
       isPlayer2Playing = !isPlayer2Playing;
     }
   }
@@ -91,9 +90,9 @@ class _GameScreenState extends State<GameScreen> {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
-          if (currentPlayer.number == player2.number &&
-              player2 is ComputerPlayer) {
-            player2.lastPlayedPosition = Position(rowIndex, columnIndex);
+          if (currentPlayer.number == widget.player2.number &&
+              widget.player2 is ComputerPlayer) {
+            widget.player2.lastPlayedPosition = Position(rowIndex, columnIndex);
           }
           alternatePlayer();
           checkWin(rowIndex);
@@ -121,8 +120,8 @@ class _GameScreenState extends State<GameScreen> {
       ];
 
       currentPlayer = firstPlayer;
-      if (player2 is ComputerPlayer) {
-        player2.lastPlayedPosition = null;
+      if (widget.player2 is ComputerPlayer) {
+        widget.player2.lastPlayedPosition = null;
       }
       isGameOver = false;
       canTap = true;
@@ -132,11 +131,11 @@ class _GameScreenState extends State<GameScreen> {
       winner = null;
     });
 
-    if (currentPlayer == player2 && player2 is ComputerPlayer) {
+    if (currentPlayer == widget.player2 && widget.player2 is ComputerPlayer) {
       setState(() {
         isPlayer2Playing = true;
       });
-      int computerMove = await player2.play();
+      int computerMove = await widget.player2.play();
 
       makeMove(computerMove);
       setState(() {
@@ -160,17 +159,17 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
 
-    player2 = ComputerPlayer(2,
-        humanPlayerNumber: 1, name: widget.player2['name']);
-    firstPlayer = player1;
+    widget.player2 = ComputerPlayer(2,
+        humanPlayerNumber: 1, name: widget.widget.player2['name']);
+    firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
-    player1.clearScore();
-    player2.clearScore();
+    widget.player1.clearScore();
+    widget.player2.clearScore();
     reset();
     // countDownController.start();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      /*   if (player2 is Player) {
+      /*   if (widget.player2 is Player) {
         showDialog(
             context: context,
             builder: (context) {
@@ -255,7 +254,7 @@ class _GameScreenState extends State<GameScreen> {
                   inputFormatters: const [],
                   onSubmitted: (value) {
                     setState(() {
-                      player1.name = value;
+                      widget.player1.name = value;
                     });
                     Navigator.pop(context);
                     showDialog(
@@ -337,7 +336,7 @@ class _GameScreenState extends State<GameScreen> {
                   inputFormatters: const [],
                   onSubmitted: (value) {
                     setState(() {
-                      player2.name = value;
+                      widget.player2.name = value;
                     });
                     Navigator.pop(context);
                   },
@@ -482,7 +481,7 @@ class _GameScreenState extends State<GameScreen> {
                                     9) {
                                   isGameOver = true;
                                   canTap = false;
-                                  player2.score++;
+                                  widget.player2.score++;
                                   restartGame();
                                 }
                               });
@@ -501,7 +500,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                     SizedBox(height: 5.h),
                     Text(
-                      player1.name!,
+                      widget.player1.name!,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.sp,
@@ -512,7 +511,7 @@ class _GameScreenState extends State<GameScreen> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
                   child: Text(
-                    '${player1.score} - ${player2.score}',
+                    '${widget.player1.score} - ${widget.player2.score}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14.sp,
@@ -556,7 +555,7 @@ class _GameScreenState extends State<GameScreen> {
                                 if (countDownController.getTimeInSeconds() >=
                                     9) {
                                   isGameOver = true;
-                                  player1.score++;
+                                  widget.player1.score++;
                                   restartGame();
                                 }
                               });
@@ -567,7 +566,7 @@ class _GameScreenState extends State<GameScreen> {
                             ]),
                           ),
                         Image.asset(
-                          'assets/images/avatars/avatar_${widget.player2['avatar']}.png',
+                          'assets/images/avatars/avatar_${widget.widget.player2['avatar']}.png',
                           height: 40.h,
                           width: 40.w,
                         ),
@@ -575,7 +574,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                     SizedBox(height: 5.h),
                     Text(
-                      player2.name!,
+                      widget.player2.name!,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.sp,
@@ -607,7 +606,7 @@ class _GameScreenState extends State<GameScreen> {
                 SizedBox(width: 5.w),
                 winner == null
                     ? Text(
-                        '${currentPlayer == player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                        '${currentPlayer == widget.player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14.sp,
@@ -617,7 +616,7 @@ class _GameScreenState extends State<GameScreen> {
                         switch (winner) {
                           0 => 'It\'s a tie!',
                           1 => 'You won!',
-                          2 => '${player2.name} won!',
+                          2 => '${widget.player2.name} won!',
                           _ => '',
                         },
                         style: TextStyle(
@@ -652,7 +651,7 @@ class _GameScreenState extends State<GameScreen> {
 
                       while (!isGameOver) {
                         if (canTap) {
-                          List<int>? options = await player1.getHints();
+                          List<int>? options = await widget.player1.getHints();
                           int move = options!.length == 1
                               ? options[0]
                               : options[Random().nextInt(options.length)];
@@ -693,7 +692,7 @@ class _GameScreenState extends State<GameScreen> {
                 const Spacer(),
                 ZoomTapAnimation(
                   onTap: () async {
-                    hints = await player1.getHints();
+                    hints = await widget.player1.getHints();
                     setState(() {});
                   },
                   child: Container(
@@ -954,11 +953,11 @@ class _GameScreenState extends State<GameScreen> {
                   canTap = false;
                 });
                 makeMove(columnIndex);
-                if (!isGameOver && player2 is ComputerPlayer) {
+                if (!isGameOver && widget.player2 is ComputerPlayer) {
                   setState(() {
                     isPlayer2Playing = true;
                   });
-                  int computerMove = await player2.play();
+                  int computerMove = await widget.player2.play();
                   makeMove(computerMove);
                   setState(() {
                     isPlayer2Playing = false;
@@ -1039,7 +1038,7 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkHorizontal()['winner'];
           });
-          winner == 1 ? player1.score++ : player2.score++;
+          winner == 1 ? widget.player1.score++ : widget.player2.score++;
         });
 
         isGameOver = true;
@@ -1056,7 +1055,7 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkVertical()['winner'];
           });
-          winner == 1 ? player1.score++ : player2.score++;
+          winner == 1 ? widget.player1.score++ : widget.player2.score++;
         });
 
         isGameOver = true;
@@ -1073,7 +1072,7 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkDiagonal()['winner'];
           });
-          winner == 1 ? player1.score++ : player2.score++;
+          winner == 1 ? widget.player1.score++ : widget.player2.score++;
         });
 
         isGameOver = true;
@@ -1266,7 +1265,7 @@ class _GameScreenState extends State<GameScreen> {
   restartGame() {
     Future.delayed(3.seconds, () async {
       setState(() {
-        firstPlayer = firstPlayer.number == player1.number ? player2 : player1;
+        firstPlayer = firstPlayer.number == widget.player1.number ? widget.player2 : widget.player1;
         reset();
       });
     });
