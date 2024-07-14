@@ -94,6 +94,17 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               text: 'CREATE',
               onPressed: () {
                 playTap(context);
+                if (roomName.text.lengt && roomKey.text.isNotEmpty) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RoomScreen(
+                        roomName: roomName.text,
+                        roomKey: roomKey.text,
+                      ),
+                    ),
+                  );
+                }
               },
             ),
             const Spacer(flex: 4),
