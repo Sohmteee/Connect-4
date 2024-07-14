@@ -79,6 +79,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 });
                 return _foundPlayerWidget();
               } else {
+                
                 return const Text('Unexpected error or no data available');
               }
             },
