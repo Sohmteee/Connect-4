@@ -45,6 +45,16 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   Stream<int> getNumberOfPlayersStream() {
     return room.doc(roomName.text).snapshots().map((snapshot) {
       if (snapshot.exists) {
+        if () {
+          startTimer = Timer.periodic(1.seconds, (t) {
+                if (startTimer.tick == 10) {
+                  startTimer.cancel();
+                }
+
+                dots = (dots + 1) % 4;
+                setState(() {});
+              });
+        }
         return snapshot.data()!['players'].length;
       } else {
         return 0;
@@ -131,14 +141,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                   ],
                 );
               }
-              startTimer = Timer.periodic(1.seconds, (t) {
-                if (startTimer.tick == 10) {
-                  startTimer.cancel();
-                }
-
-                dots = (dots + 1) % 4;
-                setState(() {});
-              });
+              
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
