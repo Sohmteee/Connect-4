@@ -139,6 +139,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                         return FutureBuilder(
                             future: room.doc(roomKey.text).get().then((doc) {
                               if (doc.exists) {
+                                
                                 Navigator.pushNamed(context, '/game',
                                     arguments: {
                                       'roomKey': roomKey.text,
