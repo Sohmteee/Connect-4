@@ -59,7 +59,6 @@ class _GameScreenState extends State<GameScreen> {
 
   alternatePlayer() {
     if (!isGameOver) {
-      
       currentPlayer = currentPlayer.number == 1 ? player2 : player1;
       isPlayer2Playing = !isPlayer2Playing;
     }
