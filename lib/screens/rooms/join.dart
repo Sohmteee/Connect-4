@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
@@ -140,7 +141,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                             future: room.doc(roomKey.text).get().then((doc) {
                               if (doc.exists) {
                                 room.doc(roomKey.text).update({
-                                  'players': 2,
+                                  'players': FieldValue.arrayUnion([]),
                                 });
                                 Navigator.pushNamed(context, '/game',
                                     arguments: {
