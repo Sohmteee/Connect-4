@@ -461,7 +461,9 @@ class _GameScreenState extends State<GameScreen> {
               child: StreamBuilder(
                 stream: boardStream,
                 builder: (context, snapshot) {
-                  
+                  if (snapshot.hasData) {
+                    gameBoard = boardStream.!;
+                  }
                   return Stack(
                     alignment: Alignment.center,
                     children: [
