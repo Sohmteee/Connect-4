@@ -10,8 +10,8 @@ class RoomScreen extends StatefulWidget {
   State<RoomScreen> createState() => _RoomScreenState();
 }
 
-final roomName = TextEditingController();
-final roomKey = TextEditingController();
+late TextEditingController roomName;
+late TextEditingController roomKey;
 
 class _RoomScreenState extends State<RoomScreen> {
   @override

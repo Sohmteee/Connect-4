@@ -17,15 +17,15 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   void initState() {
     super.initState();
     roomKey = TextEditingController();
-    
+    roomName = TextEditingController();
   }
 
-@override
-void dispose() {
-  roomName.dispose();
-  roomKey.dispose();
-  super.dispose();
-}
+  @override
+  void dispose() {
+    roomName.dispose();
+    roomKey.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +51,7 @@ void dispose() {
             ),
             const Spacer(flex: 3),
             TextField(
+              controller: roomName,
               style: TextStyle(
                 color: Colors.grey[100],
               ),

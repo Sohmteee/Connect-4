@@ -4,6 +4,8 @@ import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'room.dart';
+
 class JoinRoomScreen extends StatefulWidget {
   const JoinRoomScreen({super.key});
 
@@ -12,6 +14,20 @@ class JoinRoomScreen extends StatefulWidget {
 }
 
 class _JoinRoomScreenState extends State<JoinRoomScreen> {
+  @override
+  void initState() {
+    super.initState();
+    roomKey = TextEditingController();
+    roomName = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    roomName.dispose();
+    roomKey.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
