@@ -458,13 +458,18 @@ class _GameScreenState extends State<GameScreen> {
             ),
             const Spacer(flex: 2),
             Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  buildBoard(),
-                  buildDiscs(),
-                  buildTapHighlight(),
-                ],
+              child: StreamBuilder(
+                stream: boardStream,
+                builder: (context, snapshot) {
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      buildBoard(),
+                      buildDiscs(),
+                      buildTapHighlight(),
+                    ],
+                  );
+                }
               ),
             ),
             const Spacer(flex: 2),
