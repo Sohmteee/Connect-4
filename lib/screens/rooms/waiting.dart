@@ -61,8 +61,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 textAlign: TextAlign.center,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(width: MediaQuery(data: data, child: child) / 2),
                   Text(
                     'join',
                     style: TextStyle(
