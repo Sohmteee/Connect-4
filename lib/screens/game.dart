@@ -31,8 +31,8 @@ class GameScreen extends StatefulWidget {
   });
 
   final GameMode gameMode;
-  final Map<String, dynamic> player1;
-  final Map<String, dynamic> player2;
+  final Player player1;
+  final Player player2;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -90,10 +90,10 @@ class _GameScreenState extends State<GameScreen> {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
 
           // if it was the computer's move, register the new last played position
-          if (currentPlayer.number == widget.player2.number &&
+          /* if (currentPlayer.number == widget.player2.number &&
               widget.player2 is ComputerPlayer) {
             widget.player2.lastPlayedPosition = Position(rowIndex, columnIndex);
-          }
+          } */
           alternatePlayer();
           checkWin(rowIndex);
           checkTie(rowIndex);
@@ -121,7 +121,7 @@ class _GameScreenState extends State<GameScreen> {
 
       currentPlayer = firstPlayer;
       if (widget.player2 is ComputerPlayer) {
-        widget.player2.lastPlayedPosition = null;
+        // widget.player2.lastPlayedPosition = null;
       }
       isGameOver = false;
       canTap = true;
