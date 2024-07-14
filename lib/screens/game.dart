@@ -61,6 +61,20 @@ class _GameScreenState extends State<GameScreen> {
 
   // late Stream<DocumentSnapshot> boardStream;
 
+  List<int> flattenGameBoard(List<List<int>> board) {
+    return board.expand((row) => row).toList();
+  }
+
+  List<List<int>> unflattenGameBoard(
+      List<int> flattenedBoard, int rows, int columns) {
+    List<List<int>> board = [];
+    for (int i = 0; i < rows; i++) {
+      board.add(flattenedBoard.sublist(i * columns, (i + 1) * columns));
+    }
+    return board;
+  }
+
+
   void initializeServerParameters() async {
     await gameRoom.set(
       {
