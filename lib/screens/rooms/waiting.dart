@@ -74,11 +74,11 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
-                    if (t.tick == 10) {
-                      startTimer?.cancel();
-                    }
-                    startCountdown.value = 10 - t.tick;
-                  });
+                  if (t.tick == 10) {
+                    startTimer?.cancel();
+                  }
+                  startCountdown.value = 10 - t.tick;
+                });
                 return _foundPlayerWidget();
               } else {
                 return Column(
