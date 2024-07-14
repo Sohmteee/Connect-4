@@ -37,7 +37,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
 
   @override
   void dispose() {
-   timer.cancel();
+    timer.cancel();
     startTimer?.cancel();
     dots.dispose();
     countdown.dispose();
@@ -95,7 +95,6 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                   
                     const Spacer(flex: 3),
                     GameButton(
                       text: 'GO BACK',
@@ -204,7 +203,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           valueListenable: startCountdown,
           builder: (context, value, child) {
             return Text(
-              'Match starts in ${10 - (value.tick ?? 0)}s',
+              'Match starts in ${10 - (value)}s',
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -213,19 +212,12 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
             );
           },
         ),
-        Text(
-          'Match starts in ${10 - (startTimer?.tick ?? 0)}s',
-          style: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.yellow,
-          ),
-        ),
         const Spacer(flex: 2),
         GameButton(
           text: 'CANCEL',
           onPressed: () {
             room.doc(roomName.text).delete();
+            Navigator.pop(context);
             Navigator.pop(context);
           },
         ),
