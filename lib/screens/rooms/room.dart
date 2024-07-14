@@ -2,7 +2,6 @@ import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoomScreen extends StatefulWidget {
   const RoomScreen({super.key});
@@ -10,6 +9,9 @@ class RoomScreen extends StatefulWidget {
   @override
   State<RoomScreen> createState() => _RoomScreenState();
 }
+
+final roomName = TextEditingController();
+final roomKey = TextEditingController();
 
 class _RoomScreenState extends State<RoomScreen> {
   @override
