@@ -94,16 +94,17 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               text: 'CREATE',
               onPressed: () {
                 playTap(context);
-                if (roomName.text.lengt && roomKey.text.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RoomScreen(
-                        roomName: roomName.text,
-                        roomKey: roomKey.text,
-                      ),
-                    ),
-                  );
+                if (roomName.text.isNotEmpty && roomKey.text.isNotEmpty) {
+                 room.doc(roomKey.text).set({
+                    'name': roomName.text,
+                    'key': roomKey.text,
+                    'players': [],
+                    'status': 'waiting',
+                  }).then((value) {
+                    // Navigator.pushNamed(context, '/room');
+                  }).catchError((error) {
+                    debugPrint("Failed to create room: $error");
+                  });
                 }
               },
             ),
