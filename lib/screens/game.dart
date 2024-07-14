@@ -160,184 +160,13 @@ class _GameScreenState extends State<GameScreen> {
     reset();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      /*   if (widget.player2 is Player) {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return buildPlayer1Dialog();
-            });
-      } */
-      /* Future.delayed(5.seconds, () {
-        Timer timer = Timer.periodic(1.seconds, (timer) {
-          print(countDownController.getTimeInSeconds());
-        });
-      }); */
+    
     });
   }
 
   @override
   void dispose() {
-    // countDownController.reset();
     super.dispose();
-  }
-
-  Dialog buildPlayer1Dialog() {
-    return Dialog(
-      backgroundColor: backgroundColor,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.w,
-          vertical: 20.h,
-        ),
-        decoration: const BoxDecoration(),
-        child: StatefulBuilder(builder: (context, updateState) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Player 1',
-                style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16.sp,
-                ),
-              ),
-              SizedBox(height: 20.h),
-              SizedBox(
-                height: 50.h,
-                child: TextField(
-                  onTapOutside: (event) {
-                    FocusScope.of(context).unfocus();
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Name',
-                    labelStyle: TextStyle(
-                      color: Colors.grey[300],
-                      fontSize: 12.sp,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 14.w,
-                      vertical: 20.h,
-                    ),
-                  ),
-                  keyboardType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  inputFormatters: const [],
-                  onSubmitted: (value) {
-                    setState(() {
-                      widget.player1.name = value;
-                    });
-                    Navigator.pop(context);
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return buildPlayer2Dialog();
-                        });
-                  },
-                ),
-              ),
-            ],
-          );
-        }),
-      ),
-    );
-  }
-
-  Dialog buildPlayer2Dialog() {
-    return Dialog(
-      backgroundColor: backgroundColor,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.w,
-          vertical: 20.h,
-        ),
-        decoration: const BoxDecoration(),
-        child: StatefulBuilder(builder: (context, updateState) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Player 2',
-                style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16.sp,
-                ),
-              ),
-              SizedBox(height: 20.h),
-              SizedBox(
-                height: 50.h,
-                child: TextField(
-                  onTapOutside: (event) {
-                    FocusScope.of(context).unfocus();
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Name',
-                    labelStyle: TextStyle(
-                      color: Colors.grey[300],
-                      fontSize: 12.sp,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                        width: 1.w,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 14.w,
-                      vertical: 20.h,
-                    ),
-                  ),
-                  keyboardType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  inputFormatters: const [],
-                  onSubmitted: (value) {
-                    setState(() {
-                      widget.player2.name = value;
-                    });
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
-            ],
-          );
-        }),
-      ),
-    );
   }
 
   Color getColor(int? time) {
@@ -451,22 +280,10 @@ class _GameScreenState extends State<GameScreen> {
                             backgroudColor: Colors.transparent,
                             outerStrokeColor: Colors.transparent,
                             onStart: () {
-                              /* timer = Timer.periodic(1.seconds, (timer) {
-                                if (iterationCount > 0) {
-                                  setState(() {
-                                    iterationCount--;
-                                    
-                                  });
-                                } else {
-                                  timer.cancel();
-                                }
-                              }); */
+                            
                             },
                             onComplete: () {
-                              // timer.cancel();
-                              /* setState(() {
-                                iterationCount = 20;
-                              }); */
+                             
                               setState(() {
                                 if (countDownController.getTimeInSeconds() >=
                                     9) {
@@ -527,21 +344,10 @@ class _GameScreenState extends State<GameScreen> {
                             backgroudColor: Colors.transparent,
                             outerStrokeColor: Colors.transparent,
                             onStart: () {
-                              /*  timer = Timer.periodic(1.seconds, (timer) {
-                                if (iterationCount > 0) {
-                                  setState(() {
-                                    iterationCount--;
-                                  });
-                                } else {
-                                  timer.cancel();
-                                }
-                              }); */
+                             
                             },
                             onComplete: () {
-                              // timer.cancel();
-                              /* setState(() {
-                                iterationCount = 20;
-                              }); */
+                              
                               setState(() {
                                 if (countDownController.getTimeInSeconds() >=
                                     9) {
@@ -944,28 +750,13 @@ class _GameScreenState extends State<GameScreen> {
                   canTap = false;
                 });
                 makeMove(columnIndex);
-                /* if (!isGameOver && widget.player2 is ComputerPlayer) {
-                  setState(() {
-                    isPlayer2Playing = true;
-                  });
-                  int computerMove = await widget.player2.play();
-                  makeMove(computerMove);
-                  setState(() {
-                    isPlayer2Playing = false;
-                    Future.delayed(300.milliseconds, () {
-                      setState(() {
-                        canTap = true;
-                      });
-                    });
-                  });
-                } else if (!isGameOver) { */
+              
                 Future.delayed(300.milliseconds, () {
                   setState(() {
                     canTap = true;
                   });
                 });
               }
-              // }
             },
             onTapDown: (details) {
               setState(() {
@@ -990,7 +781,6 @@ class _GameScreenState extends State<GameScreen> {
                 color: (tappedIndex != null && columnIndex == tappedIndex)
                     ? Colors.white.withOpacity(.3)
                     : Colors.transparent,
-                // color: Colors.transparent,
                 borderRadius: BorderRadius.circular(10.sp),
               ),
             ),
