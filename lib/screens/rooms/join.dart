@@ -154,6 +154,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               }
 
                               if (snapshot.data == true) {
+                                Navigator.pushNamed(context, '/waiting-room');
                                 return Dialog(
                                   child: Container(
                                     padding: EdgeInsets.fromLTRB(
