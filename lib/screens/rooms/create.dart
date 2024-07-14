@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:connect4/classes/player.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
@@ -166,7 +165,15 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                               'name': roomName.text,
                               'key': roomKey.text,
                               'time-to-start': 10,
-                              'players': [Player(1, name: 'Somto').toMap()],
+                              'players': [
+                                {
+                                  'name': 'Somto',
+                                  'number': 1,
+                                  'avatar': 1,
+                                  'score': 0,
+                                  'timeLeft': null,
+                                }
+                              ],
                             }),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==

@@ -42,7 +42,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
         'number': 2,
         'avatar': 13,
         'score': 0,
-        'timeLeft': json['timeLeft'],
+        'timeLeft': null,
       
       });
       await doc.update({'players': players});
