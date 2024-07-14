@@ -33,9 +33,6 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       setState(() {});
     });
 
-    hasOpponent = await room.doc(roomName.text).get().then((room) {
-      return room['players'].length == 2;
-    });
     super.initState();
   }
 
@@ -43,6 +40,10 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   void dispose() {
     timer.cancel();
     super.dispose();
+  }
+
+  Future<int> getNumberOfPlayers() async{
+    return room.doc(roomName.text).get().then((room) => room['players'].length);
   }
 
   @override
