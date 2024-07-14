@@ -19,6 +19,7 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   int dots = 0;
   late Timer timer;
+  late bool hasOpponent;
 
   @override
   void initState() {
@@ -31,6 +32,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       dots = (dots + 1) % 4;
       setState(() {});
     });
+
+    hasOpponent = 
     super.initState();
   }
 
