@@ -4,7 +4,6 @@ import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/screens/rooms/room.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -18,27 +17,25 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   int dots = 0;
   late Timer timer;
-  late Timer startTimer;
+  Timer? startTimer;
 
   @override
   void initState() {
-    timer = Timer.periodic(1.seconds, (t) {
-      if (timer.tick == 300) {
+    super.initState();
+    timer = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (t.tick == 300) {
         room.doc(roomName.text).delete();
         Navigator.pop(context);
       }
-
       dots = (dots + 1) % 4;
       setState(() {});
     });
-
-    super.initState();
   }
 
   @override
   void dispose() {
     timer.cancel();
-    startTimer.cancel();
+    startTimer?.cancel();
     super.dispose();
   }
 
@@ -59,123 +56,128 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: StreamBuilder(
+          child: StreamBuilder<int>(
             stream: getNumberOfPlayersStream(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return LoadingAnimationWidget.inkDrop(
-                        color: backgroundColor!,
-                        size: 50.sp,
-                      );
-                    });
-              } else if (snapshot.data == 1) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Spacer(flex: 5),
-                    Text(
-                      'Waiting for player to',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                            width:
-                                (MediaQuery.of(context).size.width / 2) - 40.w),
-                        Text(
-                          'join',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.yellow,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          '.' * dots,
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.yellow,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    const Spacer(flex: 2),
-                    Text(
-                      '${300 - timer.tick}s',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    const Spacer(flex: 2),
-                    GameButton(
-                        text: 'CANCEL',
-                        onPressed: () {
-                          room.doc(roomName.text).delete();
-                          Navigator.pop(context);
-                        }),
-                    const Spacer(flex: 2),
-                  ],
+                return LoadingAnimationWidget.inkDrop(
+                  color: backgroundColor!,
+                  size: 50.sp,
                 );
+              } else if (snapshot.hasData && snapshot.data == 1) {
+                return _waitingForPlayerWidget();
+              } else if (snapshot.hasData && snapshot.data! > 1) {
+                startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
+                  if (t.tick == 10) {
+                    startTimer?.cancel();
+                  }
+                  setState(() {});
+                });
+                return _foundPlayerWidget();
+              } else {
+                return const Text('Unexpected error or no data available');
               }
-              startTimer = Timer.periodic(1.seconds, (t) {
-                if (startTimer.tick == 10) {
-                  startTimer.cancel();
-                }
-
-                dots = (dots + 1) % 4;
-                setState(() {});
-              });
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Spacer(flex: 5),
-                  Text(
-                    'Found a player!',
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const Spacer(flex: 2),
-                  Text(
-                    'Match starts in ${10 - startTimer.tick}s',
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow,
-                    ),
-                  ),
-                  const Spacer(flex: 2),
-                  GameButton(
-                      text: 'CANCEL',
-                      onPressed: () {
-                        room.doc(roomName.text).delete();
-                        Navigator.pop(context);
-                      }),
-                  const Spacer(flex: 2),
-                ],
-              );
             },
           ),
         ),
       ),
+    );
+  }
+
+  Widget _waitingForPlayerWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Spacer(flex: 5),
+        Text(
+          'Waiting for player to',
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.yellow,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        Row(
+          children: [
+            SizedBox(width: (MediaQuery.of(context).size.width / 2) - 40.w),
+            Text(
+              'join',
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              '.' * dots,
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        const Spacer(flex: 2),
+        Text(
+          '${300 - timer.tick}s',
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.yellow,
+          ),
+        ),
+        const Spacer(flex: 2),
+        GameButton(
+          text: 'CANCEL',
+          onPressed: () {
+            room.doc(roomName.text).delete();
+            Navigator.pop(context);
+          },
+        ),
+        const Spacer(flex: 2),
+      ],
+    );
+  }
+
+  Widget _foundPlayerWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Spacer(flex: 5),
+        Text(
+          'Found a player!',
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.yellow,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(flex: 2),
+        Text(
+          'Match starts in ${10 - (startTimer?.tick ?? 0)}s',
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.yellow,
+          ),
+        ),
+        const Spacer(flex: 2),
+        GameButton(
+          text: 'CANCEL',
+          onPressed: () {
+            room.doc(roomName.text).delete();
+            Navigator.pop(context);
+          },
+        ),
+        const Spacer(flex: 2),
+      ],
     );
   }
 }
