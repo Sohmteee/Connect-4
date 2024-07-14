@@ -94,6 +94,27 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               text: 'CREATE',
               onPressed: () {
                 playTap(context);
+
+                if (roomName.text.isNotEmpty && roomKey.text.isNotEmpty) {
+                Future<bool> roomsContains(String key) async {
+                  return room.doc(key).get().then((doc) => doc.exists);
+                }
+
+                
+                if (await roomsContains(roomKey.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Room key already exists'),
+                    ),
+                  );
+                } else {
+                  room.doc(roomKey.text).set({
+                    'name': roomName.text,
+                    'key': roomKey.text,
+                    'players': 1,
+                  });
+                  Navigator.pushNamed(context, '/room');
+                }
               
               },
             ),
