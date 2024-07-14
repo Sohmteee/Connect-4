@@ -6,6 +6,7 @@ import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
   const WaitingRoomScreen({super.key, required this.hasOpponent});
@@ -62,7 +63,14 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
             stream: getNumberOfPlayersStream(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return;
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return LoadingAnimationWidget.inkDrop(
+                        color: backgroundColor!,
+                        size: 50.sp,
+                      );
+                    });
               } else if (snapshot.data == 2) {
                 timer.cancel();
                 Navigator.pushReplacement(
