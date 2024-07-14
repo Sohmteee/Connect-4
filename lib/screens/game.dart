@@ -415,7 +415,7 @@ class _GameScreenState extends State<GameScreen> {
                   );
                 }),
             const Spacer(flex: 2),
-            StreamBuilder<Object>(
+            StreamBuilder(
               stream: gameRoom.snapshots().map((snapshot) {
                   return snapshot.data()!['players'];
                 }),
