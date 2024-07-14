@@ -14,13 +14,13 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Padding(
-              padding:  EdgeInsets.all(8.0),
-              child: Text(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
                 'Waiting for player to join...',
                 style: TextStyle(
                   fontSize: 20.sp,
@@ -29,9 +29,9 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
