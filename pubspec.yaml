@@ -44,6 +44,7 @@ dependencies:
   loading_animation_widget: ^1.2.1
   path_provider: ^2.1.2
   provider: ^6.1.1
+  xid: ^1.2.1
   zoom_tap_animation: ^1.1.0
 
 dev_dependencies:

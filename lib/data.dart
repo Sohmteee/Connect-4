@@ -10,4 +10,4 @@ List gameBoard = [
   [0, 0, 0, 0, 0, 0, 0], // 6
 ];
 
-int? playerID;
+int playerID = Xid();
