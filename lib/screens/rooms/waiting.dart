@@ -20,6 +20,7 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   int dots = 0;
   late Timer timer;
+  late Timer startTimer;
 
   @override
   void initState() {
@@ -131,6 +132,15 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                   ],
                 );
               }
+              startTimer = Timer.periodic(1.seconds, (t) {
+                if (timer.tick == 10) {
+                  room.doc(roomName.text).delete();
+                  Navigator.pop(context);
+                }
+
+                dots = (dots + 1) % 4;
+                setState(() {});
+              });
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,10 +155,9 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  
                   const Spacer(flex: 2),
                   Text(
-                    '${300 - timer.tick}s',
+                    'Match starts in ${10 - startTimer.tick}s',
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
