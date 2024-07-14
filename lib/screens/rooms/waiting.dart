@@ -24,7 +24,6 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       if (timer.tick == 300) {
         room.doc(roomName.text).delete();
         Navigator.pop(context);
-        Navigator.pop(context);
       }
 
       dots = (dots + 1) % 4;
