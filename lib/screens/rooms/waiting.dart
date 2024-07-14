@@ -17,6 +17,7 @@ class WaitingRoomScreen extends StatefulWidget {
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   ValueNotifier<int> dots = ValueNotifier<int>(0);
   ValueNotifier<int> countdown = ValueNotifier<int>(300);
+  ValueNotifier<int> startCountdown = ValueNotifier<int>(10);
   late Timer timer;
   Timer? startTimer;
 
@@ -36,10 +37,11 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
 
   @override
   void dispose() {
-    timer.cancel();
+   timer.cancel();
     startTimer?.cancel();
     dots.dispose();
     countdown.dispose();
+    startCountdown.dispose();
     super.dispose();
   }
 
