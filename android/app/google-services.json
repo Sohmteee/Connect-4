@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "384686793477",
+    "project_id": "connect-4-616cd",
+    "storage_bucket": "connect-4-616cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384686793477:android:4f554f98fe9eec4402cd6c",
+        "android_client_info": {
+          "package_name": "com.sohmtee.connect4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4AYeUwDgrWu0MMZEUMqjvBSpIBRyb-H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

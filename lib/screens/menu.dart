@@ -69,7 +69,7 @@ class _MenuScreenState extends State<MenuScreen> {
               text: 'PLAY',
               onPressed: () {
                 playTap(context);
-                Navigator.pushNamed(context, '/match');
+                Navigator.pushNamed(context, '/room');
               },
             ),
             const Spacer(),

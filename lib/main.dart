@@ -5,8 +5,11 @@ import 'package:connect4/providers/audio.dart';
 import 'package:connect4/screens/game.dart';
 import 'package:connect4/screens/match_player.dart';
 import 'package:connect4/screens/menu.dart';
+import 'package:connect4/screens/rooms/create.dart';
+import 'package:connect4/screens/rooms/join.dart';
 import 'package:connect4/screens/settings.dart';
 import 'package:connect4/screens/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +17,16 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
+import 'screens/rooms/room.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await Hive.initFlutter();
   final dir = await getApplicationDocumentsDirectory();
@@ -46,8 +56,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Connect 4',
           theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.deepPurpleAccent,
+            ),
             useMaterial3: true,
             fontFamily: 'Supercell',
           ),
@@ -59,7 +70,9 @@ class MyApp extends StatelessWidget {
             '/game': (context) => const GameScreen(
                 secondPlayer: {'name': 'Player 2', 'avatar': 13}),
             '/settings': (context) => const SettingsScreen(),
-            // '/play-options': (context) => const PlayOptionsScreen(),
+            '/room': (context) => const RoomScreen(),
+            '/create-room': (context) => const CreateRoomScreen(),
+            '/join-room': (context) => const JoinRoomScreen(),
             '/match': (context) => const MatchPlayerScreen(),
           },
         );
