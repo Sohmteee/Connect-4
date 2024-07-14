@@ -2,6 +2,7 @@ import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'room.dart';
@@ -52,6 +53,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
             ),
             const Spacer(flex: 3),
             TextField(
+              controller: roomName,
               style: TextStyle(
                 color: Colors.grey[100],
               ),
@@ -62,9 +64,16 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+              keyboardType: TextInputType.name,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]')),
+              ],
+              maxLength: 10,
+              textInputAction: TextInputAction.next,
             ),
             const Spacer(),
             TextField(
+              controller: roomKey,
               style: TextStyle(
                 color: Colors.grey[100],
               ),
@@ -75,6 +84,11 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
+              maxLength: 6,
             ),
             const Spacer(flex: 4),
             GameButton(

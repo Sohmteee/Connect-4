@@ -12,7 +12,7 @@ class RoomScreen extends StatefulWidget {
 
 late TextEditingController roomName;
 late TextEditingController roomKey;
-
+final room = FirebaseFirestore.instance.collection('rooms');
 class _RoomScreenState extends State<RoomScreen> {
   @override
   Widget build(BuildContext context) {
