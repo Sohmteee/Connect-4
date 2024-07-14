@@ -8,6 +8,7 @@ class Player {
   int number;
   String? name;
   int? avatar;
+  String id;
   int score = 0;
   int? timeLeft;
 
@@ -57,19 +58,19 @@ class Player {
   }
 
   Player(
-      {
-      required this.name,
+      {required this.name,
       required this.number,
       required this.avatar,
+      required this.id,
       this.score = 0,
-      this.timeLeft}
-  );
+      this.timeLeft});
 
   toMap() {
     return {
       'number': number,
       'name': name,
       'avatar': avatar,
+      'id': id,
       'score': score,
       'timeLeft': timeLeft,
     };
