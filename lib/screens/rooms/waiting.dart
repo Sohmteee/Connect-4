@@ -87,6 +87,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
                   if (t.tick == 10) {
                     startTimer?.cancel();
+                    Player player1 = room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][0])).then((value) => value as Player);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
