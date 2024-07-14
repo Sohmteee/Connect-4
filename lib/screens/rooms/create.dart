@@ -67,7 +67,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]')),
               ],
-              maxLength: 20,
+              maxLength: 10,
+              textInputAction: TextInputAction.next,
             ),
             const Spacer(),
             TextField(
