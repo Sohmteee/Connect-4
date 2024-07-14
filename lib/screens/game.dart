@@ -295,6 +295,7 @@ class _GameScreenState extends State<GameScreen> {
                                               .getTimeInSeconds() >=
                                           9) {
                                         isGameOver = true;
+                                        
                                         canTap = false;
                                         widget.player2.score++
                                         restartGame();
