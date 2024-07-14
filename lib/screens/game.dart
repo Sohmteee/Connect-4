@@ -459,10 +459,12 @@ class _GameScreenState extends State<GameScreen> {
             const Spacer(flex: 2),
             Center(
               child: StreamBuilder(
-                stream: boardStream,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    gameBoard = boardStream.!;
+                stream: gameRoom.snapshots().map((snapshot) {
+                  return snapshot.data()!['gameBoard'];
+                }),
+                builder: (context, board) {
+                  if (board.hasData) {
+                    gameBoard = board.data()!;
                   }
                   return Stack(
                     alignment: Alignment.center,
