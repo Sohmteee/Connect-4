@@ -112,7 +112,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                     'key': roomKey.text,
                     'players': 1,
                   });
-                  Navigator.pushNamed(context, '/room');
+                  // Navigator.pushNamed(context, '/room');
                 }
               },
             ),
