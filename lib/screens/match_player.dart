@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
-import 'package:connect4/screens/game.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -556,7 +555,6 @@ class _MatchPlayerScreenState extends State<MatchPlayerScreen> {
             text: 'CONTINUE',
             onPressed: () {
               playTap(context);
-              
             },
           ).animate().moveY(
                 begin: 200.h,

@@ -1,5 +1,5 @@
-import 'package:connect4/classes/player.dart';
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/data.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -38,12 +38,12 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
     if (docSnapshot.exists) {
       var players = List.from(docSnapshot.data()!['players']);
       players.add({
-         'name': 'Ada',
+        'name': 'Ada',
         'number': 2,
         'avatar': 13,
+        'id': playerID.toString(),
         'score': 0,
         'timeLeft': null,
-      
       });
       await doc.update({'players': players});
     }
