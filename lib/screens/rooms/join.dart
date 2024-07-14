@@ -132,7 +132,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                           ),
                         );
                       });
-                }else{
+                } else {
                   room.doc(roomKey.text).get().then((doc) {
                     if (doc.exists) {
                       Navigator.pushNamed(context, '/game', arguments: {
@@ -145,7 +145,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                           builder: (context) {
                             return Dialog(
                               child: Container(
-                                padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                                padding:
+                                    EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
                                 decoration: const BoxDecoration(),
                                 child: Text(
                                   'Room does not exist!',
