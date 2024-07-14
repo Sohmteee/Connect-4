@@ -60,7 +60,6 @@ class _GameScreenState extends State<GameScreen> {
   bool hasStartedCountDown = false;
 
   late Stream<DocumentSnapshot> boardStream;
-  late Stream<DocumentSnapshot> scoreStream;
 
   void initializeServerParameters() async {
     await gameRoom.set({
@@ -159,8 +158,6 @@ class _GameScreenState extends State<GameScreen> {
     boardStream = gameRoom.snapshots().map((snapshot) {
       return snapshot.data()!['gameBoard'];
     });
-    scoreStream = gameRoom
-        .snapshots();
 
     firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
