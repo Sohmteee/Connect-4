@@ -101,6 +101,20 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                 }
 
                 if (await roomsContains(roomKey.text)) {
+                   showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          child: Text(
+                        'Are you sure you want to quit?',
+                        style: TextStyle(
+                          color: const Color.fromRGBO(255, 235, 59, 1),
+                          fontSize: 16.sp,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),,
+                        );
+                      });
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Room key already exists'),
