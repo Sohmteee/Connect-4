@@ -7,6 +7,7 @@ import 'package:connect4/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CreateRoomScreen extends StatefulWidget {
   const CreateRoomScreen({super.key});
@@ -171,7 +172,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                 return SizedBox(
                                   width: 20.w,
                                   height: 20.h,
-                                  child: const CircularProgressIndicator(),
+                                  child: LoadingAnimationWidget.inkDrop(
+                                    color: backgroundColor!,
+                                    size: 200,
+                                  ),
                                 );
                               }
                               return Dialog(
