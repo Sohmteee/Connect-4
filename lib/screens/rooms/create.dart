@@ -156,30 +156,40 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                         );
                       });
                 } else {
-                   showDialog(
+                  showDialog(
                       context: context,
                       builder: (context) {
                         return Dialog(
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                            decoration: const BoxDecoration(),
-                            child: FutureBuilder(future: room.doc(roomName.text).set({
-                    'name': roomName.text,
-                    'key': roomKey.text,
-                    'players': 1,
-                  }), builder: (context, snapshot) {
-                              return Text(
-                                'Room created!',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
-                                textAlign: TextAlign.center,
-                              );
-                            })
-                          ),
+                              padding:
+                                  EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                              decoration: const BoxDecoration(),
+                              child: FutureBuilder(
+                                  future: room.doc(roomName.text).set({
+                                    'name': roomName.text,
+                                    'key': roomKey.text,
+                                    'players': 1,
+                                  }),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return SizedBox(
+                                        width: 20.w,
+                                        child:
+                                            const CircularProgressIndicator(),
+                                      );
+                                    }
+                                    return Text(
+                                      'Room created!',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    );
+                                  })),
                         );
                       });
-                  
+
                   // Navigator.pushNamed(context, '/room');
                 }
               },
