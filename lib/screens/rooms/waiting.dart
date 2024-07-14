@@ -84,16 +84,18 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     timeLeft: json['timeLeft'],
                   );
                 }
-                startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
+                startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) async {
                   if (t.tick == 10) {
                     startTimer?.cancel();
-                    Player player1 = room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][0])).then((value) => value as Player);
+                    Player player1 = await room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][0]));
+                    Player player2 = await room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][1]));
+
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => GameScreen(
                           gameMode: GameMode.twoPlayersOnline,
-                          player1: toPlayer(snapshot.data!['players'][0]),
+                          player1: player1
                         ),
                       ),
                     );
