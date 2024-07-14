@@ -76,10 +76,11 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
                Player toPlayer(Map json) {
-                  return Player( json['number'],
+                  return Player(
                     name: json['name'],
-                   
+                    number: json['number'],
                     avatar: json['avatar'],
+                    score: json['score'],
                   );
                 }
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {

@@ -56,7 +56,14 @@ class Player {
     }
   }
 
-  Player(this.number, {this.name});
+  Player(
+      {
+      required this.name,
+      required this.number,
+      required this.avatar,
+      this.score = 0,
+      required this.timeLeft}
+  );
 
   toMap() {
     return {
