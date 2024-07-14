@@ -96,7 +96,70 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               onPressed: () {
                 playTap(context);
 
-                
+                if (roomName.text.isEmpty) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                            decoration: const BoxDecoration(),
+                            child: Text(
+                              'Room name is empty!',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      });
+                } else if (roomKey.text.isEmpty) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                            decoration: const BoxDecoration(),
+                            child: Text(
+                              'Room key is empty!',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      });
+                }else{
+                  room.doc(roomKey.text).get().then((doc) {
+                    if (doc.exists) {
+                      Navigator.pushNamed(context, '/game', arguments: {
+                        'roomKey': roomKey.text,
+                        'roomName': roomName.text,
+                      });
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                                decoration: const BoxDecoration(),
+                                child: Text(
+                                  'Room does not exist!',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            );
+                          });
+                    }
+                  });
+                }
               },
             ),
             const Spacer(flex: 4),
