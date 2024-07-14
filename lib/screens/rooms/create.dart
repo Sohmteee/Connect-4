@@ -137,7 +137,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                           ),
                         );
                       });
-                } else if (await roomsContains(roomKey.text)) {
+                } else if (await roomsContains(roomName.text)) {
                   showDialog(
                       context: context,
                       builder: (context) {
@@ -156,7 +156,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                         );
                       });
                 } else {
-                  room.doc(roomKey.text).set({
+                  room.doc(roomName.text).set({
                     'name': roomName.text,
                     'key': roomKey.text,
                     'players': 1,
