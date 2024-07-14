@@ -61,7 +61,7 @@ class _GameScreenState extends State<GameScreen> {
 
   // late Stream<DocumentSnapshot> boardStream;
 
-  List<int> flattenGameBoard(List<List<int>> board) {
+  List flattenGameBoard(List board) {
     return board.expand((row) => row).toList();
   }
 
@@ -78,7 +78,7 @@ class _GameScreenState extends State<GameScreen> {
   void initializeServerParameters() async {
     await gameRoom.set(
       {
-        'gameBoard': gameBoard,
+        'gameBoard': flattenGameBoard(gameBoard),
         'winner': winner,
         'currentPlayerNumber': currentPlayer.number,
         'isGameOver': isGameOver,
