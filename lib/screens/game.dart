@@ -59,7 +59,7 @@ class _GameScreenState extends State<GameScreen> {
   bool answered = false;
   bool hasStartedCountDown = false;
 
-  late Stream<DocumentSnapshot> boardStream;
+  // late Stream<DocumentSnapshot> boardStream;
 
   void initializeServerParameters() async {
     await gameRoom.set(
@@ -160,13 +160,13 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    initializeServerParameters();
-    boardStream = gameRoom.snapshots().map((snapshot) {
+   /*  boardStream = gameRoom.snapshots().map((snapshot) {
       return snapshot.data()!['gameBoard'];
-    });
+    }); */
 
     firstPlayer = widget.player1;
     currentPlayer = firstPlayer;
+    initializeServerParameters();
     widget.player1.clearScore();
     widget.player2.clearScore();
     reset();
