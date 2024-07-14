@@ -33,8 +33,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       setState(() {});
     });
 
-    /* hasOpponent =  */room.doc(roomName.text).get().then((room) {
-      return 
+    hasOpponent = await room.doc(roomName.text).get().then((room) {
+      return room['players'].length == 2;
     });
     super.initState();
   }
