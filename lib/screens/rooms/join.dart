@@ -133,38 +133,36 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                         );
                       });
                 } else {
-                  room.doc(roomKey.text).get().then((doc) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return FutureBuilder(
+                            future: room.doc(roomKey.text).get().then((doc) {
                     if (doc.exists) {
                       Navigator.pushNamed(context, '/game', arguments: {
                         'roomKey': roomKey.text,
                         'roomName': roomName.text,
                       });
-                    } else {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return FutureBuilder(
-                              future: null,
-                              builder: (context, snapshot) {
-                                return Dialog(
-                                  child: Container(
-                                    padding:
-                                        EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                                    decoration: const BoxDecoration(),
-                                    child: Text(
-                                      'Room does not exist!',
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                );
-                              }
-                            );
-                          });
                     }
-                  });
+                  }),
+                            builder: (context, snapshot) {
+                              return Dialog(
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                      10.w, 20.h, 0.w, 20.h),
+                                  decoration: const BoxDecoration(),
+                                  child: Text(
+                                    'Room does not exist!',
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
+                            });
+                      });
+                  
                 }
               },
             ),
