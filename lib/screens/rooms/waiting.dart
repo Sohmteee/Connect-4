@@ -34,6 +34,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Waiting for player to',
@@ -45,6 +46,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 textAlign: TextAlign.center,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'join',
