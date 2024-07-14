@@ -35,6 +35,10 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       dots.value = (dots.value + 1) % 4;
       countdown.value = 300 - t.tick;
     });
+
+    for (int i = 0; i < count; i++) {
+      
+    }
   }
 
   @override
