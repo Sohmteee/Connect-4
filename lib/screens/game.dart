@@ -59,7 +59,7 @@ class _GameScreenState extends State<GameScreen> {
   bool answered = false;
   bool hasStartedCountDown = false;
 
-  late Stream<DocumentSnapshot> gameStream;
+  late Stream<DocumentSnapshot> boardStream;
   late Stream<DocumentSnapshot> scoreStream;
 
   void initializeServerParameters() async {
@@ -156,22 +156,10 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     initializeServerParameters();
-    gameStream = gameRoom.snapshots().map((snapshot) {
-      
-        return snapshot.data()!['gameBoard'] ?? [
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-        ;
-      
+    boardStream = gameRoom.snapshots().map((snapshot) {
+      return snapshot.data()!['gameBoard'];
     });
-    scoreStream = FirebaseFirestore.instance
-        .collection('scores')
-        .doc('gameID')
+    scoreStream = gameRoom
         .snapshots();
 
     firstPlayer = widget.player1;
