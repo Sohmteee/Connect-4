@@ -81,7 +81,30 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                   });
                 return _foundPlayerWidget();
               } else {
-                return const Text('Unexpected error or no data available');
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Spacer(flex: 5),
+                    Text(
+                      'The room has been cancelled by your opponent',
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.yellow,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const Spacer(flex: 3),
+                    GameButton(
+                      text: 'GO BACK',
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    const Spacer(flex: 2),
+                  ],
+                );
               }
             },
           ),
