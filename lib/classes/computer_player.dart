@@ -14,8 +14,11 @@ class ComputerPlayer extends Player {
       {required this.humanPlayerNumber,
       required String name,
       required int number})
-      : super(name: name, number: number, avatar: );
-   
+      : super(
+          name: name,
+          number: number,
+          avatar: 6,
+        );
 
   Future<int> play() async {
     var client = http.Client();

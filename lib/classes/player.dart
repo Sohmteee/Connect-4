@@ -62,7 +62,7 @@ class Player {
       required this.number,
       required this.avatar,
       this.score = 0,
-      required this.timeLeft}
+      this.timeLeft}
   );
 
   toMap() {
