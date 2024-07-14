@@ -3,6 +3,7 @@ import 'dart:math';
 
 // import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:back_pressed/back_pressed.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connect4/classes/computer_player.dart';
 import 'package:connect4/classes/player.dart';
 import 'package:connect4/classes/position.dart';
@@ -57,6 +58,9 @@ class _GameScreenState extends State<GameScreen> {
   final countDownController = CountDownController();
   bool answered = false;
   bool hasStartedCountDown = false;
+
+  late Stream<DocumentSnapshot> gameStream; 
+  late Stream<DocumentSnapshot> scoreStream;
 
   void initializeServerParameters() async {
     await gameRoom.set({
