@@ -56,4 +56,13 @@ class Player {
   }
 
   Player(this.number, {this.name});
+
+  toMap() {
+    return {
+      'number': number,
+      'name': name,
+      'score': score,
+      'timeLeft': timeLeft,
+    };
+  }
 }

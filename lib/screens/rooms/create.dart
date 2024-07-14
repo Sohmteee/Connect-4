@@ -164,7 +164,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             future: room.doc(roomName.text).set({
                               'name': roomName.text,
                               'key': roomKey.text,
-                              'players': ,
+                              'players': [Player(1, name: 'You').to],
                             }),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
