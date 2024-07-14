@@ -146,11 +146,11 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                                     ...Player(2, name: 'Ada').toMap(),
                                   ]),
                                 });
-                                Navigator.pushNamed(context, '/game',
+                                /*  Navigator.pushNamed(context, '/waiting-room',
                                     arguments: {
                                       'roomKey': roomKey.text,
                                       'roomName': roomName.text,
-                                    });
+                                    }); */
                               }
                             }),
                             builder: (context, snapshot) {
