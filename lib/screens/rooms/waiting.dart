@@ -72,6 +72,14 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 ],
               ),
               const Spacer(flex: 2),
+              Text(
+                '${timer.tick}s',
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                ),
+              ),
               const Spacer(flex: 2),
               GameButton(
                   text: 'CANCEL',
