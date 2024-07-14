@@ -416,9 +416,7 @@ class _GameScreenState extends State<GameScreen> {
                 }),
             const Spacer(flex: 2),
             FutureBuilder(
-              future: gameRoom.snapshots().map((snapshot) {
-                  return snapshot.data()!['players'];
-                }),
+              future: gameRoom.get(),
               builder: (context, snapshot) {
                 return Row(
                   children: [
