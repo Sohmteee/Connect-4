@@ -262,129 +262,132 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             const Spacer(flex: 2),
             StreamBuilder(
-              stream: gameRoom.snapshots().map(snap),
-              builder: (context, snapshot) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Spacer(flex: 2),
-                    Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          clipBehavior: Clip.none,
-                          children: [
-                            if (!isPlayer2Playing)
-                              NeonCircularTimer(
-                                width: 50.w,
-                                duration: 10,
-                                strokeWidth: 3.sp,
-                                controller: countDownController,
-                                isTimerTextShown: false,
-                                neumorphicEffect: true,
-                                isReverse: false,
-                                isReverseAnimation: true,
-                                backgroudColor: Colors.transparent,
-                                outerStrokeColor: Colors.transparent,
-                                onStart: () {},
-                                onComplete: () {
-                                  setState(() {
-                                    if (countDownController.getTimeInSeconds() >=
-                                        9) {
-                                      isGameOver = true;
-                                      canTap = false;
-                                      widget.player2.score++;
-                                      restartGame();
-                                    }
-                                  });
-                                },
-                                innerFillGradient: LinearGradient(colors: [
-                                  Colors.yellow.shade400,
-                                  Colors.yellow.shade200,
-                                ]),
+                stream: gameRoom.snapshots().map((snapshot) {
+                  return snapshot.data()!['players'];
+                }),
+                builder: (context, snapshot) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Spacer(flex: 2),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            clipBehavior: Clip.none,
+                            children: [
+                              if (!isPlayer2Playing)
+                                NeonCircularTimer(
+                                  width: 50.w,
+                                  duration: 10,
+                                  strokeWidth: 3.sp,
+                                  controller: countDownController,
+                                  isTimerTextShown: false,
+                                  neumorphicEffect: true,
+                                  isReverse: false,
+                                  isReverseAnimation: true,
+                                  backgroudColor: Colors.transparent,
+                                  outerStrokeColor: Colors.transparent,
+                                  onStart: () {},
+                                  onComplete: () {
+                                    setState(() {
+                                      if (countDownController
+                                              .getTimeInSeconds() >=
+                                          9) {
+                                        isGameOver = true;
+                                        canTap = false;
+                                        widget.player2.score++;
+                                        restartGame();
+                                      }
+                                    });
+                                  },
+                                  innerFillGradient: LinearGradient(colors: [
+                                    Colors.yellow.shade400,
+                                    Colors.yellow.shade200,
+                                  ]),
+                                ),
+                              Image.asset(
+                                'assets/images/avatars/avatar_${widget.player1.avatar}.png',
+                                height: 40.h,
+                                width: 40.w,
                               ),
-                            Image.asset(
-                              'assets/images/avatars/avatar_${widget.player1.avatar}.png',
-                              height: 40.h,
-                              width: 40.w,
+                            ],
+                          ),
+                          SizedBox(height: 5.h),
+                          Text(
+                            widget.player1.name!,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.sp,
                             ),
-                          ],
-                        ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          widget.player1.name!,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
+                        child: Text(
+                          '${widget.player1.score} - ${widget.player2.score}',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12.sp,
+                            fontSize: 14.sp,
                           ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
-                      child: Text(
-                        '${widget.player1.score} - ${widget.player2.score}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
                         ),
                       ),
-                    ),
-                    Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            if (isPlayer2Playing)
-                              NeonCircularTimer(
-                                width: 50.w,
-                                duration: 10,
-                                strokeWidth: 3.sp,
-                                controller: countDownController,
-                                isTimerTextShown: false,
-                                neumorphicEffect: false,
-                                isReverse: false,
-                                isReverseAnimation: true,
-                                backgroudColor: Colors.transparent,
-                                outerStrokeColor: Colors.transparent,
-                                onStart: () {},
-                                onComplete: () {
-                                  setState(() {
-                                    if (countDownController.getTimeInSeconds() >=
-                                        9) {
-                                      isGameOver = true;
-                                      widget.player1.score++;
-                                      restartGame();
-                                    }
-                                  });
-                                },
-                                innerFillGradient: LinearGradient(colors: [
-                                  Colors.yellow.shade400,
-                                  Colors.yellow.shade200,
-                                ]),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              if (isPlayer2Playing)
+                                NeonCircularTimer(
+                                  width: 50.w,
+                                  duration: 10,
+                                  strokeWidth: 3.sp,
+                                  controller: countDownController,
+                                  isTimerTextShown: false,
+                                  neumorphicEffect: false,
+                                  isReverse: false,
+                                  isReverseAnimation: true,
+                                  backgroudColor: Colors.transparent,
+                                  outerStrokeColor: Colors.transparent,
+                                  onStart: () {},
+                                  onComplete: () {
+                                    setState(() {
+                                      if (countDownController
+                                              .getTimeInSeconds() >=
+                                          9) {
+                                        isGameOver = true;
+                                        widget.player1.score++;
+                                        restartGame();
+                                      }
+                                    });
+                                  },
+                                  innerFillGradient: LinearGradient(colors: [
+                                    Colors.yellow.shade400,
+                                    Colors.yellow.shade200,
+                                  ]),
+                                ),
+                              Image.asset(
+                                'assets/images/avatars/avatar_${widget.player2.avatar}.png',
+                                height: 40.h,
+                                width: 40.w,
                               ),
-                            Image.asset(
-                              'assets/images/avatars/avatar_${widget.player2.avatar}.png',
-                              height: 40.h,
-                              width: 40.w,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          widget.player2.name!,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.sp,
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(flex: 2),
-                  ],
-                );
-              }
-            ),
+                          SizedBox(height: 5.h),
+                          Text(
+                            widget.player2.name!,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(flex: 2),
+                    ],
+                  );
+                }),
             const Spacer(flex: 2),
             Row(
               children: [
