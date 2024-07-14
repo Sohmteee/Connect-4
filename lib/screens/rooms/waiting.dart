@@ -75,7 +75,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
               } else if (snapshot.hasData && snapshot.data == 1) {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
-               Player toPlayer(Map json) {
+                Player toPlayer(Map json) {
                   return Player(
                     name: json['name'],
                     number: json['number'],
@@ -84,18 +84,25 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     timeLeft: json['timeLeft'],
                   );
                 }
-                startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) async {
+
+                startTimer ??=
+                    Timer.periodic(const Duration(seconds: 1), (t) async {
                   if (t.tick == 10) {
                     startTimer?.cancel();
-                    Player player1 = await room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][0]));
-                    Player player2 = await room.doc(roomName.text).get().then((value) => toPlayer(value.data()!['players'][1]));
+                    Player player1 = await room.doc(roomName.text).get().then(
+                          (value) => toPlayer(value.data()!['players'][0]),
+                        );
+                    Player player2 = await room.doc(roomName.text).get().then(
+                          (value) => toPlayer(value.data()!['players'][1]),
+                        );
 
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => GameScreen(
                           gameMode: GameMode.twoPlayersOnline,
-                          player1: player1
+                          player1: player1,
+                          player2: player2,
                         ),
                       ),
                     );
