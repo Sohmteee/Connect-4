@@ -77,6 +77,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+              keyboardType: TextInputType.number,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               ],
