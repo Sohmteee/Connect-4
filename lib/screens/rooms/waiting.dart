@@ -9,9 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
-  const WaitingRoomScreen({super.key, required this.hasOpponent});
-
-  final bool hasOpponent;
+  const WaitingRoomScreen({super.key});
 
   @override
   State<WaitingRoomScreen> createState() => _WaitingRoomScreenState();
