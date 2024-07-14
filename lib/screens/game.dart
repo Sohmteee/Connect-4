@@ -62,12 +62,15 @@ class _GameScreenState extends State<GameScreen> {
   late Stream<DocumentSnapshot> boardStream;
 
   void initializeServerParameters() async {
-    await gameRoom.set({
-      'gameBoard': gameBoard,
-      'winner': winner,
-      'currentPlayerNumber': currentPlayer.number,
-      'isGameOver': isGameOver,
-    }, SetOptions(merge: true),);
+    await gameRoom.set(
+      {
+        'gameBoard': gameBoard,
+        'winner': winner,
+        'currentPlayerNumber': currentPlayer.number,
+        'isGameOver': isGameOver,
+      },
+      SetOptions(merge: true),
+    );
   }
 
   alternatePlayer() async {
@@ -137,12 +140,15 @@ class _GameScreenState extends State<GameScreen> {
       hints = null;
       winner = null;
 
-      await gameRoom.set({
-        'gameBoard': gameBoard,
-        'winner': winner,
-        'currentPlayerNumber': currentPlayer.number,
-        'isGameOver': isGameOver,
-      }, SetOptions(merge: true),);
+      await gameRoom.set(
+        {
+          'gameBoard': gameBoard,
+          'winner': winner,
+          'currentPlayerNumber': currentPlayer.number,
+          'isGameOver': isGameOver,
+        },
+        SetOptions(merge: true),
+      );
     });
     Future.delayed(300.milliseconds, () {
       setState(() {
@@ -302,8 +308,10 @@ class _GameScreenState extends State<GameScreen> {
                                         widget.player2.score++;
                                         gameRoom.snapshots().map((snapshot) {
                                           snapshot
-                                        }).update({
-                                          'winner': 2,
+                                              .data()!['players'][1]
+                                              .update({
+                                            'score': widget.player2.score,
+                                          });
                                         });
                                         restartGame();
                                       }
@@ -365,7 +373,17 @@ class _GameScreenState extends State<GameScreen> {
                                               .getTimeInSeconds() >=
                                           9) {
                                         isGameOver = true;
+                                        gameRoom.update({
+                                          'isGameOver': isGameOver,
+                                        });
                                         widget.player1.score++;
+                                        gameRoom.snapshots().map((snapshot) {
+                                          snapshot
+                                              .data()!['players'][0]
+                                              .update({
+                                            'score': widget.player1.score,
+                                          });
+                                        });
                                         restartGame();
                                       }
                                     });
