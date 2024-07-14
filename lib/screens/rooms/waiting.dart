@@ -92,7 +92,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                       MaterialPageRoute(
                         builder: (context) => GameScreen(
                           gameMode: GameMode.twoPlayersOnline,
-                          player1: 
+                          player1: toPlayer(snapshot.data!['players'][0]),
                         ),
                       ),
                     );
