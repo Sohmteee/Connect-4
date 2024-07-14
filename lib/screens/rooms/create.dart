@@ -179,13 +179,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   padding: EdgeInsets.fromLTRB(
                                       10.w, 20.h, 0.w, 20.h),
                                   decoration: const BoxDecoration(),
-                                  child: Text(
-                                    'Room created!',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  child: Container(),
                                 ),
                               );
                             });
