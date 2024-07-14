@@ -953,7 +953,7 @@ class _GameScreenState extends State<GameScreen> {
                   canTap = false;
                 });
                 makeMove(columnIndex);
-                if (!isGameOver && widget.player2 is ComputerPlayer) {
+                /* if (!isGameOver && widget.player2 is ComputerPlayer) {
                   setState(() {
                     isPlayer2Playing = true;
                   });
@@ -967,14 +967,14 @@ class _GameScreenState extends State<GameScreen> {
                       });
                     });
                   });
-                } else if (!isGameOver) {
+                } else if (!isGameOver) { */
                   Future.delayed(300.milliseconds, () {
                     setState(() {
                       canTap = true;
                     });
                   });
                 }
-              }
+              // }
             },
             onTapDown: (details) {
               setState(() {
