@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:connect4/colors/app_colors.dart';
+import 'package:connect4/data.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
 import 'package:connect4/widgets/button.dart';
@@ -169,6 +170,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                   'name': 'Somto',
                                   'number': 1,
                                   'avatar': 1,
+                                  'id': playerID.toString(),
                                   'score': 0,
                                   'timeLeft': null,
                                 }

@@ -24,19 +24,7 @@ class _RoomScreenState extends State<RoomScreen> {
         child: Column(
           children: [
             const Spacer(flex: 5),
-            /* Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Text(
-                'Create or  join a room to play',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const Spacer(flex: 3), */
+            
             GameButton(
               text: 'CREATE ROOM',
               onPressed: () {
