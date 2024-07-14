@@ -143,21 +143,24 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       showDialog(
                           context: context,
                           builder: (context) {
-                            return Future(
-                              child: Dialog(
-                                child: Container(
-                                  padding:
-                                      EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
-                                  decoration: const BoxDecoration(),
-                                  child: Text(
-                                    'Room does not exist!',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                            return FutureBuilder(
+                              future: null,
+                              builder: (context, snapshot) {
+                                return Dialog(
+                                  child: Container(
+                                    padding:
+                                        EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                                    decoration: const BoxDecoration(),
+                                    child: Text(
+                                      'Room does not exist!',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
-                                ),
-                              ),
+                                );
+                              }
                             );
                           });
                     }
