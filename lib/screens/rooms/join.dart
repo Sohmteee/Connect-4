@@ -154,6 +154,9 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               }
                             }),
                             builder: (context, snapshot) {
+                              if(ConnectionState.waiting == snapshot.connectionState) {
+                                
+                              }
                               return Dialog(
                                 child: Container(
                                   padding: EdgeInsets.fromLTRB(
