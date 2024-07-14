@@ -1,3 +1,5 @@
+import 'dart:math';
+
 List gameBoard = [
   [0, 0, 0, 0, 0, 0, 0], // 0
   [0, 0, 0, 0, 0, 0, 0], // 1
@@ -8,4 +10,4 @@ List gameBoard = [
   [0, 0, 0, 0, 0, 0, 0], // 6
 ];
 
-int playerID
+int playerID = for;
