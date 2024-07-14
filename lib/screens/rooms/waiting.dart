@@ -74,37 +74,14 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 return _waitingForPlayerWidget();
               } else if (snapshot.hasData && snapshot.data! > 1) {
                 startTimer ??= Timer.periodic(const Duration(seconds: 1), (t) {
-                  if (t.tick == 10) {
-                    startTimer?.cancel();
-                  }
-                  setState(() {});
-                });
+                    if (t.tick == 10) {
+                      startTimer?.cancel();
+                    }
+                    startCountdown.value = 10 - t.tick;
+                  });
                 return _foundPlayerWidget();
               } else {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Spacer(flex: 5),
-                    Text(
-                      'The room has been cancelled by your opponent',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Spacer(flex: 3),
-                    GameButton(
-                      text: 'GO BACK',
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    const Spacer(flex: 2),
-                  ],
-                );
+                return const Text('Unexpected error or no data available');
               }
             },
           ),
@@ -203,7 +180,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           valueListenable: startCountdown,
           builder: (context, value, child) {
             return Text(
-              'Match starts in ${10 - (value)}s',
+              'Match starts in ${value}s',
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -217,7 +194,6 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
           text: 'CANCEL',
           onPressed: () {
             room.doc(roomName.text).delete();
-            Navigator.pop(context);
             Navigator.pop(context);
           },
         ),
