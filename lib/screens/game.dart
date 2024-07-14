@@ -26,11 +26,12 @@ class GameScreen extends StatefulWidget {
   const GameScreen({
     super.key,
     this.gameMode = GameMode.twoPlayersOnline,
-    required this.secondPlayer,
+    required this
+    required this.player2,
   });
 
   final GameMode gameMode;
-  final Map<String, dynamic> secondPlayer;
+  final Map<String, dynamic> player2;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -160,7 +161,7 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
 
     player2 = ComputerPlayer(2,
-        humanPlayerNumber: 1, name: widget.secondPlayer['name']);
+        humanPlayerNumber: 1, name: widget.player2['name']);
     firstPlayer = player1;
     currentPlayer = firstPlayer;
     player1.clearScore();
@@ -566,7 +567,7 @@ class _GameScreenState extends State<GameScreen> {
                             ]),
                           ),
                         Image.asset(
-                          'assets/images/avatars/avatar_${widget.secondPlayer['avatar']}.png',
+                          'assets/images/avatars/avatar_${widget.player2['avatar']}.png',
                           height: 40.h,
                           width: 40.w,
                         ),
