@@ -95,16 +95,25 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onPressed: () {
                 playTap(context);
                 if (roomName.text.isNotEmpty && roomKey.text.isNotEmpty) {
-                 room.doc(roomKey.text).set({
+                if (room.doc(roomKey.text).get()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Room key already exists'),
+                    ),
+                  );
+                } else {
+                  room.doc(roomKey.text).set({
                     'name': roomName.text,
                     'key': roomKey.text,
-                    'players': [],
-                    'status': 'waiting',
-                  }).then((value) {
-                    // Navigator.pushNamed(context, '/room');
-                  }).catchError((error) {
-                    debugPrint("Failed to create room: $error");
+                    'players': 1,
                   });
+                  Navigator.pushNamed(context, '/room');
+                }
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please fill all fields'),
+                    ),
                 }
               },
             ),
