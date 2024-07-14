@@ -140,22 +140,80 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       context: context,
                       builder: (context) {
                         return FutureBuilder(
-                            future: room.doc(roomKey.text).get().then((doc) {
+                            future: room.doc(roomName.text).get().then((doc) {
                               if (doc.exists) {
-                                room.doc(roomKey.text).update({
-                                  'players': FieldValue.arrayUnion([
-                                    ...Player(2, name: 'Ada').toMap(),
-                                  ]),
-                                });
+                                return true;
                               }
                             }),
                             builder: (context, snapshot) {
-                               if (snapshot.connectionState ==
+                              if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 return LoadingAnimationWidget.inkDrop(
                                   color: backgroundColor!,
                                   size: 50.sp,
                                 );
+                              }
+                              if (snapshot.data == true) {
+                                return FutureBuilder(
+                                    future: room
+                                        .doc(roomName.text)
+                                        .get()
+                                        .then((doc) {
+                                      if (doc.data()!['key'] == roomKey.text) {
+                                        return true;
+                                      }
+                                    }),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return LoadingAnimationWidget.inkDrop(
+                                          color: backgroundColor!,
+                                          size: 50.sp,
+                                        );
+                                      }
+                                      if (snapshot.data == true) {
+                                        return FutureBuilder(
+                                            future: room
+                                                .doc(roomName.text)
+                                                .update({
+                                                  'players': FieldValue.arrayUnion(
+                                                      [Player(2, name: 'Somto').toMap()])
+                                                })
+                                                .then((value) {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              RoomScreen(
+                                                                roomName: roomName.text,
+                                                              )));
+                                                }),
+                                            builder: (context, snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return LoadingAnimationWidget.inkDrop(
+                                                  color: backgroundColor!,
+                                                  size: 50.sp,
+                                                );
+                                              }
+                                              return Container();
+                                            });
+                                      }
+                                      return Dialog(
+                                        child: Container(
+                                          padding: EdgeInsets.fromLTRB(
+                                              10.w, 20.h, 0.w, 20.h),
+                                          decoration: const BoxDecoration(),
+                                          child: Text(
+                                            'Room key is incorrect!',
+                                            style: TextStyle(
+                                              fontSize: 14.sp,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      );
+                                    });
                               }
                               return Dialog(
                                 child: Container(
