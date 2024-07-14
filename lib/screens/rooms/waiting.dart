@@ -40,6 +40,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   @override
   void dispose() {
     timer.cancel();
+    startTimer.cancel();
     super.dispose();
   }
 
@@ -133,9 +134,8 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                 );
               }
               startTimer = Timer.periodic(1.seconds, (t) {
-                if (timer.tick == 10) {
-                  room.doc(roomName.text).delete();
-                  Navigator.pop(context);
+                if (startTimer.tick == 10) {
+                  startTimer.cancel();
                 }
 
                 dots = (dots + 1) % 4;
