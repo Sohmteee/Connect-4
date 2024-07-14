@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
@@ -99,24 +101,26 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   return room.doc(roomKey).get().then((doc) => doc.exists);
                 }
 
-               
+                if ()
 
                 if (await roomsContains(roomKey.text)) {
-                   showDialog(
+                  showDialog(
                       context: context,
                       builder: (context) {
-                        return Container(
-                          child: Text(
-                            'Are you sure you want to quit?',
-                            style: TextStyle(
-                              color: const Color.fromRGBO(255, 235, 59, 1),
-                              fontSize: 16.sp,
+                        return Dialog(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 0.w, 20.h),
+                            decoration: const BoxDecoration(),
+                            child: Text(
+                              'Room already exists!',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         );
                       });
-                  
                 } else {
                   room.doc(roomKey.text).set({
                     'name': roomName.text,
