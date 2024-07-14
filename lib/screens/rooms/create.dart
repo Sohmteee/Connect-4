@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/screens/rooms/room.dart';
@@ -95,12 +96,11 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               onPressed: () async {
                 playTap(context);
 
-                roomsContains(String roomKey) async {
-                  final room = FirebaseFirestore.instance.collection('rooms');
-                  final doc = await room.doc(roomKey).get();
-                  return doc.exists;
+                Future<bool> roomsContains(String roomKey) async {
+                  return room.doc(roomKey).get().then((doc) => doc.exists);
+                }
 
-                 if (await roomsContains(roomKey.text)) {
+                if (await roomsContains(roomKey.text)) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Room key already exists'),
@@ -114,13 +114,6 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   });
                   Navigator.pushNamed(context, '/room');
                 }
-
-
-
-
-
-                
-              
               },
             ),
             const Spacer(flex: 4),
