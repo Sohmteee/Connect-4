@@ -14,10 +14,22 @@ class WaitingRoomScreen extends StatefulWidget {
 }
 
 class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
-  int dots = 
-  final timer = Timer.periodic(1.seconds, () {
+  int dots = 0;
+  late Timer timer;
 
-  });
+  @override
+  void initState() {
+    timer = Timer.periodic(1.seconds, (t) {
+      if (dots < 3) {
+        dots++;
+      } else {
+        dots = 0;
+      }
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
