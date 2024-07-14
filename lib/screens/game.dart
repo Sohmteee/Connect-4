@@ -415,46 +415,53 @@ class _GameScreenState extends State<GameScreen> {
                   );
                 }),
             const Spacer(flex: 2),
-            Row(
-              children: [
-                const Spacer(flex: 5),
-                Container(
-                  width: 25.w,
-                  height: 25.w,
-                  margin: EdgeInsets.all(5.w),
-                  decoration: BoxDecoration(
-                    color: turnColor,
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: turnColors,
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5.w),
-                winner == null
-                    ? Text(
-                        '${currentPlayer == widget.player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                        ),
-                      )
-                    : Text(
-                        switch (winner) {
-                          0 => 'It\'s a tie!',
-                          1 => 'You won!',
-                          2 => '${widget.player2.name} won!',
-                          _ => '',
-                        },
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp,
+            StreamBuilder<Object>(
+              stream: gameRoom.snapshots().map((snapshot) {
+                  return snapshot.data()!['players'];
+                }),
+              builder: (context, snapshot) {
+                return Row(
+                  children: [
+                    const Spacer(flex: 5),
+                    Container(
+                      width: 25.w,
+                      height: 25.w,
+                      margin: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                        color: turnColor,
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: turnColors,
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
                         ),
                       ),
-                const Spacer(flex: 6),
-              ],
+                    ),
+                    SizedBox(width: 5.w),
+                    winner == null
+                        ? Text(
+                            '${currentPlayer == widget.player1 ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.sp,
+                            ),
+                          )
+                        : Text(
+                            switch (winner) {
+                              0 => 'It\'s a tie!',
+                              1 => 'You won!',
+                              2 => '${widget.player2.name} won!',
+                              _ => '',
+                            },
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                    const Spacer(flex: 6),
+                  ],
+                );
+              }
             ),
             const Spacer(flex: 2),
             Center(
