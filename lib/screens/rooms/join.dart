@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connect4/classes/player.dart';
 import 'package:connect4/colors/app_colors.dart';
 import 'package:connect4/main.dart';
 import 'package:connect4/widgets/button.dart';
@@ -156,29 +154,36 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                               }
 
                               if (snapshot.data == true) {
-                                return Waiting(
-                                  player: Player(
-                                    name: 'Player 2',
-                                    color: Colors.red,
+                                return Dialog(
+                                  child: Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                        10.w, 20.h, 0.w, 20.h),
+                                    decoration: const BoxDecoration(),
+                                    child: Text(
+                                      'Room found!',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
-                                  roomName: roomName.text,
+                                );
+                              } else {
+                                return Dialog(
+                                  child: Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                        10.w, 20.h, 0.w, 20.h),
+                                    decoration: const BoxDecoration(),
+                                    child: Text(
+                                      'Room does not exist!',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
                                 );
                               }
-
-                              return Dialog(
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                      10.w, 20.h, 0.w, 20.h),
-                                  decoration: const BoxDecoration(),
-                                  child: Text(
-                                    'Room does not exist!',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              );
                             });
                       });
                 }
