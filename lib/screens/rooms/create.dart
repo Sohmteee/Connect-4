@@ -164,7 +164,6 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             future: room.doc(roomName.text).set({
                               'name': roomName.text,
                               'key': roomKey.text,
-                              'time-to-start': 10,
                               'players': [
                                 {
                                   'name': 'Somto',
