@@ -59,7 +59,9 @@ Stream<int> getNumberOfPlayersStream() {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child:  StreamBuilder(stream: getNumberOfPlayersStream(), builder: (context, snapshot))),
+          child:  StreamBuilder(stream: getNumberOfPlayersStream(), builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+          },),),
       ),
     );
   }
