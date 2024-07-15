@@ -873,52 +873,55 @@ class _GameScreenState extends State<GameScreen> {
     final List players = await gameRoom.get().then((snapshot) {
       return snapshot.data()!['players'];
     });
-      if (checkHorizontal().isNotEmpty) {
-        debugPrint('Player ${checkHorizontal()['winner']} wins!');
-        Future.delayed((rowIndex * 100 + 200).milliseconds, () {
-          highlightWinningPositions(
-            checkHorizontal()['positions'],
-          );
-          setState(() {
-            winner = checkHorizontal()['winner'];
-          });
+    if (checkHorizontal().isNotEmpty) {
+      debugPrint('Player ${checkHorizontal()['winner']} wins!');
+      Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+        highlightWinningPositions(
+          checkHorizontal()['positions'],
+        );
+        setState(() {
+          winner = checkHorizontal()['winner'];
         });
+      });
 
-        isGameOver = true;
-        canTap = false;
-        restartGame();
-      } else if (checkVertical().isNotEmpty) {
-        debugPrint('Player ${checkVertical()['winner']} wins!');
-        Future.delayed((rowIndex * 100 + 200).milliseconds, () {
-          highlightWinningPositions(
-            checkVertical()['positions'],
-          );
+      isGameOver = true;
+      canTap = false;
+      restartGame();
+    } else if (checkVertical().isNotEmpty) {
+      debugPrint('Player ${checkVertical()['winner']} wins!');
+      Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+        highlightWinningPositions(
+          checkVertical()['positions'],
+        );
 
-          setState(() {
-            winner = checkVertical()['winner'];
-          });
+        setState(() {
+          winner = checkVertical()['winner'];
         });
+      });
 
-        isGameOver = true;
-        canTap = false;
-        restartGame();
-      } else if (checkDiagonal().isNotEmpty) {
-        debugPrint('Player ${checkDiagonal()['winner']} wins!');
-        Future.delayed((rowIndex * 100 + 200).milliseconds, () {
-          highlightWinningPositions(
-            checkDiagonal()['positions'],
-          );
+      isGameOver = true;
+      canTap = false;
+      restartGame();
+    } else if (checkDiagonal().isNotEmpty) {
+      debugPrint('Player ${checkDiagonal()['winner']} wins!');
+      Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+        highlightWinningPositions(
+          checkDiagonal()['positions'],
+        );
 
-          setState(() {
-            winner = checkDiagonal()['winner'];
-          });
-          winner == 1 ? widget.player1.score++ : widget.player2.score++;
+        setState(() {
+          winner = checkDiagonal()['winner'];
         });
+      });
 
-        isGameOver = true;
-        canTap = false;
-        restartGame();
-      }
+      isGameOver = true;
+      canTap = false;
+      restartGame();
+    }
+    players.singleWhere((player) => player['id'] == winner)['score']++;
+    gameRoom.update({
+      'players': players,
+    });
   }
 
   Map<String, dynamic> checkHorizontal() {
