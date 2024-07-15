@@ -938,7 +938,7 @@ class _GameScreenState extends State<GameScreen> {
         if (row[columnIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': getPlayerIDByNumber(currentPlayerInt),
               'positions': positions,
             };
           } else {
