@@ -474,12 +474,16 @@ class _GameScreenState extends State<GameScreen> {
             const Spacer(flex: 2),
             Center(
               child: StreamBuilder(
-                  stream: gameRoom.snapshots().map((snapshot) {
-                    return snapshot.data()!['gameBoard'];
-                  }),
-                  builder: (context, board) {
-                    if (board.hasData) {
-                      gameBoard = unflattenGameBoard(board.data!);
+                  stream: gameRoom.snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData && snapshot.data != null) {
+                      var data = snapshot.data!.data() as Map<String, dynamic>;
+                      if (data['gameBoard'] != null) {
+                        List<int> flattenedBoard =
+                            List<int>.from(data['gameBoard']);
+                        gameBoard = unflattenGameBoard(
+                            flattenedBoard); // Assuming 7x7 board
+                      }
                     }
                     return Stack(
                       alignment: Alignment.center,
