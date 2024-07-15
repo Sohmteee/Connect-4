@@ -113,7 +113,7 @@ class _GameScreenState extends State<GameScreen> {
     }
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       if (gameBoard[rowIndex][columnIndex] == 0) {
-        setState(() async {
+        setState(() {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
           await gameRoom.update({
             'gameBoard': flattenGameBoard(gameBoard),
