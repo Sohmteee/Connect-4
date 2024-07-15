@@ -461,7 +461,7 @@ class _GameScreenState extends State<GameScreen> {
                     : Text(
                         switch (winner) {
                           '0' => 'It\'s a tie!',
-                          1 => 'You won!',
+                          playerID.toString() => 'You won!',
                           2 => '${widget.player2.name} won!',
                           _ => '',
                         },
