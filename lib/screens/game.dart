@@ -873,11 +873,11 @@ class _GameScreenState extends State<GameScreen> {
     final List players = await gameRoom.get().then((snapshot) {
       return snapshot.data()!['players'];
     });
-    if (checkHorizontal().isNotEmpty) {
-      debugPrint('Player ${checkHorizontal()['winner']} wins!');
-      Future.delayed((rowIndex * 100 + 200).milliseconds, () {
+    if ((await checkHorizontal()).isNotEmpty) {
+      debugPrint('Player ${(await checkHorizontal())['winner']} wins!');
+      Future.delayed((rowIndex * 100 + 200).milliseconds, () async{
         highlightWinningPositions(
-          checkHorizontal()['positions'],
+          (await checkHorizontal())['positions'],
         );
         setState(() {
           winner = checkHorizontal()['winner'];
@@ -887,7 +887,7 @@ class _GameScreenState extends State<GameScreen> {
       isGameOver = true;
       canTap = false;
       restartGame();
-    } else if (checkVertical().isNotEmpty) {
+    } else if ((await checkVertical()).isNotEmpty) {
       debugPrint('Player ${checkVertical()['winner']} wins!');
       Future.delayed((rowIndex * 100 + 200).milliseconds, () {
         highlightWinningPositions(
