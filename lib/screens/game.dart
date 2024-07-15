@@ -479,7 +479,7 @@ class _GameScreenState extends State<GameScreen> {
                   }),
                   builder: (context, board) {
                     if (board.hasData) {
-                      gameBoard = unflattenGameBoard(board.data()!);
+                      gameBoard = unflattenGameBoard(board.data!);
                     }
                     return Stack(
                       alignment: Alignment.center,
