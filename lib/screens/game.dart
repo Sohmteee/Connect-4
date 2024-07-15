@@ -244,6 +244,7 @@ class _GameScreenState extends State<GameScreen> {
                         children: [
                           TextButton(
                             onPressed: () {
+                              gameRoom.delete();
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
