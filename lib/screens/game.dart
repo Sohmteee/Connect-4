@@ -104,7 +104,7 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  makeMove(int columnIndex) {
+  makeMove(int columnIndex) async {
     countDownController.pause();
     if (hints != null) {
       setState(() {
@@ -115,17 +115,18 @@ class _GameScreenState extends State<GameScreen> {
       if (gameBoard[rowIndex][columnIndex] == 0) {
         setState(() {
           gameBoard[rowIndex][columnIndex] = currentPlayer.number;
-          await gameRoom.update({
-            'gameBoard': flattenGameBoard(gameBoard),
-          });
-          alternatePlayer();
-          checkWin(rowIndex);
-          checkTie(rowIndex);
-
-          if (!isGameOver) {
-            countDownController.start();
-          }
         });
+        await gameRoom.update({
+          'gameBoard': flattenGameBoard(gameBoard),
+        });
+        alternatePlayer();
+        checkWin(rowIndex);
+        checkTie(rowIndex);
+
+        if (!isGameOver) {
+          countDownController.start();
+        }
+
         break;
       }
     }
