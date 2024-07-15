@@ -459,12 +459,13 @@ class _GameScreenState extends State<GameScreen> {
                         ),
                       )
                     : Text(
-                        switch (winner) {
-                          '0' => 'It\'s a tie!',
-                          playerID => 'You won!',
-                          2 => '${widget.player2.name} won!',
-                          _ => '',
-                        },
+                        winner == '0'
+                            ? 'It\'s a tie!'
+                            : winner == playerID
+                                ? 'You won!'
+                                : winner == '2'
+                                    ? '${widget.player2.name} won!'
+                                    : '',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.sp,
