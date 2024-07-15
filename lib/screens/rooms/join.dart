@@ -38,7 +38,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
     if (docSnapshot.exists) {
       var players = List.from(docSnapshot.data()!['players']);
       players.add({
-        'name': 'Ada',
+        'name': 'Joined',
         'number': 2,
         'avatar': 13,
         'id': playerID.toString(),
