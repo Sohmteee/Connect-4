@@ -870,7 +870,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   Future<void> checkWin(int rowIndex) async {
-    final players = await gameRoom.get().then((snapshot) {
+    final List players = await gameRoom.get().then((snapshot) {
       return snapshot.data()!['players'];
     });
       if (checkHorizontal().isNotEmpty) {
@@ -882,9 +882,7 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkHorizontal()['winner'];
           });
-          winner == playerID.toString()
-              ? widget.player1.score++
-              : widget.player2.score++;
+          players.singleWhere(test)
         });
 
         isGameOver = true;
