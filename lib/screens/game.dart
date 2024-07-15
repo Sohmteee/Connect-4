@@ -852,7 +852,7 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
-  void highlightWinningPositions(int winner, PositionsList positions) {
+  void highlightWinningPositions(PositionsList positions) {
     setState(() {
       winningPositions = positions;
       debugPrint('Winning Positions: $winningPositions');
