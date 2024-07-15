@@ -934,7 +934,9 @@ class _GameScreenState extends State<GameScreen> {
         if (row[columnIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': ,
+              'winner': gameRoom.get().then((snapshot) {
+                
+              }),
               'positions': positions,
             };
           } else {
