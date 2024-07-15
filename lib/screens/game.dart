@@ -463,9 +463,7 @@ class _GameScreenState extends State<GameScreen> {
                             ? 'It\'s a tie!'
                             : winner == playerID
                                 ? 'You won!'
-                                : winner == '2'
-                                    ? '${widget.player2.name} won!'
-                                    : '',
+                                : '${widget.player2.name} won!',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.sp,
@@ -485,7 +483,7 @@ class _GameScreenState extends State<GameScreen> {
                         List<int> flattenedBoard =
                             List<int>.from(data['gameBoard']);
                         gameBoard = unflattenGameBoard(
-                            flattenedBoard); // Assuming 7x7 board
+                            flattenedBoard);
                       }
                     }
                     return Stack(
