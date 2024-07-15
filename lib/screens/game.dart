@@ -870,7 +870,9 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void checkWin(int rowIndex) {
-    
+    final players = gameRoom.get().then((snapshot) {
+      return snapshot.data()!['players'];
+    });
     setState(() {
       if (checkHorizontal().isNotEmpty) {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
