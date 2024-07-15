@@ -935,7 +935,8 @@ class _GameScreenState extends State<GameScreen> {
           if (positions.size() >= 4) {
             return {
               'winner': gameRoom.get().then((snapshot) {
-                
+                return snapshot.data()!['players'];
+              
               }),
               'positions': positions,
             };
