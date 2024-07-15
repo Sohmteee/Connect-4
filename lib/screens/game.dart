@@ -460,7 +460,7 @@ class _GameScreenState extends State<GameScreen> {
                       )
                     : Text(
                         switch (winner) {
-                          0 => 'It\'s a tie!',
+                          '0' => 'It\'s a tie!',
                           1 => 'You won!',
                           2 => '${widget.player2.name} won!',
                           _ => '',
@@ -956,14 +956,14 @@ class _GameScreenState extends State<GameScreen> {
               }
             }
             return {
-              'winner': currentPlayerInt,
+              'winner': getPlayerIDByNumber(currentPlayerInt),
               'positions': positions,
             };
           }
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': getPlayerIDByNumber(currentPlayerInt),
               'positions': positions,
             };
           } else {
@@ -990,7 +990,7 @@ class _GameScreenState extends State<GameScreen> {
         if (column[rowIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': getPlayerIDByNumber(currentPlayerInt),
               'positions': positions,
             };
           } else {
@@ -1004,7 +1004,7 @@ class _GameScreenState extends State<GameScreen> {
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': getPlayerIDByNumber(currentPlayerInt),
               'positions': positions,
             };
           } else {
@@ -1016,7 +1016,7 @@ class _GameScreenState extends State<GameScreen> {
       }
       if (positions.size() >= 4) {
         return {
-          'winner': currentPlayerInt,
+          'winner': getPlayerIDByNumber(currentPlayerInt),
           'positions': positions,
         };
       }
@@ -1052,7 +1052,7 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': currentPlayerInt,
+                'winner': getPlayerIDByNumber(currentPlayerInt),
                 'positions': positions,
               };
             }
@@ -1092,7 +1092,7 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': currentPlayerInt,
+                'winner': getPlayerIDByNumber(currentPlayerInt),
                 'positions': positions,
               };
             }
