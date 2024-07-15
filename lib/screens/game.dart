@@ -979,7 +979,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  Map<String, dynamic> checkVertical() async {
+  Future<Map<String, dynamic>> checkVertical() async {
     for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
       List column = List.generate(
         7,
@@ -992,7 +992,9 @@ class _GameScreenState extends State<GameScreen> {
         if (column[rowIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': await gameRoom.get().then((snapshot) {
+                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
+              }),
               'positions': positions,
             };
           } else {
@@ -1006,7 +1008,9 @@ class _GameScreenState extends State<GameScreen> {
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': await gameRoom.get().then((snapshot) {
+                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
+              }),
               'positions': positions,
             };
           } else {
@@ -1018,7 +1022,9 @@ class _GameScreenState extends State<GameScreen> {
       }
       if (positions.size() >= 4) {
         return {
-          'winner': currentPlayerInt,
+          'winner': await gameRoom.get().then((snapshot) {
+            return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
+          }),
           'positions': positions,
         };
       }
@@ -1026,7 +1032,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  Map<String, dynamic> checkDiagonal() {
+  Future<Map<String, dynamic>> checkDiagonal() async {
     // Check diagonals from bottom-left to top-right
     for (int rowIndex = 3; rowIndex < 7; rowIndex++) {
       for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
@@ -1054,7 +1060,10 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': currentPlayerInt,
+                'winner': await gameRoom.get().then((snapshot) {
+                  return snapshot.data()!['players'][currentPlayerInt - 1]
+                      ['id'];
+                }),
                 'positions': positions,
               };
             }
@@ -1094,7 +1103,10 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': currentPlayerInt,
+                'winner': await gameRoom.get().then((snapshot) {
+                  return snapshot.data()!['players'][currentPlayerInt - 1]
+                      ['id'];
+                }),
                 'positions': positions,
               };
             }
