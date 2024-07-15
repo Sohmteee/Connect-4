@@ -225,7 +225,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
       children: [
         const Spacer(flex: 5),
         Text(
-          'Connection to \'${roomName.text}\' successful!',
+          'Connection to \'${roomName.text}\' was successful!',
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
