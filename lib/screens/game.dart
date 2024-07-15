@@ -873,11 +873,11 @@ class _GameScreenState extends State<GameScreen> {
     final List players = await gameRoom.get().then((snapshot) {
       return snapshot.data()!['players'];
     });
-    if ((await checkHorizontal()).isNotEmpty) {
-      debugPrint('Player ${(await checkHorizontal())['winner']} wins!');
-      Future.delayed((rowIndex * 100 + 200).milliseconds, () async{
+    if (checkHorizontal().isNotEmpty) {
+      debugPrint('Player ${checkHorizontal()['winner']} wins!');
+      Future.delayed((rowIndex * 100 + 200).milliseconds, () {
         highlightWinningPositions(
-          (await checkHorizontal())['positions'],
+          checkHorizontal()['positions'],
         );
         setState(() {
           winner = checkHorizontal()['winner'];
@@ -887,7 +887,7 @@ class _GameScreenState extends State<GameScreen> {
       isGameOver = true;
       canTap = false;
       restartGame();
-    } else if ((await checkVertical()).isNotEmpty) {
+    } else if (checkVertical().isNotEmpty) {
       debugPrint('Player ${checkVertical()['winner']} wins!');
       Future.delayed((rowIndex * 100 + 200).milliseconds, () {
         highlightWinningPositions(
@@ -924,7 +924,7 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  Future<Map<String, dynamic>> checkHorizontal() async {
+  Map<String, dynamic> checkHorizontal() {
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
       int currentPlayerInt = 1;
@@ -934,9 +934,7 @@ class _GameScreenState extends State<GameScreen> {
         if (row[columnIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': await gameRoom.get().then((snapshot) {
-                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-              }),
+              'winner': currentPlayerInt,
               'positions': positions,
             };
           } else {
@@ -954,18 +952,14 @@ class _GameScreenState extends State<GameScreen> {
               }
             }
             return {
-              'winner': await gameRoom.get().then((snapshot) {
-                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-              }),
+              'winner': currentPlayerInt,
               'positions': positions,
             };
           }
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': await gameRoom.get().then((snapshot) {
-                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-              }),
+              'winner': currentPlayerInt,
               'positions': positions,
             };
           } else {
@@ -979,7 +973,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  Future<Map<String, dynamic>> checkVertical() async {
+  Map<String, dynamic> checkVertical() {
     for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
       List column = List.generate(
         7,
@@ -992,9 +986,7 @@ class _GameScreenState extends State<GameScreen> {
         if (column[rowIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': await gameRoom.get().then((snapshot) {
-                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-              }),
+              'winner': currentPlayerInt,
               'positions': positions,
             };
           } else {
@@ -1008,9 +1000,7 @@ class _GameScreenState extends State<GameScreen> {
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': await gameRoom.get().then((snapshot) {
-                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-              }),
+              'winner': currentPlayerInt,
               'positions': positions,
             };
           } else {
@@ -1022,9 +1012,7 @@ class _GameScreenState extends State<GameScreen> {
       }
       if (positions.size() >= 4) {
         return {
-          'winner': await gameRoom.get().then((snapshot) {
-            return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
-          }),
+          'winner': currentPlayerInt,
           'positions': positions,
         };
       }
@@ -1032,7 +1020,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  Future<Map<String, dynamic>> checkDiagonal() async {
+  Map<String, dynamic> checkDiagonal() {
     // Check diagonals from bottom-left to top-right
     for (int rowIndex = 3; rowIndex < 7; rowIndex++) {
       for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
@@ -1060,10 +1048,7 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': await gameRoom.get().then((snapshot) {
-                  return snapshot.data()!['players'][currentPlayerInt - 1]
-                      ['id'];
-                }),
+                'winner': currentPlayerInt,
                 'positions': positions,
               };
             }
@@ -1103,10 +1088,7 @@ class _GameScreenState extends State<GameScreen> {
             positions.add(Position(row, col));
             if (positions.size() == 4) {
               return {
-                'winner': await gameRoom.get().then((snapshot) {
-                  return snapshot.data()!['players'][currentPlayerInt - 1]
-                      ['id'];
-                }),
+                'winner': currentPlayerInt,
                 'positions': positions,
               };
             }
