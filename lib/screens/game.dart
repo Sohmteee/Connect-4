@@ -875,7 +875,6 @@ class _GameScreenState extends State<GameScreen> {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
           highlightWinningPositions(
-            checkHorizontal()['winner'],
             checkHorizontal()['positions'],
           );
           setState(() {
@@ -891,7 +890,6 @@ class _GameScreenState extends State<GameScreen> {
         debugPrint('Player ${checkVertical()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
           highlightWinningPositions(
-            checkVertical()['winner'],
             checkVertical()['positions'],
           );
 
@@ -908,7 +906,6 @@ class _GameScreenState extends State<GameScreen> {
         debugPrint('Player ${checkDiagonal()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
           highlightWinningPositions(
-            checkDiagonal()['winner'],
             checkDiagonal()['positions'],
           );
 
