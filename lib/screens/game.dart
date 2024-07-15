@@ -924,6 +924,10 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
+  String getPlayerIDByNumber(int number) {
+    return number == 1 ? widget.player1.id : widget.player2.id;
+  }
+
   Map<String, dynamic> checkHorizontal() {
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
