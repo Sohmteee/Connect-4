@@ -924,7 +924,7 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  Map<String, dynamic> checkHorizontal() {
+  Future<Map<String, dynamic>> checkHorizontal() async {
     for (int rowIndex = 6; rowIndex >= 0; rowIndex--) {
       List row = gameBoard[rowIndex];
       int currentPlayerInt = 1;
@@ -934,7 +934,7 @@ class _GameScreenState extends State<GameScreen> {
         if (row[columnIndex] == 0) {
           if (positions.size() >= 4) {
             return {
-              'winner': gameRoom.get().then((snapshot) {
+              'winner': await gameRoom.get().then((snapshot) {
                 return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
               }),
               'positions': positions,
@@ -954,14 +954,18 @@ class _GameScreenState extends State<GameScreen> {
               }
             }
             return {
-              'winner': currentPlayerInt,
+              'winner': await gameRoom.get().then((snapshot) {
+                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
+              }),
               'positions': positions,
             };
           }
         } else {
           if (positions.size() >= 4) {
             return {
-              'winner': currentPlayerInt,
+              'winner': await gameRoom.get().then((snapshot) {
+                return snapshot.data()!['players'][currentPlayerInt - 1]['id'];
+              }),
               'positions': positions,
             };
           } else {
@@ -975,7 +979,7 @@ class _GameScreenState extends State<GameScreen> {
     return {};
   }
 
-  Map<String, dynamic> checkVertical() {
+  Map<String, dynamic> checkVertical() async {
     for (int columnIndex = 0; columnIndex < 7; columnIndex++) {
       List column = List.generate(
         7,
