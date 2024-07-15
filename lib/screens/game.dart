@@ -882,7 +882,6 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkHorizontal()['winner'];
           });
-          players.singleWhere(test)
         });
 
         isGameOver = true;
@@ -898,7 +897,6 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkVertical()['winner'];
           });
-          winner == 1 ? widget.player1.score++ : widget.player2.score++;
         });
 
         isGameOver = true;
