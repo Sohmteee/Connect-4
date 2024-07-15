@@ -869,11 +869,10 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  void checkWin(int rowIndex) {
-    final players = gameRoom.get().then((snapshot) {
+  Future<void> checkWin(int rowIndex) async {
+    final players = await gameRoom.get().then((snapshot) {
       return snapshot.data()!['players'];
     });
-    setState(() {
       if (checkHorizontal().isNotEmpty) {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
         Future.delayed((rowIndex * 100 + 200).milliseconds, () {
@@ -924,7 +923,6 @@ class _GameScreenState extends State<GameScreen> {
         canTap = false;
         restartGame();
       }
-    });
   }
 
   Map<String, dynamic> checkHorizontal() {
