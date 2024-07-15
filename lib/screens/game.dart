@@ -870,6 +870,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void checkWin(int rowIndex) {
+    
     setState(() {
       if (checkHorizontal().isNotEmpty) {
         debugPrint('Player ${checkHorizontal()['winner']} wins!');
@@ -880,7 +881,9 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             winner = checkHorizontal()['winner'];
           });
-          winner == 1 ? widget.player1.score++ : widget.player2.score++;
+          winner == playerID.toString()
+              ? widget.player1.score++
+              : widget.player2.score++;
         });
 
         isGameOver = true;
