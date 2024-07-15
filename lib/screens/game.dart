@@ -43,7 +43,7 @@ class GameScreen extends StatefulWidget {
 final gameRoom = privateRooms.doc(roomName.text);
 
 class _GameScreenState extends State<GameScreen> {
-  int? winner;
+  String? winner;
   late Player currentPlayer;
   bool isGameOver = false;
   bool canTap = true;
@@ -864,7 +864,7 @@ class _GameScreenState extends State<GameScreen> {
       debugPrint('Tie!');
       isGameOver = true;
       canTap = false;
-      winner = 0;
+      winner = '0';
       restartGame();
     }
   }
