@@ -452,7 +452,7 @@ class _GameScreenState extends State<GameScreen> {
                 SizedBox(width: 5.w),
                 winner == null
                     ? Text(
-                        '${currentPlayer.id == playerID.toString() ? 'Your' : '${currentPlayer.name}\'s'} Turn',
+                        '${currentPlayer.id == playerID ? 'Your' : '${currentPlayer.name}\'s'} Turn',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14.sp,
@@ -461,7 +461,7 @@ class _GameScreenState extends State<GameScreen> {
                     : Text(
                         switch (winner) {
                           '0' => 'It\'s a tie!',
-                          playerID.toString() => 'You won!',
+                          playerID => 'You won!',
                           2 => '${widget.player2.name} won!',
                           _ => '',
                         },
