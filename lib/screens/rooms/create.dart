@@ -170,7 +170,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                               'key': roomKey.text,
                               'players': [
                                 {
-                                  'name': 'Somto',
+                                  'name': 'Created',
                                   'number': 1,
                                   'avatar': 1,
                                   'id': playerID.toString(),
