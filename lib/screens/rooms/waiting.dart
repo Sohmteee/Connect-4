@@ -28,7 +28,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
     super.initState();
     timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (t.tick == 300) {
-        room.doc(roomName.text).delete();
+        privateRooms.doc(roomName.text).delete();
         Navigator.pop(context);
       }
 
@@ -48,7 +48,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   }
 
   Stream<int> getNumberOfPlayersStream() {
-    return room.doc(roomName.text).snapshots().map((snapshot) {
+    return privateRooms.doc(roomName.text).snapshots().map((snapshot) {
       if (snapshot.exists) {
         return snapshot.data()!['players'].length;
       } else {
@@ -90,12 +90,14 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     Timer.periodic(const Duration(seconds: 1), (t) async {
                   if (t.tick == 10) {
                     startTimer?.cancel();
-                    Player player1 = await room.doc(roomName.text).get().then(
-                          (value) => toPlayer(value.data()!['players'][0]),
-                        );
-                    Player player2 = await room.doc(roomName.text).get().then(
-                          (value) => toPlayer(value.data()!['players'][1]),
-                        );
+                    Player player1 =
+                        await privateRooms.doc(roomName.text).get().then(
+                              (value) => toPlayer(value.data()!['players'][0]),
+                            );
+                    Player player2 =
+                        await privateRooms.doc(roomName.text).get().then(
+                              (value) => toPlayer(value.data()!['players'][1]),
+                            );
 
                     Navigator.pushReplacement(
                       context,
@@ -206,7 +208,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
         GameButton(
           text: 'CANCEL',
           onPressed: () {
-            room.doc(roomName.text).delete();
+            privateRooms.doc(roomName.text).delete();
             Navigator.pop(context);
             Navigator.pop(context);
           },
@@ -249,7 +251,7 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
         GameButton(
           text: 'CANCEL',
           onPressed: () {
-            room.doc(roomName.text).delete();
+            privateRooms.doc(roomName.text).delete();
             Navigator.pop(context);
             Navigator.pop(context);
           },

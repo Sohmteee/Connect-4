@@ -32,7 +32,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
   }
 
   Future<void> addPlayerToRoom() async {
-    var doc = room.doc(roomName.text);
+    var doc = privateRooms.doc(roomName.text);
     var docSnapshot = await doc.get();
 
     if (docSnapshot.exists) {
@@ -157,7 +157,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                     context: context,
                     builder: (context) {
                       return FutureBuilder(
-                        future: room.doc(roomName.text).get().then((doc) {
+                        future:
+                            privateRooms.doc(roomName.text).get().then((doc) {
                           if (doc.exists &&
                               doc.data()!['key'] == roomKey.text) {
                             return true;

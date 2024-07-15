@@ -100,7 +100,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                 playTap(context);
 
                 Future<bool> roomsContains(String roomKey) async {
-                  return room.doc(roomKey).get().then((doc) => doc.exists);
+                  return privateRooms
+                      .doc(roomKey)
+                      .get()
+                      .then((doc) => doc.exists);
                 }
 
                 if (roomName.text.isEmpty) {
@@ -162,7 +165,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                       context: context,
                       builder: (context) {
                         return FutureBuilder(
-                            future: room.doc(roomName.text).set({
+                            future: privateRooms.doc(roomName.text).set({
                               'name': roomName.text,
                               'key': roomKey.text,
                               'players': [

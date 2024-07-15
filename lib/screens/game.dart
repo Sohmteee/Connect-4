@@ -40,7 +40,7 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-final gameRoom = room.doc(roomName.text);
+final gameRoom = privateRooms.doc(roomName.text);
 
 class _GameScreenState extends State<GameScreen> {
   int? winner;
@@ -65,15 +65,13 @@ class _GameScreenState extends State<GameScreen> {
     return board.expand((row) => row).toList();
   }
 
-  List<List<int>> unflattenGameBoard(
-      List<int> flattenedBoard) {
+  List<List<int>> unflattenGameBoard(List<int> flattenedBoard) {
     List<List<int>> board = [];
     for (int i = 0; i < 7; i++) {
       board.add(flattenedBoard.sublist(i * 7, (i + 1) * 7));
     }
     return board;
   }
-
 
   void initializeServerParameters() async {
     await gameRoom.set(

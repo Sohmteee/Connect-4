@@ -13,7 +13,7 @@ class RoomScreen extends StatefulWidget {
 
 late TextEditingController roomName;
 late TextEditingController roomKey;
-final room = FirebaseFirestore.instance.collection('rooms');
+final privateRooms = FirebaseFirestore.instance.collection('private-rooms');
 
 class _RoomScreenState extends State<RoomScreen> {
   @override
@@ -24,7 +24,6 @@ class _RoomScreenState extends State<RoomScreen> {
         child: Column(
           children: [
             const Spacer(flex: 5),
-            
             GameButton(
               text: 'CREATE ROOM',
               onPressed: () {
